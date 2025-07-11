@@ -1,0 +1,173 @@
+Destinations
+~~~~~~~~~~~~
+
+Method components that describe where the calculation should be run. On most computational clusters,
+the destination will describe how to interface to the batch submission system.
+
+Batch (SLURM/PBS)
+^^^^^^^^^^^^^^^^^
+
+Batch destinations make use of a resource management program to schedule jobs to run in parallel.
+This scheduler will hold jobs in a queue until sufficient resources (CPUs, memory, file space etc.)
+are available in the cluster to run the job. Batch submission is the normal way that calculations
+are submitted to computational clusters.
+
+Digichem supports submission to the two most common schedulers: SLURM and PBS (also known as Torque).
+The options for both are very similar.
+
+To use a batch destination, set the ``class_name`` option to either ``SLURM`` or ``PBS``:
+
+.. code-block:: yaml
+   
+   destination:
+     meta:
+       class_name: SLURM  # The type of destination, these are built in to Digichem.
+       name: SLURM        # A convenient name, can be set to anything unique (but must be set).
+
+.. code-block:: yaml
+   
+   destination:
+     meta:
+       class_name: PBS
+       name: PBS
+       
+The maximum duration for the calculation can be set using the ``time`` option:
+
+.. code-block:: yaml
+   
+   destination:
+     time: 2-12:00:00     # Maximum duration in dd-hh:mm:ss
+     
+Where the format is:
+
+  - ``dd``: days
+  - ``hh``: hours
+  - ``mm``: minutes
+  - ``ss``: seconds
+  
+Sections of the time that aren't required can be omitted, for example:
+
+.. code-block:: yaml
+   
+   destination:
+     time: 2-00:00:00   # 2 days
+     time: 12:00:00     # 12 hours
+     time: 30:00        # 30 minutes
+
+If the ``time`` option is not set, then the server defaults will be used. Note that these
+are normally fairly short.
+ 
+On some clusters, the resource management system will automatically fill the available queues
+depending on the resources requested by the calculation. In this case, no further options are
+required.
+
+In other cases, the queue (or partition for SLURM) can be set with the ``queue`` option:
+
+.. code-block:: yaml
+   
+   destination:
+     queue: long-queue
+
+.. _method_destination_memory:
+
+Digichem will automatically request the correct number of CPUs and memory from the scheduler
+to match the calculation, so normally you do not need to set the number of CPUs, tasks, or
+memory in the destination itself.
+
+However, if you need, these options can be set explicitly:
+
+SLURM:
+
+.. code-block:: yaml
+
+   destination:
+     min_nodes: 1       # How many nodes (machines) to use (minimum).
+     max_nodes: 1       # How many nodes (machines) to use (maximum).
+     num_tasks: 8       # Number of tasks (separate processes).
+     cpus_per_task: 1   # Number of CPUs per task/process.
+     mem_per_cpu: 1 GB  # Amount of memory per CPU.
+     
+The total number of CPUs that will be allocated is ``num_tasks`` × ``cpus_per_task``.
+The total amount of memory that will be allocated is ``num_tasks`` × ``cpus_per_task`` × ``mem_per_cpu``.
+
+PBS:
+
+.. code-block:: yaml
+
+   destination:
+     num_nodes: 1       # How many nodes (machines) to use.
+     num_tasks: 8       # Number of tasks (separate processes).
+     mem_per_cpu: 1 GB  # Amount of memory per CPU.
+     
+The total amount of memory that will be allocated is ``num_tasks`` × ``mem_per_cpu``.
+
+In either case, common memory suffixes (GB, MB, KB, GiB, MiB, KiB etc.) can used.
+It is normally advisable to request more memory from the scheduler than is allocated
+to the calculation, as most calculation engines will request slightly more memory
+than instructed. The exact amount to over-allocate depends on the engine and calculation
+in question, but 10-20% is normally recommended.
+
+Batch arrays (SLURM/PBS)
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+In a normal batch submission, each molecule is submitted as a separate job. This is simpler and easier
+to manage, but some computational clusters discourage submitting large numbers of individual jobs 
+simultaneously for performance reasons.
+
+Alternatively, Digichem can use job arrays to minimise the number of individual jobs that are submitted
+to the scheduler. In this scheme, only one job is submitted, and each individual molecule is represented
+by a separate *array task*, essentially a sub-job of the main job.
+
+You can find more information about job arrays `here <https://slurm.schedmd.com/job_array.html>`__.
+
+Job arrays are supported for both SLURM and PBS. These destinations are defined by setting the ``class_name``
+option to ``SLURM-Array`` or ``PBS-Array`` for SLURM or PBS, respectively:
+
+.. code-block:: yaml
+   
+   destination:
+     meta:
+       class_name: SLURM-Array
+
+.. code-block:: yaml
+   
+   destination:
+     meta:
+       class_name: PBS-Array
+
+All other options work the same as for the normal SLURM or PBS batch destination.
+
+Local
+^^^^^
+
+'Local' destinations do not use a queuing or batch system at all. These calculations will be run in the current 
+context (*ie*, on the current computer, right now). Local destinations should normally only be 
+used for testing purposes as they will not make use of your server's batch submission system.
+
+There are two types of 'Local' destination, ``series`` and ``parallel``. As the name suggests, the difference
+is in how the calculations are run. In ``series``, each molecule is not submitted in parallel (this is the only
+method that works like this), and instead each molecule and calculation is run sequentially. In ``parallel``,
+each molecule is submitted to a separate sub-process, so all molecules will run at the same time.
+
+A local destination requires only two options, the class (which all method components require) and a name:
+
+.. code-block:: yaml
+   
+   destination:
+     meta:
+       class_name: series
+       name: In series
+
+.. code-block:: yaml
+   
+   destination:
+     meta:
+       class_name: parallel
+       name: In parallel
+
+.. warning::
+   Neither ``series`` nor ``parallel`` perform any kind of resource management. Calculations submitted
+   with these local destinations can consume more resources (CPUs, memory, file space) than are available
+   on the machine. Submitting large numbers of molecules with ``parallel`` can quickly lead to crashes.
+
+    

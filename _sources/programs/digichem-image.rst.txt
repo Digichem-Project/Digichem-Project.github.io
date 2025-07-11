@@ -1,0 +1,230 @@
+.. _digichem_image:
+
+Digichem Image
+=============================
+
+The ``digichem image`` command is used to generate individual images from a completed calculation.
+
+.. code-block:: console
+
+    $ digichem image LOG_FILE --image IMAGE
+
+Input files
+-----------
+
+The ``image`` and ``report`` :ref:`sub-programs<digichem_report>` share much of the same functionality and interface.
+``digichem image`` takes the same input file options as ``digichem report``.
+
+Normally, it is sufficient to specify the path to the main calculation log file, or the directory containing this log file,
+and Digichem will locate any other files that it needs:
+
+.. code-block:: console
+
+    $ digichem image Benzene.log           # Or
+    $ digichem image Benzene/Optimisation
+
+When rendering electron densities (including orbitals), Digichem also requires additional checkpoint/density files from
+the calculation. If these have been named strangely, or have been moved out of the main calculation directory, then you
+may need to explicitly specify these files. Please refer to the documentation for the report :ref:`command<report_input_files>` for more information.
+
+Image selection
+---------------
+
+The image(s) to generate are specified with the ``--image`` option:
+
+.. code-block:: console
+
+    $ digichem image Benzene.log --image HOMO
+
+Multiple images can be selected simultaneously:
+
+.. code-block:: console
+
+    $ digichem image Benzene.log --image HOMO LUMO
+
+Many image types are actually composed of several *sub-images*. In most cases, these sub-images will present alternative views
+of the same image. For 3D renders, such as orbital density plots, each sub-image is a different angle of the same molecule.
+Digichem will automatically save all available sub-images when rendering. Thus the command:
+
+.. code-block:: console
+
+    $ digichem image Benzene.log --image HOMO
+
+Will actually render a total of 8 images (four different angles of the HOMO, in both PNG and JPEG formats).
+
+The ``image`` command can also generate cube files, using the ``--cube`` option:
+
+.. code-block:: console
+
+    $ digichem image Benzene.log --cube HOMO
+
+.. note::
+    When rendering an image, Digichem will automatically generate the appropriate cube file (so the ``--cube`` option is not necessary).
+    However, Digichem will also *clean up* any cube files that it generates that aren't explicitly requested. Thus, if both the cube and
+    final image files are desired, specify both the ``--image`` and ``--cube`` options:
+
+    .. code-block:: console
+
+        $ digichem image Benzene.log --cube HOMO --image HOMO
+
+To see a list of the available images that Digichem can generate for a given calculation, specify the ``--list`` option:
+
+.. code-block:: console
+
+    $ digichem image Benzene.log --list
+    Benzene, Gaussian Single Point PBE0 6-31G**:
+        cube:
+            - SCF
+            - HOMO-20
+            - HOMO-19
+            - HOMO-18
+            - HOMO-17
+            - HOMO-16
+            - HOMO-15
+            - HOMO-14
+            ...
+        image:
+            - SCF
+            - HOMO-20
+            - HOMO-19
+            - HOMO-18
+            - HOMO-17
+            - HOMO-16
+            - HOMO-15
+            - HOMO-14
+            ...
+
+This command will list both the available image and cube files.
+
+Output files
+------------
+
+Rendered images (and cube files) will be placed by default in the Report/image directory, and *will* overwrite any existing files found there (see :ref:`overwriting files<image_overwrite>`).
+
+You can write an image to a specific location using the usual ``-O`` option (but see :ref:`working directory<image_working_directory>` below):
+
+.. code-block:: console
+
+    $ digichem image Benzene.log --image HOMO -O my_image.png
+
+The file extension (here it is ``.png``) is used to determine what file-type to save the image as.
+If no file extension is given, then Digichem assumes the output location is a directory and each image will be placed within it, using its default file name:
+
+.. code-block:: console
+
+    $ digichem image Benzene.log --image HOMO -O custom_images/
+
+This command would result in the following directory structure::
+
+    Benzene.log
+    custom_images/
+        Benzene.HOMO.x0y0z0.jpg
+        Benzene.HOMO.x0y0z0.png
+        Benzene.HOMO.x0y90z0.jpg
+        Benzene.HOMO.x0y90z0.png
+        Benzene.HOMO.x45y45z45.jpg
+        Benzene.HOMO.x45y45z45.png
+        Benzene.HOMO.x90y0z0.jpg
+        Benzene.HOMO.x90y0z0.png
+
+.. note::
+    If an image is made up of multiple sub-images and only a single output file is specified, then only the first
+    sub-image will be rendered.
+
+.. _image_working_directory:
+
+Working directory
+-----------------
+
+Because many image files are dependent on other file types (eg. orbital densities require cube files), ``digichem image``
+always writes image files to the calculation's report directory first. If the ``-O`` option is given, the images are then
+copied to the final destination. This means ``digichem image`` will overwrite files in the 'Report' directory even if 
+writing to another location.
+
+To change this behaviour, specify a different working directory with the ``-D`` option:
+
+.. code-block:: console
+
+    $ digichem image Benzene.log --image HOMO -O Homo.png -D /tmp
+
+Note that this will also force Digichem to regenerate any image/cube files that are required (because the working directory will be empty).
+
+
+.. _image_overwrite:
+
+Overwriting files
+-----------------
+
+Unlike the ``report`` command, ``digichem image`` *does* overwrite old files by default.
+To instead keep previously written image files, pass the ``--no-overwrite`` option:
+
+.. code-block:: console
+
+    $ digichem image Benzene.log --image HOMO --no-overwrite
+
+Merged calculations
+-------------------
+
+Like ``digichem report``, ``digichem image`` can generate images from merged calculation results by specifying the
+``-m`` option:
+
+.. code-block:: console
+
+    $ digichem image -m Benzene/Optimisation "Benzene/Excited States" -O "Benzene/Combined images" --image HOMO
+
+This is particularly useful for generating difference density plots, which naturally require two calculation results (to calculate the difference between):
+
+.. code-block:: console
+
+    $ digichem image -m "Benzene/Turbomole Opt ADC(2)-SCS cc-pVDZ" \
+                        "Benzene/Turbomole Excited States ADC(2)-SCS S(1) & S(2) cc-pVDZ" \
+                     -O "Benzene/Combined images" --image HOMO
+
+
+
+Multiple calculations
+---------------------
+
+``digichem image`` can also generate files for multiple different calculations simultaneously:
+
+.. code-block:: console
+
+    $ digichem image Benzene.log Pyridine.log --image HOMO
+
+You can also render multiple different images for each calculation simultaneously:
+
+.. code-block:: console
+
+    // Generate a total of 6 files, two orbital images and one orbital cube
+    // for both benzene and pyridine:
+    $ digichem image Benzene.log Pyridine.log --image HOMO LUMO --cube HOMO+1
+
+Like usual, each image will be placed in the `Report/image` folder of the relevant calculation.
+You can still use the ``-O`` option to change the output location when generating images for multiple calculations,
+but Digichem won't let you write multiple images to the same location:
+
+.. code-block:: console
+
+    // Here we're generating two images (HOMO for both Benzene and Pyridine)
+    // but only specifying one output location.
+    $ digichem image Benzene/Benzene.log Pyridine/Pyridine.log --image HOMO -O HOMO.png
+    ...
+    digichem: ERROR: Refusing to write 'Pyridine.HOMO.jpg' to 'HOMO.png'; we've already written a file here!
+
+Instead, you can use the ``-r`` (for **r**\ elative) option, which will write each output file to a location
+*relative* to each input file:
+
+.. code-block:: console
+
+    // Now we're specifying a relative location, which ends up being different for each
+    // input file, so all is well.
+    $ digichem image Benzene/Benzene.log Pyridine/Pyridine.log --image HOMO -r HOMO.png
+
+Which would result in::
+
+    Benzene/
+        Benzene.log
+        HOMO.png
+    Pyridine/
+        Pyridine.log
+        HOMO.png

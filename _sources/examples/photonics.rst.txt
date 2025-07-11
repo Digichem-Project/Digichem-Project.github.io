@@ -1,0 +1,126 @@
+Photonics
+---------
+
+Fluorescent and TADF (1\ :sup:`st` and 3\ :sup:`rd` generation) emitters 
+_________________________________________________________________________
+
+In this example we will characterise some of the core photophysical properties of a prototypical thermally-activated delayed fluorescence emitter,
+including the emission energy (and colour), singlet-triplet splitting energy, spin-orbit coupling, and a visual representation of the excited states (NTOs).
+
+
+We will be using DMAC_TRZ\ :cite:p:`DMAC-TRZ` as our example molecule:
+
+.. image:: /_static/examples/DMAC_TRZ/DMAC_TRZ.png
+  :alt: DMAC_TRZ
+
+You can download the input file :download:`here </_static/examples/DMAC_TRZ/DMAC_TRZ.cml>`.
+
+Submit
+======
+
+As with all calculations starting from a hand-drawn structure, we begin by optimising the molecule's geometry by selecting a calculation from the
+`Optimisation` menu:
+
+.. image:: /_static/examples/DMAC_TRZ/Opt.png
+
+For this example we will be using the popular PBE0 functional, but most hybrid DFT functionals will provide reasonable results. Other popular
+choices included B3LYP and M062X.
+
+If you are looking to predict the properties of the emitter in a particular solvent, that can now be chosen from the subsequent list (or select `Gas Phase`
+for a solvent agnostic calculation):
+
+.. image:: /_static/examples/DMAC_TRZ/Solvent.png
+
+Finally, we must make a choice of basis set. For smaller emitters, or when more computational time is available, a triple-zeta basis set offers a more
+reliable result, but for larger molecules basis sets of double-zeta quality are normally sufficient for at least qualitative results. For this example,
+we will choose the popular 6-31G\*\* set:
+
+.. image:: /_static/examples/DMAC_TRZ/Basis.png
+
+For the calculation of the excited states themselves, we will be utilising time-dependent DFT theory (optionally with the Tamm Dancoff approximation (TDA)).
+This can be selected from the `Excited states` menu:
+
+.. image:: /_static/examples/DMAC_TRZ/TDA.png
+
+For a TADF emitter, the relative position of the lowest energy singlet and triplet states is a crucial parameter for evaluating the degree of reverse intersystem-crossing (RISC),
+so we will be calculating both states simultaneously. For a pure fluorescent emitter, the triplet states could be skipped if they are not of interest. We will then
+select the same options for the functional, solvent, and basis set as we did for the ground state optimisation:
+
+.. image:: /_static/examples/DMAC_TRZ/TDA-basis.png
+
+Finally, we will also calculate the geometry of the first singlet excited state from the `Optimised S(1)` menu. This will allow us to calculate a more accurate value for the emission energy:
+
+.. image:: /_static/examples/DMAC_TRZ/Opt-S1.png
+
+To recap, we have now queued up 3 calculations in series, which are:
+
+  #. Optimisation of the ground state geometry
+  #. Calculation of the first 10 singlet and triplet excited states
+  #. Optimisation of the S(1) geometry
+ 
+Which we can now submit for processing.
+
+Analysis
+========
+
+This documentation is coming soon!
+
+
+Phosphorescent (2\ :sup:`nd` generation) emitters
+__________________________________________________
+
+
+The process to characterise a phosphorescent emitter (also known as a 2\ :sup:`nd` generation emitter) is largely the same as for (thermally activated delayed) fluorescence emitters.
+The main differences are:
+
+ #. The emissive state is a triplet, rather than a singlet. This enables us to optimise the orbitals of the triplet state directly with relative ease, which is not usually the case
+    for the excited singlet state (because we'll normally end up with the singlet ground state instead).
+ #. Most phosphorescent emitters are organometallics, containing one or more heavy metal atoms in their core. This necessitates a more careful choice of basis set.
+ 
+In this example, we will characterise some of the key properties of the well-documented phosphorescent emitter, Ir(ppy)\ :sub:`3`\ :cite:p:`Ir(ppy)3`:
+
+.. image:: /_static/examples/Ir(ppy)3/Ir(ppy)3.png
+  :alt: Ir(ppy)3
+  
+You can download the input file :download:`here </_static/examples/Ir(ppy)3/Ir(ppy)3.cml>`.
+
+Submit
+======
+
+We will begin in much the same way as before, with an initial geometry optimisation calculation to find a stationary point for the molecular geometry. Both PBE0 and especially 
+B3LYP are very popular in this field, and either is likely to give sensible results. For this demonstration, we will be using B3LYP:
+
+.. image:: /_static/examples/Ir(ppy)3/Opt.png
+
+Because of the iridium atom at the centre of the molecule, we cannot use the same 6-31G\*\* basis set as before (as this typically only includes atoms up to Kr). We could choose
+a more modern basis set from the Karlsruhe family (such as def2-TZVP), but for this example we will instead use a mixed basis set,\ :cite:p:`LANL,SBKJC` using 6-31+G\*\* for the light atoms and SBKJC-VDZ
+for iridium (with an additional effective core potential for the metal). This option can be selected from the `External Basis Sets` option:
+
+.. image:: /_static/examples/Ir(ppy)3/Basis.png
+
+After the optimisation, we will queue a normal excited states calculation with TD-DFT (here with the Tamn-Dancoff approximation). This calculation will yield a good approximation
+for the lowest energy singlet and triplet states:
+
+.. image:: /_static/examples/Ir(ppy)3/TDA.png
+
+Next, we will optimise the structure of the emissive triplet state (T\ :sub:`1`). Here, we could chose to again use TD-DFT as we did for the TADF emitter above,
+but instead we will use standard DFT and manually set the multiplicity of the molecule to 3. Because there is no triplet ground state accessible for this molecule 
+(because it has a closed shell), this will naturally converge to the first triplet excited state instead, allowing us to directly optimise the orbitals of the excited state.
+This type of calculation is often referred to as ΔSCF or ΔDFT, and can be selected from the `Unrestricted Triplet` menu:
+
+.. image:: /_static/examples/Ir(ppy)3/Opt_state.png
+
+Finally, we will queue a single point calculation using a singlet configuration. This calculation will use the geometry of the excited triplet state, but will relax the orbitals back
+to the ground state. The difference in energy between these two configurations will give us the phosphorescence emission energy:
+
+.. image:: /_static/examples/Ir(ppy)3/SP.png
+
+We now have a total of 4 calculations queued, which we can submit:
+
+.. image:: /_static/examples/Ir(ppy)3/Submit.png
+
+Analysis
+========
+
+This documentation is coming soon!
+

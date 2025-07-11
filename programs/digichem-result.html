@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Digichem Result &mdash; Digichem 6.9.2 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=92fd9be5" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=4b4c264b" />
+
+  
+    <link rel="shortcut icon" href="../_static/Icon.svg"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=c8889b49"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Digichem Report" href="digichem-report.html" />
+    <link rel="prev" title="Digichem Convert" href="digichem-convert.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Digichem
+          </a>
+              <div class="version">
+                6.9.2
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/index.html">Getting started</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Walkthroughs</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../method/index.html">Methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Programs</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="digichem-submit.html">Digichem Submit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="digichem-convert.html">Digichem Convert</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Digichem Result</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#filters">Filters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#output-formats">Output Formats</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#digichem-native-format-sir">Digichem Native Format (.sir)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#json-format">JSON Format</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#csv-format">CSV Format</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#table-format">Table Format</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#csv-property-format">CSV Property Format</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#table-property-format">Table Property Format</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#summary-format">Summary Format</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#summary">Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#regenerating-the-results-folder">Regenerating the Results Folder</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="digichem-report.html">Digichem Report</a></li>
+<li class="toctree-l2"><a class="reference internal" href="digichem-image.html">Digichem Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="digichem-database.html">Digichem Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="digichem-status.html">Digichem Status</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">Command line reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bibliography.html">References</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Digichem</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Programs</a></li>
+      <li class="breadcrumb-item active">Digichem Result</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/programs/digichem-result.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="digichem-result">
+<span id="id1"></span><h1>Digichem Result<a class="headerlink" href="#digichem-result" title="Link to this heading"></a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">digichem</span> <span class="pre">result</span></code> is used to parse results from completed calculations.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>digichem<span class="w"> </span>result<span class="w"> </span>LOG_FILE
+</pre></div>
+</div>
+<p>Digichem will intelligently look for relevant log files, so the calculation folder can be specified instead of the log file itself.
+For example, in the following directory structure:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Benzene</span>
+    <span class="n">Gaussian</span> <span class="mi">16</span> <span class="n">Optimisation</span> <span class="n">Frequencies</span> <span class="n">PBE0</span> <span class="p">(</span><span class="n">GD3BJ</span><span class="p">)</span> <span class="n">Gas</span> <span class="n">Phase</span> <span class="n">Pople</span> <span class="n">Basis</span> <span class="n">Sets</span> <span class="mi">6</span><span class="o">-</span><span class="mi">31</span><span class="n">G</span><span class="p">(</span><span class="n">d</span><span class="p">,</span><span class="n">p</span><span class="p">)</span>
+        <span class="n">Flags</span>
+        <span class="n">Input</span>
+        <span class="n">Logs</span>
+        <span class="n">Output</span>
+            <span class="n">Benzene</span><span class="o">.</span><span class="n">log</span>
+            <span class="n">Benzene</span><span class="o">.</span><span class="n">fchk</span>
+        <span class="n">Report</span>
+        <span class="n">Results</span>
+</pre></div>
+</div>
+<p>The following commands are all equivalent:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>digichem<span class="w"> </span>result<span class="w"> </span><span class="s2">&quot;Benzene/Gaussian 16 Optimisation Frequencies PBE0 (GD3BJ) Gas Phase Pople Basis Sets 6-31G(d,p)/Output/Benzene.log&quot;</span>
+<span class="gp">$ </span>digichem<span class="w"> </span>result<span class="w"> </span><span class="s2">&quot;Benzene/Gaussian 16 Optimisation Frequencies PBE0 (GD3BJ) Gas Phase Pople Basis Sets 6-31G(d,p)/Output&quot;</span>
+<span class="gp">$ </span>digichem<span class="w"> </span>result<span class="w"> </span><span class="s2">&quot;Benzene/Gaussian 16 Optimisation Frequencies PBE0 (GD3BJ) Gas Phase Pople Basis Sets 6-31G(d,p)/&quot;</span>
+</pre></div>
+</div>
+<p>By default, the result data is written to <code class="docutils literal notranslate"><span class="pre">stdout</span></code>. The <code class="docutils literal notranslate"><span class="pre">-O</span></code> option can be used to write the data to a file instead:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>digichem<span class="w"> </span>result<span class="w"> </span>Benzene.log<span class="w"> </span>-O<span class="w"> </span>Benzene.results
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">digichem</span> <span class="pre">result</span></code> can write results to a number of different formats.
+The default format is <code class="docutils literal notranslate"><span class="pre">--yaml</span></code>, which saves the calculation data to the digichem native result format (.sir):</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>digichem<span class="w"> </span>result<span class="w"> </span>Benzene.log
+<span class="go">_id: 5c407cd31b64517aaa0ebbee4852c24ed69dc30b</span>
+<span class="go">atoms:</span>
+<span class="go">  alignment_method: Minimal</span>
+<span class="go">  charge: 0</span>
+<span class="go">  exact_mass:</span>
+<span class="go">    units: g mol^-1</span>
+<span class="go">    value: 78.04694999999998</span>
+<span class="go">  formula: C6H6</span>
+<span class="go">  linearity_ratio: 0.1012287031128819</span>
+<span class="go">  molar_mass:</span>
+<span class="go">  ...</span>
+</pre></div>
+</div>
+<p>The .sir format is reusable, and .sir files can be read to convert the data to another format:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>digichem<span class="w"> </span>result<span class="w"> </span>Benzene.log<span class="w"> </span>-O<span class="w"> </span>Benzene.sir
+<span class="gp">$ </span>digichem<span class="w"> </span>result<span class="w"> </span>Benzene.sir<span class="w"> </span>-s
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">--summary</span></code> format prints a human-readable summary of the most important calculation results:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>digichem<span class="w"> </span>result<span class="w"> </span>Benzene.log<span class="w"> </span>--summary
+<span class="go">_id</span>
+<span class="go">  ----------------------------------------</span>
+<span class="go">  5c407cd31b64517aaa0ebbee4852c24ed69dc30b</span>
+<span class="go">  ----------------------------------------</span>
+
+<span class="go">metadata</span>
+<span class="go">-------------------------  -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</span>
+<span class="go">name                       Benzene</span>
+<span class="go">log_files                  /home/oliver/ownCloud/Digichem Data Centre/Demonstrations/Outputs/Benzene/Gaussian 16 Optimisation Frequencies PBE0 (GD3BJ) Gas Phase Pople Basis Sets 6-31G(d,p)/Output/Benzene.log</span>
+<span class="go">auxiliary_files:fchk_file  /home/oliver/ownCloud/Digichem Data Centre/Demonstrations/Outputs/Benzene/Gaussian 16 Optimisation Frequencies PBE0 (GD3BJ) Gas Phase Pople Basis Sets 6-31G(d,p)/Output/Benzene.fchk</span>
+<span class="go">history</span>
+<span class="go">charge                     0.00</span>
+<span class="go">multiplicity               1.00</span>
+<span class="go">user                       oliver</span>
+<span class="go">package                    Gaussian</span>
+<span class="go">package_version            2016+C.01</span>
+<span class="go">silico_version             5.2.1-pre.0</span>
+<span class="go">calculations               Optimisation, Frequencies</span>
+<span class="go">methods                    DFT</span>
+<span class="go">functional                 PBE1PBE</span>
+<span class="go">...</span>
+</pre></div>
+</div>
+<p>While the <code class="docutils literal notranslate"><span class="pre">--table-property</span></code> (for human-readable) and <code class="docutils literal notranslate"><span class="pre">--csv-property</span></code> (for machine-readable) formats generate tables of results.
+When combined with an appropriate  <a class="reference internal" href="#result-filters"><span class="std std-ref">filter</span></a>, <code class="docutils literal notranslate"><span class="pre">--table-property</span></code> and <code class="docutils literal notranslate"><span class="pre">--csv-property</span></code> can be used to generate tables of specific data:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>digichem<span class="w"> </span>result<span class="w"> </span>Benzene.log<span class="w"> </span>--csv-property<span class="w"> </span>-f<span class="w"> </span>orbitals<span class="w"> </span>-O<span class="w"> </span>Benzene.orbitals.csv
+<span class="gp">$ </span>digichem<span class="w"> </span>result<span class="w"> </span>Benzene.log<span class="w"> </span>--table-property<span class="w"> </span>-f<span class="w"> </span>orbitals
+<span class="go">orbitals:index  orbitals:label      orbitals:homo_distance    orbitals:energy / eV  orbitals:symmetry      orbitals:symmetry_index</span>
+<span class="go">----------------  ----------------  ------------------------  ----------------------  -------------------  -------------------------</span>
+<span class="go">               1  HOMO-20                                -20                 -278.54  A                                            1</span>
+<span class="go">               2  HOMO-19                                -19                 -278.54  A                                            2</span>
+<span class="go">               3  HOMO-18                                -18                 -278.54  A                                            3</span>
+<span class="go">               4  HOMO-17                                -17                 -278.52  A                                            4</span>
+<span class="go">               5  HOMO-16                                -16                 -278.52  A                                            5</span>
+<span class="go">               6  HOMO-15                                -15                 -278.51  A                                            6</span>
+<span class="go">               7  HOMO-14                                -14                  -23.80  A                                            7</span>
+<span class="go">               8  HOMO-13                                -13                  -20.78  A                                            8</span>
+<span class="go">               9  HOMO-12                                -12                  -20.78  A                                            9</span>
+<span class="go">              10  HOMO-11                                -11                  -16.76  A                                           10</span>
+<span class="go">...</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">digichem</span> <span class="pre">result</span></code> can also parse and combine result data from multiple different calculation log files.
+This pattern is useful for comparing result data from several calculations simultaneously.
+Using the <code class="docutils literal notranslate"><span class="pre">--table</span></code> (or <code class="docutils literal notranslate"><span class="pre">-t</span></code>) format will provide a top-level overview of each calculation result:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>digichem<span class="w"> </span>result<span class="w"> </span>Benzene.log<span class="w"> </span>Naphthalene.log<span class="w"> </span>--table
+<span class="go">_id                                       metadata:name    metadata:log_files   metadata:history      metadata:charge    metadata:multiplicity  metadata:user    metadata:package    metadata:package_version    metadata:digichem_version    metadata:calculations      metadata:methods    metadata:functional    metadata:basis_set    metadata:orbital_spin_type    metadata:success    metadata:optimisation_converged      metadata:date / s  metadata:date:string      metadata:duration / s  metadata:duration:string      metadata:temperature / K    metadata:pressure / atm  metadata:solvent:model    metadata:solvent:name      metadata:num_cpu    metadata:memory_used / B    metadata:memory_available / GB    ground_state:index  ground_state:symbol      ground_state:charge    ground_state:multiplicity    ground_state:multiplicity_index    ground_state:energy / eV    energies:final / eV    energies:scf:num_steps    energies:scf:final / eV    energies:mp:num_steps  energies:mp:final / eV      energies:mp:order    energies:cc:num_steps  energies:cc:final / eV    atoms:formula      atoms:charge  atoms:smiles      atoms:exact_mass / g mol^-1    atoms:molar_mass / g mol^-1    atoms:num_atoms    atoms:x-extension / Å    atoms:y-extension / Å    atoms:z-extension / Å    atoms:linearity_ratio    atoms:planarity_ratio  atoms:alignment_method      orbitals:dE(HOMO-LUMO) / eV    orbitals:num_occupied    orbitals:num_virtual  orbitals:spin_type      orbitals:HOMO:index  orbitals:HOMO:label      orbitals:HOMO:homo_distance    orbitals:HOMO:energy / eV  orbitals:HOMO:symmetry      orbitals:HOMO:symmetry_index    orbitals:LUMO:index  orbitals:LUMO:label      orbitals:LUMO:homo_distance    orbitals:LUMO:energy / eV  orbitals:LUMO:symmetry      orbitals:LUMO:symmetry_index  beta_orbitals:dE(HOMO-LUMO) / eV      beta_orbitals:num_occupied    beta_orbitals:num_virtual  beta_orbitals:spin_type      pdm:total / D    pdm:origin:x / Å    pdm:origin:y / Å    pdm:origin:z / Å    pdm:vector:x / D    pdm:vector:y / D    pdm:vector:z / D    pdm:x-angle / deg    pdm:xy-angle / deg    vibrations:num_vibrations    vibrations:num_negative</span>
+<span class="go">----------------------------------------  ---------------  -------------------- ------------------  -----------------  -----------------------  ---------------  ------------------  --------------------------  ---------------------------  -------------------------  ------------------  ---------------------  --------------------  ----------------------------  ------------------  ---------------------------------  -------------------  ----------------------  -----------------------  --------------------------  --------------------------  -------------------------  ------------------------  -----------------------  ------------------  --------------------------  --------------------------------  --------------------  ---------------------  ---------------------  ---------------------------  ---------------------------------  --------------------------  ---------------------  ------------------------  -------------------------  -----------------------  ------------------------  -------------------  -----------------------  ------------------------  ---------------  --------------  --------------  -----------------------------  -----------------------------  -----------------  -----------------------  -----------------------  -----------------------  -----------------------  -----------------------  ------------------------  -----------------------------  -----------------------  ----------------------  --------------------  ---------------------  ---------------------  -----------------------------  ---------------------------  ------------------------  ------------------------------  ---------------------  ---------------------  -----------------------------  ---------------------------  ------------------------  ------------------------------  ----------------------------------  ----------------------------  ---------------------------  -------------------------  ---------------  ------------------  ------------------  ------------------  ------------------  ------------------  ------------------  -------------------  --------------------  ---------------------------  -------------------------</span>
+<span class="go">5c407cd31b64517aaa0ebbee4852c24ed69dc30b  Benzene          Benzene.log                                             0                        1  oliver           Gaussian            2016+C.01                   1.0.0-pre.1                  Optimisation, Frequencies  DFT                 PBE1PBE                6-31G(d,p)            restricted                    True                True                                     1689623663.00  17/07/2023 20:54:23                      210.90  3 m, 31 s                                       298.15                       1.00                                                                      2                   536870912                                 2                     0  S(0)                                       0                            1                                  0                    -6312.57               -6312.57                         3                   -6312.57                        0                                              0                        0                            C6H6                          0  c1ccccc1                                78.05                          78.11                 12                     4.95                     4.45                     0.00                     0.10                     1.00  Minimal                                            7.25                       21                      99  none                                     21  HOMO                                               0                        -7.02  A                                                     21                     22  LUMO                                               1                         0.23  A                                                     22                                                                 0                            0                                        0.00                0.00                0.00                0.00                0.00                0.00                0.00                 0.00                  0.00                           30                          0</span>
+<span class="go">986724991a2ccd02c86b9c147500b374d4ea655d  Naphthalene      Naphthalene.log                                         0                        1  oliver           Gaussian            2016+C.01                   1.0.0-pre.1                  Optimisation, Frequencies  DFT                 PBE1PBE                6-31G(d,p)            restricted                    True                True                                     1689623831.00  17/07/2023 20:57:11                      445.40  7 m, 25 s                                       298.15                       1.00                                                                      2                   536870912                                 2                     0  S(0)                                       0                            1                                  0                   -10488.94              -10488.94                         4                  -10488.94                        0                                              0                        0                            C10H8                         0  c1ccc2ccccc2c1                         128.06                         128.17                 18                     6.74                     4.97                     0.00                     0.26                     1.00  Minimal                                            5.20                       34                     156  none                                     34  HOMO                                               0                        -6.07  A                                                     18                     35  LUMO                                               1                        -0.87  B                                                     17                                                                 0                            0                                        0.00                0.00                0.00                0.00                0.00                0.00                0.00                 0.00                  0.00                           48                          0</span>
+</pre></div>
+</div>
+<p>The output from this command is typically very wide; it is recommended to <cite>pipe</cite> the command into less for a more natural viewing experience:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>digichem<span class="w"> </span>result<span class="w"> </span>Benzene.log<span class="w"> </span>Naphthalene.log<span class="w"> </span>--table<span class="w"> </span><span class="p">|</span><span class="w"> </span>less<span class="w"> </span>-S
+<span class="go">_id                                       metadata:name    met...</span>
+<span class="go">----------------------------------------  ---------------  ---...</span>
+<span class="go">5c407cd31b64517aaa0ebbee4852c24ed69dc30b  Benzene          Ben...</span>
+<span class="go">986724991a2ccd02c86b9c147500b374d4ea655d  Naphthalene      Nap...</span>
+</pre></div>
+</div>
+<p>To obtain a machine-readable output instead, use the <code class="docutils literal notranslate"><span class="pre">--csv</span></code> (or <code class="docutils literal notranslate"><span class="pre">-c</span></code>) format:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>digichem<span class="w"> </span>result<span class="w"> </span>Benzene.log<span class="w"> </span>Naphthalene.log<span class="w"> </span>--csv<span class="w"> </span>-O<span class="w"> </span>results.csv
+<span class="gp">$ </span>digichem<span class="w"> </span>result<span class="w"> </span>Benzene.log<span class="w"> </span>Naphthalene.log<span class="w"> </span>--csv
+<span class="go">_id,metadata:name,metadata:log_files,metadata:auxiliary_files:fchk_file,metadata:history,metadata:charge,metadata:multiplicity,metadata:user,metadata:package,metadata:package_version,metadata:digichem_version,metadata:calculations,metadata:methods,metadata:functional,metadata:basis_set,metadata:orbital_spin_type,metadata:success,metadata:optimisation_converged,metadata:date / s,metadata:date:string,metadata:duration / s,metadata:duration:string,metadata:temperature / K,metadata:pressure / atm,metadata:solvent:model,metadata:solvent:name,metadata:num_cpu,metadata:memory_used / B,metadata:memory_available / GB,ground_state:index,ground_state:symbol,ground_state:charge,ground_state:multiplicity,ground_state:multiplicity_index,ground_state:energy / eV,energies:final / eV,energies:scf:num_steps,energies:scf:final / eV,energies:mp:num_steps,energies:mp:final / eV,energies:mp:order,energies:cc:num_steps,energies:cc:final / eV,atoms:formula,atoms:charge,atoms:smiles,atoms:exact_mass / g mol^-1,atoms:molar_mass / g mol^-1,atoms:num_atoms,atoms:x-extension / Å,atoms:y-extension / Å,atoms:z-extension / Å,atoms:linearity_ratio,atoms:planarity_ratio,atoms:alignment_method,orbitals:dE(HOMO-LUMO) / eV,orbitals:num_occupied,orbitals:num_virtual,orbitals:spin_type,orbitals:HOMO:index,orbitals:HOMO:label,orbitals:HOMO:homo_distance,orbitals:HOMO:energy / eV,orbitals:HOMO:symmetry,orbitals:HOMO:symmetry_index,orbitals:LUMO:index,orbitals:LUMO:label,orbitals:LUMO:homo_distance,orbitals:LUMO:energy / eV,orbitals:LUMO:symmetry,orbitals:LUMO:symmetry_index,beta_orbitals:dE(HOMO-LUMO) / eV,beta_orbitals:num_occupied,beta_orbitals:num_virtual,beta_orbitals:spin_type,pdm:total / D,pdm:origin:x / Å,pdm:origin:y / Å,pdm:origin:z / Å,pdm:vector:x / D,pdm:vector:y / D,pdm:vector:z / D,pdm:x-angle / deg,pdm:xy-angle / deg,vibrations:num_vibrations,vibrations:num_negative</span>
+<span class="go">5c407cd31b64517aaa0ebbee4852c24ed69dc30b,Benzene,&quot;/home/oliver/ownCloud/Digichem Data Centre/Demonstrations/Outputs/Benzene/Gaussian 16 Optimisation Frequencies PBE0 (GD3BJ) Gas Phase Pople Basis Sets 6-31G(d,p)/Output/Benzene.log&quot;,&quot;/home/oliver/ownCloud/Digichem Data Centre/Demonstrations/Outputs/Benzene/Gaussian 16 Optimisation Frequencies PBE0 (GD3BJ) Gas Phase Pople Basis Sets 6-31G(d,p)/Output/Benzene.fchk&quot;,,0,1,oliver,Gaussian,2016+C.01,1.0.0-pre.1,&quot;Optimisation, Frequencies&quot;,DFT,PBE1PBE,&quot;6-31G(d,p)&quot;,restricted,True,True,1689623663.0,17/07/2023 20:54:23,210.9,&quot;3 m, 31 s&quot;,298.15,1.0,,,2,536870912,2,0,S(0),0,1,0,-6312.56934563643,-6312.56934563643,3,-6312.56934563643,0,,0,0,,C6H6,0,c1ccccc1,78.04694999999998,78.11184,12,4.946028,4.445347999999999,0.000259,0.1012287031128819,0.9999417368448994,Minimal,7.24911297732,21,99,none,21,HOMO,0,-7.0229863675545,A,21,22,LUMO,1,0.2261266097655,A,22,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,30,0</span>
+<span class="go">986724991a2ccd02c86b9c147500b374d4ea655d,Naphthalene,/home/oliver/ownCloud/Digichem Data Centre/Demonstrations/Outputs/Naphthalene/Gaussian 16 Optimisation Frequencies PBE0 (GD3BJ) Gas Phase Pople Basis Sets 6-31G**/Output/Naphthalene.log,/home/oliver/ownCloud/Digichem Data Centre/Demonstrations/Outputs/Naphthalene/Gaussian 16 Optimisation Frequencies PBE0 (GD3BJ) Gas Phase Pople Basis Sets 6-31G**/Output/Naphthalene.fchk,,0,1,oliver,Gaussian,2016+C.01,1.0.0-pre.1,&quot;Optimisation, Frequencies&quot;,DFT,PBE1PBE,&quot;6-31G(d,p)&quot;,restricted,True,True,1689623831.0,17/07/2023 20:57:11,445.4,&quot;7 m, 25 s&quot;,298.15,1.0,,,2,536870912,2,0,S(0),0,1,0,-10488.93947360067,-10488.93947360067,4,-10488.93947360067,0,,0,0,,C10H8,0,c1ccc2ccccc2c1,128.06259999999997,128.17052,18,6.738784,4.971028,1e-06,0.26232566587681105,0.9999997988343658,Minimal,5.2041773908125,34,156,none,34,HOMO,0,-6.072492687758,A,18,35,LUMO,1,-0.8683152969455,B,17,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,48,0</span>
+</pre></div>
+</div>
+<p>Multiple calculation parsing can be combined with filters in the usual way to obtain a subset of the total results:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>digichem<span class="w"> </span>result<span class="w"> </span>Benzene.log<span class="w"> </span>Naphthalene.log<span class="w"> </span>--table<span class="w"> </span>-f<span class="w"> </span>metadata:name<span class="w"> </span>orbitals
+<span class="go">metadata:name      orbitals:dE(HOMO-LUMO) / eV    orbitals:num_occupied    orbitals:num_virtual  orbitals:spin_type</span>
+<span class="go">---------------  -----------------------------  -----------------------  ----------------------  --------------------</span>
+<span class="go">Benzene                                   7.25                       21                      99  none</span>
+<span class="go">Naphthalene                               5.20                       34                     156  none</span>
+</pre></div>
+</div>
+<p>All of the output formats support multiple calculations. The non-tabular formats (those other than <code class="docutils literal notranslate"><span class="pre">-t</span></code> and <code class="docutils literal notranslate"><span class="pre">-c</span></code>) will
+display each result separately, in series. This is sometimes useful for comparing specific results at a glance, but generally
+has less utility than the tabular formats:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>digichem<span class="w"> </span>result<span class="w"> </span>Benzene.log<span class="w"> </span>Naphthalene.log<span class="w"> </span>-s<span class="w"> </span>-f<span class="w"> </span>metadata:name<span class="w"> </span>orbitals
+<span class="go">metadata:name</span>
+<span class="go">  -------</span>
+<span class="go">  Benzene</span>
+<span class="go">  -------</span>
+
+<span class="go">orbitals</span>
+<span class="go">------------------  -----</span>
+<span class="go">dE(HOMO-LUMO) / eV  7.25</span>
+<span class="go">num_occupied        21.00</span>
+<span class="go">num_virtual         99.00</span>
+<span class="go">spin_type           none</span>
+<span class="go">------------------  -----</span>
+
+<span class="go">metadata:name</span>
+<span class="go">  -----------</span>
+<span class="go">  Naphthalene</span>
+<span class="go">  -----------</span>
+
+<span class="go">orbitals</span>
+<span class="go">------------------  ------</span>
+<span class="go">dE(HOMO-LUMO) / eV  5.20</span>
+<span class="go">num_occupied        34.00</span>
+<span class="go">num_virtual         156.00</span>
+<span class="go">spin_type           none</span>
+<span class="go">------------------  ------</span>
+</pre></div>
+</div>
+<p>See <a class="reference internal" href="#result-output-formats"><span class="std std-ref">below</span></a> for a full description of the available output formats.</p>
+<section id="filters">
+<span id="result-filters"></span><h2>Filters<a class="headerlink" href="#filters" title="Link to this heading"></a></h2>
+<p>Filters allow the user to only display or export certain parts of the calculation data.
+Each filter is specified by the <code class="docutils literal notranslate"><span class="pre">--filters</span></code> (or <code class="docutils literal notranslate"><span class="pre">-f</span></code>) option, followed by the filter itself.
+For example, to only display the metadata from a calculation:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>digichem<span class="w"> </span>result<span class="w"> </span>Benzene.log<span class="w"> </span>-s<span class="w"> </span>-f<span class="w"> </span>metadata
+<span class="go">metadata</span>
+<span class="go">-------------------------  --------------------------</span>
+<span class="go">name                       Benzene</span>
+<span class="go">log_files                  Benzene.log</span>
+<span class="go">auxiliary_files:fchk_file  Benzene.fchk</span>
+<span class="go">history</span>
+<span class="go">charge                     0.00</span>
+<span class="go">multiplicity               1.00</span>
+<span class="go">user                       oliver</span>
+<span class="go">package                    Gaussian</span>
+<span class="go">package_version            2016+C.01</span>
+<span class="go">digichem_version           1.0.0-pre.1</span>
+<span class="go">calculations               Optimisation, Frequencies</span>
+<span class="go">methods                    DFT</span>
+<span class="go">functional                 PBE1PBE</span>
+<span class="go">basis_set                  6-31G(d,p)</span>
+<span class="go">orbital_spin_type          restricted</span>
+<span class="go">success                    1.00</span>
+<span class="go">optimisation_converged     1.00</span>
+<span class="go">date / s                   1689623663.00</span>
+<span class="go">date:string                17/07/2023 20:54:23</span>
+<span class="go">duration / s               210.90</span>
+<span class="go">duration:string            3 m, 31 s</span>
+<span class="go">temperature / K            298.15</span>
+<span class="go">pressure / atm             1.00</span>
+<span class="go">solvent:model</span>
+<span class="go">solvent:name</span>
+<span class="go">num_cpu                    2.00</span>
+<span class="go">memory_used / B            536870912.00</span>
+<span class="go">memory_available / GB      2.00</span>
+<span class="go">-------------------------  --------------------------</span>
+</pre></div>
+</div>
+<p>Multiple filters can be specified to extract more than one section simultaneously.
+Filters that are specified in this way are always combined <em>inclusively</em>, that is any section
+that matches any filter will be displayed. For example, to extract both the orbital and geometric data:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>digichem<span class="w"> </span>result<span class="w"> </span>Benzene.log<span class="w"> </span>-s<span class="w"> </span>-f<span class="w"> </span>atoms<span class="w"> </span>orbitals
+<span class="go">atoms</span>
+<span class="go">---------------------  --------</span>
+<span class="go">formula                C6H6</span>
+<span class="go">charge                 0.00</span>
+<span class="go">smiles                 c1ccccc1</span>
+<span class="go">exact_mass / g mol^-1  78.05</span>
+<span class="go">molar_mass / g mol^-1  78.11</span>
+<span class="go">num_atoms              12.00</span>
+<span class="go">x-extension / Å        4.95</span>
+<span class="go">y-extension / Å        4.45</span>
+<span class="go">z-extension / Å        0.00</span>
+<span class="go">linearity_ratio        0.10</span>
+<span class="go">planarity_ratio        1.00</span>
+<span class="go">alignment_method       Minimal</span>
+<span class="go">---------------------  --------</span>
+
+<span class="go">orbitals</span>
+<span class="go">------------------  -----</span>
+<span class="go">dE(HOMO-LUMO) / eV  7.25</span>
+<span class="go">num_occupied        21.00</span>
+<span class="go">num_virtual         99.00</span>
+<span class="go">spin_type           none</span>
+<span class="go">------------------  -----</span>
+</pre></div>
+</div>
+<p>The calculation data that is parsed by Digichem is stored in a hierarchy. At the top level of the hierarchy are general sections
+for each type of data that can be parsed by Digichem, things like <em>orbitals</em>, <em>atoms</em>, <em>metadata</em>, and so on.
+Within each section can then be found the relevant results. Each of these items may also be nested itself, containing a number of sub-results.
+As an example, a typical <em>atoms</em> section has the following structure:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">atoms</span><span class="p">:</span>
+  <span class="n">alignment_method</span><span class="p">:</span>
+  <span class="n">charge</span><span class="p">:</span>
+  <span class="n">exact_mass</span><span class="p">:</span>
+    <span class="n">units</span><span class="p">:</span>
+    <span class="n">value</span><span class="p">:</span>
+  <span class="n">formula</span><span class="p">:</span>
+  <span class="n">linearity_ratio</span><span class="p">:</span>
+  <span class="n">molar_mass</span><span class="p">:</span>
+    <span class="n">units</span><span class="p">:</span>
+    <span class="n">value</span><span class="p">:</span>
+  <span class="n">num_atoms</span><span class="p">:</span>
+  <span class="n">planarity_ratio</span><span class="p">:</span>
+  <span class="n">smiles</span><span class="p">:</span>
+  <span class="n">values</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">coords</span><span class="p">:</span>
+    <span class="n">element</span><span class="p">:</span>
+    <span class="n">group</span><span class="p">:</span>
+    <span class="n">index</span><span class="p">:</span>
+    <span class="n">label</span><span class="p">:</span>
+    <span class="n">mass</span><span class="p">:</span>
+      <span class="n">units</span><span class="p">:</span>
+      <span class="n">value</span><span class="p">:</span>
+  <span class="o">...</span>
+</pre></div>
+</div>
+<p>As can be seen, the <code class="docutils literal notranslate"><span class="pre">exact_mass</span></code> and <code class="docutils literal notranslate"><span class="pre">molar_mass</span></code> items both contain sub-items, which are <code class="docutils literal notranslate"><span class="pre">units</span></code> and <code class="docutils literal notranslate"><span class="pre">value</span></code>.
+Any numeric results that are parsed by Digichem and that have a unit will be displayed in this way.
+These top-level items of the <code class="docutils literal notranslate"><span class="pre">atoms</span></code> section are summary data for the molecule as a whole, including results such as
+the molecular charge, molar mass, and molecular formula. The data pertaining to the atom positions themselves are stored in a list,
+which is exposed in the <code class="docutils literal notranslate"><span class="pre">values</span></code> section. In the above example, the structure of only a single atom is shown, in reality
+this list would contain all the atoms of the molecule.</p>
+<p>More advanced filters can be used to navigate this hierarchy and select only specific results. To progress <em>down</em> the hierarchy,
+specify multiple filter terms joined with a semicolon (‘:’). For example, to display only the molar_mass of the molecule:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>digichem<span class="w"> </span>result<span class="w"> </span>Benzene.log<span class="w"> </span>-f<span class="w"> </span>atoms:molar_mass
+<span class="go">atoms:molar_mass:</span>
+<span class="go">  units: g mol^-1</span>
+<span class="go">  value: 78.11184</span>
+</pre></div>
+</div>
+<p>More filter terms can be added as necessary. For example, if only the numeric value of the molar_mass was required:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>digichem<span class="w"> </span>result<span class="w"> </span>Benzene.log<span class="w"> </span>-f<span class="w"> </span>atoms:molar_mass:value
+<span class="go">atoms:molar_mass:value: 78.11184</span>
+</pre></div>
+</div>
+<p>Multiple filters can still be specified as usual. For example, to compare the exact and molar masses:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>digichem<span class="w"> </span>result<span class="w"> </span>Benzene.log<span class="w"> </span>-f<span class="w"> </span>atoms:molar_mass:value<span class="w"> </span>atoms:exact_mass:value
+<span class="go">atoms:exact_mass:value: 78.04694999999998</span>
+<span class="go">atoms:molar_mass:value: 78.11184</span>
+</pre></div>
+</div>
+<p>Filters can also be used to extract specific results from a list. A numerical filter will correspond to a given position in that list.
+For example, to extract the data pertaining to the first atom in the list:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>digichem<span class="w"> </span>result<span class="w"> </span>Benzene.log<span class="w"> </span>-f<span class="w"> </span>atoms:values:0
+<span class="go">atoms:values:0:</span>
+<span class="go">  coords:</span>
+<span class="go">    x:</span>
+<span class="go">      units: &quot;Å&quot;</span>
+<span class="go">      value: -1.389184</span>
+<span class="go">    y:</span>
+<span class="go">      units: &quot;Å&quot;</span>
+<span class="go">      value: 0.091061</span>
+<span class="go">    z:</span>
+<span class="go">      units: &quot;Å&quot;</span>
+<span class="go">      value: 9.0e-06</span>
+<span class="go">  element: 6</span>
+<span class="go">  group: C1</span>
+<span class="go">  index: 1</span>
+<span class="go">  label: C1</span>
+<span class="go">  mass:</span>
+<span class="go">    units: g mol^-1</span>
+<span class="go">    value: 12.0</span>
+</pre></div>
+</div>
+<p>All lists in Digichem are zero-indexed, so the first atom is identified by a filter of ‘0’.
+Although the list data is technically stored in the <code class="docutils literal notranslate"><span class="pre">values</span></code> item, Digichem allows the <code class="docutils literal notranslate"><span class="pre">values</span></code> filter to be omitted as a convenience when specifying list filters.
+Thus the following filters are equivalent:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>digichem<span class="w"> </span>result<span class="w"> </span>Benzene.log<span class="w"> </span>-f<span class="w"> </span>atoms:values:0
+<span class="gp">$ </span>digichem<span class="w"> </span>result<span class="w"> </span>Benzene.log<span class="w"> </span>-f<span class="w"> </span>atoms:0
+</pre></div>
+</div>
+<p>Multiple search terms can still be specified to navigate the hierarchy as normal. For example,
+to extract the element of the first atom:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>digichem<span class="w"> </span>result<span class="w"> </span>Benzene.log<span class="w"> </span>-f<span class="w"> </span>atoms:0:element
+<span class="go">atoms:0:element: 6</span>
+</pre></div>
+</div>
+<p>Which is 6 (carbon). Negative indices can also be specified to search from the end of the list:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>digichem<span class="w"> </span>result<span class="w"> </span>Benzene.log<span class="w"> </span>-f<span class="w"> </span>atoms:-1:element
+<span class="go">atoms:-1:element: 1</span>
+</pre></div>
+</div>
+<p>For lists of more complex data, such as molecular orbitals, filters can also be specified based on the unique properties of the item.
+For example, the <cite>label</cite> of the orbital can be used as a filter to obtain the HOMO and LUMO:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>digichem<span class="w"> </span>result<span class="w"> </span>Benzene.log<span class="w"> </span>-f<span class="w"> </span>orbitals:HOMO<span class="w"> </span>orbitals:LUMO
+<span class="go">orbitals:HOMO:</span>
+<span class="go">  energy:</span>
+<span class="go">    units: eV</span>
+<span class="go">    value: -7.0229863675545</span>
+<span class="go">  homo_distance: 0</span>
+<span class="go">  index: 21</span>
+<span class="go">  label: HOMO</span>
+<span class="go">  symmetry: A</span>
+<span class="go">  symmetry_index: 21</span>
+<span class="go">orbitals:LUMO:</span>
+<span class="go">  energy:</span>
+<span class="go">    units: eV</span>
+<span class="go">    value: 0.2261266097655</span>
+<span class="go">  homo_distance: 1</span>
+<span class="go">  index: 22</span>
+<span class="go">  label: LUMO</span>
+<span class="go">  symmetry: A</span>
+<span class="go">  symmetry_index: 22</span>
+</pre></div>
+</div>
+<p>Other orbitals can be obtained based on their proximity to the HOMO/LUMO too:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>digichem<span class="w"> </span>result<span class="w"> </span>Benzene.log<span class="w"> </span>-f<span class="w"> </span>orbitals:HOMO-1
+<span class="go">orbitals:HOMO-1:</span>
+<span class="go">  energy:</span>
+<span class="go">    units: eV</span>
+<span class="go">    value: -7.023258481405</span>
+<span class="go">  homo_distance: -1</span>
+<span class="go">  index: 20</span>
+<span class="go">  label: HOMO-1</span>
+<span class="go">  symmetry: A</span>
+<span class="go">  symmetry_index: 20</span>
+</pre></div>
+</div>
+<p>Similarly, excited states can be filtered based on their unique state symbol:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>digichem<span class="w"> </span>result<span class="w"> </span>Benzene.log<span class="w"> </span>-f<span class="w"> </span>excited_states:<span class="s2">&quot;S(1)&quot;</span>
+<span class="go">excited_states:S(1):</span>
+<span class="go">  cie:</span>
+<span class="go">    x: 0.3127</span>
+<span class="go">    y: 0.329</span>
+<span class="go">  colour: Ultraviolet</span>
+<span class="go">  energy:</span>
+<span class="go">    units: eV</span>
+<span class="go">    value: 5.679800248338608</span>
+<span class="go">  index: 5</span>
+<span class="go">  multiplicity: 1</span>
+<span class="go">  multiplicity_index: 1</span>
+<span class="go">  oscillator_strength: 0.0</span>
+<span class="go">  symbol: S(1)</span>
+<span class="go">  symmetry: Singlet-A</span>
+<span class="go">  ...</span>
+</pre></div>
+</div>
+</section>
+<section id="output-formats">
+<span id="result-output-formats"></span><h2>Output Formats<a class="headerlink" href="#output-formats" title="Link to this heading"></a></h2>
+<section id="digichem-native-format-sir">
+<span id="result-yaml-format"></span><h3>Digichem Native Format (.sir)<a class="headerlink" href="#digichem-native-format-sir" title="Link to this heading"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">--yaml</span></code> or <code class="docutils literal notranslate"><span class="pre">-y</span></code></p>
+<p>The default digichem native file format (.sir). This format is designed to reversibly store
+calculation results in an efficient manner, allowing them to be read back at a later date.
+The YAML used to store this data is also readable to humans, and is fairly easy to understand
+for single results. For lists or deeply nested results however, a tabular format is often
+a better choice.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>digichem<span class="w"> </span>result<span class="w"> </span>Benzene.log<span class="w"> </span>-y<span class="w"> </span>-f<span class="w"> </span>metadata
+<span class="go">metadata:</span>
+<span class="go">  auxiliary_files:</span>
+<span class="go">    fchk_file: Benzene.fchk</span>
+<span class="go">  basis_set: 6-31G(d,p)</span>
+<span class="go">  calculations:</span>
+<span class="go">  - Optimisation</span>
+<span class="go">  - Frequencies</span>
+<span class="go">  charge: 0</span>
+<span class="go">  date:</span>
+<span class="go">    string: 17/07/2023 20:54:23</span>
+<span class="go">    units: s</span>
+<span class="go">    value: 1689623663.0</span>
+<span class="go">  digichem_version: 1.0.0-pre.1</span>
+<span class="go">  duration:</span>
+<span class="go">    string: 3 m, 31 s</span>
+<span class="go">    units: s</span>
+<span class="go">    value: 210.9</span>
+<span class="go">  functional: PBE1PBE</span>
+<span class="go">  ...</span>
+</pre></div>
+</div>
+</section>
+<section id="json-format">
+<h3>JSON Format<a class="headerlink" href="#json-format" title="Link to this heading"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">--json</span></code> or <code class="docutils literal notranslate"><span class="pre">-j</span></code></p>
+<p>Similar to the .sir format, the JSON format is reversible.
+Compared to the YAML format used by .sir, JSON is more compact but less readable to humans.
+It is generally only used where efficiency is mandated, such as data transfer over a network.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>digichem<span class="w"> </span>result<span class="w"> </span>Benzene.log<span class="w"> </span>-j<span class="w"> </span>-f<span class="w"> </span>metadata
+<span class="go">[{&quot;metadata&quot;: {&quot;name&quot;: &quot;Benzene&quot;, &quot;log_files&quot;: [&quot;Benzene.log&quot;], &quot;auxiliary_files&quot;: {&quot;fchk_file&quot;: &quot;Benzene.fchk&quot;}, &quot;history&quot;: null, &quot;charge&quot;: 0, &quot;multiplicity&quot;: 1, &quot;user&quot;: &quot;oliver&quot;, &quot;package&quot;: &quot;Gaussian&quot;, &quot;package_version&quot;: &quot;2016+C.01&quot;, &quot;digichem_version&quot;: &quot;1.0.0-pre.1&quot;, &quot;calculations&quot;: [&quot;Optimisation&quot;, &quot;Frequencies&quot;], &quot;methods&quot;: [&quot;DFT&quot;], &quot;functional&quot;: &quot;PBE1PBE&quot;, &quot;basis_set&quot;: &quot;6-31G(d,p)&quot;, &quot;orbital_spin_type&quot;: &quot;restricted&quot;, &quot;success&quot;: true, &quot;optimisation_converged&quot;: true, &quot;date&quot;: {&quot;value&quot;: 1689623663.0, &quot;units&quot;: &quot;s&quot;, &quot;string&quot;: &quot;17/07/2023 20:54:23&quot;}, &quot;duration&quot;: {&quot;value&quot;: 210.9, &quot;units&quot;: &quot;s&quot;, &quot;string&quot;: &quot;3 m, 31 s&quot;}, &quot;temperature&quot;: {&quot;value&quot;: 298.15, &quot;units&quot;: &quot;K&quot;}, &quot;pressure&quot;: {&quot;value&quot;: 1.0, &quot;units&quot;: &quot;atm&quot;}, &quot;solvent&quot;: {&quot;model&quot;: null, &quot;name&quot;: null, &quot;params&quot;: {}}, &quot;num_cpu&quot;: 2, &quot;memory_used&quot;: {&quot;value&quot;: 536870912, &quot;units&quot;: &quot;B&quot;}, &quot;memory_available&quot;: {&quot;value&quot;: 2, &quot;units&quot;: &quot;GB&quot;}}}]</span>
+</pre></div>
+</div>
+</section>
+<section id="csv-format">
+<h3>CSV Format<a class="headerlink" href="#csv-format" title="Link to this heading"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">--csv</span></code> or <code class="docutils literal notranslate"><span class="pre">-c</span></code></p>
+<p>The comma-separated values format is useful for exporting results for further post-processing in another program, particularly spreadsheet software.
+This format is particularly well suited for parsing multiple output files simultaneously, allowing large amount of data to be compared at once.
+This version of the format contains only high level results, for deeply nested data use the <code class="docutils literal notranslate"><span class="pre">--csv-property</span></code> format instead.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>digichem<span class="w"> </span>result<span class="w"> </span>Benzene.log<span class="w"> </span>Naphthalene.log<span class="w"> </span>-c<span class="w"> </span>-f<span class="w"> </span>metadata
+<span class="go">metadata:name,metadata:log_files,metadata:auxiliary_files:fchk_file,metadata:history,metadata:charge,metadata:multiplicity,metadata:user,metadata:package,metadata:package_version,metadata:digichem_version,metadata:calculations,metadata:methods,metadata:functional,metadata:basis_set,metadata:orbital_spin_type,metadata:success,metadata:optimisation_converged,metadata:date / s,metadata:date:string,metadata:duration / s,metadata:duration:string,metadata:temperature / K,metadata:pressure / atm,metadata:solvent:model,metadata:solvent:name,metadata:num_cpu,metadata:memory_used / B,metadata:memory_available / GB</span>
+<span class="go">Benzene,Benzene.log,Benzene.fchk,,0,1,oliver,Gaussian,2016+C.01,1.0.0-pre.1,&quot;Optimisation, Frequencies&quot;,DFT,PBE1PBE,&quot;6-31G(d,p)&quot;,restricted,True,True,1689623663.0,17/07/2023 20:54:23,210.9,&quot;3 m, 31 s&quot;,298.15,1.0,,,2,536870912,2</span>
+<span class="go">Naphthalene,Naphthalene.log,Naphthalene.fchk,,0,1,oliver,Gaussian,2016+C.01,1.0.0-pre.1,&quot;Optimisation, Frequencies&quot;,DFT,PBE1PBE,&quot;6-31G(d,p)&quot;,restricted,True,True,1689623831.0,17/07/2023 20:57:11,445.4,&quot;7 m, 25 s&quot;,298.15,1.0,,,2,536870912,2</span>
+</pre></div>
+</div>
+</section>
+<section id="table-format">
+<h3>Table Format<a class="headerlink" href="#table-format" title="Link to this heading"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">--table</span></code> or <code class="docutils literal notranslate"><span class="pre">-t</span></code></p>
+<p>This format contains the same data as <code class="docutils literal notranslate"><span class="pre">--csv</span></code>, except in human-readable format. Useful for reading in a terminal (or text editor).
+In the terminal, it is often advantageous to pipe the output to the <code class="docutils literal notranslate"><span class="pre">less</span></code> command to prevent long lines from being split.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>digichem<span class="w"> </span>result<span class="w"> </span>Benzene.log<span class="w"> </span>Naphthalene.log<span class="w"> </span>-t<span class="w"> </span>-f<span class="w"> </span>metadata<span class="w"> </span><span class="p">|</span><span class="w"> </span>less<span class="w"> </span>-S
+<span class="go">metadata:name    metadata:log_files    metadata:auxiliary_files:fchk_file    metadata:history      metadata:charge    metadata:multiplicity  metadata:user    metadata:package    metadata:package_version    metadata:digichem_version    metadata:calculations      metadata:methods    metadata:functional    metadata:basis_set    metadata:orbital_spin_type    metadata:success    metadata:optimisation_converged      metadata:date / s  metadata:date:string      metadata:duration / s  metadata:duration:string      metadata:temperature / K    metadata:pressure / atm  metadata:solvent:model    metadata:solvent:name      metadata:num_cpu    metadata:memory_used / B    metadata:memory_available / GB</span>
+<span class="go">---------------  --------------------  ------------------------------------  ------------------  -----------------  -----------------------  ---------------  ------------------  --------------------------  ---------------------------  -------------------------  ------------------  ---------------------  --------------------  ----------------------------  ------------------  ---------------------------------  -------------------  ----------------------  -----------------------  --------------------------  --------------------------  -------------------------  ------------------------  -----------------------  ------------------  --------------------------  --------------------------------</span>
+<span class="go">Benzene          Benzene.log           Benzene.fchk                          0                        1  oliver           Gaussian            2016+C.01                   1.0.0-pre.1                  Optimisation, Frequencies  DFT                 PBE1PBE                6-31G(d,p)            restricted                    True                True                                     1689623663.00  17/07/2023 20:54:23                      210.90  3 m, 31 s                                       298.15                       1.00                                                                      2                   536870912                                 2</span>
+<span class="go">Naphthalene      Naphthalene.log       Naphthalene.fchk                      0                        1  oliver           Gaussian            2016+C.01                   1.0.0-pre.1                  Optimisation, Frequencies  DFT                 PBE1PBE                6-31G(d,p)            restricted                    True                True                                     1689623831.00  17/07/2023 20:57:11                      445.40  7 m, 25 s                                       298.15                       1.00                                                                      2                   536870912                                 2</span>
+</pre></div>
+</div>
+</section>
+<section id="csv-property-format">
+<h3>CSV Property Format<a class="headerlink" href="#csv-property-format" title="Link to this heading"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">--csv-property</span></code> or <code class="docutils literal notranslate"><span class="pre">-d</span></code></p>
+<p>Similar to the standard <code class="docutils literal notranslate"><span class="pre">--csv</span></code> format, except intended for use with lists of data.
+This format produces a single table of data for tabular results, such as lists of orbitals, excited states, vibrational frequenies etc.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>digichem<span class="w"> </span>result<span class="w"> </span>Benzene.log<span class="w"> </span>-d<span class="w"> </span>-f<span class="w"> </span>orbitals
+<span class="go">orbitals:index,orbitals:label,orbitals:homo_distance,orbitals:energy / eV,orbitals:symmetry,orbitals:symmetry_index</span>
+<span class="go">1,HOMO-33,-33,-278.796422440579,A,1</span>
+<span class="go">2,HOMO-32,-32,-278.78363308960553,B,1</span>
+<span class="go">3,HOMO-31,-31,-278.6056706313785,B,2</span>
+<span class="go">4,HOMO-30,-30,-278.6056706313785,A,2</span>
+<span class="go">5,HOMO-29,-29,-278.5964187604615,A,3</span>
+<span class="go">6,HOMO-28,-28,-278.59614664661103,B,3</span>
+<span class="go">7,HOMO-27,-27,-278.5822688402355,B,4</span>
+<span class="go">8,HOMO-26,-26,-278.5817246125345,A,4</span>
+<span class="go">9,HOMO-25,-25,-278.577642904777,A,5</span>
+<span class="go">10,HOMO-24,-24,-278.57737079092647,B,5</span>
+<span class="go">11,HOMO-23,-23,-24.4404497103585,A,6</span>
+<span class="go">12,HOMO-22,-22,-22.953347517376002,B,6</span>
+<span class="go">13,HOMO-21,-21,-21.619445422225,B,7</span>
+<span class="go">14,HOMO-20,-20,-20.7032380875915,A,7</span>
+<span class="go">15,HOMO-19,-19,-20.0860838746575,A,8</span>
+<span class="go">...</span>
+</pre></div>
+</div>
+</section>
+<section id="table-property-format">
+<h3>Table Property Format<a class="headerlink" href="#table-property-format" title="Link to this heading"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">--table-property</span></code> or <code class="docutils literal notranslate"><span class="pre">-a</span></code></p>
+<p>The same as <code class="docutils literal notranslate"><span class="pre">--csv-property</span></code>, except in human-readable format.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>digichem<span class="w"> </span>result<span class="w"> </span>Benzene.log<span class="w"> </span>-a<span class="w"> </span>-f<span class="w"> </span>orbitals
+<span class="go">  orbitals:index  orbitals:label      orbitals:homo_distance    orbitals:energy / eV  orbitals:symmetry      orbitals:symmetry_index</span>
+<span class="go">----------------  ----------------  ------------------------  ----------------------  -------------------  -------------------------</span>
+<span class="go">               1  HOMO-33                                -33                 -278.80  A                                            1</span>
+<span class="go">               2  HOMO-32                                -32                 -278.78  B                                            1</span>
+<span class="go">               3  HOMO-31                                -31                 -278.61  B                                            2</span>
+<span class="go">               4  HOMO-30                                -30                 -278.61  A                                            2</span>
+<span class="go">               5  HOMO-29                                -29                 -278.60  A                                            3</span>
+<span class="go">               6  HOMO-28                                -28                 -278.60  B                                            3</span>
+<span class="go">               7  HOMO-27                                -27                 -278.58  B                                            4</span>
+<span class="go">               8  HOMO-26                                -26                 -278.58  A                                            4</span>
+<span class="go">               9  HOMO-25                                -25                 -278.58  A                                            5</span>
+<span class="go">              10  HOMO-24                                -24                 -278.58  B                                            5</span>
+<span class="go">              11  HOMO-23                                -23                  -24.44  A                                            6</span>
+<span class="go">              12  HOMO-22                                -22                  -22.95  B                                            6</span>
+<span class="go">              13  HOMO-21                                -21                  -21.62  B                                            7</span>
+<span class="go">              14  HOMO-20                                -20                  -20.70  A                                            7</span>
+<span class="go">              15  HOMO-19                                -19                  -20.09  A                                            8</span>
+<span class="go">...</span>
+</pre></div>
+</div>
+</section>
+<section id="summary-format">
+<h3>Summary Format<a class="headerlink" href="#summary-format" title="Link to this heading"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">--summary</span></code> or <code class="docutils literal notranslate"><span class="pre">-s</span></code></p>
+<p>A format that presents a top-level view of a calculation’s results. The summary format is useful for
+obtaining a quick overview of a calculation at a glance.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>digichem<span class="w"> </span>result<span class="w"> </span>Benzene.log<span class="w"> </span>-s<span class="w"> </span>-f<span class="w"> </span>metadata
+<span class="go">metadata</span>
+<span class="go">-------------------------  ---------------------------</span>
+<span class="go">name                       Benzene</span>
+<span class="go">log_files                  Benzene.log</span>
+<span class="go">auxiliary_files:fchk_file  Benzene.fchk</span>
+<span class="go">history</span>
+<span class="go">charge                     0.00</span>
+<span class="go">multiplicity               1.00</span>
+<span class="go">user                       oliver</span>
+<span class="go">package                    Gaussian</span>
+<span class="go">package_version            2016+C.01</span>
+<span class="go">digichem_version           1.0.0-pre.1</span>
+<span class="go">calculations               Optimisation, Frequencies</span>
+<span class="go">methods                    DFT</span>
+<span class="go">functional                 PBE1PBE</span>
+<span class="go">basis_set                  6-31G(d,p)</span>
+<span class="go">orbital_spin_type          restricted</span>
+<span class="go">success                    1.00</span>
+<span class="go">optimisation_converged     1.00</span>
+<span class="go">date / s                   1689623663.00</span>
+<span class="go">date:string                17/07/2023 20:54:23</span>
+<span class="go">duration / s               210.90</span>
+<span class="go">duration:string            3 m, 31 s</span>
+<span class="go">temperature / K            298.15</span>
+<span class="go">pressure / atm             1.00</span>
+<span class="go">solvent:model</span>
+<span class="go">solvent:name</span>
+<span class="go">num_cpu                    2.00</span>
+<span class="go">memory_used / B            536870912.00</span>
+<span class="go">memory_available / GB      2.00</span>
+<span class="go">-------------------------  ---------------------------</span>
+</pre></div>
+</div>
+</section>
+<section id="summary">
+<h3>Summary<a class="headerlink" href="#summary" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Code</p></th>
+<th class="head"><p>Shortcode</p></th>
+<th class="head"><p>H</p></th>
+<th class="head"><p>M</p></th>
+<th class="head"><p>Use-case</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--yaml</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-y</span></code></p></td>
+<td><p>✅</p></td>
+<td><p>✅</p></td>
+<td><p>General use format; reusable</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--json</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-j</span></code></p></td>
+<td><p>❌</p></td>
+<td><p>✅</p></td>
+<td><p>Compact network data transfer; reusable</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--csv</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-c</span></code></p></td>
+<td><p>❌</p></td>
+<td><p>✅</p></td>
+<td><p>Tabulating data at a glance; machine-readable</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--table</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-t</span></code></p></td>
+<td><p>✅</p></td>
+<td><p>❌</p></td>
+<td><p>Tabulating data at a glance</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--csv-property</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-d</span></code></p></td>
+<td><p>❌</p></td>
+<td><p>✅</p></td>
+<td><p>Tabulating specific result; machine-readable</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--table-property</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-a</span></code></p></td>
+<td><p>✅</p></td>
+<td><p>❌</p></td>
+<td><p>Tabulating specific result</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--summary</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-s</span></code></p></td>
+<td><p>✅</p></td>
+<td><p>❌</p></td>
+<td><p>Results at a glance</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>H</strong>: Human-readable, <strong>M</strong>: Machine-readable</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <cite>Human readable</cite> and <cite>Machine readable</cite> columns are intended as a guide only. All formats are text based and hence could be read by a sufficiently skilled (or stubborn) human.
+Likewise, one could write a parser for the ‘non machine readable’ formats, but it is difficult to think of a reason to do so…</p>
+</div>
+</section>
+</section>
+<section id="regenerating-the-results-folder">
+<h2>Regenerating the Results Folder<a class="headerlink" href="#regenerating-the-results-folder" title="Link to this heading"></a></h2>
+<p>When a Digichem managed calculation is finished, Digichem will automatically write a number of result files to the ‘Results’ folder.
+These files include a number of CSV tables containing data about molecular orbitals, vibrational frequencies and so-on,
+as well as a number of summary files pertaining to the calculation as a whole.</p>
+<p>It is sometimes necessary to recreate these result files if they are not generated automatically.
+This might happen if a calculation stops with a severe error which prevents Digichem from continuing,
+or if a calculation was run manually (ie, not with Digichem) but you still wants to generate the normal result files.</p>
+<p>In these instances, the <code class="docutils literal notranslate"><span class="pre">--auto</span></code> option can be specified to <code class="docutils literal notranslate"><span class="pre">digichem</span> <span class="pre">result</span></code> to regenerate any missing files:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>digichem<span class="w"> </span>result<span class="w"> </span>Output/Benzene.log<span class="w"> </span>--auto
+<span class="gp">$ </span>ls<span class="w"> </span>Results
+<span class="go">Benzene.absorptions.csv  Benzene.IR.csv        Benzene.SOC.csv</span>
+<span class="go">Benzene.atoms.csv        Benzene.MP.csv        Benzene.summary.csv</span>
+<span class="go">Benzene.beta.csv         Benzene.nmr.csv       Benzene.summary.txt</span>
+<span class="go">Benzene.CC.csv           Benzene.orbitals.csv  Benzene.UV-Vis.csv</span>
+<span class="go">Benzene.ES.csv           Benzene.SCF.csv       Benzene.vibrations.csv</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="digichem-convert.html" class="btn btn-neutral float-left" title="Digichem Convert" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="digichem-report.html" class="btn btn-neutral float-right" title="Digichem Report" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Digichem.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

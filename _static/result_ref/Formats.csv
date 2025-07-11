@@ -1,0 +1,8 @@
+Code,Shortcode,H,M,Use-case
+``--yaml``,``-y``,✅,✅,General use format; reusable
+``--json``,``-j``,❌,✅,Compact network data transfer; reusable
+``--csv``,``-c``,❌,✅,Tabulating data at a glance; machine-readable
+``--table``,``-t``,✅,❌,Tabulating data at a glance
+``--csv-property``,``-d``,❌,✅,Tabulating specific result; machine-readable
+``--table-property``,``-a``,✅,❌,Tabulating specific result
+``--summary``,``-s``,✅,❌,Results at a glance

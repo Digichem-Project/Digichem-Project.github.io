@@ -1,0 +1,27 @@
+Before you install
+=====================
+
+Things to know
+____________________
+Digichem is designed to replace your normal computational workflow, by managing, submitting and analysing your computational jobs for you.
+In order to do this, it must be installed on your computational cluster itself (because this is where the calculations take place), rather than your personal computer.
+
+You can chose to either install Digichem for a single user (ie, just you), or for multiple users. The installation process is identical in either case, the only
+difference is where you install Digichem. For a single user, this would normally be your home directory on the server. For multiple users, you'll need to install
+to a directory where each user has read access. Neither installation type requires super-user permissions (``sudo``) to install or run, but you will likely need
+administrator privileges to setup a shared folder for the multi-user installation. 
+
+Digichem is designed to run on Linux (because this is the predominant operating system used by computational clusters around the world)
+and there is no support for other operating systems. However, you can access Digichem from your personal computer using whatever operating system you like;
+only the operating system of the cluster itself is important!
+
+Installing locally
+__________________
+If your personal computer is also running linux, then you can install Digichem there too if you want.
+Without access to any computational engines, Digichem will not be able run any new calculations, and even some post-processing options
+will be unavailable (for example, you'll need access to Gaussian's ``cubegen`` to generate any new cube files). However, a local installation
+of Digichem can still be useful for performing analysis and collation of results without connecting to the computational cluster.
+
+Installing Digichem locally follows the same process as installing to a computational cluster.
+
+For analysing results on your personal computer, also consider the `Digichem-core library <https://github.com/Digichem-Project/digichem-core>`_.

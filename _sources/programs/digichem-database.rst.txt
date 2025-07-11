@@ -1,0 +1,401 @@
+.. _digichem_database:
+
+Digichem Database
+=================
+
+The ``digichem database`` program is used to manage databases of completed calculation results.
+It consists of of several sub-commands, depending on what you want to do to the database:
+
+.. code-block:: console
+
+    $ digichem database FILE SUB_COMMAND
+
+``FILE`` is the database file you want to act upon. It can be a path to a database file:
+
+.. code-block:: console
+
+    $ digichem database results.db SUB_COMMAND
+
+Or the name of a database pre-configured into Digichem. You can configure as many databases as you like,
+but by default the only configured database that is available is the ``main database``:
+
+.. code-block:: console
+
+    $ digichem database main SUB_COMMAND
+
+
+``digichem database insert``
+----------------------------
+
+The ``insert`` sub-command is used to add completed calculation results to a database:
+
+.. code-block:: console
+
+    $ digichem database results.db insert FILES
+
+Where ``FILES`` are completed calculation log files:
+
+.. code-block:: console
+
+    $ digichem database results.db insert Benzene.log Pyridine.log
+
+The linux wildcard character ``*`` can be used as normal to insert many calculation results at once:
+
+.. code-block:: console
+
+    // Insert all calculation log files in the current folder.
+    $ digichem database results.db insert *.log
+
+For example, to insert all the results from a computational screen submitted with Digichem with the following structure::
+
+    Benzene/
+        Gaussian 16 Optimisation Frequencies PBE1PBE (GD3BJ) Toluene 6-31G(d,p)/
+        Gaussian 16 Excited States TDA 10 Singlets 10 Triplets PBE1PBE (GD3BJ) Toluene 6-31G(d,p)/
+    Pyridine/
+        Gaussian 16 Optimisation Frequencies PBE1PBE (GD3BJ) Toluene 6-31G(d,p)
+        Gaussian 16 Excited States TDA 10 Singlets 10 Triplets PBE1PBE (GD3BJ) Toluene 6-31G(d,p)/
+    Toluene/
+        Gaussian 16 Optimisation Frequencies PBE1PBE (GD3BJ) Toluene 6-31G(d,p)
+        Gaussian 16 Excited States TDA 10 Singlets 10 Triplets PBE1PBE (GD3BJ) Toluene 6-31G(d,p)/
+
+Use the following command:
+
+.. code-block:: console
+
+    $ digichem database results.db insert */*
+
+Digichem will generate a unique ID for each calculation that is inserted into the database, and these will be printed at the end of the command:
+
+.. code-block:: console
+
+    $ digichem database results.db insert Benzene.log
+    4341561273e3e48d80f5427212e785f0d7044835
+
+For a given calculation, this ID is always the same (even if inserting into a different database), and Digichem will not allow an identical calculation to be
+inserted into the same database multiple times. If you try to do this, Digichem will print a warning:
+
+.. code-block:: console
+
+    // Try to insert the same file twice
+    $ digichem database results.db insert Benzene.log Benzene.log
+    digichem: WARNING: UserWarning: Not inserting 4341561273e3e48d80f5427212e785f0d7044835, Benzene, Gaussian (2016+C.01), Optimisation, Frequencies, DFT; Document with ID 4341561273e3e48d80f5427212e785f0d7044835 already exists
+    4341561273e3e48d80f5427212e785f0d7044835
+
+.. note::
+    Digichem is extremely strict on what it considers an 'identical' calculation. In short, the calculation log files must
+    match *exactly*. This means two calculations submitted at different times, even if otherwise identical, will *not* be
+    considered the same (because the completion time is included in most log files).
+
+``digichem database slice``
+----------------------------
+
+While ``insert`` is used to add data from computational log files, ``slice`` is used to insert data from another database.
+
+.. code-block:: console
+
+    $ digichem database source.db slice destination.db QUERIES
+
+Where ``QUERIES`` are a number of search queries specifying what to copy. If none are given, then the entirety of ``source.db``
+is copied to ``destination.db``:
+
+.. code-block:: console
+
+    $ digichem database source.db slice destination.db
+
+In this case, the ``-N`` option can be specified to speed up the copying process:
+
+.. code-block:: console
+
+    $ digichem database source.db slice destination.db -N
+
+Please see the :ref:`command reference<digichem_database_reference>` for more information on the ``-N`` option.
+
+The search ``QUERIES`` are given in the same way as for  the ``digichem database search`` :ref:`sub-command<digichem_database_search>`.
+Only those calculation results that match the search criteria will be copied:
+
+.. code-block:: console
+
+    // Only copy results with a HOMO value greater than -6.0 eV.
+    $ digichem database source.db slice destination.db --homo ">-6"
+
+
+.. _digichem_database_search:
+
+``digichem database search``
+----------------------------
+
+The ``search`` sub-command is used to search for (and extract) results from a database:
+
+.. code-block:: console
+
+    $ digichem database main search QUERIES
+
+Where ``QUERIES`` are a number of search queries specifying what to search for. If none are given, the entire database
+is returned:
+
+.. code-block:: console
+
+    // Export everything from the database.
+    $ digichem database main search
+    _id: 4341561273e3e48d80f5427212e785f0d7044835
+    atoms:
+        alignment_method: Minimal
+        charge: 0
+        exact_mass:
+            units: g mol^-1
+            value: 78.04694999999998
+        formula: C6H6
+        linearity_ratio: 0.07920370892421824
+        molar_mass:
+            units: g mol^-1
+            value: 78.11184
+    ... // This will go on for some time...
+
+
+Queries can be specified in a number of ways. For common search criteria (orbital energies, excited states etc.), a command line argument can be used.
+For example, to search for all calculation results with a HOMO above (more positive) than -5.0 eV:
+
+.. code-block:: console
+
+    // Export everything from the database.
+    $ digichem database main search --homo ">-5.0"
+
+Or to search for all calculations on Benzene:
+
+.. code-block:: console
+
+    // Search for calculations matching the SMILES for benzene (exact match).
+    $ digichem database main search --structure "c1ccccc1"
+
+Substructure searching is also possible, using the ``--substructure`` option (which also matches against a SMILES string):
+
+.. code-block:: console
+
+    // Search for calculations on molecules containing the benzene subunit.
+    $ digichem database main search --substructure "c1ccccc1"
+
+Queries can be freely intermixed:
+
+.. code-block:: console
+
+    // Search for calculations on benzene with a HOMO above -5.0 eV.
+    $ digichem database main search --structure "c1ccccc1" --homo ">-5.0"
+
+Please see the section on :ref:`queries <database_queries>` for more information.
+
+``digichem database search`` can write to all the same file formats as the ``digichem result`` :ref:`command <result_output_formats>`, and in fact takes the 
+same format options (``-y``, ``-j``, ``-c``, ``-t``, ``-d``, ``-a``, and ``-s``).
+
+By default, the program will export to the :ref:`Digichem native format <result_yaml_format>` (``-y``).
+The table (``-t``) format is particularly useful for viewing database results when combined with the ``less`` command (to provide scrolling):
+
+.. code-block:: console
+
+    // View the entire database at a glance.
+    $ digichem database main search -t  | less -S
+
+``digichem database search`` can also easily export data to a file:
+
+.. code-block:: console
+
+    // Export the database to csv.
+    $ digichem database main search -c -O db_dump.csv
+
+``digichem database count``
+----------------------------
+
+The ``count`` sub-command functions identically to ``digichem database search``, except ``count`` returns the *number* of rows that
+match, rather than the rows themselves:
+
+.. code-block:: console
+
+    // How many calculations have we stored?
+    $ digichem database main count
+    50000
+    // And how many of them were on Benzene?
+    $ digichem database main count --structure "c1ccccc1"
+    49999
+
+``digichem database delete``
+----------------------------
+
+The ``delete`` sub-command *removes* results from a database.
+
+To avoid accidentally deleting data, ``digichem database delete`` expects an explicit list of result IDs to remove:
+
+.. code-block:: console
+
+    // By itself, this command does nothing.
+    $ digichem database results.db delete
+
+    // We need to tell Digichem what to delete:
+    $ digichem database results.db delete 4341561273e3e48d80f5427212e785f0d7044835
+
+For the same reason, the ``delete`` command does not accept the common query formats (like ``--homo`` or ``--structure``).
+To delete matching results, it is safer to first ``search`` for the results, and then run a separate delete command:
+
+.. code-block:: console
+
+    // Check we're deleting the correct results.
+    $ digichem database results.db search --structure "c1ccccc1" -t -f _id metadata:calculations metadata:package
+    _id                                       metadata:calculations      metadata:package
+    ----------------------------------------  -------------------------  ------------------
+    5c407cd31b64517aaa0ebbee4852c24ed69dc30b  Optimisation, Frequencies  Gaussian
+    5346017182680cf95a6ef4cd73c343dc86692d1b  Excited States             ORCA
+    3c92447bade367bab402f6834208ddad0a343aaf  Optimisation, Frequencies  ORCA
+    475b13e7927b7cdbc150c8377a62a72bb9d26a3a  Excited States             Turbomole
+    5aa12c5465f42ac4befccc5de9f6e4a054d498f7  Excited States             Turbomole
+    3ece68dade40f931bd4533b091239bc4cad872c8  Single Point               Turbomole
+    4341561273e3e48d80f5427212e785f0d7044835  Excited States             Gaussian
+
+    // Only delete the Gaussian calculations.
+    $ digichem database results.db delete 5c407cd31b64517aaa0ebbee4852c24ed69dc30b 4341561273e3e48d80f5427212e785f0d7044835
+
+However, if you are certain, you can delete matching results directly using the ``--search`` option:
+
+.. code-block:: console
+
+    // Dangerous! This will immediately delete all 'matching' results!
+    $ digichem database results.db delete --search "atoms:smiles==c1ccccc1"
+
+Database Format
+---------------
+
+Digichem supports two database formats, `TinyDB <https://tinydb.readthedocs.io/en/latest/>`_ and `Mongita <https://github.com/scottrogowski/mongita>`_.
+TinyDB (the default) is text-based, meaning it is human-readable, but may have reduced performance for very large datasets. By contrast, Mongita uses a binary format that
+is likely to be more performant, but can only be readily read/written to by Digichem itself (or other programs using Mongita).
+
+To create a database in TinyDB format, use the ``-t`` option before the database file:
+
+.. code-block:: console
+
+    $ digichem database -t results.db insert FILES
+
+Alternatively, specify the ``-m`` option to use the Mongita format:
+
+.. code-block:: console
+
+    $ digichem database -m results.db insert FILES
+
+Once a database has been created, the ``-t`` or ``-m`` options can be omitted (Digichem will work out the correct format automatically):
+
+.. code-block:: console
+
+    $ digichem database -m results.db insert Benzene.log Pyridine.log
+    $ digichem database results.db count
+    2
+
+.. note::
+    The ``-t`` and ``-m`` options have no effect when using a builtin database (because the format of these databases is set in the config).
+    Trying to use either option in this scenario will result in a warning from Digichem:
+
+    .. code-block:: console
+
+        $ digichem database -t main count
+        digichem: WARNING: UserWarning: 'main' is a builtin database and its type cannot be changed dynamically (it is set in the 'databases' config option)
+
+.. _database_queries:
+
+Database Queries
+----------------
+
+Database queries are used to specify which calculation results in the database to act upon.
+There are two types of queries currently supported by Digichem.
+
+Simple queries
+______________
+
+Simple queries are specified using a command-line argument (like ``--homo`` or ``-structure``).
+The following simple queries are currently supported:
+
+``--homo ENERGY`` ``--lumo ENERGY`` ``--beta-homo ENERGY`` ``--beta-lumo ENERGY``
+    Search for HOMO/LUMO values that match a given energy (in eV).
+    For unrestricted calcs, ``--homo`` and ``--lumo`` search against the alpha orbitals, while ``--beta-homo`` and ``--beta-lumo``
+    search against the beta orbitals.
+    
+    The energy should be prefixed with either `<` (for less than) or `>` (for more than). For example:
+
+    .. code-block:: console
+
+        // HOMO energy less than -5.0 eV
+        $ digichem database main search --homo "<-5"
+        // LUMO energy above 1.5 eV
+        $ digichem database main search --lumo ">1.5"
+        // HOMO energy between -4 and -6 eV.
+        $ digichem database main search --homo "<-4.0" --homo ">-6.0"
+
+``--singlet-energy ENERGY`` ``--triplet-energy ENERGY`` ``--dest ENERGY``
+    Search for the energy of the first singlet excited state, first triplet excited state, or the difference between them respectively, in eV.
+    The energy should be prefixed with either `<` (for less than) or `>` (for more than).
+
+``--singlet-wavelength NM`` ``--singlet-wavelength NM``
+    Search for the wavelength of the first singlet excited state or the first triplet excited state respectively, in nm.
+    The wavelength should be prefixed with either `<` (for less than) or `>` (for more than).
+
+``--structure SMILES`` ``--substructure SMILES``
+    Search for molecules that match the given SMILES string, either exactly (``--structure``) or that contain the given structure (``-substructure``).
+
+.. important::
+    You should always place the more-than or less-than signs ('<' or '>') in speech marks on the command line.
+    Otherwise, the shell will interpret them as IO redirection characters, which will result in errors such as this:
+
+    .. code-block:: console
+
+        // This won't work
+        $ digichem database main search --lumo >5
+        Digichem_exception: The query string 'lumo' is missing a comparison operator
+        // This is correct
+        $ digichem database main search --lumo ">5"
+
+
+Complex Queries
+_______________
+
+.. important::
+    The database query language is currently under development, and is likely to change in the future.
+
+Each query consists of three main parts: 1) a list of fields, 2) a comparison operator, and 3) a match.
+
+For example, in ``atoms:smiles==c1ccccc1``, ``atoms:smiles`` is the field list, ``==`` is the comparison operator, and ``c1ccccc1``
+is the match.
+
+1.  The field list is delimited by colons, and matches some result in a result set.
+    To search in a field that contains a list, the 'any' pseudo-field can be specified.
+    For example, to compare orbital energies: ``orbitals:values:any:energy:value``.
+
+2.  A comparison operator, one of the following:
+
+    .. list-table::
+        :widths: 33 66
+        :header-rows: 1
+
+        * - Symbol
+          - Meaning
+        * - ``==``
+          - Exact match
+        * - ``=``
+          - Case insensitive match
+        * - ``>``
+          - Greater than
+        * - ``<``
+          - Less than
+        * - ``>=``
+          - Greater than or equal to
+        * - ``<=``
+          - Less than or equal to
+        * - ``<>``
+          - Substructure matching (only for SMILES)
+
+   Each operator can optionally be prefixed with an exclamation mark (``!``) to negate it (ie, ``!==`` would select all entries that do not match exactly).
+
+3. A match, a value to check against. Values that look like specific types (ints, floats, bools *etc.*) will be converted appropriately.
+
+.. Common Queries
+.. ______________
+
+.. Orbital energies
+.. ****************
+
+.. To search for a specific orbital energy, for example HOMO-1:
+
+.. ``orbitals:values:any:label==HOMO-1:energy:value``

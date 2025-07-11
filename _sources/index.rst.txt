@@ -1,0 +1,40 @@
+Welcome to Digichem's documentation!
+====================================
+
+.. image:: /_static/general/Header.png
+
+Welcome to Digichem, the computational management suite.
+Digichem is a program designed to manage every part of the computational chemistry pipeline.
+From the submission of calculations to the generation of data, everything is handled for you, automatically.
+
+Start here
+----------
+
+.. toctree::
+   :maxdepth: 2
+   :includehidden:
+
+   introduction/index
+   
+Practical examples
+------------------
+
+.. toctree::
+   :maxdepth: 2
+   :includehidden:
+
+   examples/index
+
+Further reading
+---------------------
+
+.. toctree::
+   :maxdepth: 2
+   :includehidden:
+
+   installation/index
+   installation/setup
+   method/index
+   programs/index
+   reference/index
+   bibliography

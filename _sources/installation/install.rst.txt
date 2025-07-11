@@ -1,0 +1,106 @@
+Install
+=======
+
+Single-User
+___________
+
+Once you have downloaded the Digichem archive, the next step is to upload it to your computational cluster.
+Place the archive in the location where you want to install Digichem, which can be anywhere in your home directory.
+Digichem requires `ca.` 800 MB of file space to install.
+
+Once uploaded, unpack the archive with tar:
+
+.. code-block:: console
+
+    $ tar -xzf digichem.*.tar.gz
+    
+And then run the install script:
+
+.. code-block:: console
+
+    $ digichem/_internal/install.sh
+    
+If all goes well, the program version will be printed to the console:
+
+.. code-block:: console
+
+    Creating links...
+    Checking Digichem installation (this may take a few minutes)...
+    6.0.0
+    Installation complete.
+    
+Digichem is now ready to use, and the archive can be safely deleted:
+
+.. code-block:: console
+
+    $ rm digichem.*.tar.gz
+    
+Next, :ref:`configure <setup>` Digichem so it knows which computational backends are available, and then you're ready to begin submitting calculations!
+
+
+Multi-User
+__________
+
+If you are installing Digichem so it can be used by multiple users,
+make sure to unpack the archive to a shared file location where each of the users has (at least) read access.
+
+The archive can be unpacked with tar:
+
+.. code-block:: console
+
+    $ tar -xzf digichem.*.tar.gz
+    
+Which will unpack the program to a folder simply called 'digichem'
+
+.. code-block:: console
+
+    $ ls
+    digichem.6.0.0.CentOS-Stream-8.tar.gz  # The name of this file will differ depending on which version you downloaded.
+    digichem                               # This directory contains the new digichem installation.
+    
+Once unpacked, the archive can be deleted:
+
+.. code-block:: console
+
+    $ rm digichem.6.0.0.CentOS-Stream-8.tar.gz
+    
+The program binaries are placed immediately inside the `digichem` folder:
+
+.. code-block:: console
+
+    $ ls digichem
+    digichem    # Main digichem executable.
+    _internal   # Binaries and libraries.
+    LICENSE     # Licensing information.
+    openprattle # Bundled Openprattle binaries and libraries
+    oprattle    # Bundled Openprattle executable (used for file interconversions).
+
+Each installation contains a bundled copy of `Openprattle <https://github.com/Digichem-Project/openprattle>`_ 
+, which is free and open-source software.
+    
+To make the program available to users, the install location simply needs to be added to their ``$PATH`` variable.
+You can either configure this yourself (for example, in ``/etc/bash.bashrc``), or each user can run the install script
+to setup the necessary links.
+
+The install script is located at `digichem/_internal/install.sh`. Thus if the Digichem folder was installed to:
+``/opt/digichem/``, the command for each user would be ``/opt/digichem/_internal/install.sh``.
+
+In a multi-user installation, Digichem will parse config files from ``/etc/digichem{VERSION}`` (where ``{version}`` is the major version number, 
+for example ``6``), which will be shared by all users. Each individual user can also set their own config options at ``~/.config/digichem{VERSION}``,
+the same as for a single-user installation.
+
+Proceed next to the :ref:`setup <setup>` step to configure Digichem ready for use.
+
+Upgrading From An Old Version
+_____________________________
+
+An older version of Digichem can be upgraded by simply unpacking the new archive on top of the old installation folder.
+For example, if Digichem was previously installed to ``/software/digichem``, place the archive in the ``/software/`` folder,
+and unpack with tar:
+
+.. code-block:: console
+
+    $ tar -xzf digichem.*.tar.gz
+    
+The files from the old installation will be replaced with the new version.
+

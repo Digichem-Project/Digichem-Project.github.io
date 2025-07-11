@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Digichem Submit &mdash; Digichem 6.9.2 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=92fd9be5" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=4b4c264b" />
+
+  
+    <link rel="shortcut icon" href="../_static/Icon.svg"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=c8889b49"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Digichem
+          </a>
+              <div class="version">
+                6.9.2
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/index.html">Getting started</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Walkthroughs</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../method/index.html">Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programs/index.html">Programs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">Command line reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bibliography.html">References</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Digichem</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Digichem Submit</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/submit/silico-submit.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="digichem-submit">
+<span id="silico-submit"></span><h1>Digichem Submit<a class="headerlink" href="#digichem-submit" title="Link to this heading"></a></h1>
+<p>Calculations are submitted with Digichem using the <code class="docutils literal notranslate"><span class="pre">digichem</span> <span class="pre">submit</span></code> command.
+To perform a calculation, generally two things need to be provided by the user: (1) a (number of) input coordinate files and (2), a (number) of methods.</p>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Link to this heading"></a></h2>
+<p>Coordinate files can be given anywhere after the <code class="docutils literal notranslate"><span class="pre">digichem</span> <span class="pre">submit</span></code> command, for example:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>digichem<span class="w"> </span>sub<span class="w"> </span>coordinate.file
+</pre></div>
+</div>
+<p>Multiple coordinate files can be specified too; they will all be submitted sequentially to the same method.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>digichem<span class="w"> </span>sub<span class="w"> </span>coordinate1.file<span class="w"> </span>coordinate2.file<span class="w"> </span>coordinate3.file<span class="w"> </span>...
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Digichem does not specify a maximum for the number of coordinate files that can be submitted at any one time.
+However, the operating system and shell will typically impose a maximum character length for a single command and this will act as an upper limit for the number of files that can be submitted simultaneously.
+Fortunately, this limit is typically very large in modern systems and so is unlikely to pose a problem in most use-cases.
+In instances where this limit is reached, it can be overcome by splitting the input coordinate files into separate groups and submitting each separately.</p>
+</div>
+<p>Methods, which define the calculations to be performed, can be specified in a number of ways.
+Method <cite>files</cite> can be specified using the <code class="docutils literal notranslate"><span class="pre">-m</span></code> (or <code class="docutils literal notranslate"><span class="pre">--method-files</span></code>) option:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>digichem<span class="w"> </span>sub<span class="w"> </span>coordinate.file<span class="w"> </span>-m<span class="w"> </span>method.file
+</pre></div>
+</div>
+<p>While methods from the built in library can be specified using the <code class="docutils literal notranslate"><span class="pre">-c</span></code> (or <code class="docutils literal notranslate"><span class="pre">--method-codes</span></code>) option and the unique code:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>digichem<span class="w"> </span>sub<span class="w"> </span>coordinate.file<span class="w"> </span>-c<span class="w"> </span><span class="m">1</span>/1/1
+</pre></div>
+</div>
+<p>Or even by unique name, if these are known:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>digichem<span class="w"> </span>sub<span class="w"> </span>coordinate.file<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;Single Node SLURM/Gaussian 16/[Gaussian Optimisation, Gaussian B3LYP (GD3BJ), Gaussian Gas Phase, &#39;Gaussian 6-31G(d,p)&#39;]&quot;</span>
+</pre></div>
+</div>
+<p>Multiple methods can also be specified, in which case each coordinate file will be automatically submitted to each specified method in sequence (using the output goemetry from the previous method in each case):</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>digichem<span class="w"> </span>sub<span class="w"> </span>coordinate.file<span class="w"> </span>-c<span class="w"> </span><span class="m">1</span>/1/1<span class="w"> </span><span class="m">1</span>/1/2<span class="w"> </span>...
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Similarly to coordinate files, Digichem does not impose a limit on the number of methods that can be queued in this way.</p>
+</div>
+<p>Method files and method codes can also be freely intermixed, as desired:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>digichem<span class="w"> </span>sub<span class="w"> </span>coordinate.file<span class="w"> </span>-c<span class="w"> </span><span class="m">1</span>/1/1<span class="w"> </span>-m<span class="w"> </span>method2.file<span class="w"> </span>-c<span class="w"> </span><span class="m">1</span>/1/2<span class="w"> </span>-m<span class="w"> </span>method4.file<span class="w"> </span>...
+</pre></div>
+</div>
+<p>By default, a separate folder will be created for each specified coordinate file and placed in the current working directory (see <a class="reference internal" href="structure.html#submit-folder-structure"><span class="std std-ref">Calculation Folder Structure</span></a> for more information).
+If this is not desired, an output directory can be specified with the <code class="docutils literal notranslate"><span class="pre">-O</span></code> (or <code class="docutils literal notranslate"><span class="pre">--output</span></code>) option, in which case a folder will be created for each coordinate file in the given directory:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>digichem<span class="w"> </span>sub<span class="w"> </span>coordinate.file<span class="w">  </span>-c<span class="w"> </span><span class="m">1</span>/1/1<span class="w"> </span>-O<span class="w"> </span><span class="s2">&quot;Output Folder&quot;</span>
+</pre></div>
+</div>
+<p>Further options are detailed below.</p>
+</section>
+<section id="reference">
+<h2>Reference<a class="headerlink" href="#reference" title="Link to this heading"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">silico</span> <span class="n">submit</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">coord1</span><span class="o">.</span><span class="n">file</span> <span class="p">[</span><span class="n">coord2</span><span class="o">.</span><span class="n">file</span><span class="p">]</span> <span class="o">-</span><span class="n">c</span> <span class="n">d1</span><span class="o">/</span><span class="n">p1</span><span class="o">/</span><span class="n">c1</span> <span class="p">[</span><span class="n">d2</span><span class="o">/</span><span class="n">p2</span><span class="o">/</span><span class="n">c2</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">I</span><span class="p">]</span>
+       <span class="n">silico</span> <span class="n">submit</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">coord1</span><span class="o">.</span><span class="n">file</span> <span class="p">[</span><span class="n">coord2</span><span class="o">.</span><span class="n">file</span><span class="p">]</span> <span class="o">-</span><span class="n">m</span> <span class="n">method1</span><span class="o">.</span><span class="n">file</span> <span class="p">[</span><span class="n">method2</span><span class="o">.</span><span class="n">file</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">I</span><span class="p">]</span>
+</pre></div>
+</div>
+<section id="positional-arguments">
+<h3>Positional Arguments<a class="headerlink" href="#positional-arguments" title="Link to this heading"></a></h3>
+<dl class="option-list">
+<dt><kbd>coordinate_files</kbd></dt>
+<dd><p>Coordinate input files to submit</p>
+</dd>
+</dl>
+</section>
+<section id="named-arguments">
+<h3>Named Arguments<a class="headerlink" href="#named-arguments" title="Link to this heading"></a></h3>
+<dl class="option-list">
+<dt><kbd>-O, --output</kbd></dt>
+<dd><p>Base directory to perform calculations in. Defaults to the current directory</p>
+<p>Default: .</p>
+</dd>
+<dt><kbd>-m, --method-files</kbd></dt>
+<dd><p>Methods to perform, identified by file name</p>
+<p>Default: []</p>
+</dd>
+<dt><kbd>-c, --method-codes</kbd></dt>
+<dd><p>Methods to perform, identified either by name or by ID (such, as 1/1/1)</p>
+<p>Default: []</p>
+</dd>
+<dt><kbd>-C, --charge</kbd></dt>
+<dd><p>Set the molecular charge of all input files</p>
+</dd>
+<dt><kbd>-M, --multiplicity, --mult</kbd></dt>
+<dd><p>Set the multiplicity of all input files</p>
+</dd>
+<dt><kbd>-o, --options</kbd></dt>
+<dd><p>Set a calculation option to a value. The given option will be set for all calculations.</p>
+<p>Default: []</p>
+</dd>
+<dt><kbd>--gen3D</kbd></dt>
+<dd><p>Whether to generate 3D coordinates from any given 2D input coordinate files using a rapid pre-optimisation step (which will scramble existing atom coordinates). The default is True, but only if it can be safely determined that the loaded coordinates are not already in 3D). Set to False to disable all pre-optimisation</p>
+</dd>
+<dt><kbd>-p, --prepare-only</kbd></dt>
+<dd><p>Whether to only perform setup for the calculation without actually performing it</p>
+<p>Default: False</p>
+</dd>
+<dt><kbd>--exit-status</kbd></dt>
+<dd><p>If given and the submission is successful, the exit status set by digichem will be a positive integer equal to the number of files successfully submitted. If not given (the default), the exit status will be zero if all given files were submitted successfully, and a negative integer otherwise.</p>
+<p>Default: False</p>
+</dd>
+</dl>
+</section>
+<section id="general-options">
+<h3>General Options<a class="headerlink" href="#general-options" title="Link to this heading"></a></h3>
+<p>General options that control various aspects of silico</p>
+<dl class="option-list">
+<dt><kbd>-I, --interactive</kbd></dt>
+<dd><p>Run this command interactively</p>
+<p>Default: False</p>
+</dd>
+<dt><kbd>-V, --verbose</kbd></dt>
+<dd><p>Increase verbosity, stack with itself to further increase verbosity (each time this option is given, log_level is increased by one stage)</p>
+</dd>
+<dt><kbd>--log_level</kbd></dt>
+<dd><p>Possible choices: DEBUG, INFO, WARNING, ERROR, CRITICAL, OFF</p>
+<p>The level of messages to print</p>
+</dd>
+<dt><kbd>-S, --setting</kbd></dt>
+<dd><p>Set a config option to a value. Options of this type are parsed as if they were a config file (in yaml format) and are then used to set corresponding options, eg -S “absorption_graph: {fwhm: 100}”</p>
+<p>Default: []</p>
+</dd>
+<dt><kbd>--config_files</kbd></dt>
+<dd><p>An additional config file to read from. See the master config file for possible config options. Note that the master config file (at silico/data/config/silico.yaml) and user config file (at ~/.config/silico/silico.yaml) are always read automatically and do not need to be specified here. Multiple files may be given and will be processed in the order specified (the last having highest priority)</p>
+<p>Default: []</p>
+</dd>
+</dl>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Digichem.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

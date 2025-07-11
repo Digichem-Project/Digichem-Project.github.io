@@ -1,0 +1,16 @@
+Command line reference
+==================================
+
+
+.. toctree::
+   :maxdepth: 1
+   :includehidden:
+   :caption: Contents:
+
+   digichem-submit
+   digichem-convert
+   digichem-result
+   digichem-report
+   digichem-image
+   digichem-database
+   digichem-status

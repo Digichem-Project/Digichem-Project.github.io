@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calculation Submission Tutorial &mdash; Digichem 6.9.2 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=92fd9be5" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=4b4c264b" />
+
+  
+    <link rel="shortcut icon" href="../_static/Icon.svg"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=c8889b49"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Digichem
+          </a>
+              <div class="version">
+                6.9.2
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/index.html">Getting started</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Walkthroughs</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../method/index.html">Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programs/index.html">Programs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">Command line reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bibliography.html">References</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Digichem</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Calculation Submission Tutorial</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/submit/tutorial.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="calculation-submission-tutorial">
+<span id="submit-tutorial"></span><h1>Calculation Submission Tutorial<a class="headerlink" href="#calculation-submission-tutorial" title="Link to this heading"></a></h1>
+<p>Perhaps the most powerful aspect of Silico is its functionality for submitting and managing calculations.
+This tutorial acts as a walk-through for running through this process and is an excellent start for performing computations with Silico.</p>
+<section id="prepare-coordinate-files">
+<h2>Prepare Coordinate Files<a class="headerlink" href="#prepare-coordinate-files" title="Link to this heading"></a></h2>
+<p>The first step in submitting a calculation is to prepare the coordinate files. These files represent the molecules upon which the calculation (or calculations) will be performed; one molecule per file. The file format used for these input coordinates is essentially irrelevant, so long as the format is supported by Silico, and different formats can be freely intermixed. See the <a class="reference internal" href="input.html#coordinate-formats"><span class="std std-ref">list of available formats</span></a> and section on <a class="reference internal" href="input.html#coordinate-files"><span class="std std-ref">coordinate files</span></a> for more information.</p>
+<p>The first step in the submission process is to write the systems that are to be studied to respective coordinate files. The choice of file format is essentially irrelevant, and different file formats can be freely intermixed. Once written, these coordinate files should be transfered to the machine on which the calculation is to be performed (most commonly a remote server or cluster) by whatever method is most convenient (File-Transfer Protocol (FTP), SSH File Transfer Protocol (SFTP) etc).</p>
+</section>
+<section id="connect-to-the-calculation-server">
+<h2>Connect To The Calculation Server<a class="headerlink" href="#connect-to-the-calculation-server" title="Link to this heading"></a></h2>
+<p>In most cases, computational chemistry programs are run on large, distributed server clusters.
+If this setup applies to you, at this point you should connect to the server cluster where Silico is installed (for example, by SSH, PuTTy or equivalent).</p>
+</section>
+<section id="run-silico">
+<h2>Run Silico<a class="headerlink" href="#run-silico" title="Link to this heading"></a></h2>
+<p>Once the required coordinate files (and optionally method files) have been prepared, it is time to run Silico.
+This can be done in either a non-interactive or interactive manner (see <a class="reference internal" href="../running/introduction.html#running-interactively"><span class="std std-ref">Running Interactively</span></a>); for the purposes of this tutorial the interactive interface will primarily be used.
+To begin, run the silico submit subprogram followed by a list of the coordinate files to submit. For example, to submit two files named ‘Benzene.cdx’ and ‘Naphthalene.com’, run:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>silico<span class="w"> </span>sub<span class="w"> </span>-I<span class="w"> </span>Benzene.cdx<span class="w"> </span>Naphthalene.com
+</pre></div>
+</div>
+<p>At this point, an explicit charge and/or multiplicity can be set using the <code class="docutils literal notranslate"><span class="pre">-C</span></code> (or <code class="docutils literal notranslate"><span class="pre">--charge</span></code>) and <code class="docutils literal notranslate"><span class="pre">-M</span></code> (or <code class="docutils literal notranslate"><span class="pre">--multiplicity</span></code>) options. If given, these options will overwrite any charge or multiplicity given in the coordinate files, for all specified coordinate files. For example, to submit all calculations as a radical cation:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>silico<span class="w"> </span>sub<span class="w"> </span>-I<span class="w"> </span>Benzene.cdx<span class="w"> </span>Naphthalene.com<span class="w"> </span>-C<span class="w"> </span><span class="m">1</span><span class="w"> </span>-M<span class="w"> </span><span class="m">2</span>
+</pre></div>
+</div>
+<p>If any of the file names contain whitespace, or other ‘unusual’ characters, remember to use quotation marks:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>silico<span class="w"> </span>sub<span class="w"> </span>-I<span class="w"> </span><span class="s2">&quot;Benz ene.cdx&quot;</span><span class="w"> </span>Naphthalene.com
+</pre></div>
+</div>
+<p>If any of the coordinate files are not in the current directory, the full path should be specified (including directories):</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>silico<span class="w"> </span>sub<span class="w"> </span>-I<span class="w"> </span>Aromatic/Benzene.cdx<span class="w"> </span>Aromatic/Naphthalene.com
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Alternatively, you can change the current directory using the <code class="docutils literal notranslate"><span class="pre">cd</span></code> command, for example <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">Aromatic</span></code>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can check which files are in the current directory using the <code class="docutils literal notranslate"><span class="pre">ls</span></code> command.</p>
+</div>
+<p>In additional to individual coordinate files, the contents of entire directories can be submitted <cite>via</cite> the unix wildcard character (*):</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>silico<span class="w"> </span>sub<span class="w"> </span>-I<span class="w"> </span>Aromatic/*
+</pre></div>
+</div>
+<p>Finally, you may choose to not specify any input coordinates at this time, in which case they can be loaded later using the interactive interface (see <a class="reference internal" href="#interactive-coords"><span class="std std-ref">Adding New Coordinates</span></a>)</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>silico<span class="w"> </span>sub<span class="w"> </span>-I
+</pre></div>
+</div>
+</section>
+<section id="the-interactive-interface">
+<h2>The Interactive Interface<a class="headerlink" href="#the-interactive-interface" title="Link to this heading"></a></h2>
+<p>Any of the above commands will run the silico submit subprogram in interactive mode, which will open a window that appears as follows:</p>
+<img alt="../_images/submit_interface.png" src="../_images/submit_interface.png" />
+<p>This interface acts similarly to a graphical user interface (GUI).
+The various parts of the interface can be navigated by the arrow keys.
+Doing so will move the flashing cursor which indicates the part of the interface which is currently selected.</p>
+<section id="input-coordinates">
+<h3>Input Coordinates<a class="headerlink" href="#input-coordinates" title="Link to this heading"></a></h3>
+<p>The upper section of the submission interface displays loaded input coordinates in a table format, along with the relevant molecular
+formula, charge and multiplicity. These latter two columns can be edited individually for each system under study.
+For example, to change the multiplicity of ‘Benzene’ in the above example, first move the cursor with the arrow keys to the <code class="docutils literal notranslate"><span class="pre">mult:1</span></code> widget for the ‘Benzene’ row.
+Then, the old multiplicity can be removed used the backspace key, and a new multiplicity can be typed.</p>
+<p>The three widgets in the right-most column of the coordinate table can be used to control the position of each row.
+These widgets are buttons, which can be readily identified by the angle brackets surrounding the text of the button (eg, <code class="docutils literal notranslate"><span class="pre">&lt;</span> <span class="pre">Button</span> <span class="pre">&gt;</span></code>).
+Buttons can be ‘clicked’ or ‘activated’ by first selecting them with the cursor and then pressing ‘enter’ (or ‘space’).
+In this case, the <code class="docutils literal notranslate"><span class="pre">&lt;</span> <span class="pre">↑</span> <span class="pre">&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">&lt;</span> <span class="pre">↓</span> <span class="pre">&gt;</span></code> buttons will move each row up or down one position respectively,
+while the <code class="docutils literal notranslate"><span class="pre">&lt;</span> <span class="pre">r</span> <span class="pre">&gt;</span></code> button will delete the given row.</p>
+<section id="adding-new-coordinates">
+<span id="interactive-coords"></span><h4>Adding New Coordinates<a class="headerlink" href="#adding-new-coordinates" title="Link to this heading"></a></h4>
+<p>New input coordinate files can also be loaded at this point using the <code class="docutils literal notranslate"><span class="pre">&lt;</span> <span class="pre">Add</span> <span class="pre">new</span> <span class="pre">here</span> <span class="pre">&gt;</span></code> button, which will open the file browser:</p>
+<img alt="../_images/file_browser.png" src="../_images/file_browser.png" />
+<p>This browser displays a list of files in a ‘tree’ like format;
+each directory (or folder) appears as a ‘branch’ node with a ‘+’ icon (which can be expanded to show its contents) while each file appears as a ‘leaf’ node (which cannot).
+To expand (or ‘open’) a directory,  navigate up or down with the arrow keys to select it, and then use the ‘right arrow’ key to expand it.
+An expanded directory will show a ‘-’ icon instead of a ‘+’.
+A directory can similarly be contracted by selecting it and using the ‘left arrow’ key to hide its contents.</p>
+<p>To select a coordinate file to load, use the ‘space’ or ‘enter’ key to highlight it. If a file is chosen in error, pressing ‘space’ again will deselect it.
+Once the files to be loaded have been selected, navigate to the <code class="docutils literal notranslate"><span class="pre">&lt;</span> <span class="pre">Confirm</span> <span class="pre">&gt;</span></code> button in the bottom right corner and select it.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Instead of using the down arrow key to navigate all the way to the bottom of the page, the ‘tab’ key can be used to skip directly to the controls at the bottom of the window.
+Similarly, ‘shift-tab’ (holding shift will pressing tab) will skip back to the browser.</p>
+</div>
+<img alt="../_images/file_browser_selected.png" src="../_images/file_browser_selected.png" />
+<p>This will load each of the chosen coordinate files.
+Once complete, the ‘Finished loading coordinates’ line be printed, at which point the output window can be closed using the <code class="docutils literal notranslate"><span class="pre">&lt;</span> <span class="pre">Confirm</span> <span class="pre">&gt;</span></code> button:</p>
+<img alt="../_images/file_browser_output.png" src="../_images/file_browser_output.png" />
+</section>
+</section>
+<section id="calculation-methods">
+<h3>Calculation Methods<a class="headerlink" href="#calculation-methods" title="Link to this heading"></a></h3>
+<p>The ‘Calculation Methods’ section of the submission interface is where the actual calculations to be performed are selected.
+In most cases this will be done by selecting a (number of) methods from the built in library.
+To do so, ‘click’ the <code class="docutils literal notranslate"><span class="pre">&lt;</span> <span class="pre">Browse</span> <span class="pre">library</span> <span class="pre">&gt;</span></code> button to open the method browser:</p>
+<img alt="../_images/method_browser.png" src="../_images/method_browser.png" />
+<p>Conceptually, each method consists of three parts, which are:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>The Destination: A logical or physical location where the calculation will be performed, for example a specific SLURM partition.</p></li>
+<li><p>The Program: A CC progam to perform the calculation, for example Gaussian or Turbomole.</p></li>
+<li><p>The Calculation: A specific set of calculation instructions, including, for example, the method, functional and basis set.</p></li>
+</ul>
+</div></blockquote>
+<p>Each part of the method is chosen from the browser sequentially. This first item to choose is the destination. These will have been setup by your server administrator, so you should contact them if you are unsure which to choose.
+In the above example there is only one destination available, a SLURM partition called ‘Single Node SLURM’.
+This destination can be expanded in the same manner as the file browser above, by navigating with the arrow keys and expanding the node with the right arrow key.</p>
+<p>Doing so will reveal the CC programs that this destination supports, in this example there is a Gaussian 09, a Gaussian 16 and a Turbomole program available:</p>
+<img alt="../_images/method_browser_program.png" src="../_images/method_browser_program.png" />
+<p>Similarly, expanding a program will reveal the calculations that program supports. For example, the calculations the ‘Gaussian 16’ program supports are as follows:</p>
+<img alt="../_images/method_browser_calculation.png" src="../_images/method_browser_calculation.png" />
+<p>These calculation types are grouped in a hierarchy, where the top-most item describes the general calculation type, for example an ‘Optimisation’ or calculation of ‘Excited States’.
+Within each heading the specifics of the calculation can be chosen, for example the below selection is for an optimisation using the popular B3LYP functional and 6-31G(d,p) basis set, in the gas phase:</p>
+<img alt="../_images/method_browser_selection.png" src="../_images/method_browser_selection.png" />
+<p>To choose a given method, select the final item (typically the basis set), highlight it with the ‘enter’ or ‘space’ keys and then ‘click’ the <code class="docutils literal notranslate"><span class="pre">&lt;</span> <span class="pre">Confirm</span> <span class="pre">&gt;</span></code> button.
+It will then be added to the method table:</p>
+<img alt="../_images/method_chosen.png" src="../_images/method_chosen.png" />
+<section id="method-codes">
+<h4>Method Codes<a class="headerlink" href="#method-codes" title="Link to this heading"></a></h4>
+<p>You will notice that each of the three items of the method is given a unique code (an integer which is greater than zero). These codes are shown both in the method browser and the method table:</p>
+<img alt="../_images/method_code_table.png" src="../_images/method_code_table.png" />
+<img alt="../_images/method_code_browser.png" src="../_images/method_code_browser.png" />
+<p>For example, the method chosen above has the method code of <cite>1/2/1489</cite>.
+These method codes are unique and stable (they do not change randomly), meaning they can be used as a quick way to refer to a method.
+Among other things, this allows a method to be selected by using its code alone by clicking the <code class="docutils literal notranslate"><span class="pre">&lt;</span> <span class="pre">Add</span> <span class="pre">from</span> <span class="pre">code</span> <span class="pre">&gt;</span></code> button of the method table and entering the relevant code directly:</p>
+<img alt="../_images/add_by_code.png" src="../_images/add_by_code.png" />
+</section>
+<section id="method-queuing">
+<h4>Method Queuing<a class="headerlink" href="#method-queuing" title="Link to this heading"></a></h4>
+<p>Silico allows multiple methods to be queued up to be performed one after another.
+This <cite>in-series</cite> calculation queuing works by taking the output geometry of the previous calculation and automatically submitting it to the next calculation.
+This is particularly useful for calculations that depend on a certain type of optimised geometry.
+For example, the calculation of excited states typically requires a prior optimisation of the geometry which has to be performed as a separate step.
+To queue up such a series of calculations, simply add a second method (or as many as are required) after the first. The methods will be processed in the same order as they appear in the table:</p>
+<img alt="../_images/method_queue.png" src="../_images/method_queue.png" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Methods can even be queued using different CC programs;
+the output geometry from the previous calculation will automatically be converted to an appropriate input type for the next CC progrm.</p>
+</div>
+</section>
+</section>
+</section>
+<section id="submit">
+<h2>Submit<a class="headerlink" href="#submit" title="Link to this heading"></a></h2>
+<p>Once the desired input coordinates and calculation methods have been chosen, the selection can be submitted by selecting the <code class="docutils literal notranslate"><span class="pre">&lt;</span> <span class="pre">Confirm</span> <span class="pre">&gt;</span></code> button.
+Information will be shown as each coordinate file is prepared and then submitted.
+Once all files have been processed, the ‘Successfully submitted x file(s)’ line will appear:</p>
+<img alt="../_images/submission.png" src="../_images/submission.png" />
+<p>Congratulations, the input coordinates have now been submitted and Silico can be exited (by using the ‘esc’ key), or further calculations can be queued.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Digichem.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

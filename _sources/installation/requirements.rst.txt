@@ -1,0 +1,53 @@
+Requirements and Supported Backends
+===================================
+
+Digichem is distributed as a pre-compiled collection of binaries (built using `pyinstaller <https://pyinstaller.org/en/stable/>`_),
+which means it has no required dependencies, not even python! However, some functionality is dependent on 3rd party programs
+that we recommend you install first to unlock the full power of Digichem. If you choose not to install any of these optional dependencies,
+then the associated functionality will not be available.
+
+.. _vmd_requirement:
+
+Dependencies
+------------
+
+VMD
+___
+
+Visual molecular dynamics (VMD) is the main rendering engine used by Digichem to generate 3D electron density plots and other molecular renders.
+It can be freely downloaded and used for research and/or non-commercial uses, subject to the VMD `license terms <https://www.ks.uiuc.edu/Research/vmd/current/LICENSE.html>`_.
+
+VMD is included on many computational clusters by default, please refer to your cluster's software documentation.
+If VMD is not available, you can download it from `here <https://www.ks.uiuc.edu/Development/Download/download.cgi?PackageName=VMD>`_.
+
+Digichem is compatible with at least VMD version 1.9.1 and above.
+
+
+Supported Backends
+------------------
+
+Resource Manager/Scheduler
+____________________________
+
+To submit and monitor calculations, Digichem needs to interface to your cluster's resource management software.
+Digichem currently supports:
+
+ - SLURM
+ - PBS/Torque
+ 
+Which are by far the two most popular options. If your cluster uses a different resource manager, please consider creating an `issue <https://github.com/Digichem-Project/digichem-core/issues>`_ to request support for your manager.
+
+Computational Engines
+______________________
+
+In order to perform new calculations, you must install the relevant computational backend or engine.
+Currently, the following computational engines are supported:
+
+ - Gaussian (at least from 03 to 16)
+ - Turbomole (at least version 7.x)
+ - ORCA (at least version 5.x; 6.x not yet supported)
+
+You may have more than one computational engine available, and you can even configure multiple different versions of the same engine if you want to (for example, to support both Gaussian 09 and Gaussian 16).
+See :ref:`setup <setup>` for more information.
+In most cases, these programs will already be installed on your cluster, and you will not have to do anything.
+If you would like to request support for a new computational engine, please consider creating an `issue <https://github.com/Digichem-Project/digichem-core/issues>`_ for it.

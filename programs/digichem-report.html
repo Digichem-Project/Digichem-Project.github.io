@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Digichem Report &mdash; Digichem 6.9.2 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=92fd9be5" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=4b4c264b" />
+
+  
+    <link rel="shortcut icon" href="../_static/Icon.svg"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=c8889b49"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Digichem Image" href="digichem-image.html" />
+    <link rel="prev" title="Digichem Result" href="digichem-result.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Digichem
+          </a>
+              <div class="version">
+                6.9.2
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/index.html">Getting started</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Walkthroughs</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../method/index.html">Methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Programs</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="digichem-submit.html">Digichem Submit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="digichem-convert.html">Digichem Convert</a></li>
+<li class="toctree-l2"><a class="reference internal" href="digichem-result.html">Digichem Result</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Digichem Report</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#input-files">Input files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#output-location">Output location</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#image-rendering">Image rendering</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#combined-calculations">Combined calculations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#multiple-calculations">Multiple calculations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#report-image-options">Report &amp; image options</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#render-options">Render options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#report-options">Report options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#graph-related-options">Graph related options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#simulated-spectra-related-options">Simulated spectra related options</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="digichem-image.html">Digichem Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="digichem-database.html">Digichem Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="digichem-status.html">Digichem Status</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">Command line reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bibliography.html">References</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Digichem</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Programs</a></li>
+      <li class="breadcrumb-item active">Digichem Report</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/programs/digichem-report.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="digichem-report">
+<span id="id1"></span><h1>Digichem Report<a class="headerlink" href="#digichem-report" title="Link to this heading"></a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">digichem</span> <span class="pre">report</span></code> is used to generate compiled PDF reports (and associated images) from completed calculation results:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>digichem<span class="w"> </span>report<span class="w"> </span>LOG_FILE
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The reports that are generated by this program are typically written automatically at the end of each calculation.
+The <code class="docutils literal notranslate"><span class="pre">digichem</span> <span class="pre">report</span></code> command is useful for making reports from calculations where they are missing (perhaps because the
+calculation was submitted manually, or an error occurred), or where you want to make a change to a report (for example, by
+including a different selection of orbitals).</p>
+</div>
+<section id="input-files">
+<span id="report-input-files"></span><h2>Input files<a class="headerlink" href="#input-files" title="Link to this heading"></a></h2>
+<p>Unlike most other Digichem commands, <code class="docutils literal notranslate"><span class="pre">digichem</span> <span class="pre">report</span></code> normally needs more data than is found in just the main calculation
+log file to generate the report. This is because electron densities (such as are required to render orbital densities etc.)
+are typically stored in a separate, binary <em>checkpoint</em> file. For Gaussian, this is the .chk (or .fchk) file, for Orca it is
+the .gbw file etc.</p>
+<p>Digichem will try to intelligently guess the location of these checkpoint files based on the location of the given log files.
+In most cases, both files will have the same name (just with a different file extension), in which case this is easy to do.
+If Digichem cannot locate the required checkpoint files, these can be explicitly included with the <code class="docutils literal notranslate"><span class="pre">-C</span></code> option.</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-0">
+Gaussian</label><div class="sd-tab-content docutils">
+<p>Digichem accepts both the formatted (.fchk) and unformatted (.chk) checkpoint files:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>digichem<span class="w"> </span>report<span class="w"> </span>-C<span class="w"> </span>Benzene.log<span class="w"> </span>chk:checkpoint.chk<span class="w">     </span><span class="c1"># For a .chk file</span>
+<span class="gp">$ </span>digichem<span class="w"> </span>report<span class="w"> </span>-C<span class="w"> </span>Benzene.log<span class="w"> </span>fchk:checkpoint.fchk<span class="w">   </span><span class="c1"># For a .fchk file</span>
+</pre></div>
+</div>
+<p>You don’t normally need to specify both a .chk and .fchk file (but you can if you want to).</p>
+</div>
+<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-1">
+Orca</label><div class="sd-tab-content docutils">
+<p>Orca uses two types of ‘checkpoint’ files. The first (.gbw) is more akin to a traditional
+checkpoint file, while densities are stored separately (.densities). Both types are required
+to generate electron density plots, and both will normally be located automatically.</p>
+<p>If these files have been moved, they can be specified with the <code class="docutils literal notranslate"><span class="pre">gbw:</span></code> and <code class="docutils literal notranslate"><span class="pre">density:</span></code> options
+respectively:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>digichem<span class="w"> </span>report<span class="w"> </span>-C<span class="w"> </span>Benzene.log<span class="w"> </span>gbw:C6H6.gbw<span class="w"> </span>density:C6H6.densities
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-2" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-2">
+Turbomole</label><div class="sd-tab-content docutils">
+<p>Turbomole handles density files quite differently to other calculation engines. Rather
+than storing densities in a single checkpoint file, Turbomole utilises several files stored in the same
+directory. Normally, the main calculation log file(s) will also be stored in this same directory,
+in which case Digichem will automatically locate the necessary density files.</p>
+<p>If the density files are located in a different location to the main log file, simply specify
+the path to the entire directory, rather than any of the individual density files.</p>
+<p>For example, in a directory structure like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Benzene</span><span class="o">/</span>
+    <span class="n">Benzene</span><span class="o">.</span><span class="n">out</span>    <span class="o">&lt;--</span>  <span class="n">Main</span> <span class="n">log</span> <span class="n">file</span>
+    <span class="n">Output</span><span class="o">/</span>        <span class="o">&lt;--</span>  <span class="n">Turbomole</span> <span class="n">working</span> <span class="n">directory</span>
+        <span class="n">basis</span>
+        <span class="n">control</span>
+        <span class="n">coord</span>
+        <span class="n">energy</span>
+        <span class="n">gradient</span>
+        <span class="n">gsdens</span>
+        <span class="n">mos</span>
+        <span class="o">...</span>
+</pre></div>
+</div>
+<p>An appropriate command would be:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>digichem<span class="w"> </span>report<span class="w"> </span>-C<span class="w"> </span>Benzene/Benzene.out<span class="w"> </span>Benzene/Output/
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="output-location">
+<h2>Output location<a class="headerlink" href="#output-location" title="Link to this heading"></a></h2>
+<p>Digichem will try to intelligently guess an appropriate output location to write the report to based on the location of the
+given output file. In a Digichem-like file structure, such as this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Benzene</span><span class="o">/</span>
+    <span class="n">Gaussian</span> <span class="mi">16</span> <span class="n">Optimisation</span> <span class="n">Frequencies</span> <span class="n">PBE0</span> <span class="p">(</span><span class="n">GD3BJ</span><span class="p">)</span> <span class="n">Gas</span> <span class="n">Phase</span> <span class="n">Pople</span> <span class="n">Basis</span> <span class="n">Sets</span> <span class="mi">6</span><span class="o">-</span><span class="mi">31</span><span class="n">G</span><span class="p">(</span><span class="n">d</span><span class="p">,</span><span class="n">p</span><span class="p">)</span><span class="o">/</span>
+        <span class="n">Flags</span><span class="o">/</span>
+        <span class="n">Input</span><span class="o">/</span>
+        <span class="n">Logs</span><span class="o">/</span>
+        <span class="n">Output</span><span class="o">/</span>
+            <span class="n">Benzene</span><span class="o">.</span><span class="n">log</span>
+            <span class="n">Benzene</span><span class="o">.</span><span class="n">fchk</span>
+        <span class="n">Report</span><span class="o">/</span>
+            <span class="n">image</span><span class="o">/</span>
+            <span class="n">Benzene</span><span class="o">.</span><span class="n">pdf</span>          <span class="o">&lt;--</span> <span class="n">Report</span> <span class="n">written</span> <span class="n">here</span><span class="o">.</span>
+        <span class="n">Results</span><span class="o">/</span>
+</pre></div>
+</div>
+<p>The report is written to the <cite>Report</cite> folder, as normal.</p>
+<p>If the calculation was not submitted by Digichem, the report will be written to a <cite>Report</cite> folder in the same location as the output
+files:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Benzene</span><span class="o">/</span>
+    <span class="n">Benzene</span><span class="o">.</span><span class="n">log</span>
+    <span class="n">Benzene</span><span class="o">.</span><span class="n">fchk</span>
+    <span class="n">Report</span><span class="o">/</span>
+        <span class="n">image</span><span class="o">/</span>
+        <span class="n">Benzene</span><span class="o">.</span><span class="n">pdf</span>              <span class="o">&lt;--</span> <span class="n">Report</span> <span class="n">written</span> <span class="n">here</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>You can specify an explicit output location with the <code class="docutils literal notranslate"><span class="pre">-O</span></code> option. If the given file name ends in <cite>.pdf</cite>, this is taken
+to be the name of the PDF file:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>digichem<span class="w"> </span>report<span class="w"> </span>Benzene.log<span class="w"> </span>-O<span class="w"> </span><span class="s2">&quot;Custom Report.pdf&quot;</span>
+</pre></div>
+</div>
+<p>Resulting in:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Benzene</span><span class="o">/</span>
+    <span class="n">Benzene</span><span class="o">.</span><span class="n">log</span>
+    <span class="n">Benzene</span><span class="o">.</span><span class="n">fchk</span>
+    <span class="n">image</span><span class="o">/</span>
+    <span class="n">Custom</span> <span class="n">Report</span><span class="o">.</span><span class="n">pdf</span>            <span class="o">&lt;--</span> <span class="n">Report</span> <span class="n">written</span> <span class="n">here</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>Otherwise, the given file is presumed to be a folder name, and the report will be written inside it:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>digichem<span class="w"> </span>report<span class="w"> </span>Benzene.log<span class="w"> </span>-O<span class="w"> </span><span class="s2">&quot;Custom Report/&quot;</span>
+</pre></div>
+</div>
+<p>Resulting in:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Benzene</span><span class="o">/</span>
+    <span class="n">Benzene</span><span class="o">.</span><span class="n">log</span>
+    <span class="n">Benzene</span><span class="o">.</span><span class="n">fchk</span>
+    <span class="n">image</span><span class="o">/</span>
+    <span class="n">Custom</span> <span class="n">Report</span><span class="o">/</span>
+        <span class="n">image</span><span class="o">/</span>
+        <span class="n">Benzene</span><span class="o">.</span><span class="n">pdf</span>            <span class="o">&lt;--</span> <span class="n">Report</span> <span class="n">written</span> <span class="n">here</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>To speed up the report generation process, digichem will reuse any rendered images available in the report <cite>image</cite> folder.
+If you change the output location with the <code class="docutils literal notranslate"><span class="pre">-O</span></code> option, these previous images will not be available in the new location,
+and they will need to be re-rendered.</p>
+</section>
+<section id="image-rendering">
+<h2>Image rendering<a class="headerlink" href="#image-rendering" title="Link to this heading"></a></h2>
+<p>By default, <code class="docutils literal notranslate"><span class="pre">digichem</span> <span class="pre">report</span></code> will <strong>not</strong> overwrite rendered image files (such as orbitals or other electron densities).
+This greatly speeds up the report generation process, but means some changes (for example, the isovalue of an orbital) won’t
+be reflected unless the images are regenerated.</p>
+<p>To force the generation of new images, use the <code class="docutils literal notranslate"><span class="pre">-S</span> <span class="pre">render:</span> <span class="pre">{use_existing:</span> <span class="pre">False}</span></code> option:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>digichem<span class="w"> </span>report<span class="w"> </span>Benzene.log<span class="w"> </span>-S<span class="w"> </span>render:<span class="w"> </span><span class="o">{</span>use_existing:<span class="w"> </span>False<span class="o">}</span>
+</pre></div>
+</div>
+<p>You can also choose to re-render only a select number of images with the  <code class="docutils literal notranslate"><span class="pre">digichem</span> <span class="pre">image</span></code> <a class="reference internal" href="digichem-image.html#digichem-image"><span class="std std-ref">command</span></a>.</p>
+</section>
+<section id="combined-calculations">
+<h2>Combined calculations<a class="headerlink" href="#combined-calculations" title="Link to this heading"></a></h2>
+<p>Just like the <code class="docutils literal notranslate"><span class="pre">silico</span> <span class="pre">result</span></code> <a class="reference internal" href="digichem-result.html#digichem-result"><span class="std std-ref">command</span></a>, <code class="docutils literal notranslate"><span class="pre">digichem</span> <span class="pre">report</span></code> can merge results from
+several different calculations into a single PDF.</p>
+<p>To generate a merged report, use the <code class="docutils literal notranslate"><span class="pre">-m</span></code> option to specify the location of the various log files. You should
+also specify an output location with the <code class="docutils literal notranslate"><span class="pre">-O</span></code> option (because Digichem can’t guess where to write automatically in
+this case):</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>digichem<span class="w"> </span>report<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Benzene/Gaussian Optimisation&quot;</span><span class="w"> </span><span class="s2">&quot;Benzene/Gaussian Frequency&quot;</span><span class="w"> </span>-O<span class="w"> </span><span class="s2">&quot;Merged report&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="multiple-calculations">
+<h2>Multiple calculations<a class="headerlink" href="#multiple-calculations" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">digichem</span> <span class="pre">report</span></code> can also generate reports for multiple individual calculations simultaneously. Simply specify the location of each of the
+log files sequentially (without the <code class="docutils literal notranslate"><span class="pre">-m</span></code> option):</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>digichem<span class="w"> </span>report<span class="w"> </span>Benzene/Benzene.log<span class="w"> </span>Pyridine/Pyridine.log
+</pre></div>
+</div>
+<p>By default, the reports will be written to the usual ‘Report’ folder of each calculation.
+You can instead write to a common directory with the <code class="docutils literal notranslate"><span class="pre">-d</span></code> option:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>digichem<span class="w"> </span>report<span class="w"> </span>Benzene.log<span class="w"> </span>Pyridine.log<span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;Custom Reports&quot;</span>
+</pre></div>
+</div>
+<p>Each report will be placed in a sub-directory named after the input file. For example, the above command would result in:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Benzene</span><span class="o">.</span><span class="n">log</span>
+<span class="n">Pyridine</span><span class="o">.</span><span class="n">log</span>
+<span class="n">Custom</span> <span class="n">Reports</span><span class="o">/</span>
+    <span class="n">Pyridine</span><span class="o">/</span>
+        <span class="n">image</span><span class="o">/</span>
+        <span class="n">Pyridine</span><span class="o">.</span><span class="n">pdf</span>
+    <span class="n">Benzene</span><span class="o">/</span>
+        <span class="n">image</span><span class="o">/</span>
+        <span class="n">Benzene</span><span class="o">.</span><span class="n">pdf</span>
+</pre></div>
+</div>
+<p>Alternatively, you can use the <code class="docutils literal notranslate"><span class="pre">-r</span></code> option to write each report to a location <em>relative</em> to each input file:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>digichem<span class="w"> </span>report<span class="w"> </span>Benzene/Benzene.log<span class="w"> </span>Pyridine/Pyridine.log<span class="w"> </span>-r<span class="w"> </span><span class="s2">&quot;Custom Report&quot;</span>
+</pre></div>
+</div>
+<p>Which would result in:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Benzene</span><span class="o">/</span>
+    <span class="n">Benzene</span><span class="o">.</span><span class="n">log</span>
+    <span class="n">Custom</span> <span class="n">Report</span><span class="o">/</span>
+        <span class="n">image</span><span class="o">/</span>
+        <span class="n">Benzene</span><span class="o">.</span><span class="n">pdf</span>
+<span class="n">Pyridine</span><span class="o">/</span>
+    <span class="n">Pyridine</span><span class="o">.</span><span class="n">log</span>
+    <span class="n">Custom</span> <span class="n">Report</span><span class="o">/</span>
+        <span class="n">image</span><span class="o">/</span>
+        <span class="n">Pyridine</span><span class="o">.</span><span class="n">pdf</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You cannot use the normal output (<code class="docutils literal notranslate"><span class="pre">-O</span></code>) option when writing multiple reports simultaneously (because otherwise
+they would all overwrite each other). If you try to do this, you will get an error such as the following:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>digichem<span class="w"> </span>report<span class="w"> </span>Benzene.log<span class="w"> </span>Pyridine.log<span class="w"> </span>-O<span class="w"> </span><span class="s2">&quot;Custom Reports&quot;</span>
+<span class="go">digichem: ERROR: stopped with error</span>
+<span class="go">        Digichem_exception: The -O/--output argument cannot be given for multiple, separate result files. Try -r or -d instead</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="report-image-options">
+<h2>Report &amp; image options<a class="headerlink" href="#report-image-options" title="Link to this heading"></a></h2>
+<p>Several aspects of the report can be modified be changing appropriate settings. This can be achieved
+with the <code class="docutils literal notranslate"><span class="pre">-S</span></code> option, which takes a YAML string containing the new settings. Many of Digichem’s
+settings are nested into a hierarchy and each level of the hierarchy is represented by a new dict (or object
+in JSON parlance).</p>
+<p>For example, the setting to control the isovalue used for rendering orbital densities is located here:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">render</span><span class="p">:</span>
+  <span class="n">orbital</span><span class="p">:</span>
+    <span class="n">isovalue</span><span class="p">:</span> <span class="mf">0.02</span>
+</pre></div>
+</div>
+<p>When running the <code class="docutils literal notranslate"><span class="pre">digichem</span> <span class="pre">report</span></code> command, this value can be changed as follows:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>digichem<span class="w"> </span>report<span class="w"> </span>Benzene.log<span class="w"> </span>-S<span class="w"> </span><span class="s2">&quot;render: {orbital: {isovalue: 0.04}}&quot;</span>
+</pre></div>
+</div>
+<p>The full list of available report options is provided below.</p>
+<section id="render-options">
+<h3>Render options<a class="headerlink" href="#render-options" title="Link to this heading"></a></h3>
+<dl>
+<dt>render</dt><dd><p>Options for controlling the appearance of 3D molecule images.</p>
+<dl>
+<dt>enable_rendering<span class="classifier">bool</span><span class="classifier">[True]</span></dt><dd><p>Set to False to disable image rendering.</p>
+</dd>
+<dt>engine<span class="classifier">(vmd, batoms)</span><span class="classifier">[vmd]</span></dt><dd><p>The rendering engine to use</p>
+</dd>
+<dt>vmd</dt><dd><p>VMD specific options (only applies if engine == ‘vmd’</p>
+<dl class="simple">
+<dt>executable<span class="classifier">[vmd]</span></dt><dd><p>Path to the VMD (Visual Molecular Dynamics) executable</p>
+</dd>
+<dt>tachyon<span class="classifier">[tachyon]</span></dt><dd><p>The tachyon ray-tracing library, performs the actual rendering. Tachyon is typically packaged with VMD, but often isn’t added to the path automatically</p>
+</dd>
+<dt>rendering_style<span class="classifier">(pastel, light-pastel, dark-pastel, sharp, gaussian, vesta)</span><span class="classifier">[pastel]</span></dt><dd><p>The render/display mode, changes the appearance of rendered molecules/orbitals.
+Possible options are:
+ pastel: The default style, uses light, pastel-ish colours for orbitals with low transparency. Normal atom colours.
+ light-pastel: Similar to pastel, but with lighter orbital colours.
+ dark-pastel: Similar to pastel, but with darker orbital colours, reminiscant of the ‘sharp’ style.
+ sharp: Orbitals are darkly coloured around their edge but have high transparency in their center. Normal atom colours.
+ gaussian: A style attempting to mimic that of GaussView.
+ vesta: A style attempting to mimic that of VESTA.</p>
+</dd>
+</dl>
+</dd>
+<dt>batoms</dt><dd><p>Beautiful Atoms/Blender specific options (only applies if engine == ‘batoms’</p>
+<dl class="simple">
+<dt>blender<span class="classifier">[batoms-blender]</span></dt><dd><p>Path to the blender executable, in which beautiful atoms should be installed</p>
+</dd>
+<dt>cpus<span class="classifier">int</span><span class="classifier">[1]</span></dt><dd><p>The number of CPUs/threads to use. This option is overridden if running in a calculation environment (where it uses the same number of CPUs as the calculation did)</p>
+</dd>
+<dt>render_samples<span class="classifier">int</span><span class="classifier">[32]</span></dt><dd><p>The number of render samples (or passes) to use. Higher values result in higher image quality and greater render times</p>
+</dd>
+<dt>perspective<span class="classifier">(orthographic, perspective)</span><span class="classifier">[perspective]</span></dt><dd><p>The perspective mode</p>
+</dd>
+<dt>stacking<span class="classifier">int</span><span class="classifier">[10]</span></dt><dd><p>The number of image copies to composite together to avoid transparency artifacts</p>
+</dd>
+</dl>
+</dd>
+<dt>safe_cubes<span class="classifier">bool</span><span class="classifier">[False]</span></dt><dd><p>Whether to sanitize cubes so older software can parse them (VMD &lt; 1.9.2 etc)</p>
+</dd>
+<dt>use_existing<span class="classifier">bool</span><span class="classifier">[True]</span></dt><dd><p>If True, previously created files will be reused. If False, new images will rendered, replacing the old.
+This is on by default for 3D rendered images because they are expensive (time-consuming) to render.</p>
+</dd>
+<dt>auto_crop<span class="classifier">bool</span><span class="classifier">[True]</span></dt><dd><p>Whether to enable  automatic cropping of excess whitespace around the border of generated images.  If False, overall image rendering is likely to take less time, but molecules may only occupy a small portion of the true image.</p>
+</dd>
+<dt>resolution<span class="classifier">int</span><span class="classifier">[512]</span></dt><dd><p>The target resolution for rendered images. Higher values will increase image quality, at the cost of increased render time and file size.</p>
+</dd>
+<dt>orbital</dt><dd><p>Specific options for orbital density plots.</p>
+<dl class="simple">
+<dt>cube_grid_size<span class="classifier">Cube_grid_points</span><span class="classifier">[Default]</span></dt><dd><p>The size of grid used to generate cube files.
+Densities are plotted on a 3D grid of points, this option controls how many points there are in the grid (per dimension).
+In addition to an integer number of points (~100 is often sufficient), any of the following keywords can also be specified:
+Tiny, Small, Medium, Large, Huge or Default.</p>
+</dd>
+<dt>isovalue<span class="classifier">float</span><span class="classifier">[0.02]</span></dt><dd><p>The isovalue to use for rendering orbital density.</p>
+</dd>
+</dl>
+</dd>
+<dt>spin</dt><dd><p>Specific options for spin density plots.</p>
+<dl class="simple">
+<dt>cube_grid_size<span class="classifier">Cube_grid_points</span><span class="classifier">[Large]</span></dt><dd><p>The size of the grid use to plot cube data. As cubes of this type are rendered with a smaller isovalue, it is often necessary to use a larger grid size than normal to maintain quality.</p>
+</dd>
+<dt>isovalue<span class="classifier">float</span><span class="classifier">[0.0004]</span></dt><dd><p>The isovalue to use for plotting spin density.</p>
+</dd>
+</dl>
+</dd>
+<dt>density</dt><dd><p>Specific options for total density plots.</p>
+<dl class="simple">
+<dt>cube_grid_size<span class="classifier">Cube_grid_points</span><span class="classifier">[Large]</span></dt><dd><p>The size of the grid use to plot cube data.</p>
+</dd>
+<dt>isovalue<span class="classifier">float</span><span class="classifier">[0.02]</span></dt><dd><p>The isovalue to use for plotting total density.</p>
+</dd>
+</dl>
+</dd>
+<dt>difference_density</dt><dd><p>Specific options for excited states difference density plots.</p>
+<dl class="simple">
+<dt>cube_grid_size<span class="classifier">Cube_grid_points</span><span class="classifier">[Default]</span></dt><dd><p>The size of the grid use to plot cube data.</p>
+</dd>
+<dt>isovalue<span class="classifier">float</span><span class="classifier">[0.001]</span></dt><dd><p>The isovalue to use for difference density plots.</p>
+</dd>
+</dl>
+</dd>
+<dt>natural_transition_orbital</dt><dd><p>Specific options for NTO plots.</p>
+<dl class="simple">
+<dt>cube_grid_size<span class="classifier">Cube_grid_points</span><span class="classifier">[Default]</span></dt><dd><p>The size of the grid use to plot cube data.</p>
+</dd>
+<dt>isovalue<span class="classifier">float</span><span class="classifier">[0.02]</span></dt><dd><p>The isovalue to use for NTO plots.</p>
+</dd>
+</dl>
+</dd>
+<dt>dipole_moment</dt><dd><p>Specific options for permanent dipole moment plots.</p>
+<dl class="simple">
+<dt>scaling<span class="classifier">float</span><span class="classifier">[1.0]</span></dt><dd><p>The value (x) to scale the TDM by, where 1 D = x Å.</p>
+</dd>
+</dl>
+</dd>
+<dt>transition_dipole_moment</dt><dd><p>Specific options for transition dipole moment plots.</p>
+<dl class="simple">
+<dt>electric_scaling<span class="classifier">float</span><span class="classifier">[5.0]</span></dt><dd><p>The value (x) to scale the TEDM by, where 1 D = x Å.</p>
+</dd>
+<dt>magnetic_scaling<span class="classifier">float</span><span class="classifier">[10.0]</span></dt><dd><p>The value (x) to scale the TMDM by, where 1 au = x Å.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+<section id="report-options">
+<h3>Report options<a class="headerlink" href="#report-options" title="Link to this heading"></a></h3>
+<dl>
+<dt>report</dt><dd><p>Options for controlling the generation of calculation reports.</p>
+<dl>
+<dt>front_page_image<span class="classifier">(skeletal, rendered)</span><span class="classifier">[rendered]</span></dt><dd><p>The image to use for the front page of the report.</p>
+</dd>
+<dt>turbomole</dt><dd><p>Options that control the running of Turbomole calculations to generate cube files from completed calculations. Note that when reports are created automatically following calculation completion these options will be overridden with the specifics of that calculation.</p>
+<dl class="simple">
+<dt>num_cpu<span class="classifier">int</span><span class="classifier">[1]</span></dt><dd><p>The number of CPUs with which to run.</p>
+</dd>
+<dt>memory<span class="classifier">Turbomole_memory</span><span class="classifier">[1GB]</span></dt><dd><p>The amount of memory with which to run.</p>
+</dd>
+<dt>program<span class="classifier">method</span></dt><dd><p>A program definition from the internal library to run.</p>
+</dd>
+</dl>
+</dd>
+<dt>gaussian</dt><dd><p>Options that control the running of Gaussian calculations to generate NTO cube files from completed calculations. Note that when reports are created automatically following calculation completion these options will be overridden with the specifics of that calculation.</p>
+<dl class="simple">
+<dt>num_cpu<span class="classifier">int</span><span class="classifier">[1]</span></dt><dd><p>The number of CPUs with which to run.</p>
+</dd>
+<dt>memory<span class="classifier">Memory</span><span class="classifier">[1GB]</span></dt><dd><p>The amount of memory with which to run.</p>
+</dd>
+<dt>program<span class="classifier">method</span></dt><dd><p>A program definition from the internal library to run.</p>
+</dd>
+<dt>scratch_path<span class="classifier">[/tmp/$USER]</span></dt><dd><p>Path to the top of the scratch directory.</p>
+</dd>
+</dl>
+</dd>
+<dt>orca</dt><dd><p>Options that control the running of orca_plot to generate cube files from completed calculations. Note that when reports are created automatically following calculation completion these options will be overridden with the specifics of that calculation.</p>
+<dl class="simple">
+<dt>memory<span class="classifier">Memory</span></dt><dd><p>The amount of memory with which to run. If left blank, no maximum will be specified.</p>
+</dd>
+<dt>program<span class="classifier">method</span></dt><dd><p>A program definition from the internal library to run.</p>
+</dd>
+</dl>
+</dd>
+<dt>keep_cubes<span class="classifier">bool</span><span class="classifier">[False]</span></dt><dd><p>Whether to keep cube files</p>
+</dd>
+<dt>cleanup<span class="classifier">bool</span><span class="classifier">[True]</span></dt><dd><p>Whether to delete intermediate files that are written during the report generation process.
+Intermediate files include:
+   - .cube files.
+   - .fchk files.
+   - .html files.
+   - .css files.
+Note that this option will only delete new files written by the program; existing files given by the user are never deleted.</p>
+</dd>
+<dt>orbital_table</dt><dd><p>Options which control how many orbitals to print in the MO table.
+These numbers are relative to the HOMO for both the min and max.
+null can be specified for either/both the min/max to print all available orbitals in that direction.
+If both alpha and beta orbitals are available (for unrestricted calculations, for example), then additional orbitals may be printed outside of the given min/max to ensure the given value is met for both sets of orbitals. This is common for triplet calculations, where the alpha and beta frontier MOs are at different levels.
+Examples:
+  min: -10, max: 16: From HOMO-10 to LUMO+15 inclusive (total of 27 orbitals).
+  min: null, max: 11: All orbitals with energy less than or equal to LUMO+10.
+  min: 0, max: 1: HOMO and LUMO only.</p>
+<dl class="simple">
+<dt>max<span class="classifier">int</span><span class="classifier">[16]</span></dt><dd><p>The highest orbital to show in the molecular orbital table.</p>
+</dd>
+<dt>min<span class="classifier">int</span><span class="classifier">[-15]</span></dt><dd><p>The lowest orbital to show in the molecular orbital table.</p>
+</dd>
+</dl>
+</dd>
+<dt>orbital_image</dt><dd><p>Options which specify which orbitals to render 3D images of. The default is the HOMO and LUMO.
+Orbitals can be specified by level (an index starting at 1 for the most negative orbital, useful if you want images of a particular orbital) and/or by distance from the HOMO (useful for more day-to-day operation.
+In addition, excited_state_transition_threshold: can be used to add orbitals that are involved in an excited state transition with a probability above a certain threshold.
+Duplicates will be automatically ignored, as will orbitals specified here that are not actually available in the calculation result file.
+Alpha and beta are set separately. Beta will be ignored if there are no beta orbitals available. 
+Example:
+   orbital_levels:
+     - 5
+   orbital_distance:
+     - -1
+     - 0
+     - 1
+   excited_state_transition_threshold: 0.1
+   Would render orbital 5, HOMO-1, HOMO, LUMO and any orbitals involved in an excited state transition with a probability 0.1 or greater.</p>
+<dl class="simple">
+<dt>et_transition_threshold<span class="classifier">float</span><span class="classifier">[0.1]</span></dt><dd><p>Include orbitals involved in an excited state transition with a probability of this value or greater.</p>
+</dd>
+<dt>orbital_levels<span class="classifier">int</span><span class="classifier">[[]]</span></dt><dd><p>Include normal/alpha orbitals by level.</p>
+</dd>
+<dt>beta_levels<span class="classifier">int</span><span class="classifier">[[]]</span></dt><dd><p>Include beta orbitals by level.</p>
+</dd>
+<dt>orbital_distances<span class="classifier">int</span><span class="classifier">[[0, 1]]</span></dt><dd><p>Include normal/alpha orbitals by distance from the HOMO.</p>
+</dd>
+<dt>beta_distances<span class="classifier">int</span><span class="classifier">[[0, 1]]</span></dt><dd><p>Include beta orbitals by distance from the HOMO.</p>
+</dd>
+</dl>
+</dd>
+<dt>frequency_table</dt><dd><p>Options that control how many vibrational frequencies to list in the frequencies table. </p>
+<dl class="simple">
+<dt>min_frequency<span class="classifier">float</span></dt><dd><p>The most negative frequency to show in the table (remember that frequencies can be negative). ‘null’ is for no limit. Units are cm-1.</p>
+</dd>
+<dt>max_frequency<span class="classifier">float</span></dt><dd><p>The most positive frequency to show in the table. ‘null’ is for no limit. Units are cm-1.</p>
+</dd>
+<dt>max_num<span class="classifier">int</span></dt><dd><p>The maximum number of frequencies to show in the table.</p>
+</dd>
+</dl>
+</dd>
+<dt>nmr_image</dt><dd><p>Options which specify which NMR spectra to render.</p>
+<dl class="simple">
+<dt>auto<span class="classifier">bool</span><span class="classifier">[True]</span></dt><dd><p>If True, at least one experiment will be included for each element and isotope pair (for which NMR data is available). If no expt is explicitly requested (via codes), then the spectra will be the one with the least decoupling.</p>
+</dd>
+<dt>codes<span class="classifier">str</span><span class="classifier">[[‘13C{1H}’]]</span></dt><dd><p>Explicitly include certain NMR experiments.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+</dl>
+<hr class="docutils" />
+<dl>
+<dt>skeletal_image</dt><dd><p>Options for controlling the rendering of 2D skeletal images.</p>
+<dl>
+<dt>resolution</dt><dd><p>The resolution for rendered images</p>
+<dl class="simple">
+<dt>absolute<span class="classifier">int</span></dt><dd><p>The output resolution (x and y) in pixels</p>
+</dd>
+<dt>relative<span class="classifier">int</span><span class="classifier">[100]</span></dt><dd><p>The output resolution (x and y) in multiples of the length of the molecule</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+<section id="graph-related-options">
+<h3>Graph related options<a class="headerlink" href="#graph-related-options" title="Link to this heading"></a></h3>
+<dl>
+<dt>excited_states_diagram</dt><dd><p>Options that control the appearance of excited states energy diagrams.</p>
+<dl class="simple">
+<dt>enable_rendering<span class="classifier">bool</span><span class="classifier">[True]</span></dt><dd><p>Set to False to disable image rendering.</p>
+</dd>
+<dt>y_limits<span class="classifier">Auto_type</span><span class="classifier">[all]</span></dt><dd><p>The method used to set the min/max limits of the Y axis.
+Possible options are:
+  - ‘all’: Limits are set so all excited states are visible.
+  - ‘auto’: Limits are set automatically so the lowest excited state of each multiplicity is clearly visible (S1, D1, T1, Q1… N1 etc).
+  - a list of [y_min, y_max], where y_min is the most negative value on the Y axis, and y_max is the most positive value on the Y axis (both in eV).</p>
+</dd>
+<dt>show_dest<span class="classifier">bool</span><span class="classifier">[True]</span></dt><dd><p>Whether or not to show the dE(ST) label.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<hr class="docutils" />
+<dl>
+<dt>orbital_diagram</dt><dd><p>Options that control the appearance of orbital energy diagrams.</p>
+<dl class="simple">
+<dt>enable_rendering<span class="classifier">bool</span><span class="classifier">[True]</span></dt><dd><p>Set to False to disable image rendering.</p>
+</dd>
+<dt>y_limits<span class="classifier">Auto_type</span><span class="classifier">[auto]</span></dt><dd><p>The method used to set the min/max limits of the Y axis.
+Possible options are:
+  - ‘all’: Limits are set so all orbitals are visible.
+  - ‘auto’: Limits are set automatically so the 0 point (ie, ‘X’ axis), HOMO and LUMO are clearly visible.
+  - ‘center’: Like ‘auto’ except the lower limit is set more negative so the HOMO-LUMO are closer to the middle of the diagram.
+  - a list of [y_min, y_max], where y_min is the most negative value on the Y axis, and y_max is the most positive value on the Y axis (both in eV).</p>
+</dd>
+<dt>full_axis_lines<span class="classifier">bool</span><span class="classifier">[False]</span></dt><dd><p>If True, black lines are drawn around the boarder of the diagram. If False, a line is drawn for the Y axis but not for the other 3 sides of the diagram.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+<section id="simulated-spectra-related-options">
+<h3>Simulated spectra related options<a class="headerlink" href="#simulated-spectra-related-options" title="Link to this heading"></a></h3>
+<dl>
+<dt>absorption_spectrum</dt><dd><p>Options for controlling the appearance of simulated UV-Vis like absorption spectra.</p>
+<dl class="simple">
+<dt>enable_rendering<span class="classifier">bool</span><span class="classifier">[True]</span></dt><dd><p>Set to False to disable image rendering.</p>
+</dd>
+<dt>y_limits<span class="classifier">Auto_type</span><span class="classifier">[auto]</span></dt><dd><p>The method used to set the min/max limits of the Y axis.
+Possible options are:
+  - ‘auto’: Limits are set automatically so all peaks are clearly visible.
+  - a list of [y_min, y_max], where y_min is the most negative value on the Y axis, and y_max is the most positive value on the Y axis (both in oscillator strength).</p>
+</dd>
+<dt>x_limits<span class="classifier">Auto_type</span><span class="classifier">[auto]</span></dt><dd><p>The method used to set the min/max limits of the X axis.
+Possible options are:
+  - ‘auto’: Limits are set automatically so all peaks are clearly visible.
+  - a list of [x_min, x_max], where x_min is the most negative value on the X axis, and x_max is the most positive value on the X axis (both in nm).</p>
+</dd>
+<dt>max_width<span class="classifier">int</span><span class="classifier">[1200]</span></dt><dd><p>The maximum image width in pixels.
+Absorption graphs will grow/shrink their width to fit available data, keeping a constant scale (constant pixels to nm ratio) but only up to this maximum.
+To disable the maximum width, set to null.</p>
+</dd>
+<dt>peak_cutoff<span class="classifier">float</span><span class="classifier">[0.01]</span></dt><dd><p>The minimum oscillator strength that a peak must have to be shown in the graph, as a fraction ofthe highest peak.
+Set to 0 for no cutoff (all peaks shown), which may results in the graph being extended well beyond the drawn peaks (because many peaks are too small to see).
+This option has no effect when using manual x limits.</p>
+</dd>
+<dt>x_padding<span class="classifier">int</span><span class="classifier">[40]</span></dt><dd><p>The amount (in nm) to extend the x axis past the highest/lowest energy peak.</p>
+</dd>
+<dt>fwhm<span class="classifier">float</span><span class="classifier">[0.4]</span></dt><dd><p>The full-width at half-maximum; changes how wide the drawn peaks are. Note that the choice of peak width is essentially arbitrary; only the peak height is given by calculation. Units are eV.</p>
+</dd>
+<dt>gaussian_cutoff<span class="classifier">float</span><span class="classifier">[0.001]</span></dt><dd><p>The minimum y value to plot using the Gaussian function (controls how close to the x axis we draw the gaussian) as a fraction of the max peak height.</p>
+</dd>
+<dt>gaussian_resolution<span class="classifier">float</span><span class="classifier">[0.01]</span></dt><dd><p>The spacing between x values to plot using the Gaussian function, in eV. Values that are too large will result in ‘curves’ made up of a series of straight edges.</p>
+</dd>
+<dt>use_jacobian<span class="classifier">bool</span><span class="classifier">[True]</span></dt><dd><p>Whether or not to use the jacobian transformation to correctly scale the y-axis (see J. Phys. Chem. Lett. 2014, 5, 20, 3497)</p>
+</dd>
+<dt>plot_bars<span class="classifier">bool</span><span class="classifier">[True]</span></dt><dd><p>Whether to plot vertical bars for each excited state.</p>
+</dd>
+<dt>plot_peaks<span class="classifier">bool</span><span class="classifier">[False]</span></dt><dd><p>Whether to plot individual Gaussian functions for each excited state.</p>
+</dd>
+<dt>plot_cumulative_peak<span class="classifier">bool</span><span class="classifier">[True]</span></dt><dd><p>Whether to plot the sum of all Gaussian functions (most closely simulates a real spectrum).</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<hr class="docutils" />
+<dl>
+<dt>emission_spectrum</dt><dd><p>Options for controlling the appearance of simulated emission spectra. ‘emission_spectrum’ and ‘absorption_spectrum ‘take the same options.</p>
+<dl class="simple">
+<dt>enable_rendering<span class="classifier">bool</span><span class="classifier">[True]</span></dt><dd><p>Set to False to disable image rendering.</p>
+</dd>
+<dt>y_limits<span class="classifier">Auto_type</span><span class="classifier">[auto]</span></dt><dd><p>The method used to set the min/max limits of the Y axis.
+Possible options are:
+  - ‘auto’: Limits are set automatically so all peaks are clearly visible.
+  - a list of [y_min, y_max], where y_min is the most negative value on the Y axis, and y_max is the most positive value on the Y axis (both in oscillator strength).</p>
+</dd>
+<dt>x_limits<span class="classifier">Auto_type</span><span class="classifier">[auto]</span></dt><dd><p>The method used to set the min/max limits of the X axis.
+Possible options are:
+  - ‘auto’: Limits are set automatically so all peaks are clearly visible.
+  - a list of [x_min, x_max], where x_min is the most negative value on the X axis, and x_max is the most positive value on the X axis (both in nm).</p>
+</dd>
+<dt>max_width<span class="classifier">int</span><span class="classifier">[1200]</span></dt><dd><p>The maximum image width in pixels.
+Absorption graphs will grow/shrink their width to fit available data, keeping a constant scale (constant pixels to nm ratio) but only up to this maximum.
+To disable the maximum width, set to null.</p>
+</dd>
+<dt>peak_cutoff<span class="classifier">float</span><span class="classifier">[0.01]</span></dt><dd><p>The minimum oscillator strength that a peak must have to be shown in the graph, as a fraction ofthe highest peak.
+Set to 0 for no cutoff (all peaks shown), which may results in the graph being extended well beyond the drawn peaks (because many peaks are too small to see).
+This option has no effect when using manual x limits.</p>
+</dd>
+<dt>x_padding<span class="classifier">int</span><span class="classifier">[40]</span></dt><dd><p>The amount (in nm) to extend the x axis past the highest/lowest energy peak.</p>
+</dd>
+<dt>fwhm<span class="classifier">float</span><span class="classifier">[0.4]</span></dt><dd><p>The full-width at half-maximum; changes how wide the drawn peaks are. Note that the choice of peak width is essentially arbitrary; only the peak height is given by calculation. Units are eV.</p>
+</dd>
+<dt>gaussian_cutoff<span class="classifier">float</span><span class="classifier">[0.001]</span></dt><dd><p>The minimum y value to plot using the Gaussian function (controls how close to the x axis we draw the gaussian) as a fraction of the max peak height.</p>
+</dd>
+<dt>gaussian_resolution<span class="classifier">float</span><span class="classifier">[0.01]</span></dt><dd><p>The spacing between x values to plot using the Gaussian function, in eV. Values that are too large will result in ‘curves’ made up of a series of straight edges.</p>
+</dd>
+<dt>use_jacobian<span class="classifier">bool</span><span class="classifier">[True]</span></dt><dd><p>Whether or not to use the jacobian transformation to correctly scale the y-axis (see J. Phys. Chem. Lett. 2014, 5, 20, 3497)</p>
+</dd>
+<dt>plot_bars<span class="classifier">bool</span><span class="classifier">[True]</span></dt><dd><p>Whether to plot vertical bars for each excited state.</p>
+</dd>
+<dt>plot_peaks<span class="classifier">bool</span><span class="classifier">[False]</span></dt><dd><p>Whether to plot individual Gaussian functions for each excited state.</p>
+</dd>
+<dt>plot_cumulative_peak<span class="classifier">bool</span><span class="classifier">[True]</span></dt><dd><p>Whether to plot the sum of all Gaussian functions (most closely simulates a real spectrum).</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<hr class="docutils" />
+<dl>
+<dt>IR_spectrum</dt><dd><p>Options for controlling the appearance of simulated IR like vibrational frequency spectra.</p>
+<dl class="simple">
+<dt>enable_rendering<span class="classifier">bool</span><span class="classifier">[True]</span></dt><dd><p>Set to False to disable image rendering.</p>
+</dd>
+<dt>y_limits<span class="classifier">Auto_type</span><span class="classifier">[auto]</span></dt><dd><p>The method used to set the min/max limits of the Y axis.
+Possible options are:
+  - ‘auto’: Limits are set automatically so all peaks are clearly visible.
+  - a list of [y_min, y_max], where y_min is the most negative value on the Y axis, and y_max is the most positive value on the Y axis (both in km/mol).</p>
+</dd>
+<dt>x_limits<span class="classifier">Auto_type</span><span class="classifier">[auto]</span></dt><dd><p>The method used to set the min/max limits of the X axis.
+Possible options are:
+  - ‘auto’: Limits are set automatically so all peaks are clearly visible.
+  - a list of [x_min, x_max], where x_min is the most negative value on the X axis, and x_max is the most positive value on the X axis (both in cm-1).</p>
+</dd>
+<dt>fwhm<span class="classifier">float</span><span class="classifier">[80]</span></dt><dd><p>The full-width at half-maximum; changes how wide the drawn peaks are. Note that the choice of peak width is essentially arbitrary; only the peak height is given by calculation. Units are cm-1.</p>
+</dd>
+<dt>max_width<span class="classifier">int</span><span class="classifier">[1500]</span></dt><dd><p>The maximum image width in pixels.
+IR spectra will grow/shrink their width to fit available data, keeping a constant scale (constant pixels to nm ratio) but only up to this maximum.
+To disable the maximum width, set to null.</p>
+</dd>
+<dt>gaussian_cutoff<span class="classifier">float</span><span class="classifier">[0.001]</span></dt><dd><p>The minimum y value to plot using the Gaussian function (controls how close to the x axis we draw the gaussian) as a fraction of the max peak height.</p>
+</dd>
+<dt>gaussian_resolution<span class="classifier">float</span><span class="classifier">[1.0]</span></dt><dd><p>The spacing between x values to plot using the Gaussian function, in eV. Values that are too large will result in ‘curves’ made up of a series of straight edges.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="digichem-result.html" class="btn btn-neutral float-left" title="Digichem Result" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="digichem-image.html" class="btn btn-neutral float-right" title="Digichem Image" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Digichem.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

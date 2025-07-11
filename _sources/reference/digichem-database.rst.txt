@@ -1,0 +1,15 @@
+.. _digichem_database_reference:
+
+digichem database
+=================
+
+Reference
+---------
+
+.. argparse::
+   :module: silico.program.main
+   :func: get_argparser
+   :prog: digichem
+   :path: database
+   :noepilog:
+   :nodescription:

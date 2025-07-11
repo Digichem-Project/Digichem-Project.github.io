@@ -1,0 +1,18 @@
+.. _digichem_status:
+
+Digichem Status
+=============================
+
+The ``status`` command prints information about the available destinations:
+
+.. code-block:: console
+
+    $ digichem status
+    Description                                        Status
+    -------------------------------------------------  ----------------------------------------
+    [1] Normal SLURM (destination)                     40 (80%) idle nodes, 1280 (80%) idle CPUs
+    [2] Big SLURM (destination)                        5 (50%) idle nodes, 320 (50%) idle CPUs
+    [3] Long SLURM (destination)                       1 (2%) idle nodes, 16 (1%) idle CPUs
+    [4] Debug (destination)                            1 (100%) idle nodes, 1 (100%) idle CPUs
+    [5] Local (series) (destination)                   N/A (status not available)
+    [6] Local (parallel) (destination)                 N/A (status not available)

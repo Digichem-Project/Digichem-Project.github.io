@@ -1,0 +1,10 @@
+digichem status
+===============
+
+.. argparse::
+   :module: silico.program.main
+   :func: get_argparser
+   :prog: digichem
+   :path: status
+   :noepilog:
+   :nodescription:

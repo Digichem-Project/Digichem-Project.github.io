@@ -1,0 +1,633 @@
+.. _setup:
+
+Setup
+=====
+
+Digichem reads configuration information from two main locations. The main configuration file is located in your home directory at
+``~/.config/digichem{VERSION}/digichem.yaml``, where ``{VERSION}`` is the major Digichem version.
+
+For example, for all versions of Digichem |major_version|, the main config file is located at: ``~/.config/digichem|major_version|/digichem.yaml``.
+
+Meanwhile, information about the available computational engines and available server queues are stored in sub directories
+in the same folder as the main config file. Engines are stored in the ``Programs`` folder, while queues are stored in the 
+``Destinations`` folder.
+
+To change the settings of Digichem for just a single user (yourself), these files can be located here:
+
+ - ``~/.config/digichem|major_version|/digichem.yaml``
+ - ``~/.config/digichem|major_version|/Destinations``
+ - ``~/.config/digichem|major_version|/Programs``
+ 
+For a multi-user installation, changes can be made to these files instead/in addition to affect all users:
+ 
+ - ``/etc/digichem|major_version|/digichem.yaml``
+ - ``/etc/digichem|major_version|/Destinations``
+ - ``/etc/digichem|major_version|/Programs``
+
+Before you can use Digichem to submit calculations for the first time, you need to tell it what :ref:`computational engines <setup_programs>`
+and :ref:`server queues <setup_destinations>` are available on your cluster. You'll also want to setup a rendering engine (:ref:`VMD <setup_vmd>`)
+to generate 3D molecular orbital plots, and optionally links to external programs to generate certain types of reports.
+
+Automated setup
+_______________
+
+The ``digichem setup`` program will automatically search your server for available server queues, computational programs,
+and rendering engines (VMD installations). The search is normally extremely fast. Server queues are queried using SLURM'S ``sinfo`` 
+and PBS' ``qstat`` commands, which are typically instantaneous. Computational programs are searched using the ``locate`` command,
+which relies on an internal database to locate files instead of trawling through the filesystem. If ``locate`` is not available
+on your system (or is otherwise unable to find anything), then Digichem will fall-back to a traditional filesystem search with
+the ``find`` command. For very large filesystems, especially if distributed over a network (NFS etc.), ``find`` may be too slow,
+but you can drastically increase the speed of the search by specifying file hints to start searching from (see below).
+
+In most cases, you can setup everything Digichem needs by simply calling:
+
+.. code-block:: console
+
+    $ digichem setup
+
+See the :ref:`installation walkthrough <quick_setup>` for example output from the program.
+
+By default, ``setup`` will write new configuration files to ``~/.config/digichem|major_version|/``; these will apply to the current user only.
+If you wish to instead run the setup for multiple users, use the ``-o`` option to specify a different output location:
+
+.. code-block:: console
+
+    $ digichem setup -o /etc/digichem6
+
+Digichem will normally refuse to overwrite previously written setup files. If you attempt to run ``digichem setup`` again, you'll
+see an error similar to this:
+
+.. code-block:: console
+
+    $ digichem setup
+    digichem: ERROR: Output directory '/home/oliver/.config/digichem|major_version|/Programs/SETUP' is not empty! Refusing to overwrite existing files. Try 'digichem setup --force' if you're sure.
+    digichem: ERROR: Output directory '/home/oliver/.config/digichem|major_version|/Destinations/SETUP' is not empty! Refusing to overwrite existing files. Try 'digichem setup --force' if you're sure.
+    digichem: ERROR: stopped with error
+        Digichem_exception: Refusing to overwrite existing config files
+
+If you are sure you want to run the setup procedure, specify the ``--force`` option:
+
+.. code-block:: console
+
+    $ digichem setup --force
+
+Digichem will write the new files to a SETUP directory in the given output location. If the default location is used, these files can be
+found at:
+
+- ~/.config/digichem|major_version|/Destinations/SETUP/
+- ~/.config/digichem|major_version|/Programs/SETUP/
+
+You are free to edit and/or remove the config files afterwards as you see fit.
+
+Specifying file hints
+---------------------
+
+On most systems, the default command of ``digichem setup`` is all you need. However, if your file system is particularly large and/or slow,
+and the fast search program ``locate`` is unavailable, then the filesystem search performed with ``find`` might take a long time.
+
+In this case, you can increase the speed of the setup program by specifying hints for where to look for computational programs.
+Hints are given after the ``digichem setup`` command. For instance, to limit the search to the ``/opt`` and ``/usr`` directories:
+
+.. code-block:: console
+
+    $ digichem setup /opt /usr
+
+The file hints can be as specific as you need. If you know the exact location of the programs on your cluster, you can give these
+exactly to ``digichem setup``. For example, if you have two Gaussian installations at ``/opt/software/g16`` and ``/opt/software/g09``,
+an Orca installation at ``/opt/software/ORCA``, and a VMD installation at ``/usr/local/bin/vmd`` (which is the default for VMD):
+
+.. code-block:: console
+
+    $ digichem setup /opt/software/g16 /opt/software/g09 /opt/software/ORCA /usr/local/bin/vmd
+
+Note that the order of the file hints does not matter.
+
+Manual setup
+____________
+
+External programs
+-----------------
+
+.. _setup_vmd:
+
+VMD
+~~~
+
+The options to control VMD are set in ``~/.config/digichem|major_version|/digichem.yaml``, under the ``render`` heading.
+Three options are required:
+
+.. code-block:: yaml
+    
+    render:
+      engine: vmd
+      vmd:
+        executable: vmd
+        tachyon: tachyon
+
+``executable`` is the path to the main VMD executable, while ``tachyon`` is the path to the Tachyon ray tracer library.
+Tachyon is normally included in the VMD installation itself.
+
+If both ``vmd`` and ``tachyon`` are in your ``PATH``, then the above configuration is all you need. Otherwise, set the
+``executable`` and ``tachyon`` options to the appropriate file paths. For example:
+
+.. code-block:: yaml
+    
+    render:
+      engine: vmd
+      vmd:
+        executable: /usr/local/bin/vmd
+        tachyon: /usr/local/lib/vmd/tachyon_LINUXAMD64
+        
+Gaussian utilities
+~~~~~~~~~~~~~~~~~~
+
+.. note::
+
+    These options are redundant and will likely be removed in a future version.
+
+To generate reports from Gaussian calculations, Digichem needs to know the location of both the ``formchk`` and ``cubegen`` utilities.
+These can be set in  ``~/.config/digichem|major_version|/digichem.yaml``, under the ``external`` heading:
+
+.. code-block:: yaml
+    
+    external:
+      formchk: /opt/gaussian/g16/formchk
+      cubegen: /opt/gaussian/g16/cubegen
+      
+Default report programs
+~~~~~~~~~~~~~~~~~~~~~~~
+
+.. note::
+
+    These options are redundant and will likely be removed in a future version.
+
+When generating a report at the end of a calculation, Digichem will use the same program definition that ran the calculation to perform any
+requested post analysis (natural transition orbitals, difference density etc.). However, when a report is generated manually, Digichem needs to know
+which program definition to use. These can be set in ``~/.config/digichem|major_version|/digichem.yaml``, under the ``report`` heading:
+
+.. code-block:: yaml
+
+    report:
+      turbomole:
+        program: Turbomole
+      gaussian:
+        program: Gaussian 16
+        scratch_path: /tmp
+      orca:
+        program: Orca
+        
+Each ``program`` option corresponds to the name of a program, as set during :ref:`setup <setup_programs>`.
+
+For example, if a Gaussian engine was setup with the following options:
+
+.. code-block:: yaml
+    
+    link:
+        tag: Gaussian 16
+    ...
+    
+Then the following option would be set.
+
+.. code-block:: yaml
+
+    report:
+      gaussian:
+        program: Gaussian 16
+
+.. _setup_programs:
+
+Computational engines
+---------------------
+
+The installation script will create an example config file for each of the supported calculation engines in 
+``~/.config/digichem|major_version|/Programs``.
+
+.. code-block:: console
+    
+    $ ls ~/.config/digichem|major_version|/Programs
+    Gaussian.yaml.off  Orca.yaml.off  Turbomole.yaml.off
+    
+To activate a config, first rename the file to remove the ``.off`` suffix.
+For example, to setup a Gaussian backend, rename ``Gaussian.yaml.off`` to ``Gaussian.yaml``.
+The file can then be edited according to the guide below:
+
+.. _gaussian_setup:
+
+Gaussian
+~~~~~~~~
+
+An example Gaussian 16 config file looks like this:
+
+.. code-block:: yaml
+    
+    link:
+        tag: Gaussian 16
+    # The top config for the calculations we support.
+        previous:
+            - Program Base
+        next:
+            - Gaussian Auto
+            - [Calculation Base, Gaussian]
+    
+    # The name of the program this config is for. These are pre-built into Digichem.
+    meta:
+        class_name: gaussian
+    
+    # 'Path' to the Gaussian executable.
+    executable: g16
+    
+    # The name of the environmental variable Gaussian looks for to find 'root'.
+    # This changes between versions, for Gaussian 16 it is g16root.
+    # For Gaussian 09 it is g09root etc.
+    root_environ_name: g16root
+    
+    # Path to the directory where gaussian is installed.
+    root: /software/g16
+    
+    # Path to the gaussian .profile script which is run to set-up gaussian.
+    init_file: /software/g16/bsd/g16.profile
+
+To setup Gaussian, change the ``root`` and ``init_file`` options to point to the location where Gaussian is installed.
+``root`` is the main Gaussian installation folder. If the ``g16`` binary is located at ``/software/g16/g16``, then
+``root`` should be set to ``/software/g16``. ``init_file`` is the script used to setup Gaussian, it is normally located
+at ``bsd/g16.profile`` (although the name will change appropriately for other versions, eg. ``g09.profile``). In the same
+example, the init script would be located at ``/software/g16/bsd/g16.profile``.
+
+.. note::
+   Gaussian includes two setup scripts, one for SH-like shells (ending in ``.profile``) and one for CSH-like shells (ending in ``.login``).
+   Make sure to use the SH setup script (``.profile``), not the CSH one (``.login``)!
+
+For other versions of Gaussian, the ``root_environ_name`` and ``executable`` options should also be changed appropriately:
+
+ - g16: ``root_environ_name: g16root``, ``executable: g16``
+ - g09: ``root_environ_name: g09root``, ``executable: g09``
+ - g03: ``root_environ_name: g03root``, ``executable: g03``
+
+.. _turbomole_setup:
+ 
+Turbomole
+~~~~~~~~~
+ 
+An example Turbomole config file looks like this:
+
+.. code-block:: yaml
+    
+    # Config for a Turbomole submission
+    link:
+        tag: Turbomole
+        previous:
+            - Program Base
+    # The top config for the calculations we support.
+        next:
+            - Turbomole Auto
+            - [Calculation Base, Turbomole]
+    
+    # The name of the program this config is for. These are pre-built into Digichem.
+    meta:
+        class_name: Turbomole
+    
+    # Path to the main folder in which Turbomole is installed.
+    # Inside this folder the 'bin' folder can be located.
+    root: /software/TURBOMOLE/
+    
+    # Path to the Turbomole init file (for SH compliant shells, not CSH).
+    # This file is normally called 'Config_turbo_env'
+    init_file: /software/TURBOMOLE/Config_turbo_env
+
+To setup Turbomole, change the ``root`` and ``init_file`` options to point to the location where Turbomole is installed.
+``root`` is the main Turbomole installation folder. If the ``bin`` folder is located at ``/software/TURBOMOLE/bin``, then
+``root`` should be set to ``/software/TURBOMOLE``. ``init_file`` is the script used to setup Turbomole, it is normally located
+directly inside the main Turbomole directory and is called ``Config_turbo_env``. In the same example, the init script would be 
+located at ``/software/TURBOMOLE/Config_turbo_env``.
+
+.. note::
+   Turbomole also includes two setup scripts, one for SH-like shells (``Config_turbo_env``) and one for CSH-like shells (``Config_turbo_env.csh``).
+   Make sure to use the SH setup script (``Config_turbo_env``), not the CSH one (``Config_turbo_env.csh``)!
+
+.. _orca_setup:
+
+Orca
+~~~~~~~~~
+ 
+An example Orca config file looks like this:
+
+.. code-block:: yaml
+
+    # Config for Orca
+    link:
+        tag: Orca
+        previous:
+            - Program Base
+        # The top config for the calculations we support.
+        next:
+            - Orca Auto Characterisation
+            - [Calculation Base, Orca]
+    
+    # The name of the program this config is for. These are pre-built into silico.
+    meta:
+        class_name: Orca
+    
+    # Path to the main Orca executable.
+    executable: /software/ORCA/orca
+    
+    # Path to the main folder in which Orca is installed.
+    # The main Orca executable is typically located inside this directory.
+    root: /software/ORCA
+    
+    # Required for parallel execution, the path to the root directory of your mpi installation.
+    # Inside this root directory can be found the 'bin' and 'lib' directores.
+    mpi_root: /software/openmpi/
+
+Each Orca installation is actually made up of two parts: 1) The Orca installation itself, and 2) OpenMPI, which
+is needed to run calculations in parallel. OpenMPI is sometimes installed inside the Orca installation folder,
+sometimes it is separate.
+
+To setup Orca, the ``executable`` and ``root`` options must be set appropriately. ``executable`` is the full, absolute
+path to the main Orca binary, while ``root`` is the main Orca installation directory. ``executable`` is normally immediately
+inside ``root``. For example, if the Orca binary is located at ``/software/ORCA/orca``, then ``root`` should be set to
+``/software/ORCA``.
+
+.. note::
+   Unlike the other computational engines, the ``executable`` option for Orca must include the full path,
+   not just the executable name.
+
+The path to the OpenMPI installation is set using the ``mpi_root`` option. This is technically optional, but is strongly
+recommended as otherwise Orca calculations will be limited to 1 CPU only. ``mpi_root`` should point to the main OpenMPI
+directory, inside of which are the ``bin`` and ``lib`` sub-directories. For example, if ``mpirun`` is located at
+``/software/openmpi/bin/mpirun``, then ``mpi_root`` should be set to ``/software/openmpi``.
+
+.. _setup_destinations:
+
+Server queues
+-------------
+
+The installation script will also create example config files for both SLURM and PBS. These can be found in
+``~/.config/digichem|major_version|/Destinations``.
+
+.. code-block:: console
+    
+    $ ls ~/.config/digichem|major_version|/Destinations
+    PBS.yaml.off  SLURM.yaml.off
+
+These configs can be activated in the same way as the calculation engines, by removing the ``.off`` suffix.
+
+PBS
+~~~
+
+An example PBS config file looks like this:
+
+.. code-block:: yaml
+    
+    link:
+        tag: PBS
+        previous:
+            - Destination Base
+        next:
+            - Program Base
+    
+    meta:
+        class_name: PBS
+    
+    # The queue/partition name.
+    # Leave commented if your PBS chooses a queue automatically.
+    #queue: Main Queue
+    
+    # The maximum job time (dd-hh:mm:ss)
+    #time: 7-00:00:00
+
+The name of the PBS queue can set using the ``queue`` option. If your cluster automatically fills different
+queues based on the requested resources, this option can be left unset.
+
+The maximum allowed job execution can bet set using the ``time`` option, in dd-hh:mm:ss format. Some example
+time formats are:
+
+ - 7 days: ``7-00:00:00``
+ - 24 hours: ``24:00:00``
+ - 30 minutes: ``00:30:00``
+
+SLURM
+~~~~~
+
+An example SLURM config file looks like this:
+
+.. code-block:: yaml
+
+    link:
+        tag: SLURM
+        previous:
+            - Destination Base
+        next:
+            - Program Base
+    
+    meta:
+        class_name: SLURM
+    
+    # The queue/partition name.
+    # Leave commented if your SLURM chooses a queue automatically.
+    #queue: Main Queue
+    
+    # The maximum job time (dd-hh:mm:ss)
+    #time: 7-00:00:00
+    
+    
+    # Uncomment to setup auto mail.
+    #mail:
+    #    events: [BEGIN, END, FAIL]
+          # Where to send the mail (user@host)
+          # If not set, the default is to send to the current user.
+    #    user: user
+    #    host: host
+
+The options for SLURM and PBS are nearly identical, and both ``queue`` and ``time`` have the same meaning for both.
+
+.. note::
+   In SLURM, queues are often referred to as 'partitions', but these are the same thing. The partition name can be set
+   using the ``queue`` option, or left blank to let SLURM pick automatically (if configured).
+
+SLURM additionally supports sending automated emails when certain calculation milestone are hit.
+To enable this functionality, uncomment the ``mail`` option and set ``events`` to the milestones you'd like to be notified
+of. See the `SLURM manual <https://slurm.schedmd.com/sbatch.html#OPT_mail-type>`_ for a full list of supported options.
+By default, the email will be sent to your account on the cluster. To change this, set ``user`` and ``host`` appropriately.
+For example, if your email is ``joe.blogs@mail.com``, set:
+
+ - ``user: joe.blogs``
+ - ``host: mail.com``
+
+
+Multiple Queues
+~~~~~~~~~~~~~~~
+
+Often, it is desirable to setup multiple queues to pick from. This is particularly useful if the cluster has more than
+one partition/queue and does not support automatic queue assignments, and/or to optimise wait times by reducing the 
+maximum job duration for shorter calculations.
+
+Additional queues can be specified by writing additional files to the ``Destinations`` folder, or they can be added to the
+existing example config files. Multiple queues are separated in the same file by three hyphens (``---``), for example:
+
+.. code-block:: yaml
+
+    link:
+        tag: SLURM 1
+        previous:
+            - Destination Base
+        next:
+            - Program Base
+    
+    meta:
+        class_name: SLURM
+    
+    ---
+    
+    link:
+        tag: SLURM 2
+        previous:
+            - Destination Base
+        next:
+            - Program Base
+    
+    meta:
+        class_name: SLURM
+
+.. important::
+    Each queue must be given a unique ``tag``, or otherwise Digichem will produce an error.
+
+.. note::
+   Configs for both SLURM and PBS can be included in the same file; the file name is only used for your reference.
+   
+In this example config, three SLURM queues are defined, one with a maximum job time of 24h, one with 48h, and one with 72h.
+
+.. code-block:: yaml
+
+    link:
+        tag: SLURM 24h
+        previous:
+            - Destination Base
+        next:
+            - Program Base
+    
+    meta:
+        class_name: SLURM
+    
+    # The maximum job time (dd-hh:mm:ss)
+    time: 24:00:00
+    
+    ---
+    
+    link:
+        tag: SLURM 48h
+        previous:
+            - Destination Base
+        next:
+            - Program Base
+    
+    meta:
+        class_name: SLURM
+    
+    # The maximum job time (dd-hh:mm:ss)
+    time: 48:00:00
+    
+    ---
+    
+    link:
+        tag: SLURM 72h
+        previous:
+            - Destination Base
+        next:
+            - Program Base
+    
+    meta:
+        class_name: SLURM
+    
+    # The maximum job time (dd-hh:mm:ss)
+    time: 72:00:00
+    
+While in this example, three different PBS queues are exposed (each with a different ``queue`` name):
+
+.. code-block:: yaml
+
+    link:
+        tag: PBS Normal
+        previous:
+            - Destination Base
+        next:
+            - Program Base
+    
+    meta:
+        class_name: PBS
+    
+    queue: standard
+    
+    ---
+    
+    link:
+        tag: PBS Slow
+        previous:
+            - Destination Base
+        next:
+            - Program Base
+    
+    meta:
+        class_name: PBS
+    
+    queue: long
+    
+    ---
+    
+    link:
+        tag: PBS Testing
+        previous:
+            - Destination Base
+        next:
+            - Program Base
+    
+    meta:
+        class_name: PBS
+    
+    queue: debug
+
+Array Submission
+~~~~~~~~~~~~~~~~
+
+By default, each Digichem calculation is submitted as a separate job. This is simpler and easier
+to manage, but some computational clusters discourage submitting large numbers of individual jobs 
+simultaneously for performance reasons.
+
+As an alternative, Digichem supports array submission for both PBS and SLURM. When submitting multiple
+molecules in this mode, only a single job is submitted to the scheduler, with each molecule being represented
+as an individual array task in the larger array.
+
+To switch from single job submission to array submission, change the ``meta: class_name`` option to either
+``PBS-Array`` or ``SLURM-Array``, for PBS or SLURM respectively. All other options function the same as for
+single job submission. 
+
+For example, this config exposes both single job submission and array submission to SLURM:
+
+.. code-block:: yaml
+
+    link:
+        tag: SLURM
+        previous:
+            - Destination Base
+        next:
+            - Program Base
+    
+    meta:
+        class_name: SLURM
+    
+    queue: standard
+    
+    ---
+    
+    link:
+        tag: SLURM Array
+        previous:
+            - Destination Base
+        next:
+            - Program Base
+    
+    meta:
+        class_name: SLURM-Array
+    
+    queue: standard
+    
+

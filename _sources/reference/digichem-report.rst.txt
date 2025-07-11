@@ -1,0 +1,10 @@
+digichem report
+===============
+
+.. argparse::
+   :module: silico.program.main
+   :func: get_argparser
+   :prog: digichem
+   :path: report
+   :noepilog:
+   :nodescription:

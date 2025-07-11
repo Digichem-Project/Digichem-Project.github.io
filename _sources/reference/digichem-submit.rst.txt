@@ -1,0 +1,11 @@
+digichem submit
+===============
+
+.. argparse::
+   :module: silico.program.main
+   :func: get_argparser
+   :prog: digichem
+   :path: submit
+   :noepilog:
+   :nodescription:
+   

@@ -1,0 +1,665 @@
+.. _digichem_result:
+
+Digichem Result
+=============================
+
+``digichem result`` is used to parse results from completed calculations.
+
+.. code-block:: console
+
+    $ digichem result LOG_FILE
+    
+Digichem will intelligently look for relevant log files, so the calculation folder can be specified instead of the log file itself.
+For example, in the following directory structure::
+
+    Benzene
+        Gaussian 16 Optimisation Frequencies PBE0 (GD3BJ) Gas Phase Pople Basis Sets 6-31G(d,p)
+            Flags
+            Input
+            Logs
+            Output
+                Benzene.log
+                Benzene.fchk
+            Report
+            Results
+            
+The following commands are all equivalent:
+
+.. code-block:: console
+
+    $ digichem result "Benzene/Gaussian 16 Optimisation Frequencies PBE0 (GD3BJ) Gas Phase Pople Basis Sets 6-31G(d,p)/Output/Benzene.log"
+    $ digichem result "Benzene/Gaussian 16 Optimisation Frequencies PBE0 (GD3BJ) Gas Phase Pople Basis Sets 6-31G(d,p)/Output"
+    $ digichem result "Benzene/Gaussian 16 Optimisation Frequencies PBE0 (GD3BJ) Gas Phase Pople Basis Sets 6-31G(d,p)/"
+    
+By default, the result data is written to ``stdout``. The ``-O`` option can be used to write the data to a file instead:
+
+.. code-block:: console
+
+    $ digichem result Benzene.log -O Benzene.results
+    
+``digichem result`` can write results to a number of different formats.
+The default format is ``--yaml``, which saves the calculation data to the digichem native result format (.sir):
+
+.. code-block:: console
+
+    $ digichem result Benzene.log
+    _id: 5c407cd31b64517aaa0ebbee4852c24ed69dc30b
+    atoms:
+      alignment_method: Minimal
+      charge: 0
+      exact_mass:
+        units: g mol^-1
+        value: 78.04694999999998
+      formula: C6H6
+      linearity_ratio: 0.1012287031128819
+      molar_mass:
+      ...
+
+The .sir format is reusable, and .sir files can be read to convert the data to another format:
+
+.. code-block:: console
+
+    $ digichem result Benzene.log -O Benzene.sir
+    $ digichem result Benzene.sir -s
+
+The ``--summary`` format prints a human-readable summary of the most important calculation results:
+
+.. code-block:: console
+
+    $ digichem result Benzene.log --summary
+    _id
+      ----------------------------------------
+      5c407cd31b64517aaa0ebbee4852c24ed69dc30b
+      ----------------------------------------
+    
+    metadata
+    -------------------------  -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    name                       Benzene
+    log_files                  /home/oliver/ownCloud/Digichem Data Centre/Demonstrations/Outputs/Benzene/Gaussian 16 Optimisation Frequencies PBE0 (GD3BJ) Gas Phase Pople Basis Sets 6-31G(d,p)/Output/Benzene.log
+    auxiliary_files:fchk_file  /home/oliver/ownCloud/Digichem Data Centre/Demonstrations/Outputs/Benzene/Gaussian 16 Optimisation Frequencies PBE0 (GD3BJ) Gas Phase Pople Basis Sets 6-31G(d,p)/Output/Benzene.fchk
+    history
+    charge                     0.00
+    multiplicity               1.00
+    user                       oliver
+    package                    Gaussian
+    package_version            2016+C.01
+    silico_version             5.2.1-pre.0
+    calculations               Optimisation, Frequencies
+    methods                    DFT
+    functional                 PBE1PBE
+    ...
+
+While the ``--table-property`` (for human-readable) and ``--csv-property`` (for machine-readable) formats generate tables of results.
+When combined with an appropriate  :ref:`filter<result_filters>`, ``--table-property`` and ``--csv-property`` can be used to generate tables of specific data:
+
+.. code-block:: console
+
+    $ digichem result Benzene.log --csv-property -f orbitals -O Benzene.orbitals.csv
+    $ digichem result Benzene.log --table-property -f orbitals
+    orbitals:index  orbitals:label      orbitals:homo_distance    orbitals:energy / eV  orbitals:symmetry      orbitals:symmetry_index
+    ----------------  ----------------  ------------------------  ----------------------  -------------------  -------------------------
+                   1  HOMO-20                                -20                 -278.54  A                                            1
+                   2  HOMO-19                                -19                 -278.54  A                                            2
+                   3  HOMO-18                                -18                 -278.54  A                                            3
+                   4  HOMO-17                                -17                 -278.52  A                                            4
+                   5  HOMO-16                                -16                 -278.52  A                                            5
+                   6  HOMO-15                                -15                 -278.51  A                                            6
+                   7  HOMO-14                                -14                  -23.80  A                                            7
+                   8  HOMO-13                                -13                  -20.78  A                                            8
+                   9  HOMO-12                                -12                  -20.78  A                                            9
+                  10  HOMO-11                                -11                  -16.76  A                                           10
+    ...
+
+``digichem result`` can also parse and combine result data from multiple different calculation log files.
+This pattern is useful for comparing result data from several calculations simultaneously.
+Using the ``--table`` (or ``-t``) format will provide a top-level overview of each calculation result:
+
+.. code-block:: console
+
+    $ digichem result Benzene.log Naphthalene.log --table
+    _id                                       metadata:name    metadata:log_files   metadata:history      metadata:charge    metadata:multiplicity  metadata:user    metadata:package    metadata:package_version    metadata:digichem_version    metadata:calculations      metadata:methods    metadata:functional    metadata:basis_set    metadata:orbital_spin_type    metadata:success    metadata:optimisation_converged      metadata:date / s  metadata:date:string      metadata:duration / s  metadata:duration:string      metadata:temperature / K    metadata:pressure / atm  metadata:solvent:model    metadata:solvent:name      metadata:num_cpu    metadata:memory_used / B    metadata:memory_available / GB    ground_state:index  ground_state:symbol      ground_state:charge    ground_state:multiplicity    ground_state:multiplicity_index    ground_state:energy / eV    energies:final / eV    energies:scf:num_steps    energies:scf:final / eV    energies:mp:num_steps  energies:mp:final / eV      energies:mp:order    energies:cc:num_steps  energies:cc:final / eV    atoms:formula      atoms:charge  atoms:smiles      atoms:exact_mass / g mol^-1    atoms:molar_mass / g mol^-1    atoms:num_atoms    atoms:x-extension / Å    atoms:y-extension / Å    atoms:z-extension / Å    atoms:linearity_ratio    atoms:planarity_ratio  atoms:alignment_method      orbitals:dE(HOMO-LUMO) / eV    orbitals:num_occupied    orbitals:num_virtual  orbitals:spin_type      orbitals:HOMO:index  orbitals:HOMO:label      orbitals:HOMO:homo_distance    orbitals:HOMO:energy / eV  orbitals:HOMO:symmetry      orbitals:HOMO:symmetry_index    orbitals:LUMO:index  orbitals:LUMO:label      orbitals:LUMO:homo_distance    orbitals:LUMO:energy / eV  orbitals:LUMO:symmetry      orbitals:LUMO:symmetry_index  beta_orbitals:dE(HOMO-LUMO) / eV      beta_orbitals:num_occupied    beta_orbitals:num_virtual  beta_orbitals:spin_type      pdm:total / D    pdm:origin:x / Å    pdm:origin:y / Å    pdm:origin:z / Å    pdm:vector:x / D    pdm:vector:y / D    pdm:vector:z / D    pdm:x-angle / deg    pdm:xy-angle / deg    vibrations:num_vibrations    vibrations:num_negative
+    ----------------------------------------  ---------------  -------------------- ------------------  -----------------  -----------------------  ---------------  ------------------  --------------------------  ---------------------------  -------------------------  ------------------  ---------------------  --------------------  ----------------------------  ------------------  ---------------------------------  -------------------  ----------------------  -----------------------  --------------------------  --------------------------  -------------------------  ------------------------  -----------------------  ------------------  --------------------------  --------------------------------  --------------------  ---------------------  ---------------------  ---------------------------  ---------------------------------  --------------------------  ---------------------  ------------------------  -------------------------  -----------------------  ------------------------  -------------------  -----------------------  ------------------------  ---------------  --------------  --------------  -----------------------------  -----------------------------  -----------------  -----------------------  -----------------------  -----------------------  -----------------------  -----------------------  ------------------------  -----------------------------  -----------------------  ----------------------  --------------------  ---------------------  ---------------------  -----------------------------  ---------------------------  ------------------------  ------------------------------  ---------------------  ---------------------  -----------------------------  ---------------------------  ------------------------  ------------------------------  ----------------------------------  ----------------------------  ---------------------------  -------------------------  ---------------  ------------------  ------------------  ------------------  ------------------  ------------------  ------------------  -------------------  --------------------  ---------------------------  -------------------------
+    5c407cd31b64517aaa0ebbee4852c24ed69dc30b  Benzene          Benzene.log                                             0                        1  oliver           Gaussian            2016+C.01                   1.0.0-pre.1                  Optimisation, Frequencies  DFT                 PBE1PBE                6-31G(d,p)            restricted                    True                True                                     1689623663.00  17/07/2023 20:54:23                      210.90  3 m, 31 s                                       298.15                       1.00                                                                      2                   536870912                                 2                     0  S(0)                                       0                            1                                  0                    -6312.57               -6312.57                         3                   -6312.57                        0                                              0                        0                            C6H6                          0  c1ccccc1                                78.05                          78.11                 12                     4.95                     4.45                     0.00                     0.10                     1.00  Minimal                                            7.25                       21                      99  none                                     21  HOMO                                               0                        -7.02  A                                                     21                     22  LUMO                                               1                         0.23  A                                                     22                                                                 0                            0                                        0.00                0.00                0.00                0.00                0.00                0.00                0.00                 0.00                  0.00                           30                          0
+    986724991a2ccd02c86b9c147500b374d4ea655d  Naphthalene      Naphthalene.log                                         0                        1  oliver           Gaussian            2016+C.01                   1.0.0-pre.1                  Optimisation, Frequencies  DFT                 PBE1PBE                6-31G(d,p)            restricted                    True                True                                     1689623831.00  17/07/2023 20:57:11                      445.40  7 m, 25 s                                       298.15                       1.00                                                                      2                   536870912                                 2                     0  S(0)                                       0                            1                                  0                   -10488.94              -10488.94                         4                  -10488.94                        0                                              0                        0                            C10H8                         0  c1ccc2ccccc2c1                         128.06                         128.17                 18                     6.74                     4.97                     0.00                     0.26                     1.00  Minimal                                            5.20                       34                     156  none                                     34  HOMO                                               0                        -6.07  A                                                     18                     35  LUMO                                               1                        -0.87  B                                                     17                                                                 0                            0                                        0.00                0.00                0.00                0.00                0.00                0.00                0.00                 0.00                  0.00                           48                          0
+
+The output from this command is typically very wide; it is recommended to `pipe` the command into less for a more natural viewing experience:
+
+.. code-block:: console
+
+    $ digichem result Benzene.log Naphthalene.log --table | less -S
+    _id                                       metadata:name    met...
+    ----------------------------------------  ---------------  ---...
+    5c407cd31b64517aaa0ebbee4852c24ed69dc30b  Benzene          Ben...
+    986724991a2ccd02c86b9c147500b374d4ea655d  Naphthalene      Nap...
+
+To obtain a machine-readable output instead, use the ``--csv`` (or ``-c``) format:
+
+.. code-block:: console
+
+    $ digichem result Benzene.log Naphthalene.log --csv -O results.csv
+    $ digichem result Benzene.log Naphthalene.log --csv
+    _id,metadata:name,metadata:log_files,metadata:auxiliary_files:fchk_file,metadata:history,metadata:charge,metadata:multiplicity,metadata:user,metadata:package,metadata:package_version,metadata:digichem_version,metadata:calculations,metadata:methods,metadata:functional,metadata:basis_set,metadata:orbital_spin_type,metadata:success,metadata:optimisation_converged,metadata:date / s,metadata:date:string,metadata:duration / s,metadata:duration:string,metadata:temperature / K,metadata:pressure / atm,metadata:solvent:model,metadata:solvent:name,metadata:num_cpu,metadata:memory_used / B,metadata:memory_available / GB,ground_state:index,ground_state:symbol,ground_state:charge,ground_state:multiplicity,ground_state:multiplicity_index,ground_state:energy / eV,energies:final / eV,energies:scf:num_steps,energies:scf:final / eV,energies:mp:num_steps,energies:mp:final / eV,energies:mp:order,energies:cc:num_steps,energies:cc:final / eV,atoms:formula,atoms:charge,atoms:smiles,atoms:exact_mass / g mol^-1,atoms:molar_mass / g mol^-1,atoms:num_atoms,atoms:x-extension / Å,atoms:y-extension / Å,atoms:z-extension / Å,atoms:linearity_ratio,atoms:planarity_ratio,atoms:alignment_method,orbitals:dE(HOMO-LUMO) / eV,orbitals:num_occupied,orbitals:num_virtual,orbitals:spin_type,orbitals:HOMO:index,orbitals:HOMO:label,orbitals:HOMO:homo_distance,orbitals:HOMO:energy / eV,orbitals:HOMO:symmetry,orbitals:HOMO:symmetry_index,orbitals:LUMO:index,orbitals:LUMO:label,orbitals:LUMO:homo_distance,orbitals:LUMO:energy / eV,orbitals:LUMO:symmetry,orbitals:LUMO:symmetry_index,beta_orbitals:dE(HOMO-LUMO) / eV,beta_orbitals:num_occupied,beta_orbitals:num_virtual,beta_orbitals:spin_type,pdm:total / D,pdm:origin:x / Å,pdm:origin:y / Å,pdm:origin:z / Å,pdm:vector:x / D,pdm:vector:y / D,pdm:vector:z / D,pdm:x-angle / deg,pdm:xy-angle / deg,vibrations:num_vibrations,vibrations:num_negative
+    5c407cd31b64517aaa0ebbee4852c24ed69dc30b,Benzene,"/home/oliver/ownCloud/Digichem Data Centre/Demonstrations/Outputs/Benzene/Gaussian 16 Optimisation Frequencies PBE0 (GD3BJ) Gas Phase Pople Basis Sets 6-31G(d,p)/Output/Benzene.log","/home/oliver/ownCloud/Digichem Data Centre/Demonstrations/Outputs/Benzene/Gaussian 16 Optimisation Frequencies PBE0 (GD3BJ) Gas Phase Pople Basis Sets 6-31G(d,p)/Output/Benzene.fchk",,0,1,oliver,Gaussian,2016+C.01,1.0.0-pre.1,"Optimisation, Frequencies",DFT,PBE1PBE,"6-31G(d,p)",restricted,True,True,1689623663.0,17/07/2023 20:54:23,210.9,"3 m, 31 s",298.15,1.0,,,2,536870912,2,0,S(0),0,1,0,-6312.56934563643,-6312.56934563643,3,-6312.56934563643,0,,0,0,,C6H6,0,c1ccccc1,78.04694999999998,78.11184,12,4.946028,4.445347999999999,0.000259,0.1012287031128819,0.9999417368448994,Minimal,7.24911297732,21,99,none,21,HOMO,0,-7.0229863675545,A,21,22,LUMO,1,0.2261266097655,A,22,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,30,0
+    986724991a2ccd02c86b9c147500b374d4ea655d,Naphthalene,/home/oliver/ownCloud/Digichem Data Centre/Demonstrations/Outputs/Naphthalene/Gaussian 16 Optimisation Frequencies PBE0 (GD3BJ) Gas Phase Pople Basis Sets 6-31G**/Output/Naphthalene.log,/home/oliver/ownCloud/Digichem Data Centre/Demonstrations/Outputs/Naphthalene/Gaussian 16 Optimisation Frequencies PBE0 (GD3BJ) Gas Phase Pople Basis Sets 6-31G**/Output/Naphthalene.fchk,,0,1,oliver,Gaussian,2016+C.01,1.0.0-pre.1,"Optimisation, Frequencies",DFT,PBE1PBE,"6-31G(d,p)",restricted,True,True,1689623831.0,17/07/2023 20:57:11,445.4,"7 m, 25 s",298.15,1.0,,,2,536870912,2,0,S(0),0,1,0,-10488.93947360067,-10488.93947360067,4,-10488.93947360067,0,,0,0,,C10H8,0,c1ccc2ccccc2c1,128.06259999999997,128.17052,18,6.738784,4.971028,1e-06,0.26232566587681105,0.9999997988343658,Minimal,5.2041773908125,34,156,none,34,HOMO,0,-6.072492687758,A,18,35,LUMO,1,-0.8683152969455,B,17,,0,0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,48,0
+    
+Multiple calculation parsing can be combined with filters in the usual way to obtain a subset of the total results:
+
+.. code-block:: console
+
+    $ digichem result Benzene.log Naphthalene.log --table -f metadata:name orbitals
+    metadata:name      orbitals:dE(HOMO-LUMO) / eV    orbitals:num_occupied    orbitals:num_virtual  orbitals:spin_type
+    ---------------  -----------------------------  -----------------------  ----------------------  --------------------
+    Benzene                                   7.25                       21                      99  none
+    Naphthalene                               5.20                       34                     156  none
+
+
+All of the output formats support multiple calculations. The non-tabular formats (those other than ``-t`` and ``-c``) will 
+display each result separately, in series. This is sometimes useful for comparing specific results at a glance, but generally
+has less utility than the tabular formats:
+
+.. code-block:: console
+
+    $ digichem result Benzene.log Naphthalene.log -s -f metadata:name orbitals
+    metadata:name
+      -------
+      Benzene
+      -------
+    
+    orbitals
+    ------------------  -----
+    dE(HOMO-LUMO) / eV  7.25
+    num_occupied        21.00
+    num_virtual         99.00
+    spin_type           none
+    ------------------  -----
+    
+    metadata:name
+      -----------
+      Naphthalene
+      -----------
+    
+    orbitals
+    ------------------  ------
+    dE(HOMO-LUMO) / eV  5.20
+    num_occupied        34.00
+    num_virtual         156.00
+    spin_type           none
+    ------------------  ------
+
+
+See :ref:`below <result_output_formats>` for a full description of the available output formats.
+
+.. _result_filters:
+
+Filters
+-------
+
+Filters allow the user to only display or export certain parts of the calculation data.
+Each filter is specified by the ``--filters`` (or ``-f``) option, followed by the filter itself.
+For example, to only display the metadata from a calculation:
+
+.. code-block:: console
+
+    $ digichem result Benzene.log -s -f metadata
+    metadata
+    -------------------------  --------------------------
+    name                       Benzene
+    log_files                  Benzene.log
+    auxiliary_files:fchk_file  Benzene.fchk
+    history
+    charge                     0.00
+    multiplicity               1.00
+    user                       oliver
+    package                    Gaussian
+    package_version            2016+C.01
+    digichem_version           1.0.0-pre.1
+    calculations               Optimisation, Frequencies
+    methods                    DFT
+    functional                 PBE1PBE
+    basis_set                  6-31G(d,p)
+    orbital_spin_type          restricted
+    success                    1.00
+    optimisation_converged     1.00
+    date / s                   1689623663.00
+    date:string                17/07/2023 20:54:23
+    duration / s               210.90
+    duration:string            3 m, 31 s
+    temperature / K            298.15
+    pressure / atm             1.00
+    solvent:model
+    solvent:name
+    num_cpu                    2.00
+    memory_used / B            536870912.00
+    memory_available / GB      2.00
+    -------------------------  --------------------------
+    
+Multiple filters can be specified to extract more than one section simultaneously.
+Filters that are specified in this way are always combined *inclusively*, that is any section
+that matches any filter will be displayed. For example, to extract both the orbital and geometric data:
+
+.. code-block:: console
+
+    $ digichem result Benzene.log -s -f atoms orbitals
+    atoms
+    ---------------------  --------
+    formula                C6H6
+    charge                 0.00
+    smiles                 c1ccccc1
+    exact_mass / g mol^-1  78.05
+    molar_mass / g mol^-1  78.11
+    num_atoms              12.00
+    x-extension / Å        4.95
+    y-extension / Å        4.45
+    z-extension / Å        0.00
+    linearity_ratio        0.10
+    planarity_ratio        1.00
+    alignment_method       Minimal
+    ---------------------  --------
+    
+    orbitals
+    ------------------  -----
+    dE(HOMO-LUMO) / eV  7.25
+    num_occupied        21.00
+    num_virtual         99.00
+    spin_type           none
+    ------------------  -----
+
+The calculation data that is parsed by Digichem is stored in a hierarchy. At the top level of the hierarchy are general sections
+for each type of data that can be parsed by Digichem, things like *orbitals*, *atoms*, *metadata*, and so on.
+Within each section can then be found the relevant results. Each of these items may also be nested itself, containing a number of sub-results.
+As an example, a typical *atoms* section has the following structure:
+
+.. code-block::
+
+    atoms:
+      alignment_method:
+      charge:
+      exact_mass:
+        units:
+        value:
+      formula:
+      linearity_ratio:
+      molar_mass:
+        units:
+        value:
+      num_atoms:
+      planarity_ratio:
+      smiles:
+      values:
+      - coords:
+        element:
+        group:
+        index:
+        label:
+        mass:
+          units:
+          value:
+      ...
+
+As can be seen, the ``exact_mass`` and ``molar_mass`` items both contain sub-items, which are ``units`` and ``value``.
+Any numeric results that are parsed by Digichem and that have a unit will be displayed in this way.
+These top-level items of the ``atoms`` section are summary data for the molecule as a whole, including results such as
+the molecular charge, molar mass, and molecular formula. The data pertaining to the atom positions themselves are stored in a list,
+which is exposed in the ``values`` section. In the above example, the structure of only a single atom is shown, in reality
+this list would contain all the atoms of the molecule.
+
+More advanced filters can be used to navigate this hierarchy and select only specific results. To progress *down* the hierarchy,
+specify multiple filter terms joined with a semicolon (':'). For example, to display only the molar_mass of the molecule:
+
+.. code-block:: console
+
+    $ digichem result Benzene.log -f atoms:molar_mass
+    atoms:molar_mass:
+      units: g mol^-1
+      value: 78.11184
+
+More filter terms can be added as necessary. For example, if only the numeric value of the molar_mass was required:
+
+.. code-block:: console
+
+    $ digichem result Benzene.log -f atoms:molar_mass:value
+    atoms:molar_mass:value: 78.11184
+
+Multiple filters can still be specified as usual. For example, to compare the exact and molar masses:
+
+.. code-block:: console
+
+    $ digichem result Benzene.log -f atoms:molar_mass:value atoms:exact_mass:value
+    atoms:exact_mass:value: 78.04694999999998
+    atoms:molar_mass:value: 78.11184
+
+Filters can also be used to extract specific results from a list. A numerical filter will correspond to a given position in that list.
+For example, to extract the data pertaining to the first atom in the list:
+
+.. code-block:: console
+
+    $ digichem result Benzene.log -f atoms:values:0
+    atoms:values:0:
+      coords:
+        x:
+          units: "Å"
+          value: -1.389184
+        y:
+          units: "Å"
+          value: 0.091061
+        z:
+          units: "Å"
+          value: 9.0e-06
+      element: 6
+      group: C1
+      index: 1
+      label: C1
+      mass:
+        units: g mol^-1
+        value: 12.0
+
+All lists in Digichem are zero-indexed, so the first atom is identified by a filter of '0'.
+Although the list data is technically stored in the ``values`` item, Digichem allows the ``values`` filter to be omitted as a convenience when specifying list filters.
+Thus the following filters are equivalent:
+
+.. code-block:: console
+
+    $ digichem result Benzene.log -f atoms:values:0
+    $ digichem result Benzene.log -f atoms:0
+
+Multiple search terms can still be specified to navigate the hierarchy as normal. For example,
+to extract the element of the first atom:
+
+.. code-block:: console
+
+    $ digichem result Benzene.log -f atoms:0:element
+    atoms:0:element: 6
+    
+Which is 6 (carbon). Negative indices can also be specified to search from the end of the list:
+
+.. code-block:: console
+
+    $ digichem result Benzene.log -f atoms:-1:element
+    atoms:-1:element: 1
+
+For lists of more complex data, such as molecular orbitals, filters can also be specified based on the unique properties of the item.
+For example, the `label` of the orbital can be used as a filter to obtain the HOMO and LUMO:
+
+.. code-block:: console
+
+    $ digichem result Benzene.log -f orbitals:HOMO orbitals:LUMO
+    orbitals:HOMO:
+      energy:
+        units: eV
+        value: -7.0229863675545
+      homo_distance: 0
+      index: 21
+      label: HOMO
+      symmetry: A
+      symmetry_index: 21
+    orbitals:LUMO:
+      energy:
+        units: eV
+        value: 0.2261266097655
+      homo_distance: 1
+      index: 22
+      label: LUMO
+      symmetry: A
+      symmetry_index: 22
+      
+Other orbitals can be obtained based on their proximity to the HOMO/LUMO too:
+
+.. code-block:: console
+
+    $ digichem result Benzene.log -f orbitals:HOMO-1
+    orbitals:HOMO-1:
+      energy:
+        units: eV
+        value: -7.023258481405
+      homo_distance: -1
+      index: 20
+      label: HOMO-1
+      symmetry: A
+      symmetry_index: 20
+      
+Similarly, excited states can be filtered based on their unique state symbol:
+
+.. code-block:: console
+
+    $ digichem result Benzene.log -f excited_states:"S(1)"
+    excited_states:S(1):
+      cie:
+        x: 0.3127
+        y: 0.329
+      colour: Ultraviolet
+      energy:
+        units: eV
+        value: 5.679800248338608
+      index: 5
+      multiplicity: 1
+      multiplicity_index: 1
+      oscillator_strength: 0.0
+      symbol: S(1)
+      symmetry: Singlet-A
+      ...
+
+.. _result_output_formats:
+
+Output Formats
+--------------
+
+.. _result_yaml_format:
+
+Digichem Native Format (.sir)
+_____________________________
+
+``--yaml`` or ``-y``
+
+The default digichem native file format (.sir). This format is designed to reversibly store
+calculation results in an efficient manner, allowing them to be read back at a later date.
+The YAML used to store this data is also readable to humans, and is fairly easy to understand
+for single results. For lists or deeply nested results however, a tabular format is often
+a better choice.
+
+.. code-block:: console
+
+    $ digichem result Benzene.log -y -f metadata
+    metadata:
+      auxiliary_files:
+        fchk_file: Benzene.fchk
+      basis_set: 6-31G(d,p)
+      calculations:
+      - Optimisation
+      - Frequencies
+      charge: 0
+      date:
+        string: 17/07/2023 20:54:23
+        units: s
+        value: 1689623663.0
+      digichem_version: 1.0.0-pre.1
+      duration:
+        string: 3 m, 31 s
+        units: s
+        value: 210.9
+      functional: PBE1PBE
+      ...
+
+JSON Format
+___________
+
+``--json`` or ``-j``
+
+Similar to the .sir format, the JSON format is reversible.
+Compared to the YAML format used by .sir, JSON is more compact but less readable to humans.
+It is generally only used where efficiency is mandated, such as data transfer over a network.
+
+.. code-block:: console
+
+    $ digichem result Benzene.log -j -f metadata
+    [{"metadata": {"name": "Benzene", "log_files": ["Benzene.log"], "auxiliary_files": {"fchk_file": "Benzene.fchk"}, "history": null, "charge": 0, "multiplicity": 1, "user": "oliver", "package": "Gaussian", "package_version": "2016+C.01", "digichem_version": "1.0.0-pre.1", "calculations": ["Optimisation", "Frequencies"], "methods": ["DFT"], "functional": "PBE1PBE", "basis_set": "6-31G(d,p)", "orbital_spin_type": "restricted", "success": true, "optimisation_converged": true, "date": {"value": 1689623663.0, "units": "s", "string": "17/07/2023 20:54:23"}, "duration": {"value": 210.9, "units": "s", "string": "3 m, 31 s"}, "temperature": {"value": 298.15, "units": "K"}, "pressure": {"value": 1.0, "units": "atm"}, "solvent": {"model": null, "name": null, "params": {}}, "num_cpu": 2, "memory_used": {"value": 536870912, "units": "B"}, "memory_available": {"value": 2, "units": "GB"}}}]
+
+CSV Format
+__________
+
+``--csv`` or ``-c``
+
+The comma-separated values format is useful for exporting results for further post-processing in another program, particularly spreadsheet software.
+This format is particularly well suited for parsing multiple output files simultaneously, allowing large amount of data to be compared at once.
+This version of the format contains only high level results, for deeply nested data use the ``--csv-property`` format instead.
+
+.. code-block:: console
+
+    $ digichem result Benzene.log Naphthalene.log -c -f metadata
+    metadata:name,metadata:log_files,metadata:auxiliary_files:fchk_file,metadata:history,metadata:charge,metadata:multiplicity,metadata:user,metadata:package,metadata:package_version,metadata:digichem_version,metadata:calculations,metadata:methods,metadata:functional,metadata:basis_set,metadata:orbital_spin_type,metadata:success,metadata:optimisation_converged,metadata:date / s,metadata:date:string,metadata:duration / s,metadata:duration:string,metadata:temperature / K,metadata:pressure / atm,metadata:solvent:model,metadata:solvent:name,metadata:num_cpu,metadata:memory_used / B,metadata:memory_available / GB
+    Benzene,Benzene.log,Benzene.fchk,,0,1,oliver,Gaussian,2016+C.01,1.0.0-pre.1,"Optimisation, Frequencies",DFT,PBE1PBE,"6-31G(d,p)",restricted,True,True,1689623663.0,17/07/2023 20:54:23,210.9,"3 m, 31 s",298.15,1.0,,,2,536870912,2
+    Naphthalene,Naphthalene.log,Naphthalene.fchk,,0,1,oliver,Gaussian,2016+C.01,1.0.0-pre.1,"Optimisation, Frequencies",DFT,PBE1PBE,"6-31G(d,p)",restricted,True,True,1689623831.0,17/07/2023 20:57:11,445.4,"7 m, 25 s",298.15,1.0,,,2,536870912,2
+
+Table Format
+____________
+
+``--table`` or ``-t``
+
+This format contains the same data as ``--csv``, except in human-readable format. Useful for reading in a terminal (or text editor).
+In the terminal, it is often advantageous to pipe the output to the ``less`` command to prevent long lines from being split.
+
+.. code-block:: console
+
+    $ digichem result Benzene.log Naphthalene.log -t -f metadata | less -S
+    metadata:name    metadata:log_files    metadata:auxiliary_files:fchk_file    metadata:history      metadata:charge    metadata:multiplicity  metadata:user    metadata:package    metadata:package_version    metadata:digichem_version    metadata:calculations      metadata:methods    metadata:functional    metadata:basis_set    metadata:orbital_spin_type    metadata:success    metadata:optimisation_converged      metadata:date / s  metadata:date:string      metadata:duration / s  metadata:duration:string      metadata:temperature / K    metadata:pressure / atm  metadata:solvent:model    metadata:solvent:name      metadata:num_cpu    metadata:memory_used / B    metadata:memory_available / GB
+    ---------------  --------------------  ------------------------------------  ------------------  -----------------  -----------------------  ---------------  ------------------  --------------------------  ---------------------------  -------------------------  ------------------  ---------------------  --------------------  ----------------------------  ------------------  ---------------------------------  -------------------  ----------------------  -----------------------  --------------------------  --------------------------  -------------------------  ------------------------  -----------------------  ------------------  --------------------------  --------------------------------
+    Benzene          Benzene.log           Benzene.fchk                          0                        1  oliver           Gaussian            2016+C.01                   1.0.0-pre.1                  Optimisation, Frequencies  DFT                 PBE1PBE                6-31G(d,p)            restricted                    True                True                                     1689623663.00  17/07/2023 20:54:23                      210.90  3 m, 31 s                                       298.15                       1.00                                                                      2                   536870912                                 2
+    Naphthalene      Naphthalene.log       Naphthalene.fchk                      0                        1  oliver           Gaussian            2016+C.01                   1.0.0-pre.1                  Optimisation, Frequencies  DFT                 PBE1PBE                6-31G(d,p)            restricted                    True                True                                     1689623831.00  17/07/2023 20:57:11                      445.40  7 m, 25 s                                       298.15                       1.00                                                                      2                   536870912                                 2
+
+
+CSV Property Format
+___________________
+
+``--csv-property`` or ``-d``
+
+Similar to the standard ``--csv`` format, except intended for use with lists of data.
+This format produces a single table of data for tabular results, such as lists of orbitals, excited states, vibrational frequenies etc.
+
+.. code-block:: console
+
+    $ digichem result Benzene.log -d -f orbitals
+    orbitals:index,orbitals:label,orbitals:homo_distance,orbitals:energy / eV,orbitals:symmetry,orbitals:symmetry_index
+    1,HOMO-33,-33,-278.796422440579,A,1
+    2,HOMO-32,-32,-278.78363308960553,B,1
+    3,HOMO-31,-31,-278.6056706313785,B,2
+    4,HOMO-30,-30,-278.6056706313785,A,2
+    5,HOMO-29,-29,-278.5964187604615,A,3
+    6,HOMO-28,-28,-278.59614664661103,B,3
+    7,HOMO-27,-27,-278.5822688402355,B,4
+    8,HOMO-26,-26,-278.5817246125345,A,4
+    9,HOMO-25,-25,-278.577642904777,A,5
+    10,HOMO-24,-24,-278.57737079092647,B,5
+    11,HOMO-23,-23,-24.4404497103585,A,6
+    12,HOMO-22,-22,-22.953347517376002,B,6
+    13,HOMO-21,-21,-21.619445422225,B,7
+    14,HOMO-20,-20,-20.7032380875915,A,7
+    15,HOMO-19,-19,-20.0860838746575,A,8
+    ...
+
+Table Property Format
+_____________________
+
+``--table-property`` or ``-a``
+
+The same as ``--csv-property``, except in human-readable format.
+
+.. code-block:: console
+
+    $ digichem result Benzene.log -a -f orbitals
+      orbitals:index  orbitals:label      orbitals:homo_distance    orbitals:energy / eV  orbitals:symmetry      orbitals:symmetry_index
+    ----------------  ----------------  ------------------------  ----------------------  -------------------  -------------------------
+                   1  HOMO-33                                -33                 -278.80  A                                            1
+                   2  HOMO-32                                -32                 -278.78  B                                            1
+                   3  HOMO-31                                -31                 -278.61  B                                            2
+                   4  HOMO-30                                -30                 -278.61  A                                            2
+                   5  HOMO-29                                -29                 -278.60  A                                            3
+                   6  HOMO-28                                -28                 -278.60  B                                            3
+                   7  HOMO-27                                -27                 -278.58  B                                            4
+                   8  HOMO-26                                -26                 -278.58  A                                            4
+                   9  HOMO-25                                -25                 -278.58  A                                            5
+                  10  HOMO-24                                -24                 -278.58  B                                            5
+                  11  HOMO-23                                -23                  -24.44  A                                            6
+                  12  HOMO-22                                -22                  -22.95  B                                            6
+                  13  HOMO-21                                -21                  -21.62  B                                            7
+                  14  HOMO-20                                -20                  -20.70  A                                            7
+                  15  HOMO-19                                -19                  -20.09  A                                            8
+    ...
+
+Summary Format
+______________
+
+``--summary`` or ``-s``
+
+A format that presents a top-level view of a calculation's results. The summary format is useful for 
+obtaining a quick overview of a calculation at a glance.
+
+.. code-block:: console
+
+    $ digichem result Benzene.log -s -f metadata
+    metadata
+    -------------------------  ---------------------------
+    name                       Benzene
+    log_files                  Benzene.log
+    auxiliary_files:fchk_file  Benzene.fchk
+    history
+    charge                     0.00
+    multiplicity               1.00
+    user                       oliver
+    package                    Gaussian
+    package_version            2016+C.01
+    digichem_version           1.0.0-pre.1
+    calculations               Optimisation, Frequencies
+    methods                    DFT
+    functional                 PBE1PBE
+    basis_set                  6-31G(d,p)
+    orbital_spin_type          restricted
+    success                    1.00
+    optimisation_converged     1.00
+    date / s                   1689623663.00
+    date:string                17/07/2023 20:54:23
+    duration / s               210.90
+    duration:string            3 m, 31 s
+    temperature / K            298.15
+    pressure / atm             1.00
+    solvent:model
+    solvent:name
+    num_cpu                    2.00
+    memory_used / B            536870912.00
+    memory_available / GB      2.00
+    -------------------------  ---------------------------
+    
+
+Summary
+_____________________________
+
+.. csv-table:: 
+   :file: /_static/result_ref/Formats.csv
+   :header-rows: 1
+
+**H**: Human-readable, **M**: Machine-readable
+
+.. note::
+    The `Human readable` and `Machine readable` columns are intended as a guide only. All formats are text based and hence could be read by a sufficiently skilled (or stubborn) human.
+    Likewise, one could write a parser for the 'non machine readable' formats, but it is difficult to think of a reason to do so...
+
+Regenerating the Results Folder
+-------------------------------
+
+When a Digichem managed calculation is finished, Digichem will automatically write a number of result files to the 'Results' folder.
+These files include a number of CSV tables containing data about molecular orbitals, vibrational frequencies and so-on,
+as well as a number of summary files pertaining to the calculation as a whole.
+
+It is sometimes necessary to recreate these result files if they are not generated automatically.
+This might happen if a calculation stops with a severe error which prevents Digichem from continuing,
+or if a calculation was run manually (ie, not with Digichem) but you still wants to generate the normal result files.
+
+In these instances, the ``--auto`` option can be specified to ``digichem result`` to regenerate any missing files:
+
+.. code-block:: console
+
+    $ digichem result Output/Benzene.log --auto
+    $ ls Results
+    Benzene.absorptions.csv  Benzene.IR.csv        Benzene.SOC.csv
+    Benzene.atoms.csv        Benzene.MP.csv        Benzene.summary.csv
+    Benzene.beta.csv         Benzene.nmr.csv       Benzene.summary.txt
+    Benzene.CC.csv           Benzene.orbitals.csv  Benzene.UV-Vis.csv
+    Benzene.ES.csv           Benzene.SCF.csv       Benzene.vibrations.csv

@@ -1,0 +1,21 @@
+Getting started
+---------------
+
+Welcome to Digichem!
+
+Digichem is a complete computational management suite, designed to automate and simplify the submission and analysis
+of molecular calculations.
+
+This documentation is designed to get you up to speed on how to use Digichem as quickly as possible.
+It will cover how to install the program from scratch as well as how to run some simple calculations, and is written
+with complete novices in mind. All of the instructions are laid-out in a simple, step-by-step format.
+
+Click on the links below to get started!
+
+.. toctree::
+   :maxdepth: 1
+   :includehidden:
+
+   install
+   run
+   monitor

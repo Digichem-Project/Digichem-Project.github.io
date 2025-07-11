@@ -1,0 +1,153 @@
+Methods
+-------
+
+Methods are a core concept in the Digichem submission process. Methods represent a job (normally a calculation) to perform.
+Typically, each method corresponds to a single calculation type (a single point, a geometry optimisation etc.), but some compound
+calculations (such as a two part geometry optimisation and frequency calculation) can be represented by a single method. As a general
+rule, if the calculation would normally require more than one input file to submit manually, then it will require more than one method
+to submit with Digichem.
+
+Each method contains three core components, which together describe how the calculation should be performed. These are:
+
+  #. The **destination**, which describes where to perform the calculation. Normally this corresponds to a specific server queue/partition.
+  #. The **program**, which describes the computational engine to run. This is where paths to the program binaries are set.
+  #. The **calculation**, which describes the calculation itself. Most of the configuration options you'll need are set here.
+  
+Every part of the calculation is controlled by one of these three components, except for the starting geometry (the molecule).
+When you submit a calculation with Digichem, the molecules (starting geometries) and methods are specified separately.
+Each method acts like a **template**, and will apply to every molecule that is submitted. See the :ref:`digichem submit <digichem_submit>`
+command for more information.
+
+Method components
+_________________
+
+The three components of a method are generalizable and interchangeable. This means, for example, that a program definition can be
+written only once and used with multiple different server queues and/or calculation types.
+
+Many calculation options are generalized across different calculation programs too. For example, the setting to perform a geometry
+optimisation:
+
+.. code-block:: yaml
+
+   properties:
+     opt:
+       calc: True
+       
+Is the same for Gaussian, Turbomole, and Orca. This makes it easy to repeat calculations across different engines.
+
+Specifying methods
+__________________
+
+Methods are normally specified in one of two ways:
+
+ #. Through the internal library.
+ #. In method files.
+ 
+It is nearly always a good idea to specify the available server queues (**destinations**) and calculation engines (**programs**)
+in the library, because these settings rarely change. See :ref:`setup <setup>` for more information on configuring these files,
+if you have not done so already. Once setup, these destination and program definitions can then be reused in other method
+files to avoid having to write them again.
+
+Digichem also comes pre-installed with a large number of calculation definitions which cover the most common calculation types.
+
+
+.. _method_files:
+
+Method files
+____________
+
+
+Method files are written in `YAML <https://yaml.org/>`__, which is a hierarchical, program independent text format.
+The normal file extension for Digichem method files is `.sim` (for in-**si**\ lico **m**\ ethod), and this is used by Digichem throughout.
+However, the file extension is entirely optional and can be omitted or changed if desired.
+
+Each method file consists of three top-level options, corresponding to the three components of the method:
+
+.. code-block:: yaml
+
+   destination:
+     ...  # Destination/queue options go here.
+   program:
+     ...  # Program/engine options go here.
+   calculation:
+     ...  # Calculation specific options go here.
+
+Each component can either manually specify the desired options, or refer back to a definition in the internal library.
+To use a library definition, simply set the option to the appropriate definition name. These names are set during
+:ref:`setup <setup>`, and can be changed in the relevant config files under ``~/.config/digichem|major_version|/Destinations``
+and ``~/.config/digichem|major_version|/Programs``.
+
+For example, if a Gaussian engine was setup with the following options:
+
+.. code-block:: yaml
+
+   link:
+     tag: Gaussian 16
+   ... # Other options.
+   
+Then the corresponding method would simply be:
+
+.. code-block:: yaml
+
+   destination:
+     ...  # Destination/queue options go here.
+   program: Gaussian 16
+   calculation:
+     ...  # Calculation specific options go here.
+
+The ``digichem config show`` command will display the available program and destination names:
+
+.. code-block:: shell
+
+   $ digichem config show -b destination -d 1
+   Destination:
+    [1] 'SLURM'
+    [2] 'SLURM Array'
+    [3] 'PBS'
+    [4] 'PBS Array'
+    [5] 'Series'
+    [6] 'Parallel'
+
+.. code-block:: shell
+
+   $ digichem config show -b program -d 1
+   Destination:
+    [1] 'Gaussian 16'
+    [2] 'Turbomole'
+    [3] 'Orca'
+
+Each part of the method can either link to the library or be defined directly in the method file.
+Typically, this means that the `destination` and `program` options will use a library definition, while the `calculation`
+will be set manually:
+
+
+.. code-block:: yaml
+
+   destination: SLURM      # Use an existing destination/queue called 'SLURM'.
+   program: Gaussian 16    # Use an existing progrm/engine called 'Gaussian 16'.
+   calculation:            # Define a new calculation (a single-point at the HF level).
+     method:
+       hf:
+         calc: True
+     properties:
+       sp:
+         calc: True
+
+.. 
+    Walk through
+    ____________
+
+    Coming soon!
+
+
+Specification
+_____________
+
+
+.. toctree::
+   :maxdepth: 3
+   :includehidden:
+
+   calculations
+   programs
+   destinations

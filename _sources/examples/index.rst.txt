@@ -1,0 +1,8 @@
+Walkthroughs
+---------------
+
+.. toctree::
+   :maxdepth: 1
+   :includehidden:
+
+   photonics

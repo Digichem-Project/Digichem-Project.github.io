@@ -1,0 +1,81 @@
+Download
+========
+
+Digichem is distributed in binary form only; no source-code for the main program is available (but the core library is `open-source <https://github.com/Digichem-Project/digichem-core>`_).
+
+These builds are automatically compiled by Build-boy, the Digichem build server.
+Build-boy creates builds for the most popular versions of Linux that are used by computational servers.
+Currently, this includes Fedora-like distros (CentOS/Redhat *etc.*) from version 7 to 9, and Debian like distros
+from 8 (Jessie) to 12 (bookworm). CentOS 6, sadly, is too old to be supported. If you cluster still uses CentOS/Redhat 6, please consider
+upgrading.
+
+If your cluster does not use a supported distro, please try the ``CentOS-7.9`` build in the first instance,
+as it is the most widely supported version. We also welcome you to request support for your favourite flavour of Linux
+by creating an issue for `Build-boy <https://github.com/Digichem-Project/build-boy/issues>`__.
+
+
+What OS do I have?
+------------------
+
+Login to your cluster and execute the following command to determine your operating system version:
+
+.. code-block:: console
+
+    $ cat /etc/*elease
+    
+On Redhat-7.9 for example, you'll see the following output:
+
+.. code-block:: console
+
+    NAME="Red Hat Enterprise Linux Server"
+    VERSION="7.9 (Maipo)"
+    ID="rhel"
+    ID_LIKE="fedora"
+    VARIANT="Server"
+    VARIANT_ID="server"
+    VERSION_ID="7.9"
+    PRETTY_NAME="Red Hat Enterprise Linux Server 7.9 (Maipo)"
+    ANSI_COLOR="0;31"
+    CPE_NAME="cpe:/o:redhat:enterprise_linux:7.9:GA:server"
+    HOME_URL="https://www.redhat.com/"
+    BUG_REPORT_URL="https://bugzilla.redhat.com/"
+    
+    REDHAT_BUGZILLA_PRODUCT="Red Hat Enterprise Linux 7"
+    REDHAT_BUGZILLA_PRODUCT_VERSION=7.9
+    REDHAT_SUPPORT_PRODUCT="Red Hat Enterprise Linux"
+    REDHAT_SUPPORT_PRODUCT_VERSION="7.9"
+    Red Hat Enterprise Linux Server release 7.9 (Maipo)
+    Red Hat Enterprise Linux Server release 7.9 (Maipo)
+
+Stable versions
+---------------
+
+For general production use, please select the latest stable Digichem version for your cluster's operating system from below:
+
+Fedora/CentOS/Redhat
+____________________
+
+ - Rocky Linux 9: `Download Digichem v|version| <https://github.com/Digichem-Project/build-boy/releases/download/|version|-Rocky-Linux-9/digichem.|version|.Rocky-Linux-9.tar.gz>`__
+ - CentOS Stream 8: `Download Digichem v|version| <https://github.com/Digichem-Project/build-boy/releases/download/|version|-CentOS-Stream-8/digichem.|version|.CentOS-Stream-8.tar.gz>`__
+ - CentOS 8.5: `Download Digichem v|version| <https://github.com/Digichem-Project/build-boy/releases/download/|version|-CentOS-8.5/digichem.|version|.CentOS-8.5.tar.gz>`__
+ - CentOS 7.9: `Download Digichem v|version| <https://github.com/Digichem-Project/build-boy/releases/download/|version|-CentOS-7.9/digichem.|version|.CentOS-7.9.tar.gz>`__
+
+Debian/Ubuntu
+____________________
+
+ - Debian Bookworm (12): `Download Digichem v|version| <https://github.com/Digichem-Project/build-boy/releases/download/|version|-Debian-Bookworm/digichem.|version|.Debian-Bookworm.tar.gz>`__
+ - Debian Bullseye (11): `Download Digichem v|version| <https://github.com/Digichem-Project/build-boy/releases/download/|version|-Debian-Bullseye/digichem.|version|.Debian-Bullseye.tar.gz>`__
+ - Debian Buster (10): `Download Digichem v|version| <https://github.com/Digichem-Project/build-boy/releases/download/|version|-Debian-Buster/digichem.|version|.Debian-Buster.tar.gz>`__
+ - Debian Stretch (9): `Download Digichem v|version| <https://github.com/Digichem-Project/build-boy/releases/download/|version|-Debian-Stretch/digichem.|version|.Debian-Stretch.tar.gz>`__
+ - Debian Jessie (8): `Download Digichem v|version| <https://github.com/Digichem-Project/build-boy/releases/download/|version|-Debian-Jessie/digichem.|version|.Debian-Jessie.tar.gz>`__
+
+Development versions
+--------------------
+
+For the adventurous, nightly builds of the latest development version of Digichem are available directly from `Build-boy <https://github.com/Digichem-Project/build-boy>`_.
+Please note that these development versions may contain serious bugs, errors, and undocumented changes, as well as new and up-coming features.
+
+Older versions
+--------------
+
+A repository of old release can also be found at `Build-boy <https://github.com/Digichem-Project/build-boy/releases>`__.

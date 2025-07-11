@@ -1,0 +1,1639 @@
+Calculations
+____________
+
+Calculations describe the specific options of the calculation, including the basis set,
+level of theory, and properties to calculate.
+
+The ``meta: class_name:`` option is used to specify which computational engine the calculation
+is designed for:
+
+.. code-block:: yaml
+   
+   calculation:
+     meta:
+       class_name: Gaussian
+
+.. code-block:: yaml
+   
+   calculation:
+     meta:
+       class_name: Turbomole
+       
+.. code-block:: yaml
+   
+   calculation:
+     meta:
+       class_name: Orca
+
+
+However, most of the main calculation options are the same for all engines. This means the same
+calculation definition can often be re-used across multiple programs, so long as the ``class_name``
+is set appropriately.
+
+Calculation method
+------------------
+
+The method defines the type of calculation, *ie* what level of theory to use.
+Only one method can be chosen at a time.
+
+Hartree–Fock (HF)
+~~~~~~~~~~~~~~~~~
+
+To run a calculation at the Hartree–Fock (also known as the self-consistent field) level,
+set the ``method: hf: calc:`` option:
+
+.. code-block:: yaml
+   
+   calculation:
+     method:
+       hf:
+         calc: True
+
+There are no other settings for the HF method, but the SCF procedure itself can be
+configured with the SCF :ref:`block <scf_method>`.
+
+Density-functional theory (DFT)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To run a calculation at the DFT level, set the ``method: dft: calc:`` option:
+
+.. code-block:: yaml
+   
+   calculation:
+     method:
+       dft:
+         calc: True
+         
+The functional is set with ``method: dft: functional:``, which is the common name
+of the functional to use. Digichem will make reasonable attempts to convert the given
+name to the program specific version, if applicable. For example:
+
+.. code-block:: yaml
+   
+   calculation:
+     method:
+       dft:
+         calc: True
+         functional: PBE0
+
+.. code-block:: yaml
+   
+   calculation:
+     method:
+       dft:
+         calc: True
+         functional: PBE1PBE
+         
+Will both select the famous hybrid functional by Perdew, Burke, Ernzerhof\ :cite:p:`Perdew96a,Perdew97` and Adamo.\ :cite:p:`Adamo99a`
+Digichem does not place restrictions on the allowed functional names. Any functional that
+is exposed by the underlying computational program can be set here. Refer to the manual
+of your chosen computational engine for a full list of supported functionals.
+
+An empirical dispersion correction can be included with the ``method: dft: dispersion:``
+option:
+
+.. code-block:: yaml
+   
+   calculation:
+     method:
+       dft:
+         calc: True
+         dispersion: GD3BJ
+         
+The following values are recognised:
+
+ - PFD\ :cite:p:`PFD`
+ - GD2\ :cite:p:`GD2`
+ - GD3\ :cite:p:`GD3`
+ - GD3BJ\ :cite:p:`GD3BJ`
+ - GD4\ :cite:p:`GD4a,GD4b`
+ 
+Note, however, that not all dispersion models are compatible with all computational engines and/or
+functionals.
+ 
+.. note::
+   Some DFT functional explicitly include empirical dispersion as part of their definition
+   (for example ``B97D`` in Gaussian). For these functionals, the ``method: dft: dispersion``
+   should be omitted.
+   
+The size of the numerical integration grid can be controlled with the ``method: dft: grid:`` option:
+
+.. code-block:: yaml
+   
+   calculation:
+     method:
+       dft:
+         calc: True
+         grid: Default  # Or Medium, Large, Huge etc...
+
+Common grid sizes can be selected using the keywords ``Default``, ``Tiny``, ``Small``, ``Medium``, ``Large``, and
+``Huge``, and appropriate values will be selected for the computational program. Larger (more dense) grids generally
+result in higher integration accuracy (up to a plateau) at the cost of increased calculation duration.
+Alternatively, a grid size can be specified in the format native to the program, for example:
+
+.. code-block:: yaml
+   
+   calculation:
+     meta:
+       class-name: Gaussian
+     method:
+       dft:
+         calc: True
+         grid: 99302  # Gaussian's (99,302) grid.
+
+.. code-block:: yaml
+   
+   calculation:
+     meta:
+       class-name: Turbomole
+     method:
+       dft:
+         calc: True
+         grid: m5  # Turbomole's multiple grid 5.
+
+Møller–Plesset perturbation theory
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To run a calculation at the MPn level, set the ``method: mp: calc:`` option:
+
+.. code-block:: yaml
+   
+   calculation:
+     method:
+       mp:
+         calc: True
+
+The 'order' of the MP calculation can be selected with the ``method: mp: level:`` option:
+
+.. code-block:: yaml
+   
+   calculation:
+     method:
+       mp:
+         calc: True
+         level: MP2  # Or MP3, MP4, MP5 etc.
+         
+MP2 is the default. Higher levels (up to MP5) can be selected with the relevant option (``MP3``, ``MP4``, or ``MP5``),
+if supported by the chosen calculation engine. Some engines (Gaussian) also support truncated MP methods, including ``MP4(DQ)``
+(only double and quadruple expansions) and ``MP4(SDQ)`` (only single, double, and quadruple expansions), and these can also
+be selected with the relevant keyword.
+
+Coupled-cluster theory
+~~~~~~~~~~~~~~~~~~~~~~
+
+To run a calculation at the CC level, set the ``method: cc: calc:`` option:
+
+.. code-block:: yaml
+   
+   calculation:
+     method:
+       cc:
+         calc: True
+         
+Similar to MP theory, the type of coupled-cluster calculation can be selected with the ``method: cc: level:`` option:
+
+.. code-block:: yaml
+   
+   calculation:
+     method:
+       cc:
+         calc: True
+         level: CCSD  # Or CCSD(T) etc.
+
+The most common options are ``CC2`` (second-order approximate coupled-cluster\ :cite:p:`CC2`), ``CCSD``, and ``CCSD(T)``, but specific calculation engines may support
+additional CC calculations. Refer to the manual of your chosen computational engine for a full list of supported CC methods.
+
+.. _scf_method:
+
+Self consistent field
+~~~~~~~~~~~~~~~~~~~~~~
+
+.. note::
+   The ``scf`` options will move in a future version.
+
+Options for controlling the self-consistent field (SCF) procedure are set in the ``scf`` block.
+These settings apply to all calculation methods that rely, at least in part, on HF or DFT (HF, DFT, MP and CC).
+
+.. note::
+    In most cases, the SCF options can be left as their defaults.
+
+The SCF algorithm can be selected with the ``scf: method:`` option. 
+
+.. code-block:: yaml
+   
+   calculation:
+     scf:
+        method: Default
+
+All programs support a direct SCF algorithm (``Simple``) and the Direct Inversion in the
+Iterative Subspace (``DIIS``) method, and for Orca and Turbomole this latter is
+the default. Gaussian instead defaults to a hybrid method based on the energy-DIIS (eDIIS) and
+standard DIIS methods. Pure DIIS can instead be selected with the ``CDIIS`` keyword:
+
+.. code-block:: yaml
+   
+   calculation:
+     scf:
+        method: CDIIS
+
+The available SCF algorithms are highly dependent on the chosen calculation engine:
+
+.. tab-set::
+
+    .. tab-item:: Gaussian
+
+        Gaussian supports a number of SCF method keywords, some of which are challenging
+        to decipher. See the `Gaussian manual <https://gaussian.com/scf/>`__ for more information.
+        Digichem recognises the following keywords for Gaussian:
+        
+        .. code-block:: yaml
+   
+           calculation:
+             scf:
+                # Pick one:
+                method: Simple   # Direct SCF
+                method: Default  # eDIIS and DIIS hybrid
+                method: DIIS     # Enable DIIS, may have no effect
+                method: CDIIS    # DIIS only (disable eDIIS)
+                method: DM       # Direct minimization, may be equivalent to Simple
+                method: SD       # Steepest descent
+                method: SSD      # Scaled steepest descent
+                method: QC       # Quadratically converged, recommended for difficult conversion
+                method: XQC      # Attempt QC if standard convergence failes
+                method: YQC      # A hybrid method involving QC
+    
+    .. tab-item:: Orca
+
+        Orca supports the ``Simple``, ``DIIS``, ``KDIIS`` :cite:p:`KDIIS`, ``DIIS-SOSCF`` and ``TRAH`` methods.
+        Additionally, Orca can start with one of the ``DIIS``-like methods, and switch to ``TRAH``
+        if this initial convergence fails. This mode is supported with the ``auto_trah:`` option
+        (which has no effect if ``TRAH`` is explicitly chosen):
+        
+        .. code-block:: yaml
+   
+           calculation:
+             scf:
+                # Pick one:
+                method: Simple     # Direct SCF
+                method: DIIS       # Default
+                method: KDIIS      # Kollmar's variant DIIS
+                method: DIIS-SOSCF # (Approximate) second-order SCF
+                method: TRAH       # Trust-region augmented hessian, recommended for difficult convergence
+                # Optional:
+                auto_trah: True  # Defaults to True, disable with False
+    
+    .. tab-item:: Turbomole
+
+        Turbomole only supports the ``DIIS`` and ``Simple`` (direct SCF) procedures:
+        
+        .. code-block:: yaml
+   
+           calculation:
+             scf:
+                # Pick one:
+                method: Simple     # Direct SCF
+                method: DIIS       # Default
+
+The maximum number of SCF iterations can be set with the ``scf: iterations:`` option.
+If omitted (or set to ``null``) then program specific defaults will be used:
+
+.. code-block:: yaml
+   
+   calculation:
+     scf:
+        iterations: 100  # null for default
+        
+The SCF convergence criteria can be modified with the ``scf: convergence:`` option,
+which accepts one of a number of keywords to automatically set the energy and density (if relevant)
+convergence criteria, for any program:
+
+.. code-block:: yaml
+   
+   calculation:
+     scf:
+        # Pick one:
+        convergence: Loose
+        convergence: Weak
+        convergence: Medium
+        convergence: Strong
+        convergence: Tight
+        convergence: VTight
+        convergence: VVTight
+        convergence: Extreme
+
+Alternatively, the energy and density convergence criteria can be set manually with the
+``scf: energy:`` and ``scf: density`` options:
+
+.. code-block:: yaml
+   
+   calculation:
+     scf:
+        energy: -8   # < 10-8
+        density: -7  # < 10-7
+        
+These options set the exponent for the convergence criteria (x10\ :sup:`n`). Larger values result in exponentially
+tighter (smaller change) criteria.
+
+.. note::
+   ``scf: convergence:`` is mutually exclusive with either ``scf: energy:`` or ``scf: density:``.
+   
+A damping procedure (in which part of the matrix from the previous SCF cycle is mixed into the next cycle)
+can be enabled with the ``scf: damping: calc:`` option:
+
+.. code-block:: yaml
+   
+   calculation:
+     scf:
+        damping:
+            calc: True
+
+Specific options for the damping procedure depend on the underlying computational engine:
+
+.. tab-set::
+
+    .. tab-item:: Gaussian
+    
+      Only one option for Gaussian is supported, which is ``iterations:``. This
+      setting controls how many initial SCF iterations to apply damping for. After this number,
+      the damping procedure is stopped. 
+      
+      .. code-block:: yaml
+  
+          calculation:
+            scf:
+              damping:
+                  calc: True
+                  iterations: 10 # The default.
+
+    .. tab-item:: Orca
+    
+      Orca supports two different damping procedures: 'Static', in which the same damping
+      procedure is performed for every SCF cycle, and 'Dynamic', in which stronger damping
+      is applied at the start of the calculation, and less (or none) towards the end. Dynamic
+      damping is normally recommended. The damping method can be selected with the
+      ``scf: damping: method:`` option, using either the ``Static`` or ``Dynamic`` keywords.
+
+      For the ``Static`` method, there are two additional options. The fraction of the old
+      matrix to mix with the new matrix is controlled by the ``scf: damping: weight:``
+      option, while the threshold after which to disabled damping is controlled by 
+      ``scf: damping: threshold:``
+      
+      .. code-block:: yaml
+  
+          calculation:
+            scf:
+              damping:
+                  calc: True
+                  method: Static  # Same damping weight throughout.
+                  weight: 0.5     # Fraction of old matrix to incorporate.
+                  threshold: 0.1  # Disable damping after DIIS error drops below 0.1 eH.
+      
+      Any decimal number can be used for ``weight``, but values above ``1.0`` will likely make convergence
+      impossible, and are strongly not recommended. The exact interpretation of ``threshold`` depends
+      on the SCF converger being used, for DIIS this value refers to the error in the calculated energy.
+      For ``DIIS-SOSCF``, it is the 'orbital gradient value'. Refer to the Orca manual for more information.
+
+      For the ``Dynamic`` damping procedure, the ``weight`` option sets the initial mixing fraction
+      to use at the start of the calculation. Orca will then automatically vary this weighting depending
+      on the estimated convergence of the SCF procedure, with progressively less ``weight`` being applied
+      as SCF approaches convergence. The amount which ``weight`` is allowed to vary is controlled by
+      the ``scf: damping: max:`` and ``scf: damping: min:`` options. ``scf: damping: weight:`` should
+      fall between these values.
+
+      .. code-block:: yaml
+  
+          calculation:
+            scf:
+              damping:
+                  calc: True
+                  method: Dynamic # Variable damping weight.
+                  weight: 0.5     # Starting weight.
+                  max: 0.75       # Don't rise above this weight.
+                  min: 0.25       # Don't drop below this weight.
+                  threshold: 0.1  # Disable damping after DIIS error drops below 0.1 eH.
+    
+    .. tab-item:: Turbomole
+
+      .. note::
+        Digichem does not currently support deactivating SCF damping in Turbomole. If this feature would be useful
+        for you, please consider `letting us know <https://github.com/Digichem-Project/build-boy/issues>`__.
+
+      In Turbomole, SCF damping is enabled by default and cannot be turned off. The damping procedure uses a 'Dynamic'
+      scheme, in which progressively less damping is applied as the SCF approaches convergence. The starting mixing
+      fraction is controlled by the ``scf: damping: weight:`` option. This is decreased in each subsequent iteration
+      by ``scf: damping: step:``, until ``scf: damping: min:`` is reached, at which point the ``weight`` value 
+      remains constant:
+
+      .. code-block:: yaml
+  
+          calculation:
+            scf:
+              damping:
+                  calc: True   # The default, cannot be turned off.
+                  weight: 0.5  # Starting weight.
+                  step: 0.1    # Decrease by this amount each step.
+                  min: 0.1     # Don't drop below this weight.
+
+Spin-component scaling
+~~~~~~~~~~~~~~~~~~~~~~
+
+Spin-component scaling (SCS) is a correction scheme in which electron correlation energies between electron pairs
+with the same spin are weighted differently to those with opposite spin. The correction originated in MP2 calculations,
+and is most commonly applied to post-HF wavefunction methods. SCS often gives better accuracy than the uncorrected
+wavefunction.
+
+SCS settings are controlled in the ``method: scs:`` block. SCS is enabled with the ``calc`` sub-option:
+
+.. code-block:: yaml
+  
+  calculation:
+    method:
+      scs:
+        calc: True  # Use spin-component scaling.
+
+If no other options are specified, the calculation engine will use appropriate default values for the same-spin and opposite-spin
+scaling factors. Alternatively, these can be tuned with the following program specific options:
+
+.. tab-set::
+
+  .. tab-item:: Gaussian
+
+    .. important::
+      No SCS is supported for Gaussian.
+
+  .. tab-item:: Orca
+
+    In Orca, the scaling factors are controlled with the ``opposite`` and ``same`` sub-options:
+
+    .. code-block:: yaml
+
+      calculation:
+        method:
+          scs:
+            calc: True
+            same: 0.3333
+            opposite: 1.2
+
+  .. tab-item:: Turbomole
+
+    In Turbomole, spin-opposite scaling (in which the same-spin component is entirely ignored) and spin-component
+    scaling (in which both components are scaled) are recognised separately. The SCS method can be switched between
+    them with the ``method`` sub-option:
+
+    .. code-block:: yaml
+
+      calculation:
+        method:
+          scs:
+            calc: True
+            # Choose one:
+            method: SCS  # Scale both, the default.
+            method: SOS  # Ignore same-spin.
+
+    The exact weights can still be controlled with the ``method: scs: opposite:`` and ``method: scs: same:`` options. If ``method``
+    is ``SOS``, then the ``same`` option is ignored:
+
+    .. code-block:: yaml
+
+      calculation:
+        method:
+          scs:
+            calc: True
+            #
+            # Choose one:
+            method: SCS  # Scale both, the default.
+            same: 0.3333
+            opposite: 1.2
+            #
+            #
+            method: SOS  # Ignore same-spin.
+            opposite: 1.3
+
+Resolution of the identity
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The resolution of the identity approximation (RI), also known as density fitting, is a name given to a family of methods that
+can drastically reduce the duration of a calculation, normally doing so while only introducing minor errors.
+
+.. note::
+  No resolution of the identity approximations are supported for Gaussian
+
+RI can be used to accelerate all types of computational methods (HF, DFT, MP, and CC), so long as it is supported by the underlying
+computational engine, and different parts of the method can separately choose to use RI or not.
+
+RI for the coulomb interaction (J) can be used for HF, DFT, MP, and CC calculations. This type of RI is controlled with the
+``method: ri: coulomb`` block:
+
+.. code-block:: yaml
+
+  calculation:
+    method:
+      ri:
+        coulomb:
+          calc: True
+
+RI can also be applied to both the coulomb (J) and exchange (K) interactions, for HF, DFT, MP, and CC calculations.
+This type of RI is controlled with the ``method: ri: hartree_fock:`` block:
+
+.. code-block:: yaml
+
+  calculation:
+    method:
+      ri:
+        hartree_fock:
+          calc: True
+
+For post-HF calculations (double-hybrid DFT, MP, CC), the RI approximation can additionally be used for the correlated wavefunction part.
+This type of RI is controlled with the ``method: ri: correlated:`` block:
+
+.. code-block:: yaml
+
+  calculation:
+    method:
+      ri:
+        correlated:
+          calc: True
+
+RI-J or RI-JK can optionally also be included in a post-HF calculation:
+
+.. code-block:: yaml
+
+  calculation:
+    method:
+      ri:
+        hartree_fock:
+          calc: True  # Use RI for HF...
+        correlated:
+          calc: True  # And MP/CC
+
+For each type of RI, an appropriate auxiliary basis set will be automatically chosen by the underlying computational engine.
+An explicit auxiliary basis set can be set for each RI block with the ``basis_set:`` sub-option:
+
+.. code-block:: yaml
+
+  calculation:
+    method:
+      cc:
+        calc: True
+        level: CCSD
+      ri:
+        hartree_fock:
+          calc: True           # Use RI for HF.
+          basis_set: def2      # Use the general density-fitting basis set for JK.
+        correlated:
+          calc: True           # And MP/CC
+          basis_set: def2-SVP  # Use the def2-SVP auxiliary basis set for RI-CC.
+
+Orca additionally supports the 'chain-of-spheres' (COSX) approximation, which is a different (but related)
+acceleration scheme. COSX can be enabled with the ``method: ri: chain_of_spheres: calc:`` option:
+
+.. code-block:: yaml
+
+  calculation:
+    method:
+      ri:
+        chain_of_spheres:
+          calc: True
+
+The auxiliary basis set can be specified with the ``basis_set:`` sub-option as normal (or omitted to use a default):
+
+.. code-block:: yaml
+
+  calculation:
+    method:
+      ri:
+        chain_of_spheres:
+          calc: True
+          basis_set: def2   # Use the general density-fitting basis set.
+
+
+Basis set
+---------
+
+The basis set (definition of atomic-like orbitals) is controlled by the ``basis_set`` block.
+In most cases, a basis set can be specified using its common name in the ``basis_set: internal:``
+option:
+
+.. code-block:: yaml
+   
+   calculation:
+     basis_set:
+       internal: 6-31G**
+
+Digichem doesn't restrict the possible basis set names that can be specified to ``basis_set: internal:``,
+so any keyword that is recognised by the underlying computational engine can be specified here. In addition,
+Digichem will attempt to `translate` common basis set names to program specific versions, if applicable:
+
+.. code-block:: yaml
+   
+   calculation:
+     basis_set:
+       # Pick one:
+       # Pople style:
+       internal: 6-31G(d,p)  # Same as 6-31G**
+       internal: 6-31G**     # Same as 6-31G(d,p)
+       internal: 6-31++G**   # With diffuse.
+       # etc...
+       #
+       # Karlsruhe style:
+       internal: def2-SV(P)  # Equivalent to Def2SVPP in Gaussian.
+       internal: def2-SVP    # Equivalent to Def2SVP in Gaussian.
+       internal: def2-TZVP
+       # etc.
+       #
+       # Correlation consistent:
+       internal: cc-pVDZ
+       internal: aug-cc-pVDZ # With diffuse.
+       # etc.
+
+The ``basis_set: internal:`` option sets the same basis set for all atoms in the molecule. Alternatively,
+different basis sets can be specified for different elements using the ``basis_set: exchange:`` option.
+This option accepts a list of basis sets, with each specifying the elements it should apply to. Elements
+can be identified either by atomic (proton) number, or by element symbol. For both, ranges can be specified
+with the ``-`` (dash) character:
+
+.. note::
+  The ``basis_set: exchange:`` option is currently only supported for Gaussian. If supporting this feature
+  in another calculation engine would be useful for you, please consider `letting us know <https://github.com/Digichem-Project/build-boy/issues>`__
+
+.. code-block:: yaml
+   
+   calculation:
+     basis_set:
+       exchange:
+         - "6-31G**": 1-18                # 6-31G** for light elements (hydrogen to argon)
+         - LANL2DZ: K-Bi, La, U, Np, Pu   # LANL2DZ for heavy elements
+
+.. note::
+  The ``basis_set: internal:`` and ``basis_set: exchange:`` options are mutually exclusive.
+
+Calculated properties
+---------------------
+
+The ``properties`` block is used to specify what properties (of the molecule) to calculate.
+
+Single point
+~~~~~~~~~~~~
+
+A 'single point' calculation calculates the total energy of the molecule at the current geometry,
+and little else. Other properties that are trivial to calculate from the converged
+density/wavefunction may also be calculated, depending on other options (such as multi-poles,
+orbital occupations, population analysis `etc.`).
+
+A single point calculation can be requested with the ``properties: sp: calc:`` option:
+
+.. code-block:: yaml
+   
+  calculation:
+    properties:
+      sp:
+        calc: True
+
+There are no other options for a single point calculation, and this type of calculation
+is mutually exclusive with all others.
+
+.. _grad_method:
+
+Gradient of the energy
+~~~~~~~~~~~~~~~~~~~~~~
+
+The first derivative of the energy (the gradient) can be calculated with the
+``properties: grad: calc:`` option:
+
+.. code-block:: yaml
+   
+  calculation:
+    properties:
+      grad:
+        calc: True
+
+The gradient can either be calculated analytically or numerically. In most cases,
+the analytical gradient should be preferred if it is available, as calculating the gradient
+numerically can be **extremely** time consuming for large systems. The method to use to calculate
+the gradient can be set with the ``properties: grad: numerical:`` option. If unset (or set to ``null``),
+then the calculation engine will normally default to the analytical gradient, falling back to a
+numerical method if an analytical one is not available.
+
+A numerical gradient can be explicitly requested by setting ``properties: grad: numerical:`` to ``True``:
+
+.. code-block:: yaml
+   
+  calculation:
+    properties:
+      grad:
+        calc: True
+        numerical: True
+
+Likewise a numerical gradient can be disallowed by setting ``numerical:`` to ``False``. In this case,
+the calculation will fail if no analytical gradient is available for the chosen method.
+
+Note that several other properties,  most notably ``opt`` and ``freq``, also dependon the gradient.
+When calculating these properties, the gradient will be automatically calculated without the 
+``properties: grad: calc:`` option being set. However, an analytical/numerical gradient can still
+be selected with the ``numerical`` option:
+
+.. code-block:: yaml
+   
+  calculation:
+    properties:
+      opt:
+        calc: True
+      grad:
+        numerical: True  # Force use of a numerical gradient for the optimisation, not recommended.
+
+Geometry optimisation
+~~~~~~~~~~~~~~~~~~~~~
+
+A geometry optimisation can be requested with the ``properties: opt: calc:`` option:
+
+.. code-block:: yaml
+   
+  calculation:
+    properties:
+      opt:
+        calc: True
+
+The maximum number of optimisation cycles to attempt can be set with the
+``properties: opt: iterations:`` option. If the geometry does not converge before this limit, 
+then the calculation will be aborted:
+
+.. code-block:: yaml
+   
+  calculation:
+    properties:
+      opt:
+        calc: True
+        iterations: 100  # Useful for difficult convergence cases.
+
+If the ``iterations`` option is not set, then program specific defaults will be used instead.
+Note that these defaults may not be sufficient for larger and/or difficult to converge
+structures.
+
+Vibrational frequencies
+~~~~~~~~~~~~~~~~~~~~~~~
+
+The vibrational frequencies, and intensities of the vibrational transitions, can be calculated
+with the ``properties: freq: calc:`` option:
+
+.. code-block:: yaml
+   
+  calculation:
+    properties:
+      freq:
+        calc: True
+
+There are no other options for the ``freq`` block, but the method used to calculate the derivatives
+(analytical or numerical) can be set in the :ref:`grad <grad_method>` block:
+
+.. code-block:: yaml
+   
+  calculation:
+    properties:
+      freq:
+        calc: True
+      grad:
+        numerical: True  # Force use of a numerical gradient for the frequencies, not recommended.
+
+A common use for calculating vibrational frequencies is to check for the presence of imaginary (negative)
+frequencies at an optimised geometry, which would indicate the geometry has not actually reached a local
+minimum.
+
+This type of compound job can be requested by specifying both ``properties: freq: calc:`` and ``properties: opt: calc:``
+simultaneously.
+
+.. code-block:: yaml
+   
+  calculation:
+    properties:
+      opt:
+        calc: True  # First, optimise the geometry.
+      freq:
+        calc: True  # Then check the frequencies.
+
+.. note::
+  The order of the ``opt`` and ``freq`` blocks does not matter.
+
+
+Nuclear magnetic resonance
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. important::
+  NMR calculations are currently only supported for Orca. If supporting this feature
+  in another calculation engine would be useful for you, please consider
+  `letting us know <https://github.com/Digichem-Project/build-boy/issues>`__.
+
+Settings for controlling an NMR calculation are set in the ``properties: nmr:`` block. Chemical shifts
+can be calculated with the ``properties: nmr: calc:`` and ``properties: nmr: nuclei:`` options:
+
+.. code-block:: yaml
+   
+  calculation:
+    properties:
+      nmr:
+        calc: True
+        nuclei:
+          # Pick as many as you like:
+          #
+          # Calculate chemical shifts for protons and carbon-13.
+          - 1H
+          - 13C
+
+Spin-spin coupling constants can additionally be calculated by setting ``properties: nmr: coupling:`` to ``True``:
+
+.. code-block:: yaml
+   
+  calculation:
+    properties:
+      nmr:
+        calc: True
+        coupling: True
+        nuclei:
+          # Pick as many as you like:
+          #
+          # Calculate chemical shifts and coupling constants for protons and carbon-13.
+          - 1H
+          - 13C
+
+Coupling constants will be calculated between all elements that NMR properties have been calculated for.
+
+
+Excited states
+~~~~~~~~~~~~~~
+
+Options for calculating excited states can be set in the ``properties: es:`` block. An excited states calculation
+can be requested by setting ``properties: es: calc:`` to ``True`` and ``properies: es: method:`` to the type
+of excited states calculation that is desired.
+
+All calculation engines support the ``TD-HF`` (time-dependent hartree-fock, also known as RPA) and ``CIS``
+(configuration interaction singles) methods in conjugation with a ``hf`` wavefunction:
+
+.. code-block:: yaml
+   
+  calculation:
+    method:
+      hf:
+        calc: True
+    properties:
+      es:
+        calc: True
+        # Pick one:
+        method: TD-HF  # Time-dependent hartree-fock theory (RPA).
+        method: CIS    # Configuration interaction singles.
+
+As well as the ``TD-DFT`` (time-dependent density functional theory) and ``TDA`` (tamm-dancoff approximation)
+methods in conjugation with a ``dft`` density:
+
+.. code-block:: yaml
+   
+  calculation:
+    method:
+      dft:
+        calc: True
+        functional: B3LYP
+    properties:
+      es:
+        calc: True
+        # Pick one:
+        method: TD-DFT  # Time-dependent DFT.
+        method: TDA     # Tamm-Dancoff approximation.
+
+At the coupled-cluster level, all engines also support the equations of motion (EOM) methodology:
+
+.. code-block:: yaml
+   
+  calculation:
+    method:
+      cc:
+        calc: True
+        level: CCSD
+    properties:
+      es:
+        calc: True
+        method: EOM-CCSD
+
+Other excited state methods are supported on a program-by-program basis:
+
+.. tab-set::
+
+  .. tab-item:: Gaussian
+
+    Gaussian also supports the ``CIS(D)`` method (configuration interaction singles with doubles correction):
+
+    .. code-block:: yaml
+   
+      calculation:
+        method:
+          hf:
+            calc: True
+        properties:
+          es:
+            calc: True
+            method: CIS(D)
+  
+  .. tab-item:: Orca
+
+    .. important::
+      There are several Orca-specific options in this block that are currently under review, and will likely be
+      renamed and/or moved in a future version.
+
+    In Orca, the ``CIS(D)`` method (configuration interaction singles with doubles correction) can be selected
+    with the orca-specific ``dcorr`` option:
+
+    .. code-block:: yaml
+   
+      calculation:
+        method:
+          hf:
+            calc: True
+        properties:
+          es:
+            calc: True
+            method: CIS
+            dcorr: 2     # Doubles correction algorithm.
+
+    This option can also be used to include doubles correction in double-hybrid DFT calculations:
+
+    .. code-block:: yaml
+   
+      calculation:
+        method:
+          dft:
+            calc: True
+            functional: wPBEPP86
+        properties:
+          es:
+            calc: True
+            method: TDA
+            dcorr: 2     # Doubles correction algorithm.
+
+    There are four possible values to this option (``1``, ``2``, ``3``, and ``4``) corresponding to four different
+    possible algorithms. Refer to the Orca manual for more information.
+
+    At the coupled cluster level, Orca supports a modified EOM method called ``STEOM-CCSD`` (similarly transformed
+    equations of motion):
+
+    .. code-block:: yaml
+   
+      calculation:
+        method:
+          cc:
+            calc: True
+            level: CCSD
+        properties:
+          es:
+            calc: True
+            method: STEOM-CCSD
+
+    For both ``EOM-CCSD`` and ``STEOM-CCSD``, double excitations can be included through the ``mdci: double_excitations:``
+    option:
+
+    .. code-block:: yaml
+   
+      calculation:
+        method:
+          cc:
+            calc: True
+            level: CCSD
+        properties:
+          es:
+            calc: True
+            method: EOM-CCSD  # Or STEOM-CCSD
+            mdci:
+              double_excitations: True
+  
+  .. tab-item:: Turbomole
+
+    Turbomole supports a number of excited states methods. The ``CIS(D)`` method (configuration interaction singles
+    with doubles correction), as well as a modified, iterative variant called CIS(D\ :sub:`∞`\ ) which can be
+    requested with ``CIS(Dinf)``:
+
+    .. code-block:: yaml
+   
+      calculation:
+        method:
+          hf:
+            calc: True
+        properties:
+          es:
+            calc: True
+            # Pick one:
+            method: CIS(D)
+            method: CIS(Dinf)
+
+    The algebraic diagrammatic construction method (second order) can be requested with the ``ADC(2)`` keyword.
+    For this type of calculation, the ``method`` should be set to ``mp``, at the ``ADC(2)`` level:
+
+    .. code-block:: yaml
+   
+      calculation:
+        method:
+          mp:
+            calc: True
+            level: ADC(2)
+        properties:
+          es:
+            calc: True
+            method: ADC(2)
+
+    Excited states can be calculated with the approximate coupled cluster method using the ``CC2`` keyword.
+    The calculation method should be set to ``cc``, at the ``CC2`` level:
+
+    .. code-block:: yaml
+   
+      calculation:
+        method:
+          cc:
+            calc: True
+            level: CC2
+        properties:
+          es:
+            calc: True
+            method: CC2
+
+The number and type of excited states to calculate is controlled by the ``properties: es: num_states:`` and 
+``properties: es: multiplicity:`` options. The ``multiplicity`` option accepts three values, ``Singlet``,
+``Triplet``, and ``50-50``, with the latter option calculating both singlets and triplets at the same time.
+``num_states`` refers to the number of excited states to calculate of each multiplicity, so if ``50-50`` is
+specified, then ``num_states`` singlets and ``num_states`` triplets will be calculated.
+
+.. code-block:: yaml
+   
+  calculation:  
+    properties:
+      es:
+        calc: True
+        num_states: 5         
+        # Pick one:
+        multiplicity: Singlet  # Calculate the first five singlet excited states.
+        multiplicity: Triplet  # Calculate the first five triplet excited states.
+        multiplicity: 50-50    # Calculate five singlet and five triplet states.
+
+.. note::
+  Some excited state methods with some calculation engines do not support calculating singlets and triplets simultaneously
+  (``50-50``). This includes the ``EOM-CCSD`` and ``STEOM-CCSD`` methods in Orca.
+
+For unrestricted and/or open-shell calculations, the ``multiplicity`` option should be omitted (or set to ``Singlet``,
+the default). The calculation will then attempt to calculate excited states of the same multiplicity
+as the ground state, with spin being conserved. Note that spin-contamination and other effects can result in some
+excited states having unexpected multiplicities, or even non-integer multiplicity.
+
+Spin-orbit coupling can be calculated with the ``properties: es: soc:`` option:
+
+.. code-block:: yaml
+   
+  calculation:  
+    properties:
+      es:
+        calc: True
+        num_states: 5         
+        multiplicity: 50-50    # Calculate five singlet and five triplet states.
+        soc: True
+
+SOC naturally requires both singlet and triplet excited states to be calculated (``multiplicity: 50-50``). The
+``properties: es: soc:`` option is only supported for Orca, but SOC will also be automatically calculated from
+a Gaussian calculation using PySOC if both singlets and triplets are available. Calculations with PySOC also require
+the following additional keywords to be specified:
+
+.. code-block:: yaml
+   
+  calculation:
+    properties:
+      es:
+        calc: True
+        num_states: 5         
+        multiplicity: 50-50    # Calculate five singlet and five triplet states.
+
+    # Gaussian specific keywords.
+    keywords:
+      # Options required for PySOC.
+      6D:
+      10F:
+      GFInput:
+
+No SOC for Turbomole is currently supported.
+
+Excited state geometries
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+The geometry of an excited state can be calculated by requesting an optimisation and an excited states
+calculation simultaneously. The excited state to optimise is indicated with the ``properties: es: state_of_interest:``
+option:
+
+.. code-block:: yaml
+   
+  calculation:
+    properties:
+      opt:
+        calc: True
+      es:
+        calc: True
+        multiplicity: Singlet
+        num_states: 5         # Calculate five singlet excited states.
+        state_of_interest: 1  # And optimise the geometry of the lowest energy state (S1).
+
+During the geometry optimisation, the order of the calculated excited states can change significantly. Because the
+target excited state is only tracked `via` its index, this means the nature of the ``state_of_interest``
+can change from one optimisation cycle to the next. For this reason, it is recommended to only calculate one type
+of excited state (``multiplicity: Singlet`` or ``multiplicity: Triplet``), so the multiplicity of the ``state_of_interest:``
+remains constant. It is also recommended to calculate more excited states than are needed, for the same reason.
+
+Performance
+-----------
+
+Options relating to resource usage and performance (*ie*, how long does the calculation take) are set in the ``performance``
+block. The number of CPUs to use in parallel for the calculation is set with the ``performance: num_cpu:`` option:
+
+.. code-block:: yaml
+   
+  calculation:
+    performance:
+      num_cpu: 16  # Use 16 CPUs in parallel.
+
+Meanwhile, the maximum amount of memory that should be used by the calculation is set with the ``performance: memory:`` option.
+Memory amounts can be given using common units, such a terabyte (``TB``), gigabyte (``GB``), megabyte (``MB``), kilobyte (``KB``),
+and byte (``B``):
+
+.. code-block:: yaml
+   
+  calculation:
+    performance:
+      # Pick one:
+      #
+      # Equivalent ways of specifying 40 GB:
+      memory: 0.04 TB
+      memory: 40 GB
+      memory: 40000 MB
+      memory: 40000000 KB
+      memory: 40000000000 B
+
+The ``memory`` option refers to the total amount of memory shared by all CPUs.
+
+When using a batch submission system, the scheduler also needs to know how much memory and how many CPUs to allocate to the
+calculation before it enters the queue. :ref:`By default <method_destination_memory>`, Digichem will request the same number of resources from the scheduler
+as are set in the calculation method. However, essentially all calculation engines tend to use slightly more memory than
+is allocated to them in their input file. Because of this, it is normally recommended to request more memory in the batch
+script than the calculation is expected to use. This is supported by the ``performance: memory_over_allocate:`` option,
+which specifies a multiplier that will be applied when submitting to the batch program:
+
+.. code-block:: yaml
+   
+  calculation:
+    performance:
+      num_cpu: 16                 # Use 16 CPU in parallel.
+      memory: 40 GB               # Use max 40 GB in the calculation.
+      memory_over_allocate: 1.15  # 15%, the default.
+
+In the above specification, ``40 GB`` × ``1.15`` = ``46 GB`` would be requested from the scheduler, even though the
+calculation should only use ~ ``40 GB`` maximum. Because ``16`` CPUs have been requested, this equates to ``46 GB`` ÷ ``16`` =
+``2875 MB`` of memory per CPU.
+
+.. important::
+  A ``performance: memory_over_allocate:`` value of less than 1.0 will request *less* memory from the scheduler than the
+  calculation is expected to use. In most cases, this is strongly not recommended and will likely lead to the calculation
+  being cancelled by the scheduler when it exceeds its memory allocation.
+
+Polling frequency
+~~~~~~~~~~~~~~~~~
+
+Digichem automatically monitors the resource usage (CPU load, memory usage, free file space *etc.*) of the calculation
+as it progresses. The frequency with which Digichem logs this data can be controlled with the ``performance: poll_interval:``
+option:
+
+.. code-block:: yaml
+   
+  calculation:
+    performance:
+      poll_interval: 60  # In seconds (every 1 min, the default).
+
+A shorter ``poll_interval`` results in more accurate logging, but will consume more file space. Very short polling intervals (< 1 s)
+may place noticeable load on the CPU and/or filesystem, and are likely to negatively impact the performance of the calculation itself.
+The default interval of ``60`` s is normally sufficient.
+
+Implicit solvation
+------------------
+
+Options for using a simulated solvent environment are set in the ``solution`` block.      
+The solvent to use is specified by the ``solution: solvent:`` option. The solvent can be identified
+either *via* its name (``water``, ``toluene``, ``ethylEthanoate``, *etc.*), or *via* its dielectric
+constant:
+
+.. code-block:: yaml
+   
+  calculation:
+    solution:
+      calc: True
+      # Chose one:
+      solvent: water    # Solvent keyword.
+      solvent: 78.3553  # Dielectric constant.
+      # etc.
+
+The following solvent keywords are supported:
+
+.. csv-table:: 
+   :file: /_static/general/solvents.csv
+   :header-rows: 1
+
+The solvent model can be selected with the ``solution: model:`` option:
+
+.. code-block:: yaml
+   
+  calculation:
+    solution:
+      calc: True
+      model: PCM
+      solvent: water
+
+The list of supported solvent models depends on the underlying computational engine:
+
+.. tab-set::
+
+  .. tab-item:: Gaussian
+
+    Gaussian support several variants of the polarizable continuum model (PCM), as well as
+    the solvation model based on density (SMD), which are selected with the following keywords:
+
+    .. code-block:: yaml
+   
+      calculation:
+        solution:
+          calc: True
+          solvent: water
+          # Pick one:
+          model: PCM  # The default, uses an IEFPCM method.
+          model: CPCM
+          model: IPCM
+          model: SCIPCM
+          model: SMD
+
+    Refer to the `Gaussian manual <https://gaussian.com/scrf/>`__ for more information.
+
+  .. tab-item:: Orca
+
+    Orca supports two variants of the polarizable continuum model (PCM), as well as
+    the solvation model based on density (SMD). These are selected with the following keywords:
+
+    .. code-block:: yaml
+   
+      calculation:
+        solution:
+          calc: True
+          solvent: water
+          # Pick one:
+          model: PCM        # The default.
+          model: PCM-COSMO
+          model: SMD
+    
+    .. note::
+      The ``PCM-COSMO`` method is a CPCM method using a COSMO epsilon function. Versions prior to Orca 5
+      supported a true conductor-like Screening Solvation Model (COSMO), but this was removed in version 5
+      and is not supported by Digichem.
+
+  .. tab-item:: Turbomole
+
+    Turbomole only supports the conductor-like Screening Solvation Model (COSMO):
+
+    .. code-block:: yaml
+   
+      calculation:
+        solution:
+          calc: True
+          solvent: water
+          # Only one choice:
+          model: COSMO        # The default.
+
+Excited states
+~~~~~~~~~~~~~~
+
+When calculating excited states, the solvent model can either be applied in an equilibrium or non-equilibrium fashion.
+In non-equilibrium solvation, the solvent environment does not react to the change in electron density from the 
+excitation, while in equilibrium solvation it does.
+
+Equilibrium solvation can be requested with the ``solution: solvent_equilibrium:`` option:
+
+.. code-block:: yaml
+   
+  calculation:
+    solution:
+      calc: True
+      solvent: water
+      solvent_equilibrium: True
+
+Equilibrium solvation is normally preferred when modelling 'slow' effect, such as excited state geometries.
+
+.. note::
+  Equilibrium solvation is currently only supported for Gaussian.  If supporting this feature
+  in another calculation engine would be useful for you, please consider
+  `letting us know <https://github.com/Digichem-Project/build-boy/issues>`__.
+
+Symmetry
+--------
+
+The use of symmetry in the calculation is controlled by the ``symmetry: calc:`` option:
+
+.. code-block:: yaml
+   
+  calculation:
+    symmetry:
+      # Pick one:
+      calc: True   # The default for Gaussian and Turbomole.
+      calc: False  # Don't use symmetry.
+
+Other options to the ``symmetry`` block are program specific:
+
+.. tab-set::
+
+  .. tab-item:: Gaussian
+
+    The ``symmetry: rotate:`` option control whether to rotate the molecular geometry according to the 
+    determined symmetry:
+
+    .. code-block:: yaml
+   
+      calculation:
+        symmetry:
+          calc: True
+          # Pick one:
+          rotate: True   # The default.
+          rotate: False  # Don't rotate.
+
+    The sensitivity of the symmetry algorithm can be controlled with the ``symmetry: threshold:`` option:
+
+    .. code-block:: yaml
+   
+      calculation:
+        symmetry:
+          calc: True
+          # Pick one:
+          threshold: Tight   # The default.
+          threshold: False   # Be more generous when determining what is symmetric.
+
+  .. tab-item:: Orca
+
+    In Orca, symmetry detection is disabled by default. If symmetry detection is used, the sensitivity
+    of the algorithm can be controlled *via* the ``threshold:`` option:
+
+    .. code-block:: yaml
+   
+      calculation:
+        symmetry:
+          calc: True
+          threshold: 0.05
+
+    Refer to the Orca manual for the exact meaning of this threshold value.
+  
+  .. tab-item:: Turbomole
+
+    In Turbomole, symmetry detection cannot be disabled. There are no additional options.
+
+Electron occupations
+--------------------
+
+By default, the charge and multiplicity of the molecule is determined from the input coordinate file (*ie*, is not
+set in the method at all). However, it is sometimes useful to force a specific charge/multiplicity in the calculation,
+such as when calculating ΔSCF excited states or ionisation potentials/electron affinities. This can be achieved with
+the ``electron: multiplicity:`` and ``electron: charge:`` options:
+
+.. code-block:: yaml
+  
+  calculation:
+    electron:
+      # Pick one:
+      #
+      # Force a triplet ground state calculation.
+      multiplicity: 3
+      charge: 0
+      #
+      # Force a radical cation calculation.
+      multiplicity: 2
+      charge: 1
+      #
+      # Force a radical anion calculation.
+      multiplicity: 2
+      charge: -1
+      #
+      # etc.
+
+By default, open-shell molecules will use an unrestricted wavefunction/functional, while closed-shell molecules
+with use a restricted wavefunction/functional.
+
+An unrestricted calculation can be explicitly requested with the ``electron: unrestricted:`` option:
+
+.. code-block:: yaml
+   
+  calculation:
+    electron:
+      unrestricted: True
+
+Scratch files
+-------------
+
+Scratch filespace is used for IO (input/output) heavy operations during the calculation. This normally
+involves the reading and writing of large, temporary files that contain intermediate results of the calculation.
+The scratch filespace should be large (several 100 GB per calculation, at least) and fast, so it should not be mounted
+over the network (such as an NFS or similar) if at all possible.
+
+Options to control the use of scratch files are set in the ``scratch:`` block. The two most important sub-options are
+``use_scratch:``, which enables/disables the use of scratch files entirely, and ``path:``, which specifies the directory
+to store the scratch files:
+
+.. warning::
+  Disabling the use of scratch is not recommended. Most calculation engines will resort to a default location
+  which is difficult to control, and may result in a significant drop in performance.
+  Gaussian in particular acts unpredictably when a scratch directory is not specified, and is
+  highly likely to crash.
+
+.. code-block:: yaml
+   
+  calculation:
+    use_scratch: True     # The default. Do not turn this off unless you know what you are doing.
+    path: /tmp      # The top-level location under which scratch files will be stored.
+
+The ``path:`` option specifies the top-level scratch directory. Each calculation will create and use a separate sub-directory under
+this top-level directory, with a name that is guaranteed to be unique.
+
+On shared computing clusters, it is common to group each user's calculations together in the scratch directory. This can be
+easily achieved by including the ``$USER`` environmental variable in the path name. Likewise, some computing clusters use
+a dynamic scratch location which is stored in the ``$SCRATCH`` variable. These (or any other) environmental variables
+can be set in the ``path::`` option as needed:
+
+.. code-block:: yaml
+   
+  calculation:
+    scratch:
+      use_scratch: True     # The default. Do not turn this off unless you know what you are doing.
+      #
+      # Examples:
+      #
+      # Use the /tmp/ directory, with a sub-directory for each user.
+      path: /tmp/$USER
+      #
+      # Use a dynamic scratch location (set externally in $SCRATCH), with a sub-directory for each user.
+      path: $SCRATCH/$USER
+      #
+      # Use a custom location.
+      path: $MY_SUPER_SECRET_LOCATION
+
+Normally, only only a subset (defined by each calculation program) of the files written during the calculation are stored in the
+scratch directory. Instead, the ``all_output:`` sub-option can be specified so ALL files are written directly to the scratch directory.
+The only exception is the main calculation output file (the .log file) which is always written to the main calculation output folder:
+
+.. code-block:: yaml
+   
+  calculation:
+    scratch:
+      all_output: True  # Write everything to scratch, except the .log file.
+
+The sub-options ``keep:``, ``rescue:``, and ``force_delete:`` control what happens to the scratch files at the end of the calculation.
+Most scratch files are temporary files and can be safely deleted at the end of the calculation, and many (although not all, and not all of the time)
+calculation engines will delete them automatically. However, if the calculation stops suddenly, the scratch files may be useful in restarting
+the calculation, in which case it may be beneficial to keep them.
+
+``keep:`` and ``rescue:`` specify whether to copy any leftover scratch files back to the main calculation directory once the calculation has stopped.
+``keep:`` controls this behaviour only if the calculation finishes successfully, while ``rescue:`` only takes effect if the calculation stops unexpectedly.
+The default behaviour is like this:
+
+.. code-block:: yaml
+   
+  calculation:
+    scratch:
+      keep: False    # Delete scratch files if the calculation finishes successfully.
+      rescue: True   # But copy the scratch files back to the starting calculation directory if something goes wrong.
+
+.. note::
+  The ``keep:`` and ``rescue:`` options only apply to the temporary scratch files written by the calculation.
+  The files written by ``all_output: True`` are always copied back to the main directory.
+
+Additionally, ``force_delete:`` specifies what Digichem should do if something goes very badly wrong and the scratch files couldn't be copied back
+to the main calculation directory even if you asked them to. This situation is rare, but can happen (for instance) if the filesystem of the main
+calculation directory runs out of space.
+
+To avoid losing data, the default option is ``force_delete: False``. However, this can lead to a domino effect if the scratch directory and 
+main calculation directory are mounted on the same filesystem, as the large scratch files consume valuable file-space that could be freed
+to prevent other calculations from crashing. This can be avoided by setting ``force_delete: True``:
+
+.. code-block:: yaml
+   
+  calculation:
+    scratch:
+      keep: False         # Delete scratch if everything is fine.
+      rescue: True        # Save the scratch if we stop suddenly so we can restart later.
+      force_delete: True  # Unless we're out of file-space, in which case delete anyway.
+
+.. warning::
+  If ``all_output:`` is ``True``, ``force_delete: True`` WILL also delete these other output files if they cannot be copied back successfully.
+
+When transferring files between the scratch and main calculation directories, the ``compress:`` option can be used to first compress (archive)
+the files before copying. If one (or both) of the scratch directory or main directory are mounted on a networked filesystem, this option can
+be useful to save bandwidth.
+
+.. code-block:: yaml
+   
+  calculation:
+    scratch:
+      keep: True
+      rescue: True    # Always copy scratch files.
+      compress: True  # And compress when doing so.
+
+Folder structure
+-----------------
+
+Each calculation submitted with Digichem is run in a separate directory. The name of this directory is based on the chosen calculation options
+(the base name is taken from the ``meta: name:`` option), and can be modified in the ``structure`` block. These options are purely cosmetic.
+
+By default, the name of the chosen calculation program is added at the start of folder name.
+This can be disabled by setting ``structure: prepend_program_name:`` to ``False``:
+
+.. code-block:: yaml
+   
+  calculation:
+    structure:
+      prepend_program_name: False  # Do not include the program name.
+
+Alternatively, the program name can be added at the end of the folder name:
+
+.. code-block:: yaml
+   
+  calculation:
+    structure:
+      prepend_program_name: False
+      append_program_name: True  # Include the program name at the end of the folder.
+
+Or, a separate sub-directory can be created for each calculation:
+
+.. code-block:: yaml
+   
+  calculation:
+    structure:
+      prepend_program_name: False
+      program_sub_folder: True
+
+This results in a folder structure like this:
+
+``Benzene/Orca/Optimisation``
+
+Although uncommon, these options can be combined as desired:
+
+.. code-block:: yaml
+   
+  calculation:
+    structure:
+      append_program_name: True
+      prepend_program_name: True  # Include the program name at the start and end of the folder name.
+      program_sub_folder: True    # and use a separate sub-directory.
+
+Resulting in:
+
+``Benzene/Orca/Orca Optimisation (Orca)``
+
+Two options can be set to further modify the folder name. The ``safe_name:`` option replaces non alphanumeric characters
+with underscores, while ``short_name:`` uses a shorter overall folder name. One or both of these options can be enabled
+to make browsing the folders easier:
+
+.. code-block:: yaml
+   
+  calculation:
+    structure:
+      safe_name: True   # Remove 'strange' characters.
+      short_name: True  # Use a short name.
+
+
+.. note::
+  Enabling ``safe_name:`` and/or ``short_name:`` may help to avoid bugs in some versions of MobaXterm.
+
+Post processing
+---------------
+
+Options to control the post processing of the completed calculation results are set in the ``post:`` block.
+By default, all the options in this block are set to ``True``, and you do not normally need to change them.
+
+The text files normally found in the 'Results' folder can be disabled by setting ``write_summary:`` to ``False``.
+Likewise, the main Digichem output file (in .sir format) can be disabled by setting ``write_result:`` to ``False``:
+
+.. code-block:: yaml
+   
+  calculation:
+    post_process:
+      write_summary: False  # Don't write .txt or .csv files.
+      write_result: False   # Don't write the .sir file.
+
+The PDF report file (and associated images) can be disabled by setting ``write_report:`` to ``False``:
+
+.. code-block:: yaml
+   
+  calculation:
+    post_process:
+      write_report: False   # Don't write the PDF report or any images.
+
+This option may be useful to speed-up post-processing, as the image rendering included as part of the report
+generation process can be slow.
+
+Finally, the storing of the completed calculation results to any configured databases can be disabled by setting
+``store_in_db:`` to ``False``:
+
+.. code-block:: yaml
+   
+  calculation:
+    post_process:
+      store_in_db: False    # Don't save in any databases.
+
+This option can be useful when running test calculations, to avid polluting the database with unnecessary results.

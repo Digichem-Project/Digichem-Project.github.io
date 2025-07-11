@@ -1,0 +1,143 @@
+Programs
+~~~~~~~~
+
+This part of the method defines which computational engine to use, and where (on the filesystem) that program is located.
+
+The type of computational engine is set with the ``class_name:`` sub-option:
+
+.. code-block:: yaml
+   
+   program:
+     meta:
+       # Pick one:
+       class_name: Gaussian  # The type of program.
+       name: Gaussian        # A convenient name, can be set to anything unique (but must be set).
+       #
+       class_name: Turbomole
+       name: Turbomole
+       #
+       class_name: Orca
+       name: Orca
+
+The remainder of the program options are specific to the chosen calculation engine.
+
+Gaussian
+^^^^^^^^
+
+A Gaussian computational engine requires four options to be setup correctly.
+
+The main gaussian executable is set with ``executable:`` sub-option. This setting can either take just the name of the executable
+(eg, ``g09`` or ``g16``), or the full path to the executable file (eg, ``/opt/g16/g16``):
+
+.. code-block:: yaml
+   
+   program:
+     meta:
+       class_name: Gaussian
+       name: Gaussian 16
+       executable: g16        # The normal name of the main Gaussian 16 executable.
+
+Each version of Gaussian uses a different environmental variable to define its installation directory. For Gaussian 16,
+this variable is ``g16root``. For Gaussian 09, it is ``g09root`` and so on. The name of the variable specific to the
+version of Gaussian you are using is set with the ``root_environ_name:`` option:
+
+.. code-block:: yaml
+   
+   program:
+     meta:
+       class_name: Gaussian
+       name: Gaussian 16
+       executable: g16
+       root_environ_name: g16root  # The normal name for Gaussian 16.
+
+Finally, Gaussian needs to know the location of two files. The first is the main Gaussian installation directory.
+The second is the setup script. These are set with the ``root:`` and ``init_file:`` options respectively:
+
+.. code-block:: yaml
+   
+   program:
+     meta:
+       class_name: Gaussian
+       name: Gaussian 16
+       executable: g16
+       root_environ_name: g16root
+       #
+       # Assuming Gaussian was installed to /opt
+       root: /opt/g16
+       init_file: /opt/g16/bsd/g16.profile
+
+See the :ref:`setup procedure for Gaussian <gaussian_setup>` for more information on how to locate these files.
+
+Orca
+^^^^
+
+An Orca computational engine is slightly more complicated to setup because the location of two separate programs have to be specified.
+The first is the Orca installation itself, the second is the message passing interface (MPI) library that Orca requires in order to
+run in parallel. Sometimes these two programs are installed in the same location, other-times they are not. Consult your cluster's
+documentation if you are unsure.
+
+The main Orca executable is specified with the ``executable:`` option. Unlike other computational engines, the ``executable:`` option
+for Orca *must* specify the full file path to the executable, otherwise parallel execution will fail.
+
+.. code-block:: yaml
+   
+   program:
+     meta:
+       class_name: Orca
+       name: Orca
+       executable: /opt/ORCA/orca  # The FULL PATH to the Orca executable.
+
+The location of the main Orca installation directory is specified with the ``root:`` option:
+
+.. code-block:: yaml
+   
+   program:
+     meta:
+       class_name: Orca
+       name: Orca
+       executable: /opt/ORCA/orca
+       root: /opt/ORCA
+
+Finally, the MPI library location is specified with the ``mpi_root:`` option:
+
+.. code-block:: yaml
+   
+   program:
+     meta:
+       class_name: Orca
+       name: Orca
+       executable: /opt/ORCA/orca
+       root: /opt/ORCA
+       mpi_root: /opt/openmpi
+
+This location should be the main OpenMPI directory, inside of which are the ``bin`` and ``lib`` sub-directories.
+
+See the :ref:`setup procedure for Orca <orca_setup>` for more information.
+
+Turbomole
+^^^^^^^^^
+
+A Turbomole computational engine requires only two options to be configured.
+
+The main Turbomole installation directory is specified with the ``root:`` option:
+
+.. code-block:: yaml
+   
+   program:
+     meta:
+       class_name: Turbomole
+       name: Turbomole
+       root: /opt/TURBOMOLE
+
+And the Turbomole config script (normally called Config_turbo_env) is specified with the ``init_file:`` option:
+
+.. code-block:: yaml
+   
+   program:
+     meta:
+       class_name: Turbomole
+       name: Turbomole
+       root: /opt/TURBOMOLE
+       init_file: /opt/TURBOMOLE/Config_turbo_env
+
+See the :ref:`setup procedure for Turbomole <turbomole_setup>` for more information.
