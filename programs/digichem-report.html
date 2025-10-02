@@ -1,27 +1,25 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="../">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Digichem Report &mdash; Digichem 6.9.2 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=92fd9be5" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
-      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+  <title>Digichem Report &mdash; Digichem 7.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
       <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=4b4c264b" />
 
   
     <link rel="shortcut icon" href="../_static/Icon.svg"/>
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="../_static/jquery.js?v=5d32c60e"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../_static/documentation_options.js?v=c8889b49"></script>
-        <script src="../_static/doctools.js?v=888ff710"></script>
-        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script src="../_static/design-tabs.js?v=f930bc37"></script>
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=efe5be6f"></script>
+      <script src="../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -40,9 +38,6 @@
           <a href="../index.html" class="icon icon-home">
             Digichem
           </a>
-              <div class="version">
-                6.9.2
-              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -638,6 +633,8 @@ To disable the maximum width, set to null.</p>
 Set to 0 for no cutoff (all peaks shown), which may results in the graph being extended well beyond the drawn peaks (because many peaks are too small to see).
 This option has no effect when using manual x limits.</p>
 </dd>
+<dt>y_filter<span class="classifier">float</span><span class="classifier">[1e-06]</span></dt><dd><p>The minimum y value to simulate using the Gaussian function (y values below this are discarded)</p>
+</dd>
 <dt>x_padding<span class="classifier">int</span><span class="classifier">[40]</span></dt><dd><p>The amount (in nm) to extend the x axis past the highest/lowest energy peak.</p>
 </dd>
 <dt>fwhm<span class="classifier">float</span><span class="classifier">[0.4]</span></dt><dd><p>The full-width at half-maximum; changes how wide the drawn peaks are. Note that the choice of peak width is essentially arbitrary; only the peak height is given by calculation. Units are eV.</p>
@@ -677,9 +674,11 @@ Possible options are:
 Absorption graphs will grow/shrink their width to fit available data, keeping a constant scale (constant pixels to nm ratio) but only up to this maximum.
 To disable the maximum width, set to null.</p>
 </dd>
-<dt>peak_cutoff<span class="classifier">float</span><span class="classifier">[0.01]</span></dt><dd><p>The minimum oscillator strength that a peak must have to be shown in the graph, as a fraction ofthe highest peak.
+<dt>peak_cutoff<span class="classifier">float</span><span class="classifier">[0.01]</span></dt><dd><p>The minimum oscillator strength that a peak must have to be shown in the graph, as a fraction of the highest peak.
 Set to 0 for no cutoff (all peaks shown), which may results in the graph being extended well beyond the drawn peaks (because many peaks are too small to see).
 This option has no effect when using manual x limits.</p>
+</dd>
+<dt>y_filter<span class="classifier">float</span><span class="classifier">[1e-06]</span></dt><dd><p>The minimum y value to simulate using the Gaussian function (y values below this are discarded)</p>
 </dd>
 <dt>x_padding<span class="classifier">int</span><span class="classifier">[40]</span></dt><dd><p>The amount (in nm) to extend the x axis past the highest/lowest energy peak.</p>
 </dd>
@@ -721,6 +720,8 @@ Possible options are:
 <dt>max_width<span class="classifier">int</span><span class="classifier">[1500]</span></dt><dd><p>The maximum image width in pixels.
 IR spectra will grow/shrink their width to fit available data, keeping a constant scale (constant pixels to nm ratio) but only up to this maximum.
 To disable the maximum width, set to null.</p>
+</dd>
+<dt>y_filter<span class="classifier">float</span><span class="classifier">[1e-06]</span></dt><dd><p>The minimum y value to simulate using the Gaussian function (y values below this are discarded)</p>
 </dd>
 <dt>gaussian_cutoff<span class="classifier">float</span><span class="classifier">[0.001]</span></dt><dd><p>The minimum y value to plot using the Gaussian function (controls how close to the x axis we draw the gaussian) as a fraction of the max peak height.</p>
 </dd>

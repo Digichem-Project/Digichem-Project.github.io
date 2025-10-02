@@ -1,27 +1,25 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="../">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Setup &mdash; Digichem 6.9.2 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=92fd9be5" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
-      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+  <title>Setup &mdash; Digichem 7.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
       <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=4b4c264b" />
 
   
     <link rel="shortcut icon" href="../_static/Icon.svg"/>
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="../_static/jquery.js?v=5d32c60e"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../_static/documentation_options.js?v=c8889b49"></script>
-        <script src="../_static/doctools.js?v=888ff710"></script>
-        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script src="../_static/design-tabs.js?v=f930bc37"></script>
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=efe5be6f"></script>
+      <script src="../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -40,9 +38,6 @@
           <a href="../index.html" class="icon icon-home">
             Digichem
           </a>
-              <div class="version">
-                6.9.2
-              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -122,24 +117,24 @@
 <span id="id1"></span><h1>Setup<a class="headerlink" href="#setup" title="Link to this heading"></a></h1>
 <p>Digichem reads configuration information from two main locations. The main configuration file is located in your home directory at
 <code class="docutils literal notranslate"><span class="pre">~/.config/digichem{VERSION}/digichem.yaml</span></code>, where <code class="docutils literal notranslate"><span class="pre">{VERSION}</span></code> is the major Digichem version.</p>
-<p>For example, for all versions of Digichem 6, the main config file is located at: <code class="docutils literal notranslate"><span class="pre">~/.config/digichem6/digichem.yaml</span></code>.</p>
+<p>For example, for all versions of Digichem 7, the main config file is located at: <code class="docutils literal notranslate"><span class="pre">~/.config/digichem7/digichem.yaml</span></code>.</p>
 <p>Meanwhile, information about the available computational engines and available server queues are stored in sub directories
 in the same folder as the main config file. Engines are stored in the <code class="docutils literal notranslate"><span class="pre">Programs</span></code> folder, while queues are stored in the
 <code class="docutils literal notranslate"><span class="pre">Destinations</span></code> folder.</p>
 <p>To change the settings of Digichem for just a single user (yourself), these files can be located here:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">~/.config/digichem6/digichem.yaml</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">~/.config/digichem6/Destinations</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">~/.config/digichem6/Programs</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">~/.config/digichem7/digichem.yaml</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">~/.config/digichem7/Destinations</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">~/.config/digichem7/Programs</span></code></p></li>
 </ul>
 </div></blockquote>
 <p>For a multi-user installation, changes can be made to these files instead/in addition to affect all users:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">/etc/digichem6/digichem.yaml</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">/etc/digichem6/Destinations</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">/etc/digichem6/Programs</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/etc/digichem7/digichem.yaml</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/etc/digichem7/Destinations</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/etc/digichem7/Programs</span></code></p></li>
 </ul>
 </div></blockquote>
 <p>Before you can use Digichem to submit calculations for the first time, you need to tell it what <a class="reference internal" href="#setup-programs"><span class="std std-ref">computational engines</span></a>
@@ -159,7 +154,7 @@ but you can drastically increase the speed of the search by specifying file hint
 </pre></div>
 </div>
 <p>See the <a class="reference internal" href="../introduction/install.html#quick-setup"><span class="std std-ref">installation walkthrough</span></a> for example output from the program.</p>
-<p>By default, <code class="docutils literal notranslate"><span class="pre">setup</span></code> will write new configuration files to <code class="docutils literal notranslate"><span class="pre">~/.config/digichem6/</span></code>; these will apply to the current user only.
+<p>By default, <code class="docutils literal notranslate"><span class="pre">setup</span></code> will write new configuration files to <code class="docutils literal notranslate"><span class="pre">~/.config/digichem7/</span></code>; these will apply to the current user only.
 If you wish to instead run the setup for multiple users, use the <code class="docutils literal notranslate"><span class="pre">-o</span></code> option to specify a different output location:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>digichem<span class="w"> </span>setup<span class="w"> </span>-o<span class="w"> </span>/etc/digichem6
 </pre></div>
@@ -167,8 +162,8 @@ If you wish to instead run the setup for multiple users, use the <code class="do
 <p>Digichem will normally refuse to overwrite previously written setup files. If you attempt to run <code class="docutils literal notranslate"><span class="pre">digichem</span> <span class="pre">setup</span></code> again, you’ll
 see an error similar to this:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>digichem<span class="w"> </span>setup
-<span class="go">digichem: ERROR: Output directory &#39;/home/oliver/.config/digichem6/Programs/SETUP&#39; is not empty! Refusing to overwrite existing files. Try &#39;digichem setup --force&#39; if you&#39;re sure.</span>
-<span class="go">digichem: ERROR: Output directory &#39;/home/oliver/.config/digichem6/Destinations/SETUP&#39; is not empty! Refusing to overwrite existing files. Try &#39;digichem setup --force&#39; if you&#39;re sure.</span>
+<span class="go">digichem: ERROR: Output directory &#39;/home/oliver/.config/digichem7/Programs/SETUP&#39; is not empty! Refusing to overwrite existing files. Try &#39;digichem setup --force&#39; if you&#39;re sure.</span>
+<span class="go">digichem: ERROR: Output directory &#39;/home/oliver/.config/digichem7/Destinations/SETUP&#39; is not empty! Refusing to overwrite existing files. Try &#39;digichem setup --force&#39; if you&#39;re sure.</span>
 <span class="go">digichem: ERROR: stopped with error</span>
 <span class="go">    Digichem_exception: Refusing to overwrite existing config files</span>
 </pre></div>
@@ -180,8 +175,8 @@ see an error similar to this:</p>
 <p>Digichem will write the new files to a SETUP directory in the given output location. If the default location is used, these files can be
 found at:</p>
 <ul class="simple">
-<li><p>~/.config/digichem6/Destinations/SETUP/</p></li>
-<li><p>~/.config/digichem6/Programs/SETUP/</p></li>
+<li><p>~/.config/digichem7/Destinations/SETUP/</p></li>
+<li><p>~/.config/digichem7/Programs/SETUP/</p></li>
 </ul>
 <p>You are free to edit and/or remove the config files afterwards as you see fit.</p>
 <section id="specifying-file-hints">
@@ -208,7 +203,7 @@ an Orca installation at <code class="docutils literal notranslate"><span class="
 <h3>External programs<a class="headerlink" href="#external-programs" title="Link to this heading"></a></h3>
 <section id="vmd">
 <span id="setup-vmd"></span><h4>VMD<a class="headerlink" href="#vmd" title="Link to this heading"></a></h4>
-<p>The options to control VMD are set in <code class="docutils literal notranslate"><span class="pre">~/.config/digichem6/digichem.yaml</span></code>, under the <code class="docutils literal notranslate"><span class="pre">render</span></code> heading.
+<p>The options to control VMD are set in <code class="docutils literal notranslate"><span class="pre">~/.config/digichem7/digichem.yaml</span></code>, under the <code class="docutils literal notranslate"><span class="pre">render</span></code> heading.
 Three options are required:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">render</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">engine</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vmd</span>
@@ -236,7 +231,7 @@ Tachyon is normally included in the VMD installation itself.</p>
 <p>These options are redundant and will likely be removed in a future version.</p>
 </div>
 <p>To generate reports from Gaussian calculations, Digichem needs to know the location of both the <code class="docutils literal notranslate"><span class="pre">formchk</span></code> and <code class="docutils literal notranslate"><span class="pre">cubegen</span></code> utilities.
-These can be set in  <code class="docutils literal notranslate"><span class="pre">~/.config/digichem6/digichem.yaml</span></code>, under the <code class="docutils literal notranslate"><span class="pre">external</span></code> heading:</p>
+These can be set in  <code class="docutils literal notranslate"><span class="pre">~/.config/digichem7/digichem.yaml</span></code>, under the <code class="docutils literal notranslate"><span class="pre">external</span></code> heading:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">external</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">formchk</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/opt/gaussian/g16/formchk</span>
 <span class="w">  </span><span class="nt">cubegen</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/opt/gaussian/g16/cubegen</span>
@@ -251,7 +246,7 @@ These can be set in  <code class="docutils literal notranslate"><span class="pre
 </div>
 <p>When generating a report at the end of a calculation, Digichem will use the same program definition that ran the calculation to perform any
 requested post analysis (natural transition orbitals, difference density etc.). However, when a report is generated manually, Digichem needs to know
-which program definition to use. These can be set in <code class="docutils literal notranslate"><span class="pre">~/.config/digichem6/digichem.yaml</span></code>, under the <code class="docutils literal notranslate"><span class="pre">report</span></code> heading:</p>
+which program definition to use. These can be set in <code class="docutils literal notranslate"><span class="pre">~/.config/digichem7/digichem.yaml</span></code>, under the <code class="docutils literal notranslate"><span class="pre">report</span></code> heading:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">report</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">turbomole</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">program</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Turbomole</span>
@@ -280,8 +275,8 @@ which program definition to use. These can be set in <code class="docutils liter
 <section id="computational-engines">
 <span id="setup-programs"></span><h3>Computational engines<a class="headerlink" href="#computational-engines" title="Link to this heading"></a></h3>
 <p>The installation script will create an example config file for each of the supported calculation engines in
-<code class="docutils literal notranslate"><span class="pre">~/.config/digichem6/Programs</span></code>.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ls<span class="w"> </span>~/.config/digichem6/Programs
+<code class="docutils literal notranslate"><span class="pre">~/.config/digichem7/Programs</span></code>.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ls<span class="w"> </span>~/.config/digichem7/Programs
 <span class="go">Gaussian.yaml.off  Orca.yaml.off  Turbomole.yaml.off</span>
 </pre></div>
 </div>
@@ -425,8 +420,8 @@ directory, inside of which are the <code class="docutils literal notranslate"><s
 <section id="server-queues">
 <span id="setup-destinations"></span><h3>Server queues<a class="headerlink" href="#server-queues" title="Link to this heading"></a></h3>
 <p>The installation script will also create example config files for both SLURM and PBS. These can be found in
-<code class="docutils literal notranslate"><span class="pre">~/.config/digichem6/Destinations</span></code>.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ls<span class="w"> </span>~/.config/digichem6/Destinations
+<code class="docutils literal notranslate"><span class="pre">~/.config/digichem7/Destinations</span></code>.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ls<span class="w"> </span>~/.config/digichem7/Destinations
 <span class="go">PBS.yaml.off  SLURM.yaml.off</span>
 </pre></div>
 </div>
