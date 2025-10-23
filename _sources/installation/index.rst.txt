@@ -1,53 +1,13 @@
-.. _full_installation:
-
-Installation
-==================================
-
-This section of the documentation covers how to install Digichem.
-
-.. note::
-   This installation only covers the main Digichem program. If you are looking to (also) install the open-source Digichem-core library, please see the separate documentation `here <https://github.com/Digichem-Project/digichem-core>`_.
-
-Dependencies
-____________
-
-Digichem is distributed as a fully self-contained binary, which means it has no required dependencies to run.
-However, Digichem uses an external rendering engine to generate orbital plots and other 3D renders.
-If you would like to generate these types of images, you should make sure Visual Molecular Dynamics
-(:ref:`VMD <vmd_requirement>`) is installed on your cluster before you begin to install Digichem.
-
-.. note::
-   Many computational clusters already have VMD installed, make sure to check your cluster's documentation first before you try and install it yourself!
-
-Quick installation instructions
-_______________________________
-
-Installing Digichem is easy:
-
- #. Download the latest version of Digichem from the `automated build server <https://github.com/Digichem-Project/build-boy>`_
- #. Upload the archive to your computational cluster
- #. Unzip the archive with ``tar -xzf digichem.*.tar.gz``
- #. Run the install script with ``digichem/_internal/install.sh``
- #. If you've not used Digichem on this server before, run the setup program with ``digichem setup``
-
-And that's it! Next, you'll want to let Digichem know which submission queues and calculation engines are :ref:`available <setup>`, and then you can begin submitting calculations.
-
-Detailed installation instructions
-__________________________________
-
-For a more detailed walkthrough of the installation process, including options to install for multiple users, please see the below guide:
+Advanced installation
+---------------------
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
    :includehidden:
 
-   before
-   requirements
-   download
-   install
+   gui
+   backend/index
+   resources
+   multi_user
 
 
-Help!
-_____________________
-
-Something went wrong? Let us know at `Build-boy <https://github.com/Digichem-Project/build-boy>`_ and we'll do our best to assist you.

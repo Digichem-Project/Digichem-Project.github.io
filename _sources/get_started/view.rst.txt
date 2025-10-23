@@ -1,0 +1,66 @@
+View results
+____________
+
+Once the calculation has finished, we will need some way at looking at the results!
+
+The PDF report
+--------------
+
+The quickest way to view the completed data is to click the corresponding calculation row in the **Completed** jobs panel:
+
+.. image:: /_static/get_started/view_row.png
+
+This will open the calculation report, a preformatted PDF file that contains all of the critical calculation results:
+
+.. image:: /_static/get_started/view_benzene.png
+
+This report that we have opened is for the geometry optimisation of Benzene. It can tell us such information as:
+
+Calculation metadata
+====================
+
+.. image:: /_static/get_started/view_metadata.png
+
+The total energy of the molecule
+================================
+
+.. image:: /_static/get_started/view_scf.png
+
+Geometry information
+====================
+
+.. image:: /_static/get_started/view_geometry.png
+
+Molecular orbital information
+=============================
+
+.. image:: /_static/get_started/view_orbitals.png
+
+Including orbital density plots:
+
+.. image:: /_static/get_started/view_orbital_plots.png
+
+And much more besides.
+
+An excited states report
+------------------------
+
+However, we've already agreed that the optimisation of Benzene is not so interesting. More interesting, perhaps,
+is the excited states of Pyridine:
+
+.. image:: /_static/get_started/view_pyridine.png
+
+This report contains additional calculation results, namely:
+
+Excited states data
+===================
+
+.. image:: /_static/get_started/view_excited.png
+
+Including a graph of the calculated states:
+
+.. image:: /_static/get_started/view_excited_graph.png
+
+And a table of all the states calculated:
+
+.. image:: /_static/get_started/view_excited_table.png

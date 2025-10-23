@@ -1,0 +1,867 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Digichem Database &#8212; Digichem 7.0.1 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=4b4c264b" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=4b9d3a76"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'guides/cli/database';</script>
+    <link rel="icon" href="../../_static/Icon.svg"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Digichem Image" href="image.html" />
+    <link rel="prev" title="Digichem Convert" href="convert.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="7.0.1" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/Icon.svg" class="logo__image only-light" alt=""/>
+    <img src="../../_static/Icon.svg" class="logo__image only-dark pst-js-only" alt=""/>
+  
+  
+    <p class="title logo__title">Digichem Docs</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../get_started/index.html">
+    Getting started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../installation/index.html">
+    Advanced installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../core_concepts/digichem/index.html">
+    Core concepts: Digichem
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../core_concepts/chemistry/index.html">
+    Core concepts: quantum chemistry
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../interface/index.html">
+    Interfaces
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" current active">
+  <a class="nav-link dropdown-item nav-internal" href="../index.html">
+    User guides
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../get_started/index.html">
+    Getting started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../installation/index.html">
+    Advanced installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../core_concepts/digichem/index.html">
+    Core concepts: Digichem
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../core_concepts/chemistry/index.html">
+    Core concepts: quantum chemistry
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../interface/index.html">
+    Interfaces
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    User guides
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../gui/index.html">The graphical user interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../terminal/index.html">The terminal interface</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">The command-line interface</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="convert.html">Digichem Convert</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Digichem Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="image.html">Digichem Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="report.html">Digichem Report</a></li>
+<li class="toctree-l2"><a class="reference internal" href="result.html">Digichem Result</a></li>
+<li class="toctree-l2"><a class="reference internal" href="status.html">Digichem Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="submit.html">Digichem Submit</a></li>
+</ul>
+</details></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">User guides</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">The command-line interface</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Digichem Database</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="digichem-database">
+<span id="id1"></span><h1>Digichem Database<a class="headerlink" href="#digichem-database" title="Link to this heading">#</a></h1>
+<p>The <code class="docutils literal notranslate"><span class="pre">digichem</span> <span class="pre">database</span></code> program is used to manage databases of completed calculation results.
+It consists of of several sub-commands, depending on what you want to do to the database:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>digichem<span class="w"> </span>database<span class="w"> </span>FILE<span class="w"> </span>SUB_COMMAND
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">FILE</span></code> is the database file you want to act upon. It can be a path to a database file:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>digichem<span class="w"> </span>database<span class="w"> </span>results.db<span class="w"> </span>SUB_COMMAND
+</pre></div>
+</div>
+<p>Or the name of a database pre-configured into Digichem. You can configure as many databases as you like,
+but by default the only configured database that is available is the <code class="docutils literal notranslate"><span class="pre">main</span> <span class="pre">database</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>digichem<span class="w"> </span>database<span class="w"> </span>main<span class="w"> </span>SUB_COMMAND
+</pre></div>
+</div>
+<section id="digichem-database-insert">
+<h2><code class="docutils literal notranslate"><span class="pre">digichem</span> <span class="pre">database</span> <span class="pre">insert</span></code><a class="headerlink" href="#digichem-database-insert" title="Link to this heading">#</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">insert</span></code> sub-command is used to add completed calculation results to a database:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>digichem<span class="w"> </span>database<span class="w"> </span>results.db<span class="w"> </span>insert<span class="w"> </span>FILES
+</pre></div>
+</div>
+<p>Where <code class="docutils literal notranslate"><span class="pre">FILES</span></code> are completed calculation log files:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>digichem<span class="w"> </span>database<span class="w"> </span>results.db<span class="w"> </span>insert<span class="w"> </span>Benzene.log<span class="w"> </span>Pyridine.log
+</pre></div>
+</div>
+<p>The linux wildcard character <code class="docutils literal notranslate"><span class="pre">*</span></code> can be used as normal to insert many calculation results at once:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// Insert all calculation log files in the current folder.</span>
+<span class="gp">$ </span>digichem<span class="w"> </span>database<span class="w"> </span>results.db<span class="w"> </span>insert<span class="w"> </span>*.log
+</pre></div>
+</div>
+<p>For example, to insert all the results from a computational screen submitted with Digichem with the following structure:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Benzene</span><span class="o">/</span>
+    <span class="n">Gaussian</span> <span class="mi">16</span> <span class="n">Optimisation</span> <span class="n">Frequencies</span> <span class="n">PBE1PBE</span> <span class="p">(</span><span class="n">GD3BJ</span><span class="p">)</span> <span class="n">Toluene</span> <span class="mi">6</span><span class="o">-</span><span class="mi">31</span><span class="n">G</span><span class="p">(</span><span class="n">d</span><span class="p">,</span><span class="n">p</span><span class="p">)</span><span class="o">/</span>
+    <span class="n">Gaussian</span> <span class="mi">16</span> <span class="n">Excited</span> <span class="n">States</span> <span class="n">TDA</span> <span class="mi">10</span> <span class="n">Singlets</span> <span class="mi">10</span> <span class="n">Triplets</span> <span class="n">PBE1PBE</span> <span class="p">(</span><span class="n">GD3BJ</span><span class="p">)</span> <span class="n">Toluene</span> <span class="mi">6</span><span class="o">-</span><span class="mi">31</span><span class="n">G</span><span class="p">(</span><span class="n">d</span><span class="p">,</span><span class="n">p</span><span class="p">)</span><span class="o">/</span>
+<span class="n">Pyridine</span><span class="o">/</span>
+    <span class="n">Gaussian</span> <span class="mi">16</span> <span class="n">Optimisation</span> <span class="n">Frequencies</span> <span class="n">PBE1PBE</span> <span class="p">(</span><span class="n">GD3BJ</span><span class="p">)</span> <span class="n">Toluene</span> <span class="mi">6</span><span class="o">-</span><span class="mi">31</span><span class="n">G</span><span class="p">(</span><span class="n">d</span><span class="p">,</span><span class="n">p</span><span class="p">)</span>
+    <span class="n">Gaussian</span> <span class="mi">16</span> <span class="n">Excited</span> <span class="n">States</span> <span class="n">TDA</span> <span class="mi">10</span> <span class="n">Singlets</span> <span class="mi">10</span> <span class="n">Triplets</span> <span class="n">PBE1PBE</span> <span class="p">(</span><span class="n">GD3BJ</span><span class="p">)</span> <span class="n">Toluene</span> <span class="mi">6</span><span class="o">-</span><span class="mi">31</span><span class="n">G</span><span class="p">(</span><span class="n">d</span><span class="p">,</span><span class="n">p</span><span class="p">)</span><span class="o">/</span>
+<span class="n">Toluene</span><span class="o">/</span>
+    <span class="n">Gaussian</span> <span class="mi">16</span> <span class="n">Optimisation</span> <span class="n">Frequencies</span> <span class="n">PBE1PBE</span> <span class="p">(</span><span class="n">GD3BJ</span><span class="p">)</span> <span class="n">Toluene</span> <span class="mi">6</span><span class="o">-</span><span class="mi">31</span><span class="n">G</span><span class="p">(</span><span class="n">d</span><span class="p">,</span><span class="n">p</span><span class="p">)</span>
+    <span class="n">Gaussian</span> <span class="mi">16</span> <span class="n">Excited</span> <span class="n">States</span> <span class="n">TDA</span> <span class="mi">10</span> <span class="n">Singlets</span> <span class="mi">10</span> <span class="n">Triplets</span> <span class="n">PBE1PBE</span> <span class="p">(</span><span class="n">GD3BJ</span><span class="p">)</span> <span class="n">Toluene</span> <span class="mi">6</span><span class="o">-</span><span class="mi">31</span><span class="n">G</span><span class="p">(</span><span class="n">d</span><span class="p">,</span><span class="n">p</span><span class="p">)</span><span class="o">/</span>
+</pre></div>
+</div>
+<p>Use the following command:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>digichem<span class="w"> </span>database<span class="w"> </span>results.db<span class="w"> </span>insert<span class="w"> </span>*/*
+</pre></div>
+</div>
+<p>Digichem will generate a unique ID for each calculation that is inserted into the database, and these will be printed at the end of the command:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>digichem<span class="w"> </span>database<span class="w"> </span>results.db<span class="w"> </span>insert<span class="w"> </span>Benzene.log
+<span class="go">4341561273e3e48d80f5427212e785f0d7044835</span>
+</pre></div>
+</div>
+<p>For a given calculation, this ID is always the same (even if inserting into a different database), and Digichem will not allow an identical calculation to be
+inserted into the same database multiple times. If you try to do this, Digichem will print a warning:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// Try to insert the same file twice</span>
+<span class="gp">$ </span>digichem<span class="w"> </span>database<span class="w"> </span>results.db<span class="w"> </span>insert<span class="w"> </span>Benzene.log<span class="w"> </span>Benzene.log
+<span class="go">digichem: WARNING: UserWarning: Not inserting 4341561273e3e48d80f5427212e785f0d7044835, Benzene, Gaussian (2016+C.01), Optimisation, Frequencies, DFT; Document with ID 4341561273e3e48d80f5427212e785f0d7044835 already exists</span>
+<span class="go">4341561273e3e48d80f5427212e785f0d7044835</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Digichem is extremely strict on what it considers an ‘identical’ calculation. In short, the calculation log files must
+match <em>exactly</em>. This means two calculations submitted at different times, even if otherwise identical, will <em>not</em> be
+considered the same (because the completion time is included in most log files).</p>
+</div>
+</section>
+<section id="digichem-database-slice">
+<h2><code class="docutils literal notranslate"><span class="pre">digichem</span> <span class="pre">database</span> <span class="pre">slice</span></code><a class="headerlink" href="#digichem-database-slice" title="Link to this heading">#</a></h2>
+<p>While <code class="docutils literal notranslate"><span class="pre">insert</span></code> is used to add data from computational log files, <code class="docutils literal notranslate"><span class="pre">slice</span></code> is used to insert data from another database.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>digichem<span class="w"> </span>database<span class="w"> </span>source.db<span class="w"> </span>slice<span class="w"> </span>destination.db<span class="w"> </span>QUERIES
+</pre></div>
+</div>
+<p>Where <code class="docutils literal notranslate"><span class="pre">QUERIES</span></code> are a number of search queries specifying what to copy. If none are given, then the entirety of <code class="docutils literal notranslate"><span class="pre">source.db</span></code>
+is copied to <code class="docutils literal notranslate"><span class="pre">destination.db</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>digichem<span class="w"> </span>database<span class="w"> </span>source.db<span class="w"> </span>slice<span class="w"> </span>destination.db
+</pre></div>
+</div>
+<p>In this case, the <code class="docutils literal notranslate"><span class="pre">-N</span></code> option can be specified to speed up the copying process:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>digichem<span class="w"> </span>database<span class="w"> </span>source.db<span class="w"> </span>slice<span class="w"> </span>destination.db<span class="w"> </span>-N
+</pre></div>
+</div>
+<p>Please see the <a class="reference internal" href="../../old/reference/digichem-database.html#digichem-database-reference"><span class="std std-ref">command reference</span></a> for more information on the <code class="docutils literal notranslate"><span class="pre">-N</span></code> option.</p>
+<p>The search <code class="docutils literal notranslate"><span class="pre">QUERIES</span></code> are given in the same way as for  the <code class="docutils literal notranslate"><span class="pre">digichem</span> <span class="pre">database</span> <span class="pre">search</span></code> <a class="reference internal" href="#digichem-database-search"><span class="std std-ref">sub-command</span></a>.
+Only those calculation results that match the search criteria will be copied:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// Only copy results with a HOMO value greater than -6.0 eV.</span>
+<span class="gp">$ </span>digichem<span class="w"> </span>database<span class="w"> </span>source.db<span class="w"> </span>slice<span class="w"> </span>destination.db<span class="w"> </span>--homo<span class="w"> </span><span class="s2">&quot;&gt;-6&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="digichem-database-search">
+<span id="id2"></span><h2><code class="docutils literal notranslate"><span class="pre">digichem</span> <span class="pre">database</span> <span class="pre">search</span></code><a class="headerlink" href="#digichem-database-search" title="Link to this heading">#</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">search</span></code> sub-command is used to search for (and extract) results from a database:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>digichem<span class="w"> </span>database<span class="w"> </span>main<span class="w"> </span>search<span class="w"> </span>QUERIES
+</pre></div>
+</div>
+<p>Where <code class="docutils literal notranslate"><span class="pre">QUERIES</span></code> are a number of search queries specifying what to search for. If none are given, the entire database
+is returned:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// Export everything from the database.</span>
+<span class="gp">$ </span>digichem<span class="w"> </span>database<span class="w"> </span>main<span class="w"> </span>search
+<span class="go">_id: 4341561273e3e48d80f5427212e785f0d7044835</span>
+<span class="go">atoms:</span>
+<span class="go">    alignment_method: Minimal</span>
+<span class="go">    charge: 0</span>
+<span class="go">    exact_mass:</span>
+<span class="go">        units: g mol^-1</span>
+<span class="go">        value: 78.04694999999998</span>
+<span class="go">    formula: C6H6</span>
+<span class="go">    linearity_ratio: 0.07920370892421824</span>
+<span class="go">    molar_mass:</span>
+<span class="go">        units: g mol^-1</span>
+<span class="go">        value: 78.11184</span>
+<span class="go">... // This will go on for some time...</span>
+</pre></div>
+</div>
+<p>Queries can be specified in a number of ways. For common search criteria (orbital energies, excited states etc.), a command line argument can be used.
+For example, to search for all calculation results with a HOMO above (more positive) than -5.0 eV:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// Export everything from the database.</span>
+<span class="gp">$ </span>digichem<span class="w"> </span>database<span class="w"> </span>main<span class="w"> </span>search<span class="w"> </span>--homo<span class="w"> </span><span class="s2">&quot;&gt;-5.0&quot;</span>
+</pre></div>
+</div>
+<p>Or to search for all calculations on Benzene:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// Search for calculations matching the SMILES for benzene (exact match).</span>
+<span class="gp">$ </span>digichem<span class="w"> </span>database<span class="w"> </span>main<span class="w"> </span>search<span class="w"> </span>--structure<span class="w"> </span><span class="s2">&quot;c1ccccc1&quot;</span>
+</pre></div>
+</div>
+<p>Substructure searching is also possible, using the <code class="docutils literal notranslate"><span class="pre">--substructure</span></code> option (which also matches against a SMILES string):</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// Search for calculations on molecules containing the benzene subunit.</span>
+<span class="gp">$ </span>digichem<span class="w"> </span>database<span class="w"> </span>main<span class="w"> </span>search<span class="w"> </span>--substructure<span class="w"> </span><span class="s2">&quot;c1ccccc1&quot;</span>
+</pre></div>
+</div>
+<p>Queries can be freely intermixed:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// Search for calculations on benzene with a HOMO above -5.0 eV.</span>
+<span class="gp">$ </span>digichem<span class="w"> </span>database<span class="w"> </span>main<span class="w"> </span>search<span class="w"> </span>--structure<span class="w"> </span><span class="s2">&quot;c1ccccc1&quot;</span><span class="w"> </span>--homo<span class="w"> </span><span class="s2">&quot;&gt;-5.0&quot;</span>
+</pre></div>
+</div>
+<p>Please see the section on <a class="reference internal" href="#database-queries"><span class="std std-ref">queries</span></a> for more information.</p>
+<p><code class="docutils literal notranslate"><span class="pre">digichem</span> <span class="pre">database</span> <span class="pre">search</span></code> can write to all the same file formats as the <code class="docutils literal notranslate"><span class="pre">digichem</span> <span class="pre">result</span></code> <a class="reference internal" href="result.html#result-output-formats"><span class="std std-ref">command</span></a>, and in fact takes the
+same format options (<code class="docutils literal notranslate"><span class="pre">-y</span></code>, <code class="docutils literal notranslate"><span class="pre">-j</span></code>, <code class="docutils literal notranslate"><span class="pre">-c</span></code>, <code class="docutils literal notranslate"><span class="pre">-t</span></code>, <code class="docutils literal notranslate"><span class="pre">-d</span></code>, <code class="docutils literal notranslate"><span class="pre">-a</span></code>, and <code class="docutils literal notranslate"><span class="pre">-s</span></code>).</p>
+<p>By default, the program will export to the <a class="reference internal" href="result.html#result-yaml-format"><span class="std std-ref">Digichem native format</span></a> (<code class="docutils literal notranslate"><span class="pre">-y</span></code>).
+The table (<code class="docutils literal notranslate"><span class="pre">-t</span></code>) format is particularly useful for viewing database results when combined with the <code class="docutils literal notranslate"><span class="pre">less</span></code> command (to provide scrolling):</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// View the entire database at a glance.</span>
+<span class="gp">$ </span>digichem<span class="w"> </span>database<span class="w"> </span>main<span class="w"> </span>search<span class="w"> </span>-t<span class="w">  </span><span class="p">|</span><span class="w"> </span>less<span class="w"> </span>-S
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">digichem</span> <span class="pre">database</span> <span class="pre">search</span></code> can also easily export data to a file:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// Export the database to csv.</span>
+<span class="gp">$ </span>digichem<span class="w"> </span>database<span class="w"> </span>main<span class="w"> </span>search<span class="w"> </span>-c<span class="w"> </span>-O<span class="w"> </span>db_dump.csv
+</pre></div>
+</div>
+</section>
+<section id="digichem-database-count">
+<h2><code class="docutils literal notranslate"><span class="pre">digichem</span> <span class="pre">database</span> <span class="pre">count</span></code><a class="headerlink" href="#digichem-database-count" title="Link to this heading">#</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">count</span></code> sub-command functions identically to <code class="docutils literal notranslate"><span class="pre">digichem</span> <span class="pre">database</span> <span class="pre">search</span></code>, except <code class="docutils literal notranslate"><span class="pre">count</span></code> returns the <em>number</em> of rows that
+match, rather than the rows themselves:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// How many calculations have we stored?</span>
+<span class="gp">$ </span>digichem<span class="w"> </span>database<span class="w"> </span>main<span class="w"> </span>count
+<span class="go">50000</span>
+<span class="go">// And how many of them were on Benzene?</span>
+<span class="gp">$ </span>digichem<span class="w"> </span>database<span class="w"> </span>main<span class="w"> </span>count<span class="w"> </span>--structure<span class="w"> </span><span class="s2">&quot;c1ccccc1&quot;</span>
+<span class="go">49999</span>
+</pre></div>
+</div>
+</section>
+<section id="digichem-database-delete">
+<h2><code class="docutils literal notranslate"><span class="pre">digichem</span> <span class="pre">database</span> <span class="pre">delete</span></code><a class="headerlink" href="#digichem-database-delete" title="Link to this heading">#</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">delete</span></code> sub-command <em>removes</em> results from a database.</p>
+<p>To avoid accidentally deleting data, <code class="docutils literal notranslate"><span class="pre">digichem</span> <span class="pre">database</span> <span class="pre">delete</span></code> expects an explicit list of result IDs to remove:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// By itself, this command does nothing.</span>
+<span class="gp">$ </span>digichem<span class="w"> </span>database<span class="w"> </span>results.db<span class="w"> </span>delete
+
+<span class="go">// We need to tell Digichem what to delete:</span>
+<span class="gp">$ </span>digichem<span class="w"> </span>database<span class="w"> </span>results.db<span class="w"> </span>delete<span class="w"> </span>4341561273e3e48d80f5427212e785f0d7044835
+</pre></div>
+</div>
+<p>For the same reason, the <code class="docutils literal notranslate"><span class="pre">delete</span></code> command does not accept the common query formats (like <code class="docutils literal notranslate"><span class="pre">--homo</span></code> or <code class="docutils literal notranslate"><span class="pre">--structure</span></code>).
+To delete matching results, it is safer to first <code class="docutils literal notranslate"><span class="pre">search</span></code> for the results, and then run a separate delete command:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// Check we&#39;re deleting the correct results.</span>
+<span class="gp">$ </span>digichem<span class="w"> </span>database<span class="w"> </span>results.db<span class="w"> </span>search<span class="w"> </span>--structure<span class="w"> </span><span class="s2">&quot;c1ccccc1&quot;</span><span class="w"> </span>-t<span class="w"> </span>-f<span class="w"> </span>_id<span class="w"> </span>metadata:calculations<span class="w"> </span>metadata:package
+<span class="go">_id                                       metadata:calculations      metadata:package</span>
+<span class="go">----------------------------------------  -------------------------  ------------------</span>
+<span class="go">5c407cd31b64517aaa0ebbee4852c24ed69dc30b  Optimisation, Frequencies  Gaussian</span>
+<span class="go">5346017182680cf95a6ef4cd73c343dc86692d1b  Excited States             ORCA</span>
+<span class="go">3c92447bade367bab402f6834208ddad0a343aaf  Optimisation, Frequencies  ORCA</span>
+<span class="go">475b13e7927b7cdbc150c8377a62a72bb9d26a3a  Excited States             Turbomole</span>
+<span class="go">5aa12c5465f42ac4befccc5de9f6e4a054d498f7  Excited States             Turbomole</span>
+<span class="go">3ece68dade40f931bd4533b091239bc4cad872c8  Single Point               Turbomole</span>
+<span class="go">4341561273e3e48d80f5427212e785f0d7044835  Excited States             Gaussian</span>
+
+<span class="go">// Only delete the Gaussian calculations.</span>
+<span class="gp">$ </span>digichem<span class="w"> </span>database<span class="w"> </span>results.db<span class="w"> </span>delete<span class="w"> </span>5c407cd31b64517aaa0ebbee4852c24ed69dc30b<span class="w"> </span>4341561273e3e48d80f5427212e785f0d7044835
+</pre></div>
+</div>
+<p>However, if you are certain, you can delete matching results directly using the <code class="docutils literal notranslate"><span class="pre">--search</span></code> option:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// Dangerous! This will immediately delete all &#39;matching&#39; results!</span>
+<span class="gp">$ </span>digichem<span class="w"> </span>database<span class="w"> </span>results.db<span class="w"> </span>delete<span class="w"> </span>--search<span class="w"> </span><span class="s2">&quot;atoms:smiles==c1ccccc1&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="database-format">
+<h2>Database Format<a class="headerlink" href="#database-format" title="Link to this heading">#</a></h2>
+<p>Digichem supports two database formats, <a class="reference external" href="https://tinydb.readthedocs.io/en/latest/">TinyDB</a> and <a class="reference external" href="https://github.com/scottrogowski/mongita">Mongita</a>.
+TinyDB (the default) is text-based, meaning it is human-readable, but may have reduced performance for very large datasets. By contrast, Mongita uses a binary format that
+is likely to be more performant, but can only be readily read/written to by Digichem itself (or other programs using Mongita).</p>
+<p>To create a database in TinyDB format, use the <code class="docutils literal notranslate"><span class="pre">-t</span></code> option before the database file:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>digichem<span class="w"> </span>database<span class="w"> </span>-t<span class="w"> </span>results.db<span class="w"> </span>insert<span class="w"> </span>FILES
+</pre></div>
+</div>
+<p>Alternatively, specify the <code class="docutils literal notranslate"><span class="pre">-m</span></code> option to use the Mongita format:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>digichem<span class="w"> </span>database<span class="w"> </span>-m<span class="w"> </span>results.db<span class="w"> </span>insert<span class="w"> </span>FILES
+</pre></div>
+</div>
+<p>Once a database has been created, the <code class="docutils literal notranslate"><span class="pre">-t</span></code> or <code class="docutils literal notranslate"><span class="pre">-m</span></code> options can be omitted (Digichem will work out the correct format automatically):</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>digichem<span class="w"> </span>database<span class="w"> </span>-m<span class="w"> </span>results.db<span class="w"> </span>insert<span class="w"> </span>Benzene.log<span class="w"> </span>Pyridine.log
+<span class="gp">$ </span>digichem<span class="w"> </span>database<span class="w"> </span>results.db<span class="w"> </span>count
+<span class="go">2</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">-t</span></code> and <code class="docutils literal notranslate"><span class="pre">-m</span></code> options have no effect when using a builtin database (because the format of these databases is set in the config).
+Trying to use either option in this scenario will result in a warning from Digichem:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>digichem<span class="w"> </span>database<span class="w"> </span>-t<span class="w"> </span>main<span class="w"> </span>count
+<span class="go">digichem: WARNING: UserWarning: &#39;main&#39; is a builtin database and its type cannot be changed dynamically (it is set in the &#39;databases&#39; config option)</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="database-queries">
+<span id="id3"></span><h2>Database Queries<a class="headerlink" href="#database-queries" title="Link to this heading">#</a></h2>
+<p>Database queries are used to specify which calculation results in the database to act upon.
+There are two types of queries currently supported by Digichem.</p>
+<section id="simple-queries">
+<h3>Simple queries<a class="headerlink" href="#simple-queries" title="Link to this heading">#</a></h3>
+<p>Simple queries are specified using a command-line argument (like <code class="docutils literal notranslate"><span class="pre">--homo</span></code> or <code class="docutils literal notranslate"><span class="pre">-structure</span></code>).
+The following simple queries are currently supported:</p>
+<dl>
+<dt><code class="docutils literal notranslate"><span class="pre">--homo</span> <span class="pre">ENERGY</span></code> <code class="docutils literal notranslate"><span class="pre">--lumo</span> <span class="pre">ENERGY</span></code> <code class="docutils literal notranslate"><span class="pre">--beta-homo</span> <span class="pre">ENERGY</span></code> <code class="docutils literal notranslate"><span class="pre">--beta-lumo</span> <span class="pre">ENERGY</span></code></dt><dd><p>Search for HOMO/LUMO values that match a given energy (in eV).
+For unrestricted calcs, <code class="docutils literal notranslate"><span class="pre">--homo</span></code> and <code class="docutils literal notranslate"><span class="pre">--lumo</span></code> search against the alpha orbitals, while <code class="docutils literal notranslate"><span class="pre">--beta-homo</span></code> and <code class="docutils literal notranslate"><span class="pre">--beta-lumo</span></code>
+search against the beta orbitals.</p>
+<p>The energy should be prefixed with either <cite>&lt;</cite> (for less than) or <cite>&gt;</cite> (for more than). For example:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// HOMO energy less than -5.0 eV</span>
+<span class="gp">$ </span>digichem<span class="w"> </span>database<span class="w"> </span>main<span class="w"> </span>search<span class="w"> </span>--homo<span class="w"> </span><span class="s2">&quot;&lt;-5&quot;</span>
+<span class="go">// LUMO energy above 1.5 eV</span>
+<span class="gp">$ </span>digichem<span class="w"> </span>database<span class="w"> </span>main<span class="w"> </span>search<span class="w"> </span>--lumo<span class="w"> </span><span class="s2">&quot;&gt;1.5&quot;</span>
+<span class="go">// HOMO energy between -4 and -6 eV.</span>
+<span class="gp">$ </span>digichem<span class="w"> </span>database<span class="w"> </span>main<span class="w"> </span>search<span class="w"> </span>--homo<span class="w"> </span><span class="s2">&quot;&lt;-4.0&quot;</span><span class="w"> </span>--homo<span class="w"> </span><span class="s2">&quot;&gt;-6.0&quot;</span>
+</pre></div>
+</div>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--singlet-energy</span> <span class="pre">ENERGY</span></code> <code class="docutils literal notranslate"><span class="pre">--triplet-energy</span> <span class="pre">ENERGY</span></code> <code class="docutils literal notranslate"><span class="pre">--dest</span> <span class="pre">ENERGY</span></code></dt><dd><p>Search for the energy of the first singlet excited state, first triplet excited state, or the difference between them respectively, in eV.
+The energy should be prefixed with either <cite>&lt;</cite> (for less than) or <cite>&gt;</cite> (for more than).</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--singlet-wavelength</span> <span class="pre">NM</span></code> <code class="docutils literal notranslate"><span class="pre">--singlet-wavelength</span> <span class="pre">NM</span></code></dt><dd><p>Search for the wavelength of the first singlet excited state or the first triplet excited state respectively, in nm.
+The wavelength should be prefixed with either <cite>&lt;</cite> (for less than) or <cite>&gt;</cite> (for more than).</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--structure</span> <span class="pre">SMILES</span></code> <code class="docutils literal notranslate"><span class="pre">--substructure</span> <span class="pre">SMILES</span></code></dt><dd><p>Search for molecules that match the given SMILES string, either exactly (<code class="docutils literal notranslate"><span class="pre">--structure</span></code>) or that contain the given structure (<code class="docutils literal notranslate"><span class="pre">-substructure</span></code>).</p>
+</dd>
+</dl>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>You should always place the more-than or less-than signs (‘&lt;’ or ‘&gt;’) in speech marks on the command line.
+Otherwise, the shell will interpret them as IO redirection characters, which will result in errors such as this:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// This won&#39;t work</span>
+<span class="gp">$ </span>digichem<span class="w"> </span>database<span class="w"> </span>main<span class="w"> </span>search<span class="w"> </span>--lumo<span class="w"> </span>&gt;5
+<span class="go">Digichem_exception: The query string &#39;lumo&#39; is missing a comparison operator</span>
+<span class="go">// This is correct</span>
+<span class="gp">$ </span>digichem<span class="w"> </span>database<span class="w"> </span>main<span class="w"> </span>search<span class="w"> </span>--lumo<span class="w"> </span><span class="s2">&quot;&gt;5&quot;</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="complex-queries">
+<h3>Complex Queries<a class="headerlink" href="#complex-queries" title="Link to this heading">#</a></h3>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The database query language is currently under development, and is likely to change in the future.</p>
+</div>
+<p>Each query consists of three main parts: 1) a list of fields, 2) a comparison operator, and 3) a match.</p>
+<p>For example, in <code class="docutils literal notranslate"><span class="pre">atoms:smiles==c1ccccc1</span></code>, <code class="docutils literal notranslate"><span class="pre">atoms:smiles</span></code> is the field list, <code class="docutils literal notranslate"><span class="pre">==</span></code> is the comparison operator, and <code class="docutils literal notranslate"><span class="pre">c1ccccc1</span></code>
+is the match.</p>
+<ol class="arabic">
+<li><p>The field list is delimited by colons, and matches some result in a result set.
+To search in a field that contains a list, the ‘any’ pseudo-field can be specified.
+For example, to compare orbital energies: <code class="docutils literal notranslate"><span class="pre">orbitals:values:any:energy:value</span></code>.</p></li>
+<li><p>A comparison operator, one of the following:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<colgroup>
+<col style="width: 33.3%" />
+<col style="width: 66.7%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Symbol</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">==</span></code></p></td>
+<td><p>Exact match</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">=</span></code></p></td>
+<td><p>Case insensitive match</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&gt;</span></code></p></td>
+<td><p>Greater than</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;</span></code></p></td>
+<td><p>Less than</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&gt;=</span></code></p></td>
+<td><p>Greater than or equal to</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;=</span></code></p></td>
+<td><p>Less than or equal to</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;&gt;</span></code></p></td>
+<td><p>Substructure matching (only for SMILES)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+</ol>
+<blockquote>
+<div><p>Each operator can optionally be prefixed with an exclamation mark (<code class="docutils literal notranslate"><span class="pre">!</span></code>) to negate it (ie, <code class="docutils literal notranslate"><span class="pre">!==</span></code> would select all entries that do not match exactly).</p>
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li><p>A match, a value to check against. Values that look like specific types (ints, floats, bools <em>etc.</em>) will be converted appropriately.</p></li>
+</ol>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="convert.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Digichem Convert</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="image.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Digichem Image</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#digichem-database-insert"><code class="docutils literal notranslate"><span class="pre">digichem</span> <span class="pre">database</span> <span class="pre">insert</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#digichem-database-slice"><code class="docutils literal notranslate"><span class="pre">digichem</span> <span class="pre">database</span> <span class="pre">slice</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#digichem-database-search"><code class="docutils literal notranslate"><span class="pre">digichem</span> <span class="pre">database</span> <span class="pre">search</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#digichem-database-count"><code class="docutils literal notranslate"><span class="pre">digichem</span> <span class="pre">database</span> <span class="pre">count</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#digichem-database-delete"><code class="docutils literal notranslate"><span class="pre">digichem</span> <span class="pre">database</span> <span class="pre">delete</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#database-format">Database Format</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#database-queries">Database Queries</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-queries">Simple queries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#complex-queries">Complex Queries</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/guides/cli/database.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, Digichem.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.7.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,4 @@
+.. _computational_solvent:
+
+Solvent methods, and which to choose
+------------------------------------

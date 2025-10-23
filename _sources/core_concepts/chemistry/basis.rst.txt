@@ -1,0 +1,5 @@
+.. _computational_basis_set:
+
+Basis sets, and which to choose
+-------------------------------
+

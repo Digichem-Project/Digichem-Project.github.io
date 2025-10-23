@@ -1,0 +1,5 @@
+.. _interface_gui:
+
+Graphical user interface (GUI)
+------------------------------
+

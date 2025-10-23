@@ -1,0 +1,584 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Photonics &#8212; Digichem 7.0.1 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=4b4c264b" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=4b9d3a76"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'old/examples/photonics';</script>
+    <link rel="icon" href="../../_static/Icon.svg"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="7.0.1" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/Icon.svg" class="logo__image only-light" alt=""/>
+    <img src="../../_static/Icon.svg" class="logo__image only-dark pst-js-only" alt=""/>
+  
+  
+    <p class="title logo__title">Digichem Docs</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../get_started/index.html">
+    Getting started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../installation/index.html">
+    Advanced installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../core_concepts/digichem/index.html">
+    Core concepts: Digichem
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../core_concepts/chemistry/index.html">
+    Core concepts: quantum chemistry
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../interface/index.html">
+    Interfaces
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../guides/index.html">
+    User guides
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../get_started/index.html">
+    Getting started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../installation/index.html">
+    Advanced installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../core_concepts/digichem/index.html">
+    Core concepts: Digichem
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../core_concepts/chemistry/index.html">
+    Core concepts: quantum chemistry
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../interface/index.html">
+    Interfaces
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../guides/index.html">
+    User guides
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"></div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Photonics</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="photonics">
+<h1>Photonics<a class="headerlink" href="#photonics" title="Link to this heading">#</a></h1>
+<section id="fluorescent-and-tadf-1st-and-3rd-generation-emitters">
+<h2>Fluorescent and TADF (1<sup>st</sup> and 3<sup>rd</sup> generation) emitters<a class="headerlink" href="#fluorescent-and-tadf-1st-and-3rd-generation-emitters" title="Link to this heading">#</a></h2>
+<p>In this example we will characterise some of the core photophysical properties of a prototypical thermally-activated delayed fluorescence emitter,
+including the emission energy (and colour), singlet-triplet splitting energy, spin-orbit coupling, and a visual representation of the excited states (NTOs).</p>
+<p>We will be using DMAC_TRZ<span id="id1">[<a class="reference internal" href="../../index.html#id28" title="Wei-Lung Tsai, Ming-Hao Huang, Wei-Kai Lee, Yi-Jiun Hsu, Kuan-Chung Pan, Yi-Hsiang Huang, Hao-Chun Ting, Monima Sarma, Yu-Yi Ho, Hung-Chieh Hu, Chung-Chia Chen, Meng-Ting Lee, Ken-Tsung Wong, and Chung-Chih Wu. A versatile thermally activated delayed fluorescence emitter for both highly efficient doped and non-doped organic light emitting devices. Chem. Commun., 51:13662-13665, 2015. URL: http://dx.doi.org/10.1039/C5CC05022G, doi:10.1039/C5CC05022G.">16</a>]</span> as our example molecule:</p>
+<img alt="DMAC_TRZ" src="_static/examples/DMAC_TRZ/DMAC_TRZ.png" />
+<p>You can download the input file <code class="xref download docutils literal notranslate"><span class="pre">here</span></code>.</p>
+<section id="submit">
+<h3>Submit<a class="headerlink" href="#submit" title="Link to this heading">#</a></h3>
+<p>As with all calculations starting from a hand-drawn structure, we begin by optimising the molecule’s geometry by selecting a calculation from the
+<cite>Optimisation</cite> menu:</p>
+<img alt="_static/examples/DMAC_TRZ/Opt.png" src="_static/examples/DMAC_TRZ/Opt.png" />
+<p>For this example we will be using the popular PBE0 functional, but most hybrid DFT functionals will provide reasonable results. Other popular
+choices included B3LYP and M062X.</p>
+<p>If you are looking to predict the properties of the emitter in a particular solvent, that can now be chosen from the subsequent list (or select <cite>Gas Phase</cite>
+for a solvent agnostic calculation):</p>
+<img alt="_static/examples/DMAC_TRZ/Solvent.png" src="_static/examples/DMAC_TRZ/Solvent.png" />
+<p>Finally, we must make a choice of basis set. For smaller emitters, or when more computational time is available, a triple-zeta basis set offers a more
+reliable result, but for larger molecules basis sets of double-zeta quality are normally sufficient for at least qualitative results. For this example,
+we will choose the popular 6-31G** set:</p>
+<img alt="_static/examples/DMAC_TRZ/Basis.png" src="_static/examples/DMAC_TRZ/Basis.png" />
+<p>For the calculation of the excited states themselves, we will be utilising time-dependent DFT theory (optionally with the Tamm Dancoff approximation (TDA)).
+This can be selected from the <cite>Excited states</cite> menu:</p>
+<img alt="_static/examples/DMAC_TRZ/TDA.png" src="_static/examples/DMAC_TRZ/TDA.png" />
+<p>For a TADF emitter, the relative position of the lowest energy singlet and triplet states is a crucial parameter for evaluating the degree of reverse intersystem-crossing (RISC),
+so we will be calculating both states simultaneously. For a pure fluorescent emitter, the triplet states could be skipped if they are not of interest. We will then
+select the same options for the functional, solvent, and basis set as we did for the ground state optimisation:</p>
+<img alt="_static/examples/DMAC_TRZ/TDA-basis.png" src="_static/examples/DMAC_TRZ/TDA-basis.png" />
+<p>Finally, we will also calculate the geometry of the first singlet excited state from the <cite>Optimised S(1)</cite> menu. This will allow us to calculate a more accurate value for the emission energy:</p>
+<img alt="_static/examples/DMAC_TRZ/Opt-S1.png" src="_static/examples/DMAC_TRZ/Opt-S1.png" />
+<p>To recap, we have now queued up 3 calculations in series, which are:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Optimisation of the ground state geometry</p></li>
+<li><p>Calculation of the first 10 singlet and triplet excited states</p></li>
+<li><p>Optimisation of the S(1) geometry</p></li>
+</ol>
+</div></blockquote>
+<p>Which we can now submit for processing.</p>
+</section>
+<section id="analysis">
+<h3>Analysis<a class="headerlink" href="#analysis" title="Link to this heading">#</a></h3>
+<p>This documentation is coming soon!</p>
+</section>
+</section>
+<section id="phosphorescent-2nd-generation-emitters">
+<h2>Phosphorescent (2<sup>nd</sup> generation) emitters<a class="headerlink" href="#phosphorescent-2nd-generation-emitters" title="Link to this heading">#</a></h2>
+<p>The process to characterise a phosphorescent emitter (also known as a 2<sup>nd</sup> generation emitter) is largely the same as for (thermally activated delayed) fluorescence emitters.
+The main differences are:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>The emissive state is a triplet, rather than a singlet. This enables us to optimise the orbitals of the triplet state directly with relative ease, which is not usually the case
+for the excited singlet state (because we’ll normally end up with the singlet ground state instead).</p></li>
+<li><p>Most phosphorescent emitters are organometallics, containing one or more heavy metal atoms in their core. This necessitates a more careful choice of basis set.</p></li>
+</ol>
+</div></blockquote>
+<p>In this example, we will characterise some of the key properties of the well-documented phosphorescent emitter, Ir(ppy)<sub>3</sub><span id="id2">[<a class="reference internal" href="../../index.html#id29" title="M. A. Baldo, M. E. Thompson, and S. R. Forrest. High-efficiency fluorescent organic light-emitting devices using a phosphorescent sensitizer. Nature, 403(6771):750-753, Feb 2000. URL: https://doi.org/10.1038/35001541, doi:10.1038/35001541.">3</a>]</span>:</p>
+<img alt="Ir(ppy)3" src="_static/examples/Ir(ppy)3/Ir(ppy)3.png" />
+<p>You can download the input file <code class="xref download docutils literal notranslate"><span class="pre">here</span></code>.</p>
+<section id="id3">
+<h3>Submit<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<p>We will begin in much the same way as before, with an initial geometry optimisation calculation to find a stationary point for the molecular geometry. Both PBE0 and especially
+B3LYP are very popular in this field, and either is likely to give sensible results. For this demonstration, we will be using B3LYP:</p>
+<img alt="_static/examples/Ir(ppy)3/Opt.png" src="_static/examples/Ir(ppy)3/Opt.png" />
+<p>Because of the iridium atom at the centre of the molecule, we cannot use the same 6-31G** basis set as before (as this typically only includes atoms up to Kr). We could choose
+a more modern basis set from the Karlsruhe family (such as def2-TZVP), but for this example we will instead use a mixed basis set,<span id="id4">[<a class="reference internal" href="../../index.html#id31" title="Diego Paschoal, Bruna L. Marcial, Juliana Fedoce Lopes, Wagner B. De Almeida, and Hélio F. Dos Santos. The role of the basis set and the level of quantum mechanical theory in the prediction of the structure and reactivity of cisplatin. Journal of Computational Chemistry, 33(29):2292-2302, 2012. URL: https://onlinelibrary.wiley.com/doi/abs/10.1002/jcc.23061, arXiv:https://onlinelibrary.wiley.com/doi/pdf/10.1002/jcc.23061, doi:https://doi.org/10.1002/jcc.23061.">13</a>, <a class="reference internal" href="../../index.html#id30" title="Yue Yang, Michael N. Weaver, and Kenneth M. Jr. Merz. Assessment of the “6-31+g** + lanl2dz” mixed basis set coupled with density functional theory methods and the effective core potential: prediction of heats of formation and ionization potentials for first-row-transition-metal complexes. The Journal of Physical Chemistry A, 113(36):9843-9851, 2009. PMID: 19691271. URL: https://doi.org/10.1021/jp807643p, arXiv:https://doi.org/10.1021/jp807643p, doi:10.1021/jp807643p.">17</a>]</span> using 6-31+G** for the light atoms and SBKJC-VDZ
+for iridium (with an additional effective core potential for the metal). This option can be selected from the <cite>External Basis Sets</cite> option:</p>
+<img alt="_static/examples/Ir(ppy)3/Basis.png" src="_static/examples/Ir(ppy)3/Basis.png" />
+<p>After the optimisation, we will queue a normal excited states calculation with TD-DFT (here with the Tamn-Dancoff approximation). This calculation will yield a good approximation
+for the lowest energy singlet and triplet states:</p>
+<img alt="_static/examples/Ir(ppy)3/TDA.png" src="_static/examples/Ir(ppy)3/TDA.png" />
+<p>Next, we will optimise the structure of the emissive triplet state (T<sub>1</sub>). Here, we could chose to again use TD-DFT as we did for the TADF emitter above,
+but instead we will use standard DFT and manually set the multiplicity of the molecule to 3. Because there is no triplet ground state accessible for this molecule
+(because it has a closed shell), this will naturally converge to the first triplet excited state instead, allowing us to directly optimise the orbitals of the excited state.
+This type of calculation is often referred to as ΔSCF or ΔDFT, and can be selected from the <cite>Unrestricted Triplet</cite> menu:</p>
+<img alt="_static/examples/Ir(ppy)3/Opt_state.png" src="_static/examples/Ir(ppy)3/Opt_state.png" />
+<p>Finally, we will queue a single point calculation using a singlet configuration. This calculation will use the geometry of the excited triplet state, but will relax the orbitals back
+to the ground state. The difference in energy between these two configurations will give us the phosphorescence emission energy:</p>
+<img alt="_static/examples/Ir(ppy)3/SP.png" src="_static/examples/Ir(ppy)3/SP.png" />
+<p>We now have a total of 4 calculations queued, which we can submit:</p>
+<img alt="_static/examples/Ir(ppy)3/Submit.png" src="_static/examples/Ir(ppy)3/Submit.png" />
+</section>
+<section id="id5">
+<h3>Analysis<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<p>This documentation is coming soon!</p>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fluorescent-and-tadf-1st-and-3rd-generation-emitters">Fluorescent and TADF (1<sup>st</sup> and 3<sup>rd</sup> generation) emitters</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#submit">Submit</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analysis">Analysis</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#phosphorescent-2nd-generation-emitters">Phosphorescent (2<sup>nd</sup> generation) emitters</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Submit</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Analysis</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/old/examples/photonics.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, Digichem.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.7.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

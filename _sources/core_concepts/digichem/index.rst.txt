@@ -1,0 +1,15 @@
+Core concepts: Digichem
+-----------------------
+
+.. toctree::
+   :maxdepth: 2
+   :includehidden:
+
+   overview
+   server
+   connection
+   coordinates
+   si_files
+   method/index
+   jobs
+

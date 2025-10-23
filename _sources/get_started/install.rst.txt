@@ -1,0 +1,48 @@
+Install the GUI
+________________
+
+Your Digichem download contains everything that you need to setup and run the program. The installation process is simple,
+but differs slightly depending on your operating system:
+
+Windows
+-------
+
+The Windows installer is a normal :code:`.exe` program. Simply run the downloaded file to launch the installer, and the program will do the rest!
+
+Mac OS
+------
+
+The Mac OS download is an archived executable bundle. Once you have downloaded the program, simply:
+
+#. Double click on the downloaded .zip file to unpack it.
+#. This will create a Digichem.app file in the same place as your downloaded archive.
+#. Double click the Digichem.app file to launch the program.
+
+Digichem.app Is Damaged and Can’t Be Opened. You Should Move It To The Trash
+============================================================================
+
+Some modern version of MacOS display this error message when you try and run a program that was not downloaded from the App store.
+This error message is misleading because the bundled application is not damaged at all, but fortunately it is easy to circumvent:
+
+#. First, `open a new Terminal window in the location where you download Digichem <https://support.apple.com/en-ca/guide/terminal/trmlb20c7888/mac#:~:text=On%20your%20Mac%2C%20open%20a,window%3A%20Choose%20Open%20in%20Terminal>`_ (which is probably your Downloads folder)
+#. Next, run this command to fix the Mac program detection: :code:`xattr -dr com.apple.quarantine Digichem.app`
+#. That's it! You can now run the program as normal.
+
+Linux
+-----
+
+The Linux executable is currently distributed as an `AppImage <https://appimage.org/>`_ which contains all of its own dependencies.
+
+The AppImage doesn't need to be installed to be run. However, you will need to set the executable flag on the AppImage so your operating system knows to run it.
+You can do this on the command line:
+
+.. code:: bash
+    chmod +x Digichem-*.AppImage
+
+Or by right-clicking the file and selecting `Properties`:
+
+.. image:: /_static/get_started/linux_properties.png
+
+And ticking the **Allow executing file as program** option:
+
+.. image:: /_static/get_started/linux_exec.png

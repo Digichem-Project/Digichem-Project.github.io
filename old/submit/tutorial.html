@@ -1,0 +1,653 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Calculation Submission Tutorial &#8212; Digichem 7.0.1 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=4b4c264b" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=4b9d3a76"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'old/submit/tutorial';</script>
+    <link rel="icon" href="../../_static/Icon.svg"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="7.0.1" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/Icon.svg" class="logo__image only-light" alt=""/>
+    <img src="../../_static/Icon.svg" class="logo__image only-dark pst-js-only" alt=""/>
+  
+  
+    <p class="title logo__title">Digichem Docs</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../get_started/index.html">
+    Getting started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../installation/index.html">
+    Advanced installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../core_concepts/digichem/index.html">
+    Core concepts: Digichem
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../core_concepts/chemistry/index.html">
+    Core concepts: quantum chemistry
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../interface/index.html">
+    Interfaces
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../guides/index.html">
+    User guides
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../get_started/index.html">
+    Getting started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../installation/index.html">
+    Advanced installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../core_concepts/digichem/index.html">
+    Core concepts: Digichem
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../core_concepts/chemistry/index.html">
+    Core concepts: quantum chemistry
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../interface/index.html">
+    Interfaces
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../guides/index.html">
+    User guides
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"></div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Calculation Submission Tutorial</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="calculation-submission-tutorial">
+<span id="submit-tutorial"></span><h1>Calculation Submission Tutorial<a class="headerlink" href="#calculation-submission-tutorial" title="Link to this heading">#</a></h1>
+<p>Perhaps the most powerful aspect of Silico is its functionality for submitting and managing calculations.
+This tutorial acts as a walk-through for running through this process and is an excellent start for performing computations with Silico.</p>
+<section id="prepare-coordinate-files">
+<h2>Prepare Coordinate Files<a class="headerlink" href="#prepare-coordinate-files" title="Link to this heading">#</a></h2>
+<p>The first step in submitting a calculation is to prepare the coordinate files. These files represent the molecules upon which the calculation (or calculations) will be performed; one molecule per file. The file format used for these input coordinates is essentially irrelevant, so long as the format is supported by Silico, and different formats can be freely intermixed. See the <a class="reference internal" href="input.html#coordinate-formats"><span class="std std-ref">list of available formats</span></a> and section on <a class="reference internal" href="input.html#coordinate-files"><span class="std std-ref">coordinate files</span></a> for more information.</p>
+<p>The first step in the submission process is to write the systems that are to be studied to respective coordinate files. The choice of file format is essentially irrelevant, and different file formats can be freely intermixed. Once written, these coordinate files should be transfered to the machine on which the calculation is to be performed (most commonly a remote server or cluster) by whatever method is most convenient (File-Transfer Protocol (FTP), SSH File Transfer Protocol (SFTP) etc).</p>
+</section>
+<section id="connect-to-the-calculation-server">
+<h2>Connect To The Calculation Server<a class="headerlink" href="#connect-to-the-calculation-server" title="Link to this heading">#</a></h2>
+<p>In most cases, computational chemistry programs are run on large, distributed server clusters.
+If this setup applies to you, at this point you should connect to the server cluster where Silico is installed (for example, by SSH, PuTTy or equivalent).</p>
+</section>
+<section id="run-silico">
+<h2>Run Silico<a class="headerlink" href="#run-silico" title="Link to this heading">#</a></h2>
+<p>Once the required coordinate files (and optionally method files) have been prepared, it is time to run Silico.
+This can be done in either a non-interactive or interactive manner (see <a class="reference internal" href="../running/introduction.html#running-interactively"><span class="std std-ref">Running Interactively</span></a>); for the purposes of this tutorial the interactive interface will primarily be used.
+To begin, run the silico submit subprogram followed by a list of the coordinate files to submit. For example, to submit two files named ‘Benzene.cdx’ and ‘Naphthalene.com’, run:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>silico<span class="w"> </span>sub<span class="w"> </span>-I<span class="w"> </span>Benzene.cdx<span class="w"> </span>Naphthalene.com
+</pre></div>
+</div>
+<p>At this point, an explicit charge and/or multiplicity can be set using the <code class="docutils literal notranslate"><span class="pre">-C</span></code> (or <code class="docutils literal notranslate"><span class="pre">--charge</span></code>) and <code class="docutils literal notranslate"><span class="pre">-M</span></code> (or <code class="docutils literal notranslate"><span class="pre">--multiplicity</span></code>) options. If given, these options will overwrite any charge or multiplicity given in the coordinate files, for all specified coordinate files. For example, to submit all calculations as a radical cation:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>silico<span class="w"> </span>sub<span class="w"> </span>-I<span class="w"> </span>Benzene.cdx<span class="w"> </span>Naphthalene.com<span class="w"> </span>-C<span class="w"> </span><span class="m">1</span><span class="w"> </span>-M<span class="w"> </span><span class="m">2</span>
+</pre></div>
+</div>
+<p>If any of the file names contain whitespace, or other ‘unusual’ characters, remember to use quotation marks:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>silico<span class="w"> </span>sub<span class="w"> </span>-I<span class="w"> </span><span class="s2">&quot;Benz ene.cdx&quot;</span><span class="w"> </span>Naphthalene.com
+</pre></div>
+</div>
+<p>If any of the coordinate files are not in the current directory, the full path should be specified (including directories):</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>silico<span class="w"> </span>sub<span class="w"> </span>-I<span class="w"> </span>Aromatic/Benzene.cdx<span class="w"> </span>Aromatic/Naphthalene.com
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Alternatively, you can change the current directory using the <code class="docutils literal notranslate"><span class="pre">cd</span></code> command, for example <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">Aromatic</span></code>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can check which files are in the current directory using the <code class="docutils literal notranslate"><span class="pre">ls</span></code> command.</p>
+</div>
+<p>In additional to individual coordinate files, the contents of entire directories can be submitted <cite>via</cite> the unix wildcard character (*):</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>silico<span class="w"> </span>sub<span class="w"> </span>-I<span class="w"> </span>Aromatic/*
+</pre></div>
+</div>
+<p>Finally, you may choose to not specify any input coordinates at this time, in which case they can be loaded later using the interactive interface (see <a class="reference internal" href="#interactive-coords"><span class="std std-ref">Adding New Coordinates</span></a>)</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>silico<span class="w"> </span>sub<span class="w"> </span>-I
+</pre></div>
+</div>
+</section>
+<section id="the-interactive-interface">
+<h2>The Interactive Interface<a class="headerlink" href="#the-interactive-interface" title="Link to this heading">#</a></h2>
+<p>Any of the above commands will run the silico submit subprogram in interactive mode, which will open a window that appears as follows:</p>
+<img alt="_static/submit_tutorial/submit_interface.png" src="_static/submit_tutorial/submit_interface.png" />
+<p>This interface acts similarly to a graphical user interface (GUI).
+The various parts of the interface can be navigated by the arrow keys.
+Doing so will move the flashing cursor which indicates the part of the interface which is currently selected.</p>
+<section id="input-coordinates">
+<h3>Input Coordinates<a class="headerlink" href="#input-coordinates" title="Link to this heading">#</a></h3>
+<p>The upper section of the submission interface displays loaded input coordinates in a table format, along with the relevant molecular
+formula, charge and multiplicity. These latter two columns can be edited individually for each system under study.
+For example, to change the multiplicity of ‘Benzene’ in the above example, first move the cursor with the arrow keys to the <code class="docutils literal notranslate"><span class="pre">mult:1</span></code> widget for the ‘Benzene’ row.
+Then, the old multiplicity can be removed used the backspace key, and a new multiplicity can be typed.</p>
+<p>The three widgets in the right-most column of the coordinate table can be used to control the position of each row.
+These widgets are buttons, which can be readily identified by the angle brackets surrounding the text of the button (eg, <code class="docutils literal notranslate"><span class="pre">&lt;</span> <span class="pre">Button</span> <span class="pre">&gt;</span></code>).
+Buttons can be ‘clicked’ or ‘activated’ by first selecting them with the cursor and then pressing ‘enter’ (or ‘space’).
+In this case, the <code class="docutils literal notranslate"><span class="pre">&lt;</span> <span class="pre">↑</span> <span class="pre">&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">&lt;</span> <span class="pre">↓</span> <span class="pre">&gt;</span></code> buttons will move each row up or down one position respectively,
+while the <code class="docutils literal notranslate"><span class="pre">&lt;</span> <span class="pre">r</span> <span class="pre">&gt;</span></code> button will delete the given row.</p>
+<section id="adding-new-coordinates">
+<span id="interactive-coords"></span><h4>Adding New Coordinates<a class="headerlink" href="#adding-new-coordinates" title="Link to this heading">#</a></h4>
+<p>New input coordinate files can also be loaded at this point using the <code class="docutils literal notranslate"><span class="pre">&lt;</span> <span class="pre">Add</span> <span class="pre">new</span> <span class="pre">here</span> <span class="pre">&gt;</span></code> button, which will open the file browser:</p>
+<img alt="_static/submit_tutorial/file_browser.png" src="_static/submit_tutorial/file_browser.png" />
+<p>This browser displays a list of files in a ‘tree’ like format;
+each directory (or folder) appears as a ‘branch’ node with a ‘+’ icon (which can be expanded to show its contents) while each file appears as a ‘leaf’ node (which cannot).
+To expand (or ‘open’) a directory,  navigate up or down with the arrow keys to select it, and then use the ‘right arrow’ key to expand it.
+An expanded directory will show a ‘-’ icon instead of a ‘+’.
+A directory can similarly be contracted by selecting it and using the ‘left arrow’ key to hide its contents.</p>
+<p>To select a coordinate file to load, use the ‘space’ or ‘enter’ key to highlight it. If a file is chosen in error, pressing ‘space’ again will deselect it.
+Once the files to be loaded have been selected, navigate to the <code class="docutils literal notranslate"><span class="pre">&lt;</span> <span class="pre">Confirm</span> <span class="pre">&gt;</span></code> button in the bottom right corner and select it.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Instead of using the down arrow key to navigate all the way to the bottom of the page, the ‘tab’ key can be used to skip directly to the controls at the bottom of the window.
+Similarly, ‘shift-tab’ (holding shift will pressing tab) will skip back to the browser.</p>
+</div>
+<img alt="_static/submit_tutorial/file_browser_selected.png" src="_static/submit_tutorial/file_browser_selected.png" />
+<p>This will load each of the chosen coordinate files.
+Once complete, the ‘Finished loading coordinates’ line be printed, at which point the output window can be closed using the <code class="docutils literal notranslate"><span class="pre">&lt;</span> <span class="pre">Confirm</span> <span class="pre">&gt;</span></code> button:</p>
+<img alt="_static/submit_tutorial/file_browser_output.png" src="_static/submit_tutorial/file_browser_output.png" />
+</section>
+</section>
+<section id="calculation-methods">
+<h3>Calculation Methods<a class="headerlink" href="#calculation-methods" title="Link to this heading">#</a></h3>
+<p>The ‘Calculation Methods’ section of the submission interface is where the actual calculations to be performed are selected.
+In most cases this will be done by selecting a (number of) methods from the built in library.
+To do so, ‘click’ the <code class="docutils literal notranslate"><span class="pre">&lt;</span> <span class="pre">Browse</span> <span class="pre">library</span> <span class="pre">&gt;</span></code> button to open the method browser:</p>
+<img alt="_static/submit_tutorial/method_browser.png" src="_static/submit_tutorial/method_browser.png" />
+<p>Conceptually, each method consists of three parts, which are:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>The Destination: A logical or physical location where the calculation will be performed, for example a specific SLURM partition.</p></li>
+<li><p>The Program: A CC progam to perform the calculation, for example Gaussian or Turbomole.</p></li>
+<li><p>The Calculation: A specific set of calculation instructions, including, for example, the method, functional and basis set.</p></li>
+</ul>
+</div></blockquote>
+<p>Each part of the method is chosen from the browser sequentially. This first item to choose is the destination. These will have been setup by your server administrator, so you should contact them if you are unsure which to choose.
+In the above example there is only one destination available, a SLURM partition called ‘Single Node SLURM’.
+This destination can be expanded in the same manner as the file browser above, by navigating with the arrow keys and expanding the node with the right arrow key.</p>
+<p>Doing so will reveal the CC programs that this destination supports, in this example there is a Gaussian 09, a Gaussian 16 and a Turbomole program available:</p>
+<img alt="_static/submit_tutorial/method_browser_program.png" src="_static/submit_tutorial/method_browser_program.png" />
+<p>Similarly, expanding a program will reveal the calculations that program supports. For example, the calculations the ‘Gaussian 16’ program supports are as follows:</p>
+<img alt="_static/submit_tutorial/method_browser_calculation.png" src="_static/submit_tutorial/method_browser_calculation.png" />
+<p>These calculation types are grouped in a hierarchy, where the top-most item describes the general calculation type, for example an ‘Optimisation’ or calculation of ‘Excited States’.
+Within each heading the specifics of the calculation can be chosen, for example the below selection is for an optimisation using the popular B3LYP functional and 6-31G(d,p) basis set, in the gas phase:</p>
+<img alt="_static/submit_tutorial/method_browser_selection.png" src="_static/submit_tutorial/method_browser_selection.png" />
+<p>To choose a given method, select the final item (typically the basis set), highlight it with the ‘enter’ or ‘space’ keys and then ‘click’ the <code class="docutils literal notranslate"><span class="pre">&lt;</span> <span class="pre">Confirm</span> <span class="pre">&gt;</span></code> button.
+It will then be added to the method table:</p>
+<img alt="_static/submit_tutorial/method_chosen.png" src="_static/submit_tutorial/method_chosen.png" />
+<section id="method-codes">
+<h4>Method Codes<a class="headerlink" href="#method-codes" title="Link to this heading">#</a></h4>
+<p>You will notice that each of the three items of the method is given a unique code (an integer which is greater than zero). These codes are shown both in the method browser and the method table:</p>
+<img alt="_static/submit_tutorial/method_code_table.png" src="_static/submit_tutorial/method_code_table.png" />
+<img alt="_static/submit_tutorial/method_code_browser.png" src="_static/submit_tutorial/method_code_browser.png" />
+<p>For example, the method chosen above has the method code of <cite>1/2/1489</cite>.
+These method codes are unique and stable (they do not change randomly), meaning they can be used as a quick way to refer to a method.
+Among other things, this allows a method to be selected by using its code alone by clicking the <code class="docutils literal notranslate"><span class="pre">&lt;</span> <span class="pre">Add</span> <span class="pre">from</span> <span class="pre">code</span> <span class="pre">&gt;</span></code> button of the method table and entering the relevant code directly:</p>
+<img alt="_static/submit_tutorial/add_by_code.png" src="_static/submit_tutorial/add_by_code.png" />
+</section>
+<section id="method-queuing">
+<h4>Method Queuing<a class="headerlink" href="#method-queuing" title="Link to this heading">#</a></h4>
+<p>Silico allows multiple methods to be queued up to be performed one after another.
+This <cite>in-series</cite> calculation queuing works by taking the output geometry of the previous calculation and automatically submitting it to the next calculation.
+This is particularly useful for calculations that depend on a certain type of optimised geometry.
+For example, the calculation of excited states typically requires a prior optimisation of the geometry which has to be performed as a separate step.
+To queue up such a series of calculations, simply add a second method (or as many as are required) after the first. The methods will be processed in the same order as they appear in the table:</p>
+<img alt="_static/submit_tutorial/method_queue.png" src="_static/submit_tutorial/method_queue.png" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Methods can even be queued using different CC programs;
+the output geometry from the previous calculation will automatically be converted to an appropriate input type for the next CC progrm.</p>
+</div>
+</section>
+</section>
+</section>
+<section id="submit">
+<h2>Submit<a class="headerlink" href="#submit" title="Link to this heading">#</a></h2>
+<p>Once the desired input coordinates and calculation methods have been chosen, the selection can be submitted by selecting the <code class="docutils literal notranslate"><span class="pre">&lt;</span> <span class="pre">Confirm</span> <span class="pre">&gt;</span></code> button.
+Information will be shown as each coordinate file is prepared and then submitted.
+Once all files have been processed, the ‘Successfully submitted x file(s)’ line will appear:</p>
+<img alt="_static/submit_tutorial/submission.png" src="_static/submit_tutorial/submission.png" />
+<p>Congratulations, the input coordinates have now been submitted and Silico can be exited (by using the ‘esc’ key), or further calculations can be queued.</p>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-coordinate-files">Prepare Coordinate Files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connect-to-the-calculation-server">Connect To The Calculation Server</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-silico">Run Silico</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-interactive-interface">The Interactive Interface</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#input-coordinates">Input Coordinates</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-new-coordinates">Adding New Coordinates</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculation-methods">Calculation Methods</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#method-codes">Method Codes</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#method-queuing">Method Queuing</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submit">Submit</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/old/submit/tutorial.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, Digichem.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.7.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

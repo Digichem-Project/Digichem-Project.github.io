@@ -1,0 +1,636 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Connect to a server &#8212; Digichem 7.0.1 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=4b4c264b" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=4b9d3a76"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'get_started/connect';</script>
+    <link rel="icon" href="../_static/Icon.svg"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Submit a calculation" href="submit.html" />
+    <link rel="prev" title="Install the GUI" href="install.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="7.0.1" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/Icon.svg" class="logo__image only-light" alt=""/>
+    <img src="../_static/Icon.svg" class="logo__image only-dark pst-js-only" alt=""/>
+  
+  
+    <p class="title logo__title">Digichem Docs</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    Getting started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../installation/index.html">
+    Advanced installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../core_concepts/digichem/index.html">
+    Core concepts: Digichem
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../core_concepts/chemistry/index.html">
+    Core concepts: quantum chemistry
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../interface/index.html">
+    Interfaces
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../guides/index.html">
+    User guides
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    Getting started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../installation/index.html">
+    Advanced installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../core_concepts/digichem/index.html">
+    Core concepts: Digichem
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../core_concepts/chemistry/index.html">
+    Core concepts: quantum chemistry
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../interface/index.html">
+    Interfaces
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../guides/index.html">
+    User guides
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="download.html">Download the GUI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Install the GUI</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Connect to a server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="submit.html">Submit a calculation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage.html">Manage jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="view.html">View results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.html">Download data</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Getting started</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Connect to a server</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="connect-to-a-server">
+<h1>Connect to a server<a class="headerlink" href="#connect-to-a-server" title="Link to this heading">#</a></h1>
+<p>When you start the GUI for the first time, you’ll be greeted by a window informing you that you don’t have any servers yet:</p>
+<img alt="../_images/no_servers.png" src="../_images/no_servers.png" />
+<div class="admonition-confused-on-what-a-server-is admonition">
+<p class="admonition-title">Confused on what a Server is?</p>
+<p>Quantum chemistry calculations are very computationally intensive, so much so
+that they can’t normally be run on your personal machine (like your desktop or laptop). If you did try and run
+a calculation on your laptop, it would quickly run out memory and crash, or otherwise would take many <em>many</em> hours to complete.</p>
+<p>Instead, most quantum chemistry calculations are run on a <em>remote server cluster</em>. This is a combination of many individual computers
+working together to provide the computational resources that the calculation needs. These clusters are connected <em>via</em> a network, and
+are normally accessed over the internet.</p>
+</div>
+<section id="create-a-new-server">
+<h2>Create a new server<a class="headerlink" href="#create-a-new-server" title="Link to this heading">#</a></h2>
+<p>To connect to your first server, click the <strong>Setup</strong> button. This will launch the New Server window:</p>
+<img alt="../_images/server_setup.png" src="../_images/server_setup.png" />
+<p>First, we need to give the new server connection a name! This is just so we can identify it later, and has no bearing on the connection itself.
+In this example, we’ll call the server Deep Thought, because that’s its name:</p>
+<img alt="../_images/server_name.png" src="../_images/server_name.png" />
+<p>Once you’ve entered the server name, click <strong>Next</strong> to continue.</p>
+</section>
+<section id="login-details">
+<h2>Login details<a class="headerlink" href="#login-details" title="Link to this heading">#</a></h2>
+<p>We’ll next be asked for some of our login details to access the server. Your <strong>username</strong> is unique to you, and is often made up of your initials
+and possibly some unique numbers. The <strong>host</strong> is the address on the internet where your server is located. This will depend on which server you are connecting to.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Not sure what your login details are? Check with whoever administers your computational cluster, they should be able to provide them for you!</p>
+</div>
+<p>In this example, we’ll be using my login details of <strong>osl</strong>, and <strong>deep-thought.st-andrews.ac.uk</strong>. Once you have entered yours details, click the <strong>Next</strong> button,
+and Digichem will check that it can contact your server:</p>
+<img alt="../_images/server_host.png" src="../_images/server_host.png" />
+<p>If Digichem can’t connect for some reason, an error message will be displayed:</p>
+<img alt="../_images/server_host_error.png" src="../_images/server_host_error.png" />
+<p>Check that you’ve typed your details correctly, especially the server host. Also, check your VPN is enabled if your server requires one.</p>
+</section>
+<section id="authentication">
+<h2>Authentication<a class="headerlink" href="#authentication" title="Link to this heading">#</a></h2>
+<p>Next, Digichem will prompt for your authentication details. This is how you prove to the server that it’s really you. Most servers use either a password or
+an SSH key file, but you can configure multiple methods if that’s supported by your cluster:</p>
+<img alt="../_images/server_auth.png" src="../_images/server_auth.png" />
+<section id="using-a-password">
+<h3>Using a password<a class="headerlink" href="#using-a-password" title="Link to this heading">#</a></h3>
+<p>A password is probably the simplest way of logging in. Switch the <strong>I use a password</strong> option to on, and enter your password in the box provided:</p>
+<img alt="../_images/server_password.png" src="../_images/server_password.png" />
+<p>Alternatively, if you don’t want Digichem to save your password for you, switch the <strong>Save password</strong> toggle to off. Digichem will then prompt
+you for your password each time you login:</p>
+<img alt="../_images/server_password_prompt.png" src="../_images/server_password_prompt.png" />
+</section>
+<section id="using-a-one-time-password-otp">
+<h3>Using a one-time password (OTP)<a class="headerlink" href="#using-a-one-time-password-otp" title="Link to this heading">#</a></h3>
+<p>Some servers use an authentication scheme called one-time passwords (OTP), where the server generates a new password each time you log in. This ‘one-time’
+password is then sent to you by some means, perhaps by a text message or using an app on your phone.</p>
+<p>If your server uses OTP, switch the <strong>I use a one-time password</strong> option to on, and Digichem will prompt you for the password whenever it needs it:</p>
+<img alt="../_images/server_otp.png" src="../_images/server_otp.png" />
+<div class="admonition-technical-note admonition">
+<p class="admonition-title">Technical note</p>
+<p>One-time password authentication uses <a class="reference external" href="https://docs.ssh.com/manuals/server-zos-product/55/Keyboard-interactive.html">Keyboard-Interactive Authentication</a>
+behind the scenes. Because this is most commonly used for challenge/response type authentication where the response changes regularly (like OTP),
+Digichem doesn’t currently offer to store ‘passwords’ for Keyboard-Interactive Authentication. If this would be useful for your setup however,
+please do let us know by <a class="reference external" href="https://github.com/Digichem-Project/build-boy/issues">creating an issue</a> for it.</p>
+</div>
+</section>
+<section id="using-a-key-file">
+<h3>Using a key file<a class="headerlink" href="#using-a-key-file" title="Link to this heading">#</a></h3>
+<p>Key file authentication is very convenient, because it doesn’t require any passwords from you at all. If you normally log in to your server
+without typing a password, this is probably the right option for you.</p>
+<p>If you server uses key files, switch the <strong>I use a key file</strong> option to on, and then find where you saved your key file on your hard drive:</p>
+<img alt="../_images/server_keyfile.png" src="../_images/server_keyfile.png" />
+<p>Some key files are encrypted with a password of their own. If your key file is encrypted, make sure to also specify the password in the <strong>Key file password</strong> box:</p>
+<img alt="../_images/server_keyfile_password.png" src="../_images/server_keyfile_password.png" />
+</section>
+<section id="multiple-schemes">
+<h3>Multiple Schemes<a class="headerlink" href="#multiple-schemes" title="Link to this heading">#</a></h3>
+<p>Some servers require more than one authentication scheme, in which case you may need to use more than one option.</p>
+<p>In this example, we’re specifying both a login password and a key file. Additionally, because the key file is encrypted, we’re specifying a separate password
+just for the key file! Clearly Deep-thought is very paranoid about security:</p>
+<img alt="../_images/server_auth_multiple.png" src="../_images/server_auth_multiple.png" />
+<p>Once you’ve entered your login details, click <strong>Next</strong> once again, and Digichem will check your details.</p>
+</section>
+</section>
+<section id="license-key">
+<h2>License key<a class="headerlink" href="#license-key" title="Link to this heading">#</a></h2>
+<p>Next, Digichem will prompt us for our license key. This is unique to you, so make sure not to share it with anyone! You can find your license key
+in your welcome email:</p>
+<img alt="../_images/server_license.png" src="../_images/server_license.png" />
+<p>Once you’ve entered your key, click <strong>Next</strong>.</p>
+</section>
+<section id="install-server">
+<h2>Install server<a class="headerlink" href="#install-server" title="Link to this heading">#</a></h2>
+<p>Digichem will then prepare to install the backend components on to your computational cluster. This is the part of the program that actually manages the calculations themselves,
+and means you don’t have to leave the GUI open all the time while your calculations occur in the background.</p>
+<p>If you want to install a specific backend version, you can do so here. Most of the time however, you can simply leave the options as they are and click <strong>Next</strong>:</p>
+<img alt="../_images/server_install_prep.png" src="../_images/server_install_prep.png" />
+<p>Digichem will then begin automatically downloading the backend:</p>
+<img alt="../_images/server_downloading.png" src="../_images/server_downloading.png" />
+<p>Once finished, Digichem will check the installation for errors, and will then move on to the next step.</p>
+</section>
+<section id="detect-server-resources">
+<h2>Detect server resources<a class="headerlink" href="#detect-server-resources" title="Link to this heading">#</a></h2>
+<p>We are now at the final step! Digichem will ask if we want to automatically detect server resources, or upload them manually. Most of the time,
+we want Digichem to detect them automatically, so we can leave the options as they are and simply click <strong>Next</strong>:</p>
+<img alt="../_images/server_resources.png" src="../_images/server_resources.png" />
+<p>Once the connection has been established, Digichem will display an ‘All done!’ message before starting the program fully:</p>
+<img alt="../_images/server_done.png" src="../_images/server_done.png" />
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="install.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Install the GUI</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="submit.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Submit a calculation</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-new-server">Create a new server</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#login-details">Login details</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication">Authentication</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-a-password">Using a password</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-a-one-time-password-otp">Using a one-time password (OTP)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-a-key-file">Using a key file</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-schemes">Multiple Schemes</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#license-key">License key</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-server">Install server</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#detect-server-resources">Detect server resources</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/get_started/connect.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, Digichem.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.7.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,14 @@
+The command-line interface
+--------------------------
+
+.. toctree::
+   :maxdepth: 1
+   :includehidden:
+
+   convert
+   database
+   image
+   report
+   result
+   status
+   submit

@@ -7,34 +7,74 @@ Welcome to Digichem, the computational management suite.
 Digichem is a program designed to manage every part of the computational chemistry pipeline.
 From the submission of calculations to the generation of data, everything is handled for you, automatically.
 
+
+
+
 Start here
 ----------
 
-.. toctree::
-   :maxdepth: 2
-   :includehidden:
-
-   introduction/index
-   
-Practical examples
-------------------
+Simple how-to guides designed for new users.
 
 .. toctree::
    :maxdepth: 2
    :includehidden:
 
-   examples/index
+   get_started/index
 
-Further reading
----------------------
+
+Installation guides
+-------------------
+
+For more complex installation types, and for troubleshooting installation problems.
 
 .. toctree::
    :maxdepth: 2
    :includehidden:
 
    installation/index
-   installation/setup
-   method/index
-   programs/index
-   reference/index
-   bibliography
+
+
+Core concepts
+-------------
+
+Explanations and guides to core concepts, both within the Digichem framework and more generally in relation to quantum chemistry.
+
+.. toctree::
+   :maxdepth: 2
+   :includehidden:
+
+   core_concepts/digichem/index
+   core_concepts/chemistry/index
+
+
+How to interact with the program
+--------------------------------
+
+An overview of the different interfaces that Digichem supports.
+
+.. toctree::
+   :maxdepth: 2
+   :includehidden:
+
+   interface/index
+
+
+User guides
+-----------
+
+In-depth user guides covering how to use various parts of the program.
+These guides are broken down by interface type.
+
+.. toctree::
+   :maxdepth: 2
+   :includehidden:
+
+   guides/index
+
+
+Bibliography
+------------
+
+.. bibliography::
+   :style: plain
+

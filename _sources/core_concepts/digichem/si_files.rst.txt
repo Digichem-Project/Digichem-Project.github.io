@@ -1,0 +1,52 @@
+.. _si_format:
+
+The SI format
+-------------
+
+The Digichem coordinate format is written in YAML, and contains six properties:
+
+.. code-block:: console
+
+    $ digichem convert Benzene.xyz -o si
+    version: 2.1.0
+    name: null
+    charge: 0
+    multiplicity: 1
+    atoms:
+    - {atom: C, x: 1.38314, y: -0.22144, z: 0.00537}
+    - {atom: C, x: 0.50694, y: -1.30651, z: -0.00792}
+    - {atom: C, x: -0.87093, y: -1.09053, z: -0.0147}
+    - {atom: C, x: -1.3729, y: 0.21095, z: -0.00441}
+    - {atom: C, x: -0.4967, y: 1.29607, z: 0.0106}
+    - {atom: C, x: 0.88118, y: 1.07996, z: 0.01366}
+    - {atom: H, x: 2.4568, y: -0.38978, z: 0.00923}
+    - {atom: H, x: 0.89795, y: -2.32061, z: -0.01321}
+    - {atom: H, x: -1.55354, y: -1.93593, z: -0.02737}
+    - {atom: H, x: -2.44648, y: 0.37928, z: -0.00825}
+    - {atom: H, x: -0.88777, y: 2.31003, z: 0.01974}
+    - {atom: H, x: 1.56378, y: 1.92549, z: 0.02297}
+    history: null
+    
+**version**
+    The version string of the input file, used by the digichem parser for backwards compatibility.
+
+**name**
+    An optional string describing the name of the molecule. The ``name`` is only used for descriptive purposes, and can be omitted.
+    If it is omitted, the name of the file itself is used as the name of the molecule.
+
+**charge**
+    Integer charge of the molecule.
+
+**multiplicity**
+    Integer multiplicity of the molecule.
+
+**atoms**
+    A list of dictionaries describing the geometry of the molecule. Each dictionary contains four key:value pairs:
+
+    * **atom**: The atom type as its standard element symbol.
+    * **x**: The x coordinate, in angstrom.
+    * **y**: The y coordinate, in angstrom.
+    * **z**: The z coordinate, in angstrom.
+
+**history**
+    An optional unique identifier describing the calculation that generated the geometry in this file.

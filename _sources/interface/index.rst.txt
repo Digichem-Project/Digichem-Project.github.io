@@ -1,0 +1,13 @@
+Interfaces
+----------
+
+.. toctree::
+   :maxdepth: 2
+   :includehidden:
+
+   gui
+   terminal
+   cli
+   api
+   python
+

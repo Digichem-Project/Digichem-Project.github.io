@@ -1,0 +1,5 @@
+.. _charge_and_multiplicity:
+
+Charge and multiplicity
+-----------------------
+

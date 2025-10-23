@@ -1,196 +1,647 @@
 
-
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" data-content_root="./">
-<head>
-  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Welcome to Digichem’s documentation! &mdash; Digichem 7.0.1 documentation</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
-      <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
-      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4b4c264b" />
 
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Welcome to Digichem’s documentation! &#8212; Digichem 7.0.1 documentation</title>
   
-    <link rel="shortcut icon" href="_static/Icon.svg"/>
-      <script src="_static/jquery.js?v=5d32c60e"></script>
-      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=4b9d3a76"></script>
-      <script src="_static/doctools.js?v=9a2dae69"></script>
-      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-      <script src="_static/design-tabs.js?v=f930bc37"></script>
-    <script src="_static/js/theme.js"></script>
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4b4c264b" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=4b9d3a76"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'index';</script>
+    <link rel="icon" href="_static/Icon.svg"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Getting started" href="introduction/index.html" /> 
-</head>
+    <link rel="next" title="Getting started" href="get_started/index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="7.0.1" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-<body class="wy-body-for-nav"> 
-  <div class="wy-grid-for-nav">
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
-          
-          
-          <a href="#" class="icon icon-home">
-            Digichem
-          </a>
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
 </div>
-        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul>
-<li class="toctree-l1"><a class="reference internal" href="introduction/index.html">Getting started</a></li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="examples/index.html">Walkthroughs</a></li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="installation/index.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="installation/setup.html">Setup</a></li>
-<li class="toctree-l1"><a class="reference internal" href="method/index.html">Methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="programs/index.html">Programs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="reference/index.html">Command line reference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="bibliography.html">References</a></li>
-</ul>
 
-        </div>
-      </div>
-    </nav>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="#">Digichem</a>
-      </nav>
+  
+    
+  
 
-      <div class="wy-nav-content">
-        <div class="rst-content">
-          <div role="navigation" aria-label="Page navigation">
-  <ul class="wy-breadcrumbs">
-      <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Welcome to Digichem’s documentation!</li>
-      <li class="wy-breadcrumbs-aside">
-            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
-      </li>
+<a class="navbar-brand logo" href="#">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/Icon.svg" class="logo__image only-light" alt=""/>
+    <img src="_static/Icon.svg" class="logo__image only-dark pst-js-only" alt=""/>
+  
+  
+    <p class="title logo__title">Digichem Docs</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="get_started/index.html">
+    Getting started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="installation/index.html">
+    Advanced installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="core_concepts/digichem/index.html">
+    Core concepts: Digichem
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="core_concepts/chemistry/index.html">
+    Core concepts: quantum chemistry
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="interface/index.html">
+    Interfaces
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="guides/index.html">
+    User guides
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
   </ul>
-  <hr/>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
 </div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
-             
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="get_started/index.html">
+    Getting started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="installation/index.html">
+    Advanced installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="core_concepts/digichem/index.html">
+    Core concepts: Digichem
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="core_concepts/chemistry/index.html">
+    Core concepts: quantum chemistry
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="interface/index.html">
+    Interfaces
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="guides/index.html">
+    User guides
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none"></div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
   <section id="welcome-to-digichem-s-documentation">
-<h1>Welcome to Digichem’s documentation!<a class="headerlink" href="#welcome-to-digichem-s-documentation" title="Link to this heading"></a></h1>
+<h1>Welcome to Digichem’s documentation!<a class="headerlink" href="#welcome-to-digichem-s-documentation" title="Link to this heading">#</a></h1>
 <img alt="_images/Header.png" src="_images/Header.png" />
 <p>Welcome to Digichem, the computational management suite.
 Digichem is a program designed to manage every part of the computational chemistry pipeline.
 From the submission of calculations to the generation of data, everything is handled for you, automatically.</p>
 <section id="start-here">
-<h2>Start here<a class="headerlink" href="#start-here" title="Link to this heading"></a></h2>
+<h2>Start here<a class="headerlink" href="#start-here" title="Link to this heading">#</a></h2>
+<p>Simple how-to guides designed for new users.</p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="introduction/index.html">Getting started</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="introduction/install.html">How to install</a></li>
-<li class="toctree-l2"><a class="reference internal" href="introduction/run.html">How to submit a calculation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="introduction/monitor.html">Checking the status of your calculation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get_started/index.html">Getting started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="get_started/download.html">Download the GUI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get_started/install.html">Install the GUI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get_started/connect.html">Connect to a server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get_started/submit.html">Submit a calculation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get_started/manage.html">Manage jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get_started/view.html">View results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get_started/data.html">Download data</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </section>
-<section id="practical-examples">
-<h2>Practical examples<a class="headerlink" href="#practical-examples" title="Link to this heading"></a></h2>
+<section id="installation-guides">
+<h2>Installation guides<a class="headerlink" href="#installation-guides" title="Link to this heading">#</a></h2>
+<p>For more complex installation types, and for troubleshooting installation problems.</p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="examples/index.html">Walkthroughs</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="examples/photonics.html">Photonics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation/index.html">Advanced installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="installation/gui.html">Installing the GUI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation/backend/index.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation/resources.html">Identifying server resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation/multi_user.html">Multi-user installation</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </section>
-<section id="further-reading">
-<h2>Further reading<a class="headerlink" href="#further-reading" title="Link to this heading"></a></h2>
+<section id="core-concepts">
+<h2>Core concepts<a class="headerlink" href="#core-concepts" title="Link to this heading">#</a></h2>
+<p>Explanations and guides to core concepts, both within the Digichem framework and more generally in relation to quantum chemistry.</p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="installation/index.html">Installation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="installation/index.html#dependencies">Dependencies</a></li>
-<li class="toctree-l2"><a class="reference internal" href="installation/index.html#quick-installation-instructions">Quick installation instructions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="installation/index.html#detailed-installation-instructions">Detailed installation instructions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="installation/index.html#help">Help!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="core_concepts/digichem/index.html">Core concepts: Digichem</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="core_concepts/digichem/overview.html">Top-level overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core_concepts/digichem/server.html">The server model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core_concepts/digichem/connection.html">The GUI to backend connection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core_concepts/digichem/coordinates.html">Coordinate files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core_concepts/digichem/si_files.html">The SI format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core_concepts/digichem/method/index.html">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core_concepts/digichem/jobs.html">Jobs</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="installation/setup.html">Setup</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="installation/setup.html#automated-setup">Automated setup</a></li>
-<li class="toctree-l2"><a class="reference internal" href="installation/setup.html#manual-setup">Manual setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="core_concepts/chemistry/index.html">Core concepts: quantum chemistry</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="core_concepts/chemistry/calculations.html">Calculation types, and what they are for</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core_concepts/chemistry/methods.html">Calculation methods, and which to choose</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core_concepts/chemistry/solvent.html">Solvent methods, and which to choose</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core_concepts/chemistry/basis.html">Basis sets, and which to choose</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core_concepts/chemistry/multiplicity.html">Charge and multiplicity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core_concepts/chemistry/resources.html">Computational resources (how long will my calculation take?)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core_concepts/chemistry/queues.html">Clusters, queues, and partitions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core_concepts/chemistry/engines.html">Computational engines, and which to choose</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core_concepts/chemistry/results.html">Calculation results, and what they mean</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core_concepts/chemistry/graphs.html">Graphical results, and what they mean</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core_concepts/chemistry/renders.html">Rendering engines, and which to choose</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="method/index.html">Methods</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="method/index.html#method-components">Method components</a></li>
-<li class="toctree-l2"><a class="reference internal" href="method/index.html#specifying-methods">Specifying methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="method/index.html#method-files">Method files</a></li>
-<li class="toctree-l2"><a class="reference internal" href="method/index.html#specification">Specification</a></li>
+</ul>
+</div>
+</section>
+<section id="how-to-interact-with-the-program">
+<h2>How to interact with the program<a class="headerlink" href="#how-to-interact-with-the-program" title="Link to this heading">#</a></h2>
+<p>An overview of the different interfaces that Digichem supports.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="interface/index.html">Interfaces</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="interface/gui.html">Graphical user interface (GUI)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interface/terminal.html">Terminal interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interface/cli.html">Command line interface (CLI)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interface/api.html">REST API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interface/python.html">Python API</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="programs/index.html">Programs</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="programs/digichem-submit.html">Digichem Submit</a></li>
-<li class="toctree-l2"><a class="reference internal" href="programs/digichem-convert.html">Digichem Convert</a></li>
-<li class="toctree-l2"><a class="reference internal" href="programs/digichem-result.html">Digichem Result</a></li>
-<li class="toctree-l2"><a class="reference internal" href="programs/digichem-report.html">Digichem Report</a></li>
-<li class="toctree-l2"><a class="reference internal" href="programs/digichem-image.html">Digichem Image</a></li>
-<li class="toctree-l2"><a class="reference internal" href="programs/digichem-database.html">Digichem Database</a></li>
-<li class="toctree-l2"><a class="reference internal" href="programs/digichem-status.html">Digichem Status</a></li>
+</ul>
+</div>
+</section>
+<section id="user-guides">
+<h2>User guides<a class="headerlink" href="#user-guides" title="Link to this heading">#</a></h2>
+<p>In-depth user guides covering how to use various parts of the program.
+These guides are broken down by interface type.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="guides/index.html">User guides</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="guides/gui/index.html">The graphical user interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/terminal/index.html">The terminal interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/cli/index.html">The command-line interface</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="reference/index.html">Command line reference</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="reference/digichem-submit.html">digichem submit</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/digichem-convert.html">digichem convert</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/digichem-result.html">digichem result</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/digichem-report.html">digichem report</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/digichem-image.html">digichem image</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/digichem-database.html">digichem database</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/digichem-status.html">digichem status</a></li>
 </ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="bibliography.html">References</a></li>
-</ul>
+</div>
+</section>
+<section id="bibliography">
+<h2>Bibliography<a class="headerlink" href="#bibliography" title="Link to this heading">#</a></h2>
+<div class="docutils container" id="id1">
+<div role="list" class="citation-list">
+<div class="citation" id="id19" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
+<p>Carlo Adamo and Vincenzo Barone. Toward reliable density functional methods without adjustable parameters: The PBE0 model. <em>The Journal of Chemical Physics</em>, 110(13):6158–6170, 04 1999. URL: <a class="reference external" href="https://doi.org/10.1063/1.478522">https://doi.org/10.1063/1.478522</a>, <a class="reference external" href="https://arxiv.org/abs/https://pubs.aip.org/aip/jcp/article-pdf/110/13/6158/19068890/6158\_1\_online.pdf">arXiv:https://pubs.aip.org/aip/jcp/article-pdf/110/13/6158/19068890/6158\_1\_online.pdf</a>, <a class="reference external" href="https://doi.org/10.1063/1.478522">doi:10.1063/1.478522</a>.</p>
+</div>
+<div class="citation" id="id20" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></span>
+<p>Amy Austin, George A. Petersson, Michael J. Frisch, Frank J. Dobek, Giovanni Scalmani, and Kyle Throssell. A density functional with spherical atom dispersion terms. <em>Journal of Chemical Theory and Computation</em>, 8(12):4989–5007, 2012. PMID: 26593191. URL: <a class="reference external" href="https://doi.org/10.1021/ct300778e">https://doi.org/10.1021/ct300778e</a>, <a class="reference external" href="https://arxiv.org/abs/https://doi.org/10.1021/ct300778e">arXiv:https://doi.org/10.1021/ct300778e</a>, <a class="reference external" href="https://doi.org/10.1021/ct300778e">doi:10.1021/ct300778e</a>.</p>
+</div>
+<div class="citation" id="id29" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></span>
+<p>M. A. Baldo, M. E. Thompson, and S. R. Forrest. High-efficiency fluorescent organic light-emitting devices using a phosphorescent sensitizer. <em>Nature</em>, 403(6771):750–753, Feb 2000. URL: <a class="reference external" href="https://doi.org/10.1038/35001541">https://doi.org/10.1038/35001541</a>, <a class="reference external" href="https://doi.org/10.1038/35001541">doi:10.1038/35001541</a>.</p>
+</div>
+<div class="citation" id="id24" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></span>
+<p>Eike Caldeweyher, Christoph Bannwarth, and Stefan Grimme. Extension of the D3 dispersion coefficient model. <em>The Journal of Chemical Physics</em>, 147(3):034112, 07 2017. URL: <a class="reference external" href="https://doi.org/10.1063/1.4993215">https://doi.org/10.1063/1.4993215</a>, <a class="reference external" href="https://arxiv.org/abs/https://pubs.aip.org/aip/jcp/article-pdf/doi/10.1063/1.4993215/14782597/034112\_1\_online.pdf">arXiv:https://pubs.aip.org/aip/jcp/article-pdf/doi/10.1063/1.4993215/14782597/034112\_1\_online.pdf</a>, <a class="reference external" href="https://doi.org/10.1063/1.4993215">doi:10.1063/1.4993215</a>.</p>
+</div>
+<div class="citation" id="id25" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></span>
+<p>Eike Caldeweyher, Sebastian Ehlert, Andreas Hansen, Hagen Neugebauer, Sebastian Spicher, Christoph Bannwarth, and Stefan Grimme. A generally applicable atomic-charge dependent London dispersion correction. <em>The Journal of Chemical Physics</em>, 150(15):154122, 04 2019. URL: <a class="reference external" href="https://doi.org/10.1063/1.5090222">https://doi.org/10.1063/1.5090222</a>, <a class="reference external" href="https://arxiv.org/abs/https://pubs.aip.org/aip/jcp/article-pdf/doi/10.1063/1.5090222/15559428/154122\_1\_online.pdf">arXiv:https://pubs.aip.org/aip/jcp/article-pdf/doi/10.1063/1.5090222/15559428/154122\_1\_online.pdf</a>, <a class="reference external" href="https://doi.org/10.1063/1.5090222">doi:10.1063/1.5090222</a>.</p>
+</div>
+<div class="citation" id="id26" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>6<span class="fn-bracket">]</span></span>
+<p>Ove Christiansen, Henrik Koch, and Poul Jørgensen. The second-order approximate coupled cluster singles and doubles model cc2. <em>Chemical Physics Letters</em>, 243(5):409–418, 1995. URL: <a class="reference external" href="https://www.sciencedirect.com/science/article/pii/000926149500841Q">https://www.sciencedirect.com/science/article/pii/000926149500841Q</a>, <a class="reference external" href="https://doi.org/https://doi.org/10.1016/0009-2614(95)00841-Q">doi:https://doi.org/10.1016/0009-2614(95)00841-Q</a>.</p>
+</div>
+<div class="citation" id="id21" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>7<span class="fn-bracket">]</span></span>
+<p>Stefan Grimme. Semiempirical gga-type density functional constructed with a long-range dispersion correction. <em>Journal of Computational Chemistry</em>, 27(15):1787–1799, 2006. URL: <a class="reference external" href="https://onlinelibrary.wiley.com/doi/abs/10.1002/jcc.20495">https://onlinelibrary.wiley.com/doi/abs/10.1002/jcc.20495</a>, <a class="reference external" href="https://arxiv.org/abs/https://onlinelibrary.wiley.com/doi/pdf/10.1002/jcc.20495">arXiv:https://onlinelibrary.wiley.com/doi/pdf/10.1002/jcc.20495</a>, <a class="reference external" href="https://doi.org/https://doi.org/10.1002/jcc.20495">doi:https://doi.org/10.1002/jcc.20495</a>.</p>
+</div>
+<div class="citation" id="id22" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>8<span class="fn-bracket">]</span></span>
+<p>Stefan Grimme, Jens Antony, Stephan Ehrlich, and Helge Krieg. A consistent and accurate ab initio parametrization of density functional dispersion correction (DFT-D) for the 94 elements H-Pu. <em>The Journal of Chemical Physics</em>, 132(15):154104, 04 2010. URL: <a class="reference external" href="https://doi.org/10.1063/1.3382344">https://doi.org/10.1063/1.3382344</a>, <a class="reference external" href="https://arxiv.org/abs/https://pubs.aip.org/aip/jcp/article-pdf/doi/10.1063/1.3382344/15684000/154104\_1\_online.pdf">arXiv:https://pubs.aip.org/aip/jcp/article-pdf/doi/10.1063/1.3382344/15684000/154104\_1\_online.pdf</a>, <a class="reference external" href="https://doi.org/10.1063/1.3382344">doi:10.1063/1.3382344</a>.</p>
+</div>
+<div class="citation" id="id23" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>9<span class="fn-bracket">]</span></span>
+<p>Stefan Grimme, Stephan Ehrlich, and Lars Goerigk. Effect of the damping function in dispersion corrected density functional theory. <em>Journal of Computational Chemistry</em>, 32(7):1456–1465, 2011. URL: <a class="reference external" href="https://onlinelibrary.wiley.com/doi/abs/10.1002/jcc.21759">https://onlinelibrary.wiley.com/doi/abs/10.1002/jcc.21759</a>, <a class="reference external" href="https://arxiv.org/abs/https://onlinelibrary.wiley.com/doi/pdf/10.1002/jcc.21759">arXiv:https://onlinelibrary.wiley.com/doi/pdf/10.1002/jcc.21759</a>, <a class="reference external" href="https://doi.org/https://doi.org/10.1002/jcc.21759">doi:https://doi.org/10.1002/jcc.21759</a>.</p>
+</div>
+<div class="citation" id="id27" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>10<span class="fn-bracket">]</span></span>
+<p>Christian Kollmar. Convergence optimization of restricted open-shell self-consistent field calculations. <em>International Journal of Quantum Chemistry</em>, 62(6):617–637, 1997. URL: <a class="reference external" href="https://onlinelibrary.wiley.com/doi/abs/10.1002/%28SICI%291097-461X%281997%2962%3A6%3C617%3A%3AAID-QUA5%3E3.0.CO%3B2-Z">https://onlinelibrary.wiley.com/doi/abs/10.1002/%28SICI%291097-461X%281997%2962%3A6%3C617%3A%3AAID-QUA5%3E3.0.CO%3B2-Z</a>, <a class="reference external" href="https://arxiv.org/abs/https://onlinelibrary.wiley.com/doi/pdf/10.1002/%28SICI%291097-461X%281997%2962%3A6%3C617%3A%3AAID-QUA5%3E3.0.CO%3B2-Z">arXiv:https://onlinelibrary.wiley.com/doi/pdf/10.1002/%28SICI%291097-461X%281997%2962%3A6%3C617%3A%3AAID-QUA5%3E3.0.CO%3B2-Z</a>, <a class="reference external" href="https://doi.org/https://doi.org/10.1002/(SICI)1097-461X(1997)62:6&lt;617::AID-QUA5&gt;3.0.CO;2-Z">doi:https://doi.org/10.1002/(SICI)1097-461X(1997)62:6&lt;617::AID-QUA5&gt;3.0.CO;2-Z</a>.</p>
+</div>
+<div class="citation" id="id11" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>11<span class="fn-bracket">]</span></span>
+<p>Noel M. O'Boyle, Michael Banck, Craig A. James, Chris Morley, Tim Vandermeersch, and Geoffrey R. Hutchison. Open babel: an open chemical toolbox. <em>Journal of Cheminformatics</em>, 3(1):33, Oct 2011. URL: <a class="reference external" href="https://doi.org/10.1186/1758-2946-3-33">https://doi.org/10.1186/1758-2946-3-33</a>, <a class="reference external" href="https://doi.org/10.1186/1758-2946-3-33">doi:10.1186/1758-2946-3-33</a>.</p>
+</div>
+<div class="citation" id="id2" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>12<span class="fn-bracket">]</span></span>
+<p>Noel M. O'boyle, Adam L. Tenderholt, and Karol M. Langner. Cclib: a library for package-independent computational chemistry algorithms. <em>Journal of Computational Chemistry</em>, 29(5):839–845, 2008. URL: <a class="reference external" href="https://onlinelibrary.wiley.com/doi/abs/10.1002/jcc.20823">https://onlinelibrary.wiley.com/doi/abs/10.1002/jcc.20823</a>, <a class="reference external" href="https://arxiv.org/abs/https://onlinelibrary.wiley.com/doi/pdf/10.1002/jcc.20823">arXiv:https://onlinelibrary.wiley.com/doi/pdf/10.1002/jcc.20823</a>, <a class="reference external" href="https://doi.org/10.1002/jcc.20823">doi:10.1002/jcc.20823</a>.</p>
+</div>
+<div class="citation" id="id31" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>13<span class="fn-bracket">]</span></span>
+<p>Diego Paschoal, Bruna L. Marcial, Juliana Fedoce Lopes, Wagner B. De Almeida, and Hélio F. Dos Santos. The role of the basis set and the level of quantum mechanical theory in the prediction of the structure and reactivity of cisplatin. <em>Journal of Computational Chemistry</em>, 33(29):2292–2302, 2012. URL: <a class="reference external" href="https://onlinelibrary.wiley.com/doi/abs/10.1002/jcc.23061">https://onlinelibrary.wiley.com/doi/abs/10.1002/jcc.23061</a>, <a class="reference external" href="https://arxiv.org/abs/https://onlinelibrary.wiley.com/doi/pdf/10.1002/jcc.23061">arXiv:https://onlinelibrary.wiley.com/doi/pdf/10.1002/jcc.23061</a>, <a class="reference external" href="https://doi.org/https://doi.org/10.1002/jcc.23061">doi:https://doi.org/10.1002/jcc.23061</a>.</p>
+</div>
+<div class="citation" id="id17" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>14<span class="fn-bracket">]</span></span>
+<p>John P. Perdew, Kieron Burke, and Matthias Ernzerhof. Generalized gradient approximation made simple. <em>Phys. Rev. Lett.</em>, 77:3865–3868, Oct 1996. URL: <a class="reference external" href="https://link.aps.org/doi/10.1103/PhysRevLett.77.3865">https://link.aps.org/doi/10.1103/PhysRevLett.77.3865</a>, <a class="reference external" href="https://doi.org/10.1103/PhysRevLett.77.3865">doi:10.1103/PhysRevLett.77.3865</a>.</p>
+</div>
+<div class="citation" id="id18" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>15<span class="fn-bracket">]</span></span>
+<p>John P. Perdew, Kieron Burke, and Matthias Ernzerhof. Generalized gradient approximation made simple. <em>Phys. Rev. Lett.</em>, 78:1396–1396, Feb 1997. URL: <a class="reference external" href="https://link.aps.org/doi/10.1103/PhysRevLett.78.1396">https://link.aps.org/doi/10.1103/PhysRevLett.78.1396</a>, <a class="reference external" href="https://doi.org/10.1103/PhysRevLett.78.1396">doi:10.1103/PhysRevLett.78.1396</a>.</p>
+</div>
+<div class="citation" id="id28" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>16<span class="fn-bracket">]</span></span>
+<p>Wei-Lung Tsai, Ming-Hao Huang, Wei-Kai Lee, Yi-Jiun Hsu, Kuan-Chung Pan, Yi-Hsiang Huang, Hao-Chun Ting, Monima Sarma, Yu-Yi Ho, Hung-Chieh Hu, Chung-Chia Chen, Meng-Ting Lee, Ken-Tsung Wong, and Chung-Chih Wu. A versatile thermally activated delayed fluorescence emitter for both highly efficient doped and non-doped organic light emitting devices. <em>Chem. Commun.</em>, 51:13662–13665, 2015. URL: <a class="reference external" href="http://dx.doi.org/10.1039/C5CC05022G">http://dx.doi.org/10.1039/C5CC05022G</a>, <a class="reference external" href="https://doi.org/10.1039/C5CC05022G">doi:10.1039/C5CC05022G</a>.</p>
+</div>
+<div class="citation" id="id30" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>17<span class="fn-bracket">]</span></span>
+<p>Yue Yang, Michael N. Weaver, and Kenneth M. Jr. Merz. Assessment of the “6-31+g** + lanl2dz” mixed basis set coupled with density functional theory methods and the effective core potential: prediction of heats of formation and ionization potentials for first-row-transition-metal complexes. <em>The Journal of Physical Chemistry A</em>, 113(36):9843–9851, 2009. PMID: 19691271. URL: <a class="reference external" href="https://doi.org/10.1021/jp807643p">https://doi.org/10.1021/jp807643p</a>, <a class="reference external" href="https://arxiv.org/abs/https://doi.org/10.1021/jp807643p">arXiv:https://doi.org/10.1021/jp807643p</a>, <a class="reference external" href="https://doi.org/10.1021/jp807643p">doi:10.1021/jp807643p</a>.</p>
+</div>
+</div>
 </div>
 </section>
 </section>
 
 
-           </div>
-          </div>
-          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="introduction/index.html" class="btn btn-neutral float-right" title="Getting started" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-    </div>
-
-  <hr/>
-
-  <div role="contentinfo">
-    <p>&#169; Copyright 2025, Digichem.</p>
-  </div>
-
-  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    provided by <a href="https://readthedocs.org">Read the Docs</a>.
-   
-
-</footer>
-        </div>
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="right-next"
+       href="get_started/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Getting started</p>
       </div>
-    </section>
-  </div>
-  <script>
-      jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
-      });
-  </script> 
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
-</body>
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#start-here">Start here</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation-guides">Installation guides</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#core-concepts">Core concepts</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-interact-with-the-program">How to interact with the program</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#user-guides">User guides</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bibliography">Bibliography</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/index.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, Digichem.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.7.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
 </html>

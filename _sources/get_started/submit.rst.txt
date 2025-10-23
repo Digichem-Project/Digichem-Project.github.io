@@ -1,0 +1,274 @@
+.. _get_started_submit:
+
+Submit a calculation
+____________________
+
+Follow these instructions to learn how to submit you first calculation with Digichem!
+
+Before you begin...
+----------------------
+
+Before you can begin to submit a new calculation, you first need to decide which structures to investigate!
+Digichem supports a :ref:`very large variety<coord_types>` of input structure formats,
+so you are free to choose whatever molecular sketching software you like.
+
+If you are used to submitting calculations with Gaussian or Turbomole, then you likely already use GaussView
+or TmoleX (respectively), and you can continue to use these programs with Digichem. Note that you can freely
+mix between different molecular sketching software and calculation programs, so you can use GaussView to draw
+your molecules and still run the calculation with Turbomole or Orca.
+
+There are many freely available and open-source programs that you can use to draw your molecules. Popular examples
+include `Avogadro <https://avogadro.cc/>`_, `ChemCraft <https://www.chemcraftprog.com/>`_, and `Gabedit <https://gabedit.sourceforge.net/>`_.
+For the examples shown here, we will use Avogadro.
+
+Draw your molecules
+----------------------
+
+.. note::
+    If you plan to use a crystal structure as your starting geometry, or the output from a previous calculation,
+    you can skip this step.
+
+Draw the molecules you intend to investigate in your favourite 3D sketching program.
+Digichem lets you submit as many molecules as you like, so it's often best to begin by drawing all the structures 
+that you are interested in. In this example, we will use Avogadro to draw two simple aromatic compounds:
+
+.. image:: /_static/get_started/draw_benzene.png
+
+.. image:: /_static/get_started/draw_pyridine.png
+
+Save each molecule to a separate file. The format of the file doesn't matter (so long as it's supported by Digichem of course),
+if you are unsure then .gjf/.com (Gaussian input file), .xyz, and .cml are all good choices:
+
+.. image:: /_static/get_started/save_benzene.png
+
+Load your molecules
+----------------------
+
+To start a new calculation, first head to the Submit page of the GUI:
+
+.. image:: /_static/get_started/submit_new.png
+
+This page is split into two main panels, which each represent one of the two main parts of a calculation.
+
+The top panel is where we select our **Input coordinates**:
+
+.. image:: /_static/get_started/submit_coords.png
+
+These are the molecule(s) that we are interested in studying.
+We can obtain these structures in a number of ways, including:
+
+#. From the output from a previous calculation.
+#. From a real-world crystal structure.
+#. By drawing the molecules from scratch (which is what we are doing in this example).
+
+Loading input coordinates is easy! Simply click on the **File** button to select the files that you saved earlier from your hard drive:
+
+.. image:: /_static/get_started/submit_file_picker.png
+
+Or, if you prefer, you can drag the files directly into the app:
+
+.. image:: /_static/get_started/submit_file_drag.png
+
+Either way, Digichem will load the files that you selected, and display them in the top-panel:
+
+.. image:: /_static/get_started/submit_coords_loaded.png
+
+Once loaded, you can change the **Name** of each molecule to something more memorable if you like. Don't worry, the molecule
+name has no bearing on the actual calculation itself, it's just for our reference!
+
+More important, however, are the **Charge** and **Multiplicity** columns, which allow us to, well, change the charge and
+multiplicity! Together, these properties tell the computational engine how many electrons we want each molecule to have.
+A charge of 0 indicates that we want the same number of electrons as protons in the molecule. Meanwhile, a multiplicity
+of 1 means that we want all our electrons to be paired up (so there are 0 unpaired electrons). This is the electron
+configuration that *most* (but certainly not all) molecules adopt in their ground state.
+
+If we instead wanted to investigate the radical cation of benzene (C\ :subscript:`6`\ H\ :subscript:`6`\ :superscript:`+·`),
+we would change the **Charge** of benzene to **1**, and the **Multiplicity** to **2**:
+
+.. image:: /_static/get_started/submit_coords_charge.png
+
+For this example, however, we'll investigate each molecule in the ground state, so we'll revert back to a **Charge** of 0,
+and a **Multiplicity** of 1:
+
+.. image:: /_static/get_started/submit_coords_loaded.png
+
+.. seealso::
+    You can read more about charge and multiplicity :ref:`here <charge_and_multiplicity>`.
+
+If you load a molecule by mistake, you can use the **×** button to remove it again:
+
+.. image:: /_static/get_started/submit_coords_remove.png
+
+Load your calculation method
+----------------------------
+
+The bottom panel is where we select our **Calculation methods**:
+
+.. image:: /_static/get_started/submit_method.png
+
+These methods define what calculation it is that we want to perform!
+
+There are three different ways that we commonly use to select computational methods:
+
+#. By loading a method file, often from a previous calculation.
+#. By using a specific method code (which we will cover later).
+#. By picking a method from the internal library.
+
+Of these, using the internal library is normally the most convenient, and that is what we will focus on for this tutorial.
+To open the method browser, click on the **Library** button:
+
+.. image:: /_static/get_started/submit_method_browser.png
+
+Here, each calculation (or method) is broken down into its various parts, which we can then pick from the options that are offered.
+
+The first choice is the server queue that we want to submit to. The exact options that will be available here will depend on your
+unique server setup, so we cannot offer specific advice on which to pick. However, most servers are divided into long and short queues,
+depending on how long the calculation is intended to take, and this is also true of Deep Thought that we're using for this example.
+Because out molecules are only very small, we'll pick a short computational queue for this example. When you submit your own calculations,
+you should pick the queue that is most appropriate.
+
+.. seealso::
+    You can read more about server queues :ref:`here <charge_and_multiplicity>`.
+
+    If you have multiple server queues available and you're not sure which to pick, the best thing it to get in contact with your server
+    administrator. They should be able to help you choose!
+
+Once we've picked our server queue, we next need to pick a :ref:`computational engine <computational_engine>`. This is the program that will be performing the Quantum
+Chemistry calculation itself. Again, the options that you have available here will depend on your server setup, but the PySCF engine will always be available, as it
+comes built in to Digichem.
+
+For this example, we'll run a calculation with PySCF:
+
+.. image:: /_static/get_started/submit_method_prog.png
+
+Next, we need to decide what type of calculation to run!
+
+.. image:: /_static/get_started/submit_method_calcs.png
+
+Each of these calculation types is for calculating a different type of molecular property. We won't go into what each of these calculation types is for in this tutorial,
+but if you want to read more, head to :ref:`calculation_types`.
+
+For this tutorial, we'll start by selecting a Geometry **Optimisation**, which will calculate the correct position of each atom
+in our molecules. This is a sensible first step for most computational studies, as the atom positions that we drew earlier don't
+match exactly the real world geometry:
+
+.. image:: /_static/get_started/submit_method_functional.png
+
+Once we've selected an **Optimisation**, we next need to select a computational method. For this tutorial, we'll
+be using the PBE0 DFT functional, which is a popular choice for lots of computational problems:
+
+.. image:: /_static/get_started/submit_method_solvent.png
+
+Next, we have a list of solvent environments to choose from. If we wanted to compare our computational results
+to experimental data that was conducted in a particular solvent, we could pick the appropriate solvent from this
+list now. As we aren't planning on comparing to any specific data in this tutorial, we'll pick **Gas Phase**,
+which uses no solvent environment:
+
+.. image:: /_static/get_started/submit_method_basis.png
+
+Our final choice is the basis set, which defines how accurately we want to describe the atomic orbitals (and hence
+molecular orbitals) of our molecules. Correctly choosing a basis set is an advanced topic that we won't cover in
+this tutorial, so be sure to :ref:`read up on the documentation when picking your own <computational_basis_set>`!
+
+For this example, we'll be using the **def2-SVP basis set**, from the **Karlsruhe** family:
+
+.. image:: /_static/get_started/submit_method_basis_karlsruhe.png
+
+.. seealso::
+    For the sake of brevity, we didn't go into depth on how to choose a computational method, solvent, or basis
+    set for a calculation. To read more on these topics, head to the relevant parts of the documentation:
+
+    * :ref:`computational_method`
+    * :ref:`computational_solvent`
+    * :ref:`computational_basis_set`
+
+Once we've picked all of our calculation options, the chosen method will appear in the method table:
+
+.. image:: /_static/get_started/submit_method_chosen.png
+
+Loading more than one method
+----------------------------
+
+The optimisation calculation generates realistic atomic coordinates, but often isn't that useful by itself.
+More often, we will use the optimised geometry to calculate some other, more interesting, molecular property.
+
+To generate some more interesting data, let's also calculate some electronic excited states. We will
+load this second method in the same way as before, by first selecting **Excited States** from the calculations list:
+
+.. image:: /_static/get_started/submit_method_excited.png
+
+We then need to select our excited states method. Let's go with TDA for this example:
+
+.. hint::
+    Note sure what the difference between TDA and TD-DFT is? Read about them :ref:`here <tda_comparison>`!
+
+.. image:: /_static/get_started/submit_method_tda.png
+
+And 10 states each:
+
+.. image:: /_static/get_started/submit_method_states.png
+
+We'll then pick the same method, solvent, and basis set as we picked for our optimisation calculation:
+
+.. image:: /_static/get_started/submit_method_excited_functional.png
+
+.. image:: /_static/get_started/submit_method_excited_solvent.png
+
+.. image:: /_static/get_started/submit_method_excited_basis.png
+
+
+Making a change to a method
+---------------------------
+
+The calculation methods that we load from the library use sensible presets that will suit us most of the time. Sometimes,
+however, we'll want to make a change to a method before submitting it. This could be to change the computational resources
+that the calculation will use (the number of CPUs, the amount of memory etc.), or to change some property of the calculation
+itself.
+
+To make a change to a method, click the pencil button next to that method's row:
+
+.. image:: /_static/get_started/submit_method_edit.png
+
+This will display the method editor window:
+
+.. image:: /_static/get_started/submit_method_editor.png
+
+From here we could make any change to the calculation that we wanted. For this
+tutorial however, we're happy with the presets, so we'll just close the window.
+
+
+Understanding the calculation flow
+----------------------------------
+
+We are now ready to submit our calculation! But first, lets review what we have queued up:
+
+.. image:: /_static/get_started/submit_method_chosen_both.png
+
+In the **Input coordinates** table, we have two molecules loaded (benzene and pyridine). When we submit a calculation
+with Digichem, all the molecules we have chosen will be submitted *in parallel*. This means that both benzene and pyridine
+will run at the same time (assuming the server isn't too busy of course), and neither molecule will need to wait for the other to finish
+before it starts.
+
+Because molecules are always submitted in parallel, the order of molecules in the table is not very important.
+
+In the **Calculation methods** table, we have two methods loaded. Unlike molecules, *methods* in Digichem are submitted
+*in series*. This means that we will first be performing a geometry optimisation on each molecule, followed by an
+excited states calculation. The excited states calculation will use the *output geometry* from the first step (which
+is what we want, because we want to use the optimised coordinates), but the excited states calculation cannot start
+until the previous optimisation is complete.
+
+Because methods are always submitted *in series*, the order of methods in the table **is** important. You nearly 
+always want your geometry optimisation to occur *before* your excited states or other property calculation.
+
+If we visualise this calculation setup as a flow chart, it would look like this:
+
+.. image:: /_static/get_started/submit_flow.png
+
+There is no limit to the number of molecules and/or methods that you can load at one time, so if you're planning a big
+computational screen, it's often easiest to submit them all at once. Of course, if you decide you want to run more
+molecules in the future, you can always set up another submission.
+
+Submit!
+-------
+
+Now that everything is setup how we like, we can click the **Submit** button to submit our calculations to the queue!

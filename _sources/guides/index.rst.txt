@@ -1,0 +1,10 @@
+User guides
+-----------
+
+.. toctree::
+   :maxdepth: 2
+   :includehidden:
+
+   gui/index
+   terminal/index
+   cli/index

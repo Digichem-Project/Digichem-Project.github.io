@@ -1,0 +1,582 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Interactive Interface &#8212; Digichem 7.0.1 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=4b4c264b" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=4b9d3a76"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'guides/terminal/submit';</script>
+    <link rel="icon" href="../../_static/Icon.svg"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="7.0.1" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/Icon.svg" class="logo__image only-light" alt=""/>
+    <img src="../../_static/Icon.svg" class="logo__image only-dark pst-js-only" alt=""/>
+  
+  
+    <p class="title logo__title">Digichem Docs</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../get_started/index.html">
+    Getting started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../installation/index.html">
+    Advanced installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../core_concepts/digichem/index.html">
+    Core concepts: Digichem
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../core_concepts/chemistry/index.html">
+    Core concepts: quantum chemistry
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../interface/index.html">
+    Interfaces
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../index.html">
+    User guides
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../get_started/index.html">
+    Getting started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../installation/index.html">
+    Advanced installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../core_concepts/digichem/index.html">
+    Core concepts: Digichem
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../core_concepts/chemistry/index.html">
+    Core concepts: quantum chemistry
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../interface/index.html">
+    Interfaces
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../index.html">
+    User guides
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Interactive Interface</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="interactive-interface">
+<span id="digichem-submit-interactive"></span><h1>Interactive Interface<a class="headerlink" href="#interactive-interface" title="Link to this heading">#</a></h1>
+<p>Calculations can be submitted interactively using the <code class="docutils literal notranslate"><span class="pre">digichem</span> <span class="pre">submit</span> <span class="pre">-I</span></code> command:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>digichem<span class="w"> </span>submit<span class="w"> </span>-I
+</pre></div>
+</div>
+<p>This will open the submission interface:</p>
+<img alt="../../_images/Submit.png" src="../../_images/Submit.png" />
+<p>The interface will respond to button clicks (using the mouse) and/or the arrow-keys and the enter key.</p>
+<p>Coordinate files are displayed in the top panel, while methods are displayed in the middle panel.
+The bottom panel selects the output location for the new calculations (see <code class="docutils literal notranslate"><span class="pre">-O</span></code> below).</p>
+<p>Clicking the <code class="docutils literal notranslate"><span class="pre">&lt;</span> <span class="pre">Add</span> <span class="pre">new</span> <span class="pre">here</span> <span class="pre">&gt;</span></code> button in the top panel will open the coordinate file browser:</p>
+<img alt="../../_images/File-browser.png" src="../../_images/File-browser.png" />
+<p>This window will display files from the local filesystem. Coordinate files can be selected by clicking on them:</p>
+<img alt="../../_images/File-browser--select.png" src="../../_images/File-browser--select.png" />
+<p>Clicking the green <code class="docutils literal notranslate"><span class="pre">&lt;</span> <span class="pre">Confirm</span> <span class="pre">&gt;</span></code> button in the bottom-right will load the selected coordinates.
+A popup will appear to indicate the file parsing progress:</p>
+<img alt="../../_images/File-browser--message.png" src="../../_images/File-browser--message.png" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When 2D coordinate formats (such as ChemDraw) are loaded, a warning message (<code class="docutils literal notranslate"><span class="pre">WARNING:</span> <span class="pre">Generating</span> <span class="pre">3D</span> <span class="pre">coordinates</span> <span class="pre">from</span> <span class="pre">file...</span></code>) will be issued.
+This warning indicates that the 2D coordinates will be transformed into 3D coordinates <cite>via</cite> a rapid <a class="reference external" href="https://open-babel.readthedocs.io/en/latest/3DStructureGen/SingleConformer.html#gen3d">forcefield optimisation</a>. In most cases,
+this is desirable as it results in a better starting geometry. If you want to disable the preoptimisation, it can be toggled in the <code class="docutils literal notranslate"><span class="pre">&lt;</span> <span class="pre">Settings</span> <span class="pre">&gt;</span></code> window for the coordinate file browser.</p>
+<p>See also the <code class="docutils literal notranslate"><span class="pre">--gen3D</span></code> option <a class="reference internal" href="#digichem-submit-reference"><span class="std std-ref">below</span></a>.</p>
+</div>
+<p>Once the <code class="docutils literal notranslate"><span class="pre">Finished</span> <span class="pre">loading</span> <span class="pre">coordinates</span></code> message appears, the popup can be closed by clicking the <code class="docutils literal notranslate"><span class="pre">&lt;</span> <span class="pre">Confirm</span> <span class="pre">&gt;</span></code> button at the bottom of the window.
+The loaded coordinates will now be displayed in the top-panel:</p>
+<img alt="../../_images/Submit--coords.png" src="../../_images/Submit--coords.png" />
+<p>The <code class="docutils literal notranslate"><span class="pre">charge:</span></code> and <code class="docutils literal notranslate"><span class="pre">mult:</span></code> inputs can be changed to set the desired charge and multiplicity for each coordinate file.
+Clicking the <code class="docutils literal notranslate"><span class="pre">&lt;</span> <span class="pre">r</span> <span class="pre">&gt;</span></code> button will remove the given coordinate file from the table.</p>
+<p>Methods can be chosen either from the internal library (using the <code class="docutils literal notranslate"><span class="pre">&lt;</span> <span class="pre">Browse</span> <span class="pre">library</span> <span class="pre">&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">&lt;</span> <span class="pre">Add</span> <span class="pre">from</span> <span class="pre">code</span> <span class="pre">&gt;</span></code> buttons),
+and/or from method files (using the <code class="docutils literal notranslate"><span class="pre">&lt;</span> <span class="pre">Add</span> <span class="pre">from</span> <span class="pre">files</span> <span class="pre">&gt;</span></code> button).</p>
+<p>Clicking <code class="docutils literal notranslate"><span class="pre">&lt;</span> <span class="pre">Browse</span> <span class="pre">library</span> <span class="pre">&gt;</span></code> will open the method library browser:</p>
+<img alt="../../_images/Method-browser.png" src="../../_images/Method-browser.png" />
+<p>The browser will show your configured submission destinations. These will normally correspond to your available SLURM and/or PBS queues.
+After the name of each queue, digichem will display some current usage statistics.</p>
+<p>Selecting a queue will expand it to show the calculation engines (programs) that have been configured for that queue:</p>
+<img alt="../../_images/Method-browser--programs.png" src="../../_images/Method-browser--programs.png" />
+<p>Likewise, selecting a calculation engine will expand it to show the available calculation types:</p>
+<img alt="../../_images/Method-browser--calculations.png" src="../../_images/Method-browser--calculations.png" />
+<p>Once the main calculation type has been chosen (optimisation, excited states, etc.), further calculation options (functional, basis set, etc.) can then be selected in sequence:</p>
+<img alt="../../_images/Method-browser--moreCalculations.png" src="../../_images/Method-browser--moreCalculations.png" />
+<p>After all the necessary options have been specified, clicking the <code class="docutils literal notranslate"><span class="pre">&lt;</span> <span class="pre">Confirm</span> <span class="pre">&gt;</span></code> button will add the selected method to the main window:</p>
+<img alt="../../_images/Submit--method1.png" src="../../_images/Submit--method1.png" />
+<p>This process can be repeated to add further methods to the queue:</p>
+<img alt="../../_images/Submit--method2.png" src="../../_images/Submit--method2.png" />
+<p>The unique code for each method is shown to the left of the method’s name. Each code consists of three parts which correspond to:</p>
+<ol class="arabic simple">
+<li><p>The destination (the SLURM or PBS queue)</p></li>
+<li><p>The calculation engine (the program)</p></li>
+<li><p>The calculation itself</p></li>
+</ol>
+<p>For example, the two methods in the above picture have the codes <cite>1/2/20014</cite> and <cite>1/2/35008</cite>.
+The first two numbers are the same because both methods use the same destination (<cite>SLURM Short Queue</cite>) and program (<cite>Gaussian 16</cite>).</p>
+<p>If the method codes are known in advance, the <code class="docutils literal notranslate"><span class="pre">&lt;</span> <span class="pre">Add</span> <span class="pre">from</span> <span class="pre">code</span> <span class="pre">&gt;</span></code> button can be used to quickly add them to the method table without using the method browser:</p>
+<img alt="../../_images/Method-codes.png" src="../../_images/Method-codes.png" />
+<p>Coordinate files and methods that are queued in the interactive interface function the same as when using the CLI:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Coordinate files are queued to run <strong>in parallel</strong>. Each coordinate file will run at the same time (assuming there are sufficient resources available).</p></li>
+<li><p>Methods are queued to run <strong>in series</strong>. Each method will take the output geometry from the method that came before it.</p></li>
+</ul>
+</div></blockquote>
+<p>The order in which the methods are specified is therefore important, and generally optimisations should appear first.
+The ordering of the method can be changed using the <code class="docutils literal notranslate"><span class="pre">&lt;</span> <span class="pre">↑</span> <span class="pre">&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">&lt;</span> <span class="pre">↓</span> <span class="pre">&gt;</span></code> buttons to the right of the method name.
+A method can be removed using the <code class="docutils literal notranslate"><span class="pre">&lt;</span> <span class="pre">r</span> <span class="pre">&gt;</span></code> button.</p>
+<p>Once all the desired coordinate files and methods have been selected, clicking the <code class="docutils literal notranslate"><span class="pre">&lt;</span> <span class="pre">Confirm</span> <span class="pre">&gt;</span></code> button in the bottom right will submit the calculations to the queue:</p>
+<img alt="../../_images/Submitted.png" src="../../_images/Submitted.png" />
+<p>You can now use the <code class="docutils literal notranslate"><span class="pre">esc</span></code> key to go back and setup more calculations, or you can close Digichem by using <code class="docutils literal notranslate"><span class="pre">ctrl+c</span></code>.</p>
+</section>
+<section id="using-both-interfaces">
+<span id="digichem-submit-reference"></span><h1>Using Both Interfaces<a class="headerlink" href="#using-both-interfaces" title="Link to this heading">#</a></h1>
+<p>The command line and interactive interfaces can be intermixed, and options that are specified on the command line will be set appropriately in the interactive interface.
+This pattern is particularly useful for leveraging the scripting capabilities of the CLI while retaining the accessibility of the interactive interface.</p>
+<p>For example, coordinate input files can be specified using the wildcard feature of your shell:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>digichem<span class="w"> </span>submit<span class="w"> </span>*.*<span class="w"> </span>-I
+</pre></div>
+</div>
+<p>This command will parse all files in your current directory that contain at least one dot (<code class="docutils literal notranslate"><span class="pre">.</span></code>) character, and will load them into the coordinate file table:</p>
+<img alt="../../_images/Mixed-interface.png" src="../../_images/Mixed-interface.png" />
+<p>More specific patterns will restrict which types of files are loaded. For example, to parse only <code class="docutils literal notranslate"><span class="pre">.xyz</span></code> files:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>digichem<span class="w"> </span>submit<span class="w"> </span>*.xyz<span class="w"> </span>-I
+</pre></div>
+</div>
+<p>And so on.</p>
+<p id="digichem-submit-init-cam">The initial charge and multiplicity of each coordinate file can be set using the <code class="docutils literal notranslate"><span class="pre">--charge</span></code> (or <code class="docutils literal notranslate"><span class="pre">-C</span></code>) and <code class="docutils literal notranslate"><span class="pre">--multiplicity</span></code> (or <code class="docutils literal notranslate"><span class="pre">-M</span></code>) options respectively.
+This can be useful for setting up large-scale radical cation/anion calculations:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>digichem<span class="w"> </span>submit<span class="w"> </span>Benzene.xyz<span class="w"> </span>Pyridine.xyz<span class="w"> </span>-C<span class="w"> </span><span class="m">1</span><span class="w"> </span>-M<span class="w"> </span><span class="m">2</span><span class="w"> </span>-I
+</pre></div>
+</div>
+<img alt="../../_images/Radicals.png" src="../../_images/Radicals.png" />
+<p>Methods can also be specified on the CLI, and these will be loaded into the method table:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>digichem<span class="w"> </span>submit<span class="w"> </span>-c<span class="w"> </span><span class="m">1</span>/1/1<span class="w"> </span>-I
+</pre></div>
+</div>
+<img alt="../../_images/Mixed-interface--method.png" src="../../_images/Mixed-interface--method.png" />
+<p>Of course, both the coordinate file(s) and method(s) can be specified on the CLI to quickly load both into their respective tables:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>digichem<span class="w"> </span>submit<span class="w"> </span>*.*<span class="w"> </span>-c<span class="w"> </span><span class="m">1</span>/1/1<span class="w"> </span>-I
+</pre></div>
+</div>
+<img alt="../../_images/Mixed-interface--both.png" src="../../_images/Mixed-interface--both.png" />
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Interactive Interface</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#using-both-interfaces">Using Both Interfaces</a></li>
+</ul>
+
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/guides/terminal/submit.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, Digichem.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.7.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

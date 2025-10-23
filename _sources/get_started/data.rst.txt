@@ -1,0 +1,23 @@
+Download data
+________________
+
+In addition to viewing crucial calculation data directly in the Digichem app, you can also download
+the calculation results from the Server to view directly on your own machine.
+
+.. image:: /_static/get_started/data.png
+
+To download data from the server, we can click the **Download** button (**⇓**) in the relevant job row:
+
+.. image:: /_static/get_started/data_download.png
+
+This will add the job to the download queue, which we can view on the **Downloads** page:
+
+.. image:: /_static/get_started/data_downloads_page.png
+
+From here we can see the download progress of the job:
+
+.. image:: /_static/get_started/data_download_progress.png
+
+Once the download is complete, we can click on the download box to open the folder on our local machine:
+
+.. image:: /_static/get_started/data_folder_structure.png
