@@ -1,9 +1,16 @@
-.. _full_installation:
+.. _backend_installation:
 
-Installation
+Installing the backend
 ==================================
 
-This section of the documentation covers how to install Digichem.
+This section of the documentation covers how to install the Digichem backend.
+
+.. important::
+   The backend is normally installed automatically by the GUI. You do not need to follow these instructions if you have already followed
+   the :ref:`getting started guide <get_started_install>`.
+
+   These instructions are intended only for advanced users and system administrators who are looking to install the Digichem backend manually.
+   
 
 .. note::
    This installation only covers the main Digichem program. If you are looking to (also) install the open-source Digichem-core library, please see the separate documentation `here <https://github.com/Digichem-Project/digichem-core>`_.

@@ -1,0 +1,15 @@
+.. _gui_installation:
+
+Installing the GUI
+-------------------
+
+For general instructions on how to install the GUI, please refer to the :ref:`getting started guide <get_started_install>`.
+
+We provide specific installation instructions for some computational cluster providers. These guides will help you connect
+to your cluster using common configuration options. Please see the available guides below:
+
+.. toctree::
+   :maxdepth: 2
+   :includehidden:
+
+   clusters/index

@@ -1,3 +1,5 @@
+.. _get_started_install:
+
 Install the GUI
 ________________
 

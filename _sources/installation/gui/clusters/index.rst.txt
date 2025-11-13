@@ -1,0 +1,13 @@
+Clusters
+--------
+
+Please find cluster specific setup instructions below.
+
+.. note::
+    Would you like to have instructions for your cluster made available here? Please let us know `here <https://github.com/Digichem-Project/build-boy/issues>`_.
+
+.. toctree::
+   :maxdepth: 1
+   :includehidden:
+
+   compute_canada

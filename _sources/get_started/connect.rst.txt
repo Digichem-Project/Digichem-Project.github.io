@@ -1,3 +1,5 @@
+.. _get_started_connect:
+
 Connect to a server
 ___________________
 
@@ -113,6 +115,8 @@ just for the key file! Clearly Deep-thought is very paranoid about security:
 
 Once you've entered your login details, click **Next** once again, and Digichem will check your details.
 
+
+.. _get_started_license:
 
 License key
 -----------

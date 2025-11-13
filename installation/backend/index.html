@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Installation &#8212; Digichem 7.0.3 documentation</title>
+    <title>Installing the backend &#8212; Digichem 7.1.0 documentation</title>
   
   
   
@@ -40,7 +40,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/documentation_options.js?v=d81d3405"></script>
+    <script src="../../_static/documentation_options.js?v=9e30f436"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/design-tabs.js?v=f930bc37"></script>
@@ -49,10 +49,10 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Before you install" href="before.html" />
-    <link rel="prev" title="Installing the GUI" href="../gui.html" />
+    <link rel="prev" title="Compute Canada (DRAC)" href="../gui/clusters/compute_canada.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="7.0.3" />
+  <meta name="docsearch:version" content="7.1.0" />
   </head>
   
   
@@ -145,7 +145,7 @@
 
 <li class="nav-item current active">
   <a class="nav-link nav-internal" href="../index.html">
-    Advanced installation
+    Advanced installation instructions
   </a>
 </li>
 
@@ -269,7 +269,7 @@
 
 <li class="nav-item current active">
   <a class="nav-link nav-internal" href="../index.html">
-    Advanced installation
+    Advanced installation instructions
   </a>
 </li>
 
@@ -329,16 +329,20 @@
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../gui.html">Installing the GUI</a></li>
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Installation</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../gui/index.html">Installing the GUI</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../gui/clusters/index.html">Clusters</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../gui/clusters/compute_canada.html">Compute Canada (DRAC)</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Installing the backend</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="before.html">Before you install</a></li>
 <li class="toctree-l2"><a class="reference internal" href="requirements.html">Requirements and Supported Backends</a></li>
 <li class="toctree-l2"><a class="reference internal" href="download.html">Download</a></li>
 <li class="toctree-l2"><a class="reference internal" href="install.html">Install</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="../resources.html">Identifying server resources</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../multi_user.html">Multi-user installation</a></li>
 </ul>
 </div>
 </nav></div>
@@ -380,9 +384,9 @@
       </a>
     </li>
     
-    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Advanced installation</a></li>
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Advanced installation instructions</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Installation</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Installing the backend</span></li>
   </ul>
 </nav>
 </div>
@@ -399,9 +403,15 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="installation">
-<span id="full-installation"></span><h1>Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h1>
-<p>This section of the documentation covers how to install Digichem.</p>
+  <section id="installing-the-backend">
+<span id="backend-installation"></span><h1>Installing the backend<a class="headerlink" href="#installing-the-backend" title="Link to this heading">#</a></h1>
+<p>This section of the documentation covers how to install the Digichem backend.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The backend is normally installed automatically by the GUI. You do not need to follow these instructions if you have already followed
+the <a class="reference internal" href="../../get_started/install.html#get-started-install"><span class="std std-ref">getting started guide</span></a>.</p>
+<p>These instructions are intended only for advanced users and system administrators who are looking to install the Digichem backend manually.</p>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This installation only covers the main Digichem program. If you are looking to (also) install the open-source Digichem-core library, please see the separate documentation <a class="reference external" href="https://github.com/Digichem-Project/digichem-core">here</a>.</p>
@@ -460,12 +470,12 @@ If you would like to generate these types of images, you should make sure Visual
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../gui.html"
+       href="../gui/clusters/compute_canada.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Installing the GUI</p>
+        <p class="prev-next-title">Compute Canada (DRAC)</p>
       </div>
     </a>
     <a class="right-next"

@@ -1,13 +1,9 @@
-Advanced installation
----------------------
+Advanced installation instructions
+----------------------------------
 
 .. toctree::
    :maxdepth: 2
    :includehidden:
 
-   gui
+   gui/index
    backend/index
-   resources
-   multi_user
-
-
