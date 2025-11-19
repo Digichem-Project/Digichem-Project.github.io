@@ -1,0 +1,1557 @@
+
+Digichem
+--------
+
+
+vtest-tag
+________________________________
+
+
+v7.2.0
+________________________________
+
+
+New features
+============================
+
+- 2025-11-13: added better description for the auto_path option
+- 2025-11-13: added support for automatically determining the scratch location
+
+Documentation changes
+============================
+
+- 2025-11-19: another attempt to fix github worklow for docs
+- 2025-11-19: fixed workflow not fetching tags
+- 2025-11-19: auto changelog now starts at v6
+- 2025-11-19: auto changelog no longer cuts off beginning of non-semantic commits
+- 2025-11-19: added changelog to docs (auto generated)
+
+Miscellaneous
+============================
+
+- 2025-11-19: update last modified
+- 2025-11-18: update last modified
+- 2025-11-17: bumped to v7.2.0
+
+v7.1.0
+________________________________
+
+
+New features
+============================
+
+- 2025-11-13: added links dir to store spoofed progam installs
+- 2025-11-13: added initial support for non-standard Gaussian installs
+- 2025-11-10: added some initial groundwork for one-day supporting native mongita queries
+- 2025-11-10: database search commands now accept skip & limit keywords
+
+Documentation changes
+============================
+
+- 2025-11-13: added documentation for logging on to Compute Canada
+
+Testing updates
+============================
+
+- 2025-11-10: added test for database skipping and limiting
+
+Miscellaneous
+============================
+
+- 2025-11-13: update last modified
+- 2025-11-13: bumped version to 7.1.0
+
+v7.0.3
+________________________________
+
+
+Bugfixes
+============================
+
+- 2025-11-04: updated to 7.0.3 to fix botched build for 7.0.2
+
+Miscellaneous
+============================
+
+- 2025-11-04: update last modified
+- 2025-05-25: Bumped version to 6.8.1; first release of blender versions
+- 2025-05-25: bumped to 6.8.1-pre.3 for build testing
+- 2025-05-25: bumped to 6.8.0-pre.2 for build testing
+- 2025-05-25: bumped version to 6.8.1-pre.1 for updated build testing
+- 2025-05-21: prebuild 2 for upcoming blender versions
+- 2025-05-21: bumped version to 6.8.0-pre.1 to test new blender build system
+
+v7.0.2
+________________________________
+
+
+Bugfixes
+============================
+
+- 2025-10-31: fixed unnecessary error when changing settings and no server is available
+- 2025-10-30: fixed missing species-data file for PySCF Berny optimisations
+
+Miscellaneous
+============================
+
+- 2025-10-31: update last modified
+- 2025-10-30: bumped version to v7.0.2
+
+v7.0.1
+________________________________
+
+
+Bugfixes
+============================
+
+- 2025-10-01: fixed a problem validating licenses when no config directory exists
+
+Documentation changes
+============================
+
+- 2025-10-23: added pydata theme to workflow
+- 2025-10-23: initial documentation for managing downloads
+- 2025-10-08: added initial docs for viewing results
+- 2025-10-08: added tutorial for managing runnin calcs
+- 2025-10-08: added tutorial for submitting a calc in get started
+- 2025-10-07: started updating getting started guide
+- 2025-10-06: migrated docs to new layout
+
+Miscellaneous
+============================
+
+- 2025-10-23: update last modified
+- 2025-10-21: update last modified
+- 2025-10-21: bumped to v7.0.1
+- 2025-10-02: added cname back to docs workflow
+- 2025-10-02: removed conditional in docs workflow
+- 2025-10-02: update last modified
+- 2025-10-02: updates to doc workflow
+- 2025-10-01: update last modified
+
+v7.0.0
+________________________________
+
+
+New features
+============================
+
+- 2025-09-25: added ttl to machine files
+- 2025-09-24: the license set program now aquires a machine file immediately
+- 2025-09-24: added support for offline license files for clusters that don't have outgoing internet connections
+- 2025-09-23: added better error messages for when no license key is set
+- 2025-09-23: added license checking to main progam
+- 2025-09-23: added license set and license info commands
+- 2025-09-23: expanded license functionality to include seperate functions to validate and activate, functions now return useful data
+- 2025-09-23: added code to check license key
+- 2025-08-20: added better error reporting when fetching a job that does not exist
+- 2025-08-20: added support for preventing multithreading in newer starlette versions
+- 2025-08-14: server start command now retuns more information about installation and upgrade potential
+- 2025-08-14: added installation_dir() function to __init__
+- 2025-08-13: added force option to discover endpoints
+- 2025-08-11: added support for parsing binary and text molecule files
+- 2025-08-08: added support for setting config options
+- 2025-08-07: reimplemented auto server shutdown after a timeout
+- 2025-08-07: updated set_config() function to support server reloading and over improvements
+- 2025-08-06: added server --reload command
+- 2025-08-06: added a proper process manager for launching multiple server workers
+- 2025-08-06: added digichem.config.set_config() method for updating settings
+- 2025-08-04: added new endpoints for getting server settings
+- 2025-07-09: added end point to run separate discovery of queues and progs
+- 2025-07-09: added code to allow a running server process to interact with itself
+- 2025-07-08: enabled find in Discover by default
+- 2025-07-08: added support for running server setup from web server
+- 2025-06-26: removed http plain auth entirely
+- 2025-06-26: disabled plain http auth as unnecessary now client auth is active
+- 2025-06-26: server start now returns a fresh client cert at each invocation
+- 2025-06-26: added ability for server to issue temp client certs
+- 2025-06-26: added better messages when a downgrade is available
+- 2025-06-26: added support for both build and build-testing branches on buildboy
+- 2024-09-11: the program can now automatically check for new versions
+- 2024-09-11: the build target is now stored internally at build time
+- 2025-06-18: added dummy code for enabling client cert stuff
+- 2025-05-09: added support for jobId in calc results
+- 2025-05-09: added miniId index to job DB
+- 2025-05-09: jobs now use a fullsize uuid, but also support queries based on the first 8 chars (miniID)
+- 2025-05-05: switched to a different method of including spectroscopy results in database sync results without recomputing
+- 2025-05-05: database sync now includes spectroscopy results
+- 2025-05-02: result sets inserted into a DB now include spectroscopy results
+- 2025-04-30: added an --all switch to the result program
+- 2025-04-30: result filters now support an 'all' argument to pass to dump(); added get_default_filters() as a better version of default_filters()
+- 2025-04-29: added first version of post_properties() method
+- 2025-04-29: switched to new calculate() method instead of generate_for_dump()
+- 2025-04-01: the client can now specify a limit for DB sync
+- 2025-04-01: added 100 document limit to dbSync endpoint
+- 2025-03-24: added new parse/si endpoint to convert SI files
+- 2025-03-24: added ability to conver files to arb types
+- 2025-03-21: calc date is now set from the current datetime if it is not available (useful for ORCA)
+- 2025-03-07: added db indices for job DB
+- 2025-03-07: Added new metadata.insert_date property to better keep track of database syncing
+- 2025-03-06: database sync endpoint now uses proper mongita search indexes
+- 2025-03-06: result database records now have a date assigned even if missing one; extra records (HOMO/LUMO energies etc) are now inserted into the DB directly (for easier queries)
+- 2025-03-06: database_sync now returns more fields (HOMO/LUMO etc.)
+- 2025-03-03: database sync now streams results
+- 2025-03-03: added database sync end point
+- 2024-11-19: jobs now return their report paths directly
+- 2024-11-19: the stat endpoint now also returns the associated molecule and calculation folder names
+- 2024-11-13: added file download endpoints to server
+- 2024-11-08: added error handling for method end point
+- 2024-09-11: switched to safer lockf locks
+- 2024-09-09: decreased JobDB default size to 1000
+- 2024-09-09: added better logging when cleaning up an over-large JobDB
+- 2024-09-09: added code to switch to lockf (but not turned on yet)
+- 2024-08-27: job queue program now offers filters to only show certain jobs
+- 2024-08-19: added new method_class end point
+- 2024-08-16: improved error messages for hold/release
+- 2024-08-16: added release and hold commands
+- 2024-08-16: Added ability to delete jobs and/or update status in server
+- 2024-08-16: SLURM can now detect HELD jobs
+- 2024-08-16: added hold() and release() methods for jobs
+- 2024-08-15: changed format of directory and queue endpoints to lists not dicts
+- 2024-08-15: added new forget function to remove jobs from the DB without deleting files
+- 2024-08-15: added better job deletion logic that also removes directories
+- 2024-08-15: added new digichem metadata file to each calc dir to better identify them
+- 2024-08-14: added delete method to jobs
+- 2024-08-14: added job delete program to clear our the job database
+- 2024-07-24: removed server slow-downg
+- 2024-07-23: added artificial delay to stream for testing
+- 2024-07-23: experiment with streaming JSON responses
+- 2024-07-23: added SANs to server certs
+- 2024-07-23: added TLS support for web-server
+- 2024-07-23: the server will not automatically shutdown after a period of inactivity
+- 2024-07-09: get_method() endpoint now accepts a path-like query variable
+- 2024-07-09: the get_method() endpoint now returns indices
+- 2024-07-08: updates to library endpoint
+- 2024-07-08: updates to library endpoint
+- 2024-07-06: added top-level method fetch end-point
+- 2024-07-06: added option to skip NumForce grad check
+- 2024-07-06: added support for calculating excited state freqs with Turbomole
+- 2024-07-05: added initial endpoint for method library
+- 2024-07-04: added initial endpoint for submitting new calcs
+- 2024-07-04: added status property to submit Manager objects
+- 2024-07-04: switched to using element_dic instead of formula string
+- 2024-07-03: added support for retrieving a method from ID
+- 2024-07-03: reversed ordering of jobs table
+- 2024-07-02: added initial end-point for method parsing
+- 2024-07-02: split parse_method_from_file() into two functions (one taking data from memory)
+- 2024-05-28: Added new HELD status
+- 2024-05-18: split old status endpoint into directories and queues
+- 2024-05-18: changed performance settings for double-hybrid
+- 2024-05-18: Added wPBEPP86 to Orca auto
+
+Bugfixes
+============================
+
+- 2025-09-24: fixed returning slightly outdated meta info when just activating a license
+- 2025-09-23: fixed handling license time expiry
+- 2025-09-23: fixed crash when clicking on authorship info
+- 2025-09-22: fixed line encoding problem when parsing molecules with the server
+- 2025-08-26: fixed not wrapping temp dir in Path
+- 2025-08-26: fixed image program potentially overwriting old temp dirs
+- 2025-08-26: fixed pyscf not having date or jobID
+- 2025-08-20: added threading lock to job db to help avoid race condition corruption
+- 2025-08-19: fixed extra status information (path, distro etc) not being printed by digichem info
+- 2025-08-14: fixed uvicorn using spawn method which is incompatible with frozen distributions
+- 2025-08-14: implemented server startup timeouts to prevent hangs on error
+- 2025-08-13: fixed restarting the server for config changes
+- 2025-08-11: possible fix for data mangling in mol parsing
+- 2025-08-11: fixed server having to write molecules to a temp dir to parse them
+- 2025-08-11: fixed potentially closing all worker pipes
+- 2025-08-11: fixed crash on increasing number of server procs
+- 2025-08-11: fixed server dying when a worker closes
+- 2025-08-08: fixed not returning anything from settings endpoint
+- 2025-08-07: fixed overly verbose error in obtaining local destination data
+- 2025-08-06: moved signal overriding behavior to resume progam only
+- 2025-08-04: fixed not dumping all settings
+- 2025-08-04: removed erroneous async endpoints (was there a reason for this?)
+- 2025-07-29: fixed mongita errors in new installs
+- 2025-07-09: fixed called server.stop() in the background
+- 2025-07-09: fixed leftover debug code
+- 2025-07-09: fixed duplicate end-point names
+- 2025-07-09: fixed problems with trying to halt server
+- 2025-07-09: fixed server program trying to dump info on both sides of the fork
+- 2025-07-08: fixed catching wrong error in server stop code
+- 2025-07-08: same again, but better
+- 2025-07-08: fixed server crashing noisely when running server stop
+- 2025-07-08: fixed Discover.__init__ not accepting unspecified output
+- 2025-06-30: fixed passing wrong arguments to Pyscf parse
+- 2025-06-30: _fork_and_monitor() no longer uses an internal function (which cannot be picked easily)
+- 2025-06-30: set default multiprocessing spawn mode to fork
+- 2025-06-26: fixed CA not being marked as a CA
+- 2025-06-26: added missing hidden imports to build script
+- 2025-05-05: database sync no longer regenerates each result; spectroscopy is now correctly included
+- 2025-05-05: fixed spectroscopy results not being included in DB dump
+- 2025-05-05: updated server program to new parser structure
+- 2025-05-05: fixed new post_properties() function
+- 2025-05-02: fixed not passing options to Json_parser constructor
+- 2025-04-30: fixed calling calculate on nmr rather than the spectrum object
+- 2025-04-01: still fighting with mongita sort
+- 2025-04-01: fixed mongita sort nomenclature
+- 2025-03-24: fixed pydantic typing errors
+- 2025-03-24: fixed using async on non endpoint func in server app
+- 2025-03-21: fixed not using current date in individual programs where necessary
+- 2025-03-21: fixe get_method_part_generic() accidentally set a async
+- 2025-03-21: fixed using unsupported multithreading in server program
+- 2025-03-07: job inserts should also now use a naive datetime
+- 2025-03-07: wip fix with naive vs aware job datetimes
+- 2025-03-07: db sync will no longer choke on faulty records
+- 2025-03-06: fixed database endpoint returning lists
+- 2024-11-26: fixed missing typing import
+- 2024-11-26: and now fixed for Python < 3.10
+- 2024-11-26: fixed overly strict molecule type definition
+- 2024-11-26: fixed trying to print exception as warning in job delete code
+- 2024-11-21: replaced Path.is_relative_to() with custom implementation (not supported until 3.9)
+- 2024-11-19: added missing commit for job.dump()
+- 2024-11-19: fixed missing path attribute in job dump()
+- 2024-11-13: added missing content-type for download end-point
+- 2024-11-13: fixed incorrect locking open method for resume
+- 2024-11-13: fixed missing parsing of coords following dodgy rebase
+- 2024-11-05: fixed startup bugs in server program, greatly improved startup process
+- 2024-10-29: fixed bug in job database submit()
+- 2024-10-23: fixed merge problem after rebase in SLURM
+- 2024-10-23: fixed manager progam using both done and self.status (just status is fine)
+- 2024-09-09: increased default timeout for JobDB to 5 mins
+- 2024-08-22: fixed a bug with SLURM returning too many reasons
+- 2024-08-16: fixed incorect type comparisons for new job status
+- 2024-08-16: made file not found error more specific
+- 2024-08-16: fixed storing relative paths in job db
+- 2024-08-16: added better detection for HELD status
+- 2024-08-16: removed incorrectly assigned async defs
+- 2024-08-15: fixed typo in defining flags folder
+- 2024-08-14: fixed wrong comparison to enum
+- 2024-08-14: added delete progam to available job programs
+- 2024-07-23: fixed weird encoding errors with cert SANs
+- 2024-07-09: fixed endpoint name collision between method and library
+- 2024-07-09: fixed get_method endpoint
+- 2024-07-08: fixed missing index
+- 2024-07-08: added WIP fix for indexes sometimes being wrong
+- 2024-07-08: fixed using loader directly instead of loader path
+- 2024-07-08: moved method library end point logic to separate function to share between both endpoint types, fixed inconsistencies between them
+- 2024-07-06: fixed hidden -> show_hidden
+- 2024-07-06: fixed typo
+- 2024-07-06: fixed wrap_unsafe_module no supporting working_directory
+- 2024-07-06: fixed typo in turbomole
+- 2024-07-06: fixed numforce -ex option
+- 2024-07-06: Fixed library endpoint not accepting identifiers correctly
+- 2024-07-04: reduced daemon umask to 077
+- 2024-07-04: dir permissions on server run dir
+- 2024-07-04: fixed accidentally including file extension in mol name
+- 2024-07-04: Fixed not expanding server run path
+- 2024-07-04: fixed not creating server submit dir
+- 2024-07-04: fixed not yet supported formula
+- 2024-07-04: fixed using pydantic objects directly in submit endpoint
+- 2024-07-04: fixed using molecules as methods
+- 2024-07-04: fixed not parsing data from client when trying to submit
+- 2024-07-04: replaced list with correct List type
+- 2024-07-04: fixed parse/molecule end-point not returning formula or setting file name
+- 2024-07-04: fixed not triming dot from babel data type
+- 2024-07-04: parse/molecule no longer expects a dict
+- 2024-07-03: fixed accidentally using huge objects as keys in endpoint
+- 2024-07-03: fixed tring to json encode entire method objects instead of dumped version
+- 2024-07-03: fixed missing method_library param in server endpoint
+- 2024-07-03: wrong order of args in parse_method() func
+- 2024-07-01: job status also assuming a queue object is available
+- 2024-07-01: wrong type conversion for DB ID for arrays
+- 2024-07-01: Array destinations using wrong DB update func
+- 2024-07-01: Array destinations not working because missing args/kwargs in init
+- 2024-06-08: fixed install script not using v7 locations
+- 2024-05-23: Updates to ORCA memory allocation to try and address over assignment
+- 2024-10-23: re-added missing server files lost in rebase
+
+Testing updates
+============================
+
+- 2025-07-10: fixed using yaml.load instead of yaml.safe_load in tests
+- 2025-05-09: fixed test_insert_and_fetch trying to compare insert_date
+- 2025-05-02: added test for inserting spectroscopy result into the DB
+- 2025-04-30: added tests for the all option
+
+Miscellaneous
+============================
+
+- 2025-09-30: removed license date from freeze code
+- 2025-09-30: updated license terms to reflect new license keys
+- 2025-09-30: update last modified
+- 2025-09-30: first v7 release
+- 2025-09-25: bumped pre-release to 26
+- 2025-09-25: bumped pre-release to 25
+- 2025-09-23: added requests to depends
+- 2025-09-23: removed old 'license' code
+- 2025-09-22: bumped pre-release to 24
+- 2025-08-27: bumped to prerelease 23
+- 2025-08-27: updated license end date to 30-09-2025
+- 2025-08-26: bumped version to pre.22
+- 2025-08-20: set pre-release to 21
+- 2025-08-19: added more missing depends
+- 2025-08-19: added missing pyopenssl depends
+- 2025-08-19: removed some old imports
+- 2025-08-15: bumped pre-release to 15
+- 2025-08-07: cleaned up old code
+- 2025-08-05: removed unused job_database:id_length param
+- 2025-07-29: bumped to pre14
+- 2025-07-10: added semver to environment.yml
+- 2025-07-10: updated github tests to use v7.x of digichem-core
+- 2025-07-09: bumped version to 7.0.0-pre.12
+- 2025-07-09: automated tests are now also run against build branches
+- 2025-07-09: refactored server code into separate server class
+- 2025-06-30: bumped prerelease to 9
+- 2025-06-30: bumped pre-release to 8
+- 2025-06-30: bumped pre-release to 7
+- 2025-06-26: bumped pre-release to 6
+- 2025-06-26: removed double space
+- 2025-06-26: set version to 7.0.0-pre.5
+- 2025-06-26: automatic update checking is disabled by default for now
+- 2025-06-26: added minor comment in update.py
+- 2025-06-26: fixed indentation
+- 2024-09-11: added semver as dependency
+- 2025-02-25: Removed uuid from server run jobs
+- 2024-11-05: updated dependencies for server
+- 2024-09-09: bumped pre-release to 4
+- 2024-08-19: rearranged server imports
+- 2024-08-14: added future todo
+- 2024-07-08: added debugging code for library endpoint
+- 2024-07-03: Molecule parse endpoint can now guess file type based on file name
+- 2024-07-03: Added initial endpoint for loading molecules
+- 2024-07-01: bumped pre-release
+- 2024-05-18: renames /queue -> /jobs and /status -> /queues
+- 2024-05-16: Fixed trailing slash in queue endpoint
+- 2024-05-16: Removed path style variables from queue endpoint
+- 2024-05-06: Added todo:
+- 2024-04-22: Removed debugging pass statement
+- 2024-04-22: Used file space is now reported as part of server status info
+- 2024-04-22: Added run_dir config option for servers
+- 2024-04-22: Fixed incorrectly reusing pam auth object
+- 2024-04-18: Fixed missing return command in status_data
+- 2024-04-18: Fixed missing return command in status_data
+- 2024-04-18: Fixed missing comma in sinfo command
+- 2024-04-18: Fixed missing comma in sinfo command
+- 2024-04-18: Changed queue_id endpoint to job_id
+- 2024-04-18: Added timeline to job objects
+- 2024-04-18: Changed default for server queue endpoint from active to all
+- 2024-04-18: Added new status rest endpoint
+- 2024-04-18: Added new status rest endpoint
+- 2024-04-18: Added new get_sinfo() classmethod to SLURM for buffered access to sinfo
+- 2024-04-18: Added new get_sinfo() classmethod to SLURM for buffered access to sinfo
+- 2024-04-15: Added server endpoints for checking jobs
+- 2024-04-15: Added server endpoints for checking jobs
+- 2024-04-15: Minor updates to server program for digichem split
+- 2024-04-15: Fixed accidentally parsing newline from sbatch command
+- 2024-04-15: Fixed using wrong ID in SLURM squeue
+- 2024-04-15: Fixed not decoding output from squeue
+- 2024-04-15: Fixed wrong use of variable expansion in SLURM queue
+- 2024-04-15: Fixed incorrect reference to slurm_executable
+- 2024-04-15: Fixed not using tz aware datetime in SLURM
+- 2024-04-15: Added a validate_now option to method_from_dump()
+- 2024-04-15: Switched to faster formula_string in job queue program
+- 2024-04-15: Added support for unlimited job db size
+- 2024-04-15: Expanded help for db max_size
+- 2024-04-15: Added support for job database size limit
+- 2024-04-15: Performance Opt for parsing job records
+- 2024-04-11: Added job cancel command
+- 2024-04-11: Added cancel() method to local queue objects, and check for hostname
+- 2024-04-11: Minor refactor
+- 2024-04-11: Added a cancel() method to Jobs
+- 2024-04-11: Made queue_date a required arg for from_method()
+- 2024-04-11: Added smarter status detection for job records
+- 2024-04-11: Reduced verbosity on DB messages
+- 2024-04-11: Minor updates to job program
+- 2024-04-11: Added better support for monitoring job progress for SLURM and local methods
+- 2024-04-11: Updates to job program to better control printing of job queue
+- 2024-04-11: Added config options for id_length an max_size
+- 2024-04-10: Job records now use a mini UUID with configurable length
+- 2024-04-10: Database insert() functions can now pass kwargs
+- 2024-04-03: Added result ID to job program
+- 2024-04-03: safe_insert() now returns the ID of any inserted doc
+- 2024-04-03: The result ID is not inserted into the job DB
+- 2024-04-03: Added option to control whether a job is inserted into the DB
+- 2024-04-02: Added support for setting job status during calculation
+- 2024-04-02: Added support for setting job status during calculation
+- 2024-04-02: Fixed timezone issues in job records
+- 2024-04-01: Various fixes to job db mechansim
+- 2024-04-01: Fixed typos in setting job status
+- 2024-04-01: The job command now only returns the short status name
+- 2024-04-01: Fixed various problems with updating jobs based in ID
+- 2024-04-01: Added program.set_status() function
+- 2024-04-01: Job ID is now saved to each calculation object
+- 2024-04-01: Tweaks to job program
+- 2024-04-01: Fixed method_from_dump() not returning anything
+- 2024-04-01: Fixed dumping of input file in job db
+- 2024-04-01: Fixed molecule name being lost when inserted into job db
+- 2024-04-01: Fixed typo in Job.from_dump()
+- 2024-04-01: Changed 'id' to '_id' in Job constructor
+- 2024-03-29: Initial implementation of inserting job records with calc submission
+- 2024-03-29: Initial implementation of inserting job records with calc submission
+- 2024-03-27: WIP interface to squeue and friends
+- 2024-03-26: WIP job records
+- 2024-04-15: Added server endpoints for checking jobs
+- 2024-04-02: Added support for setting job status during calculation
+- 2024-03-26: WIP job records
+- 2024-03-21: Removed debug line
+- 2024-03-21: Added support for native mongo datetime
+- 2024-03-21: Fixed mongita not being able to create parents if its folder doesn't exist yet
+- 2024-03-21: Fixed inconsitent support for expand_path in databases
+- 2024-03-21: Added WIP job db submit
+- 2024-03-21: Fixed version not set to 7
+- 2024-03-21: Fixed version not set to 7
+- 2024-03-21: More WIP job db bits
+- 2024-03-19: WIP implementation of job DB
+- 2024-03-19: Move code for safe_insert() to relevant class
+- 2024-03-19: Added a default to the job DB
+- 2024-03-19: Reordered database to distinguish between result and job DBs
+- 2024-03-14: Added some help text to explain result and job DBs
+- 2024-03-14: Work on an initial spec for job DB records
+- 2024-03-14: Added some initial config files for working with job DBs
+
+v6.9.3
+________________________________
+
+
+Bugfixes
+============================
+
+- 2025-07-29: fixed mongita errors in new installs
+
+Miscellaneous
+============================
+
+- 2025-07-29: update last modified
+- 2025-07-29: bumped version to 6.9.3
+
+v6.9.2
+________________________________
+
+
+Bugfixes
+============================
+
+- 2025-07-10: fixed a typo in parsing CCSD(T) calcs with PySCF
+- 2025-07-10: fixed unnecessary warning messages in cubegen_parallel
+- 2025-07-10: greatly simplified fork_and_monitor() code so the main process runs the program, and the subprocess is used for monitoring. This also fixes a bug in PySCF resulting in deadlocks when running multiple calcs back-to-back
+
+Testing updates
+============================
+
+- 2025-07-10: expanded tests for PySCF
+- 2025-07-10: added opt tests for PySCF
+
+Miscellaneous
+============================
+
+- 2025-07-10: update last modified
+- 2025-07-10: updated github tests to use git version of cclib in both push and pull tests
+- 2025-07-10: bumped version to 6.9.2
+
+v6.9.1
+________________________________
+
+
+New features
+============================
+
+- 2025-07-08: if no hints are given to setup, various sensible defaults will be tried instead
+- 2025-07-08: added option to disable find searching as well as locate searching in Discover
+- 2025-07-01: added file locking to setup program
+- 2025-07-01: also migrated locate/plocate code to async
+- 2025-07-01: migrate discover code to asyncio
+- 2025-07-01: initial work to moving discover functionality into separate module
+
+Miscellaneous
+============================
+
+- 2025-07-08: bumped pre-release to 6.9.1
+- 2025-07-08: moved locate and find code to separate functions
+
+v6.9.0
+________________________________
+
+
+New features
+============================
+
+- 2025-06-26: scratch space usag is now activated by default
+- 2025-06-25: added support for custom Orca keywords
+- 2025-06-03: added ability to track scratch space file usage
+- 2025-04-22: added default configs for PySCF
+- 2025-04-22: reimplemented performance tracking for PySCF
+- 2025-04-22: added support for dispersion correction for PySCF
+- 2024-09-18: added support for 50-50 excited state calculations
+- 2024-09-18: added support for saving intermediate results of SCF steps
+- 2024-09-18: added better support for the two types of optimisers in PySCF
+- 2024-08-28: added support for alpha/beta orbital rendering with PySCF
+- 2024-08-28: added initial support for rendering PySCF images
+- 2024-08-28: added support for running excited state optimisations with PySCF
+- 2024-08-28: reduced table of singly excited configurations to only show significant contributions
+- 2024-08-28: added support for saving intermediate optimisation steps with PySCF
+- 2024-06-18: added initial checkfile saving for pyscf
+- 2024-06-17: cleaned-up error reporting for failed calcs
+- 2024-06-10: initial support for parsing results with pyscf
+- 2024-06-10: pyscf methods are now saved properly, initial support for emp disp
+- 2024-06-10: enabled post processing for pyscf
+- 2024-06-03: added support for excited state opts with pyscf
+- 2024-06-03: added gradient and solution options to pyscf calculation object
+- 2024-06-02: added support for calculating frequencies with pyscf
+- 2024-06-02: added support for calculating gradients with pyscf
+- 2024-06-02: added support for excited states with pySCF
+- 2024-06-02: added support for SCF solvents with PySCF
+- 2024-06-02: added new monitor function for forked calc engines
+- 2024-06-02: added initial support for pyscf
+
+Bugfixes
+============================
+
+- 2025-06-30: fixed wrong dependenceis
+- 2025-06-30: fixed missing pyscf libraries when freezing
+- 2025-06-30: added data collection for pyscf (and removed hidden import for numpy.ctypes which did nothing)
+- 2025-06-30: added numpy.ctypes as hidden import to build
+- 2025-04-22: added fix for crash when parsing PySCF grad calcs
+- 2024-09-18: fixed freq support
+- 2024-09-18: some minor fixes
+- 2024-09-11: fixed passing freq object as hessian method for pyscf
+- 2024-08-28: now it works
+- 2024-06-17: pyscf results not containing molecule name
+
+Testing updates
+============================
+
+- 2025-06-30: added initial tests for PySCF
+- 2025-06-30: removed old references to input files which are now included in the digichem-core repo
+- 2025-06-30: added check for correct digichem core version
+
+Miscellaneous
+============================
+
+- 2025-06-30: bumped version to 6.9.0
+- 2025-06-30: tried to make github install work
+- 2025-06-30: added github version of cclib to github dependencies
+- 2025-06-30: added missing pyscf depends for github tests
+- 2025-06-30: reduced demo license duration to 2 months
+- 2025-06-30: update last modified
+- 2025-06-30: added pyscf dependencies to freeze file
+- 2025-06-30: removed leftover print commands
+- 2025-06-30: updated dependencies to include pyscf
+- 2025-06-27: update last modified
+- 2025-06-26: update last modified
+- 2025-04-22: added pyscf and pyscf-dispersion to depends
+- 2024-06-18: wip: added image gen for pyscf
+- 2024-06-17: wip: reenabled reports for pyscf
+- 2024-06-10: wip: changes to fork_and_monitor to avoid trying to pickle large amounts of data
+- 2024-06-10: removed unused imports
+- 2024-06-10: bumped minor version
+- 2024-06-02: added better comments for pyscf code
+- 2024-06-02: fixed typo
+
+v6.8.3
+________________________________
+
+
+New features
+============================
+
+- 2025-06-06: increased default define timeout to 5 min for BIG molecules
+
+Bugfixes
+============================
+
+- 2025-06-09: missing symlinks for blender are now setup in install.sh
+- 2025-06-09: fixed trying to check cubes that aren't available
+- 2025-06-09: fixed distracting cleanup error when a report fails
+- 2025-06-09: fixed cubegen pool sometimes making the same file twice
+- 2025-06-06: fixed define timeout error log message being mangled
+
+Miscellaneous
+============================
+
+- 2025-06-09: update last modified
+- 2025-06-09: bumped to 6.8.3
+- 2025-06-03: update last modified
+- 2025-05-29: update last modified
+
+v6.8.2
+________________________________
+
+
+New features
+============================
+
+- 2025-05-28: switched report_output to True by default following from further testing
+- 2025-05-28: added a new scratch:report_output option to control writing the report to the scratch dir, and disabled by default (because performance gains were negligible?)
+- 2025-05-28: added support for writing reports to scratch dir
+- 2025-05-28: added image_hints argument to report objects to allow better prediction of which cubes to pre-generate
+- 2025-05-27: added support for VMD and Batoms multithreading
+- 2025-05-24: report objects now log how many CPUs they use to pre-generate cubes
+- 2025-05-24: added dont_clean option to report.write() to keep intermediate files for later
+- 2025-05-26: updated banner
+
+Bugfixes
+============================
+
+- 2025-05-28: added possible fix for some report .html files no-longer being deleted automatically
+- 2025-05-24: fixed report objects not inheriting num_cpu from calculations
+- 2025-05-24: added fix for trying to generate cube precursor files that might not exist
+- 2025-05-24: fixed using name rather than object in pre-generate
+- 2025-05-24: fixed cube-precursor files sometimes being written multiple times when cubegen_parallel: pool
+- 2025-04-30: fixed NMR spectra not being saved automatically at the end of each calculation
+
+Documentation changes
+============================
+
+- 2025-05-29: download link now automatically updates
+- 2025-05-29: updated copyright year to 2025
+- 2024-12-18: added initial photonic examples
+- 2024-12-13: swapped report multi examples
+- 2024-12-09: Increased download link version to 6.6.3 (need to atuomate this)
+
+Miscellaneous
+============================
+
+- 2025-05-29: debugging conda setup in workflow
+- 2025-05-29: debugging conda setup in workflow
+- 2025-05-29: added mako to build depends
+- 2025-05-29: adjusted upload location
+- 2025-05-29: trying different version
+- 2025-05-29: set sftp_only to true
+- 2025-05-29: added SFTP deploy to workflow
+- 2025-05-29: fixed typo
+- 2025-05-29: added sphinx-rtd-theme and sphinx_design to docs build depends
+- 2025-05-29: added sphinx-argparse to docs build depends
+- 2025-05-29: added sphinxcontrib-bibtex to depends for docs build
+- 2025-05-29: fixed not setting pythonpath correctly
+- 2025-05-29: added initial workflow to autobuild docs
+- 2025-05-28: update last modified
+- 2025-05-28: bumped version to 6.8.2
+- 2025-05-26: dev version is now 6.9.0-pre.1
+- 2025-05-26: version is now 6.8.1
+- 2025-05-26: update last modified
+- 2025-05-24: update last modified
+
+v6.8.1
+________________________________
+
+
+Miscellaneous
+============================
+
+- 2025-05-25: Bumped version to 6.8.1; first release of blender versions
+- 2025-05-25: bumped to 6.8.1-pre.3 for build testing
+- 2025-05-25: bumped to 6.8.0-pre.2 for build testing
+- 2025-05-25: bumped version to 6.8.1-pre.1 for updated build testing
+
+v6.8.0
+________________________________
+
+
+New features
+============================
+
+- 2025-05-23: added ability to generate cube files in parallel
+- 2025-05-23: updated freeze script to include batoms driver
+
+Bugfixes
+============================
+
+- 2025-04-30: fixed NMR spectra not being saved automatically at the end of each calculation
+
+Miscellaneous
+============================
+
+- 2025-05-23: bumped version to 6.8.0
+- 2025-05-23: bumped min digichem-core version to 6.10.0
+- 2025-05-23: update last modified
+- 2025-05-21: prebuild 2 for upcoming blender versions
+- 2025-05-21: bumped version to 6.8.0-pre.1 to test new blender build system
+
+v6.7.1
+________________________________
+
+
+New features
+============================
+
+- 2025-04-28: added support for Orca 6 changes in orca plot commands
+- 2025-04-28: added support for handling densitiesinfo info files when submitting
+- 2025-04-28: added support for Orca 6 orcaplot
+
+Bugfixes
+============================
+
+- 2025-04-29: fixed passing None density_info_file for Orca <= 5
+- 2025-04-28: possible fix for .density .densities weirdness
+- 2025-04-28: attempt to fix Orca's weird get_env() method
+- 2025-04-28: fixed passing wrong class types for orca cubes
+- 2025-04-28: added support for using the correct orca definition for generating cubes
+
+Miscellaneous
+============================
+
+- 2025-04-29: update last modified
+- 2025-04-29: bumped version to 6.7.1
+- 2025-04-29: increased min version of digichem-chore to 6.7.0
+
+v6.7.0
+________________________________
+
+
+New features
+============================
+
+- 2024-12-06: added full support for detecting Orca 6
+- 2024-12-06: added new trigger file for discovering orca 6
+
+Bugfixes
+============================
+
+- 2024-11-18: added better type detection for destination memory amounts
+
+Miscellaneous
+============================
+
+- 2025-04-18: bumped version to 6.7.0
+- 2025-04-01: update license copyright to 2025
+- 2025-04-18: update last modified
+
+v6.6.5
+________________________________
+
+
+Miscellaneous
+============================
+
+- 2025-03-25: update last modified
+- 2025-03-25: refresh license
+
+v6.6.4
+________________________________
+
+
+Miscellaneous
+============================
+
+- 2025-01-06: update last modified
+- 2025-01-06: refreshed license
+
+v6.6.3
+________________________________
+
+
+Bugfixes
+============================
+
+- 2024-10-31: added missing dispersion correction for Orca
+
+Miscellaneous
+============================
+
+- 2024-11-08: update last modified
+- 2024-10-31: bumped version to 6.6.3
+
+v6.6.2
+________________________________
+
+
+New features
+============================
+
+- 2024-10-25: added slightly better error reporting for Gaussian discover
+- 2024-10-25: moved main 'silico.yaml' file to 'digichem.yaml' for consistency (fixes #148)
+
+Bugfixes
+============================
+
+- 2024-10-29: fix for generating orbitals from archive turbomole calc dirs
+- 2024-10-25: fixed not supporting -o for setup program
+- 2024-10-25: fixed setup program using -o rather than -O for output option
+- 2024-10-25: fixed crash in Gaussian setup if missing minor version
+- 2024-10-25: fixed the urwid palette not being part of the main config
+
+Miscellaneous
+============================
+
+- 2024-10-29: update last modified
+- 2024-10-28: bumped version to 6.6.2
+
+v6.6.1
+________________________________
+
+
+New features
+============================
+
+- 2024-10-25: gaussian wrapper script now use shlex for quoting
+- 2024-10-25: any leftover program output is now printed even if the calculation succeeded
+- 2024-10-25: reduced length of post calculation folder names
+- 2024-06-17: added validation for excluding bse for Orca
+
+Bugfixes
+============================
+
+- 2024-10-25: added explicit .log suffix to output symlink to fix Gaussian
+- 2024-10-25: fixed gaussian crash with long folder names
+- 2024-10-23: fixed method library always reloading from file
+- 2024-07-23: changed silico -> digichem in help message
+- 2024-07-09: fixed typo in short_name option
+
+Documentation changes
+============================
+
+- 2024-10-10: adde better documentation for image program input/output files
+- 2024-10-10: added initial documentation for the image command
+- 2024-10-09: expanded documentation for report settings
+- 2024-10-09: expanded documentation for report density files
+- 2024-10-08: WIP report documentation
+- 2024-10-08: added extension to generate documentation from configurables (WIP)
+- 2024-10-08: updated banner with aligned icon
+- 2024-10-08: updated favicon with new docs icon
+- 2024-10-08: updated favicon with non wonky variety
+- 2024-10-07: added favicon
+- 2024-10-07: fixed minor typo
+- 2024-10-04: added initial documentation for report program
+- 2024-10-04: fixed some typos
+- 2024-10-03: split program documentation and command line references
+- 2024-08-27: updated some links to 6.1.2
+- 2024-08-07: updated link to latest download
+- 2024-08-01: added monitor section to the quick start guide
+- 2024-08-01: added fix for tables not supporting word-wrap
+- 2024-08-01: wip updates to monitor walkthrough
+- 2024-07-31: wip adding calc monitoring section to getting started
+- 2024-07-17: added link to quick setup
+- 2024-07-17: expanded documentation for setup process
+- 2024-07-16: added quick-start guide to cover first calculation submission
+- 2024-07-16: Added new quick-start documentation
+- 2024-07-16: added link for full installation instructions
+- 2024-07-16: fixed using wrong headers for program docs
+- 2024-07-09: added reference for program options
+- 2024-07-09: added links for Program setup and minor tweaks
+- 2024-07-09: added documentation for post-processing options
+- 2024-07-09: minor updates to calc method
+- 2024-07-08: Added documentation for the structure options
+- 2024-07-08: Added documentation for scratch options
+- 2024-07-08: added COSX documentation
+- 2024-07-08: minor tweaks to method docs
+- 2024-06-17: minor fixes
+- 2024-06-15: minor changes
+- 2024-06-15: added section on RI
+- 2024-06-15: ammended examples for electron occupations
+- 2024-06-15: added documentation for electron occupation
+- 2024-06-15: added documentation for solvents
+- 2024-06-15: increased depth of method spec TOC
+- 2024-06-15: added link to destination memory
+- 2024-06-15: expanded excited states properties and added performance doc
+- 2024-06-15: added section on opt + freq jobs
+- 2024-06-15: fixed short underline
+- 2024-06-14: expanded docs for turbomole excited states
+- 2024-06-13: expanded properties doc to include freq, nmr, and initial es
+- 2024-06-13: minor typo fixes and ammendments
+- 2024-06-13: increase max depth of nav bar
+- 2024-06-12: expanded documentation for basis sets and some initial properties
+- 2024-06-12: fixed various minor typos
+- 2024-06-11: expanded docs for SCF options
+- 2024-06-11: added doc for scf method
+- 2024-06-11: added sphinx_design as a dependency
+- 2024-06-11: wip updates to SCF options
+- 2024-06-07: expanded bibliography with emp dispersion and CC2 references
+- 2024-06-07: fixed typo
+- 2024-06-07: commented out unused section
+- 2024-06-07: minor tweak to destination methods
+- 2024-06-07: added initial documentation for calculation methods
+- 2024-06-07: updates to destination documentation
+- 2024-06-06: initial work on method spec
+- 2024-06-06: minor fixes for sphinx
+- 2024-06-06: added documentation for setting up external programs etc
+- 2024-06-06: wip adding external programs doc
+- 2024-06-06: moved setup out of installation
+- 2024-06-06: added substitution for major digichem version
+
+Miscellaneous
+============================
+
+- 2024-10-25: update last modified
+- 2024-10-25: bumped core min-version
+- 2024-10-23: bumped version
+- 2024-10-17: update last modified
+- 2024-10-17: docs: minor updates to programs
+- 2024-10-17: docs: updated download information
+- 2024-10-16: docs: added info for status command
+- 2024-10-16: docs: fixed missing whitespace in report doc
+- 2024-10-16: docs: moved warning re. advanced queries
+- 2024-10-16: docs: added initial documentation for 'complex' queries
+- 2024-10-16: docs: moved db format and queries to end
+- 2024-10-16: docs: added documentation for simple db queries
+- 2024-10-16: docs: added documentation for delete --search option
+- 2024-10-16: docs: added documentation for database search, count, and delete commands
+- 2024-10-16: docs: fixed minor typos in database documentation
+- 2024-10-16: docs: added initial documentation for database command and insert and slice sub-commands
+- 2024-10-16: docs: split long line
+- 2024-10-15: docs: added description of merged and multiple calcs for image command
+- 2024-10-15: docs: added description of working directory for image command
+- 2024-10-15: docs: added description of image --list command
+- 2024-10-15: docs: expanded report program docs for output options
+- 2024-10-15: docs: fixed short titles
+- 2024-10-15: docs: expanded documentation for report program to include multiple reports
+- 2024-10-08: moved configurables extension to Configurables package
+- 2024-07-16: removed old introduction section ready for replacement
+- 2024-06-17: minor typo fixes and todos
+
+v6.6.0
+________________________________
+
+
+New features
+============================
+
+- 2024-10-16: added --structure search query for DBs
+- 2024-10-15: image progam will now use a temp working dir if non is available
+- 2024-10-15: increased mim digichem-core version to 6.1.0
+- 2024-10-15: image program now reports rendering errors
+- 2024-10-15: image program will no longer overwrite files it just wrote
+- 2024-10-10: image program now correctly writes one image when writing to a specific location
+- 2024-10-10: image command can now write image files outside of the report directory
+- 2024-10-08: updated logos to non-wonky varients
+
+Bugfixes
+============================
+
+- 2024-10-16: fixed database slice program not starting up
+- 2024-10-16: image program can now write cube files to specific location
+- 2024-10-14: added fix for method files not loading properly
+- 2024-10-10: fixed some behaviour of the image command; images/cubes are now overwritten by default; the cleanup behaviour is now much improved
+
+Testing updates
+============================
+
+- 2024-10-16: added skips for image program test
+- 2024-10-16: added PATH to git auto tests
+- 2024-10-16: fixed calling wrong program
+- 2024-10-10: added tests for image program
+- 2024-10-10: fixed report tests using local test data for some reason
+
+Miscellaneous
+============================
+
+- 2024-10-16: update last modified
+- 2024-10-16: added bin directory
+- 2024-10-16: removed old code in db search command
+- 2024-10-14: removed unused test data dir
+- 2024-10-10: bumped version to 6.6.0
+
+v6.5.1
+________________________________
+
+
+Bugfixes
+============================
+
+- 2024-10-13: re-build for CentOS Stream 8 to fix cclib; chore: bump to 6.5.1
+- 2024-10-13: fixed broken error message when submitting from a method file
+
+Miscellaneous
+============================
+
+- 2024-10-13: update last modified
+- 2024-10-10: removed old explicit build target check with general check
+- 2024-10-10: added Rocky-Linux-9 as build target
+
+v6.5.0
+________________________________
+
+
+New features
+============================
+
+- 2024-10-07: added support for cleanup_time in SLURM
+
+Miscellaneous
+============================
+
+- 2024-10-07: update last modified
+- 2024-10-07: bumped version to 6.5.0
+
+v6.4.0
+________________________________
+
+
+New features
+============================
+
+- 2024-10-03: The mail: events option now uses none_to_default
+- 2024-10-02: increased number of log file lines to 100
+- 2024-10-01: calculation manager objects now return a list of submitted calcs (rather than just the count)
+- 2024-10-01: increased the number of lines from the log file included in error messages (addresses #131)
+- 2024-09-30: fixed a few minor errors in program help string
+- 2024-09-30: swapped versioning system to hatchling compatible
+- 2024-09-27: scratch cleanup can now remove files as well as folders
+- 2024-09-27: changed default scratch dir to /tmp
+- 2024-09-27: added new loading bar to setup program
+- 2024-09-27: added a new scratch: expiry calc option to clean up old files
+- 2024-09-26: added a progress indicator to the setup program
+- 2024-09-26: improved logging fo setup command
+- 2024-09-26: Gaussian discover() now uses minor version is available in logging
+- 2024-09-26: setup program now has better version detection and avoids duplicate definitions
+
+Bugfixes
+============================
+
+- 2024-10-02: fixed series calcs referring to old defs
+- 2024-10-01: fixed not resolving methods in library test
+- 2024-10-01: fixed not expanding coord list in submit tests
+- 2024-09-27: fixed bug in checking scratch expiry
+- 2024-09-27: fixed setup program accidentally using only Turbomole calc definitions
+- 2024-09-26: fixed setup program favouring old versions over recent ones
+- 2024-09-26: fixed trying to reference non-existent setups
+- 2024-09-26: fixed logging calls
+- 2024-09-26: fixed not saving in done
+- 2024-09-26: fixed another bug in setup
+- 2024-09-26: fixed not using list over generator
+- 2024-09-26: fixed not updating setup program to new return values of discover()
+
+Testing updates
+============================
+
+- 2024-10-02: fixed broken test for NMR images
+- 2024-10-02: fixed library test not referencing new unrestricted calcs
+- 2024-10-01: updated test_library to support now method manager
+
+Miscellaneous
+============================
+
+- 2024-10-03: update last modified
+- 2024-10-03: mim version of digichem-core is now 6.0.3
+- 2024-10-03: bumped v to 6.4.0
+- 2024-10-03: increased min version of configurables to 1.2.0
+- 2024-10-01: update last modified
+- 2024-09-30: fixed ordering of Usage and Documentation in README
+- 2024-09-30: minor updates to README
+- 2024-09-30: updated README
+- 2024-09-30: removed old pack_current script
+- 2024-09-30: updated changelog (although this might not be staying around for long
+- 2024-09-30: added project file
+- 2024-09-30: removed server files which aren't needed until v7
+- 2024-09-30: added LICENSE file (currently proprietary
+- 2024-09-27: removed old files
+- 2024-09-27: removed old logo folder
+- 2024-09-26: added future todo
+
+v6.3.0
+________________________________
+
+
+New features
+============================
+
+- 2024-09-23: added initial support for Orca frozen core
+- 2024-09-23: added support for FC, Full and Window frozen core keywords in Gussian
+- 2024-09-20: added initial support for frozen core for all calc programs
+
+Bugfixes
+============================
+
+- 2024-09-24: fixed not understanding how FrozenCore -n works
+- 2024-09-23: fixed using wrong FC keywords
+- 2024-09-23: fixed orca specific freeze options located in the wrong place
+- 2024-09-23: fixed not stringifying new Gaussian keywords
+- 2024-09-23: fixed using number_virtual not virtual_number
+- 2024-09-20: fixed a typo specifying freeze:threshold was in eV rather than H
+
+Miscellaneous
+============================
+
+- 2024-09-25: update last modified
+- 2024-09-25: bumped version to 6.3.0.
+
+v6.2.0
+________________________________
+
+
+New features
+============================
+
+- 2024-09-19: added support for Turbomole's frozen core approximation
+
+Bugfixes
+============================
+
+- 2024-09-19: fixed using sub-options as attributed not keys
+
+Miscellaneous
+============================
+
+- 2024-09-19: update last modified
+- 2024-09-19: bumped version to 6.2.0
+- 2024-09-09: update last modified
+
+v6.1.3
+________________________________
+
+
+Miscellaneous
+============================
+
+- 2024-09-09: fixed bundled pysoc not supporting rwfdump
+
+v6.1.2
+________________________________
+
+
+New features
+============================
+
+- 2024-08-21: Gaussian programs will now try and correctly specify the relevant rwfdump path
+
+Bugfixes
+============================
+
+- 2024-08-21: fixed another confusing messge if a program stops almost immediately
+- 2024-08-21: fixed a confusing error message if a program stops immediately
+
+Miscellaneous
+============================
+
+- 2024-08-21: update last modified
+- 2024-08-21: bumped version to 6.1.2
+
+v6.1.1
+________________________________
+
+
+Miscellaneous
+============================
+
+- 2024-08-01: update last modified
+- 2024-08-01: update to new Digichem-core version 6.0.1
+
+v6.1.0
+________________________________
+
+
+New features
+============================
+
+- 2024-07-15: setup program now sticks to supplied hints even when using 'locate'
+- 2024-07-15: setup program can now find VMD installations at setup appropriately
+- 2024-07-15: changed default scratch path to /tmp/$USER
+- 2024-07-11: better naming for default server queues
+- 2024-07-11: added better file sorting for setup program
+- 2024-07-11: added sorting to discovered program names
+- 2024-07-11: tweaked orca discover() logging
+- 2024-07-11: improved version detection for Orca
+- 2024-07-11: added alias for programs
+- 2024-07-11: discovered queues now have capitalised names
+- 2024-07-11: added support for both 'locate' and 'plocate'
+- 2024-07-11: added support for using 'find' as a backup for 'locate' if the latter is unavailable
+- 2024-07-11: tweaks to logging level of discover methods()
+- 2024-07-10: improved logging of setup program
+- 2024-07-10: setup program can now setup computational engines
+- 2024-07-10: added discover() methods for Gaussian, Orca, and Turbomole
+- 2024-07-10: setup script can now write configs for SLURM and PBS
+- 2024-07-10: added discover() functions for both SLURM and PBS
+- 2024-05-28: setup program will safely move old configs before overwriting
+- 2024-05-17: install script now sets up skeleto dir
+- 2024-05-17: Added example configs for programs and destinations in skeleton dir
+- 2024-05-17: Added skeleton digichem.yaml file
+
+Bugfixes
+============================
+
+- 2024-07-15: fixed resolving symlinks in setup
+- 2024-07-15: fixed setup program not always using absolute paths
+- 2024-07-11: fixed assigning wrong calc class to programs
+- 2024-07-11: type conversion nonsense
+- 2024-07-11: fixed name collisions in destinations
+- 2024-07-11: fixed sort
+- 2024-07-11: more of the same
+- 2024-07-11: fixes to orca discover
+- 2024-07-11: stopped overwriting nested MPI
+- 2024-07-11: fixed broken log call
+- 2024-07-11: fixed typo
+- 2024-07-11: fixed not looking for symlinks (even tho mpirun is normally a symlink
+- 2024-07-11: don't take parent twice
+- 2024-07-11: tweaks to orca version detection code
+- 2024-07-11: fixed typo
+- 2024-07-11: fixed not casting to str
+- 2024-07-11: fixed program definitions possible having overlapping names
+- 2024-07-11: fixed path -> str conversion
+- 2024-07-11: fixed order of path operations
+- 2024-07-11: fixed gaussian discover
+- 2024-07-11: removed left-over unknown mpi version
+- 2024-07-11: fixed mangled log line
+- 2024-07-11: added missing capture groups
+- 2024-07-11: fixed wrong order in list comprehension
+- 2024-07-11: fixed using wrong indices
+- 2024-07-11: fixed taking too many parents for Orca discover
+- 2024-07-11: fixed mixing up orca and MPI paths
+- 2024-07-11: fixed not taking path parent in Orca discover
+- 2024-07-11: removed multiple -types to find which are not supported on older versions
+- 2024-07-11: no longer check return value of 'plocate' or 'locate'
+- 2024-07-11: fixed bug in switching from plocate to locate
+- 2024-07-11: fixed using wrong separator in SLURM discover
+- 2024-05-28: Removed unused server program
+- 2024-06-06: fixed config show command after change to library location
+- 2024-06-02: fixe resumable submission not able to find digichem executable
+- 2024-05-31: prevented openbabel imports in submodules
+- 2024-05-28: old setup files are moved out of active dir
+- 2024-05-28: Removed unused server program
+- 2024-05-17: Changed SLURM max-nodes default to 1
+
+Documentation changes
+============================
+
+- 2024-06-06: tweaked setup instructions for Orca
+- 2024-06-06: added some additional comments re. installation folder structure
+- 2024-06-06: removed WIP sections from doc index
+- 2024-05-17: completed setup documentation
+- 2024-05-17: started adding setup documentation
+- 2024-05-17: Added main install documentation
+- 2024-05-17: minor updates to main install doc
+- 2024-05-17: minor updates to dependencies
+- 2024-05-17: Updated version info for supported builds
+- 2024-05-17: minor updates to install doc
+- 2024-05-13: initial documentation for installation instructions etc
+- 2024-05-13: Added version info to documentation
+- 2024-05-13: changed theme to read-the-docs
+- 2024-05-13: finished doc of result --auto
+- 2024-05-12: updated dependencies
+
+Testing updates
+============================
+
+- 2024-06-06: fixed missing destination definition
+- 2024-06-06: prepared for new submission tests
+
+Miscellaneous
+============================
+
+- 2024-07-16: update last modified
+- 2024-07-16: removed pre-release
+- 2024-07-15: updated version to 6.1.0
+- 2024-07-15: update last modified
+- 2024-07-15: minor tweaks to setup program
+- 2024-06-11: update last modified
+- 2024-06-11: fixed adding wrong dir in workflow
+- 2024-06-11: update push workflwo
+- 2024-06-11: added digichem test data
+- 2024-06-11: added obabel workaround for workflow
+- 2024-06-11: relaxed obabel version requirements
+- 2024-06-11: updated depends for workflow tests
+- 2024-06-11: added workflows for testing and last modified string
+- 2024-06-07: bump pre
+- 2024-06-07: bumped pre-release
+- 2024-06-03: bumped pre-release
+- 2024-06-02: bumped pre-release
+- 2024-05-31: bumped version
+- 2024-05-31: bumped version, update depends
+- 2024-05-31: bumped version number; new cclib hotfix
+- 2024-05-28: wip: added barebones discover_partitions function
+- 2024-05-28: wip: added barebones setup program
+- 2024-05-18: Added chain of spheres for wPBEPP86
+- 2024-05-17: minor updates to skeleton directory
+- 2024-05-17: Moved skeleton folder into data
+- 2024-05-17: bumped pre-release
+- 2024-05-17: Removed old and unused freeze dirs
+- 2024-05-17: Removed some lingering configs in preparation for new skeleton dir
+- 2024-05-17: Changed the location of some server locations
+- 2024-05-17: updated freeze script to not include version numbers in unpacked digichem dir
+- 2024-05-14: Bumped pre-release
+- 2024-05-13: Updated install script to match new build style
+- 2024-05-12: Another version bump for build test
+- 2024-05-12: bumped version for build-test
+- 2024-05-12: Updated pre-release
+- 2024-05-10: Build test
+- 2024-05-10: Added CentOS Stream 8
+- 2024-05-09: Removed license warnings
+- 2024-05-09: Bumped pre-release
+- 2024-05-09: Openprattle is now bundled into its own folder
+- 2024-05-09: Fixed looking for wrong spec file
+- 2024-05-09: Moved general build files
+- 2024-05-09: Added missing spec file
+- 2024-05-09: Added general build script
+- 2024-05-09: Fixes to build scripts
+- 2024-05-09: Replaced tabs with whitespace
+- 2024-05-09: Updates to 7.9 build script
+- 2024-05-09: Updated to install script
+- 2024-05-09: Minor fixes to CentOS8.5 script
+- 2024-05-09: Fixed accidentally removing libinchi
+- 2024-05-09: Removed obabel code
+- 2024-05-09: Moved collect licenses
+- 2024-05-09: Moved license code to own module
+- 2024-05-09: Added pyphen to source modules
+- 2024-05-09: Fixed old references to LICENSE.md
+- 2024-05-09: Added chardet to src modules
+- 2024-05-09: Added support for adding license for non-compiled python libs
+- 2024-05-09: Changed LICENSE.md to LICENSE
+- 2024-05-09: Copy main license into dist
+- 2024-05-09: Added better placement of licenses for digichem and silico
+- 2024-05-09: Fixed accidentally deleting license template
+- 2024-05-09: Reduced with of license template to 80 chars
+- 2024-05-08: Fixed not finding licenses for binaries
+- 2024-05-08: Fixed adding empty license
+- 2024-05-08: Fixed typo
+- 2024-05-08: Removed inefficient double loop
+- 2024-05-08: Added detection of share/licenses
+- 2024-05-08: Also look for binary licenses
+- 2024-05-08: Fixed 'extensions' over 'suffixes'
+- 2024-05-08: Added all .so to conda licenses
+- 2024-05-08: Added warning for missing binary licenses
+- 2024-05-08: Also look for binary files in conda metadata
+- 2024-05-08: Fixed crash
+- 2024-05-08: Fixed CONDA_ENV not CONDA_PREFIX
+- 2024-05-08: More conda special boy code
+- 2024-05-08: Fix
+- 2024-05-08: Fixe thinking this was JS
+- 2024-05-08: WIP adding smarter conda license searching
+- 2024-05-08: Added fix for some conda licenses being nested
+- 2024-05-08: Fixed not opening json file before parsing
+- 2024-05-08: Fixed bug in new conda license finder
+- 2024-05-08: Added detection of conda licenses
+- 2024-05-08: Source code licenses are now only found for top-level modules
+- 2024-05-08: Added more license detection logic for local source code
+- 2024-05-08: Fixed trying to add licenses folder as data object
+- 2024-05-08: Added detection of 'licenses' folders
+- 2024-05-08: Fixed issuing license warning for non-top level modules
+- 2024-05-08: Fixed some bugs
+- 2024-05-08: Fixed missing Path()
+- 2024-05-08: Fixed continue instead of return
+- 2024-05-08: Added code to actually collect licenses
+- 2024-05-08: Added detection of COPYING files in addition to LICENSE
+- 2024-05-08: Slowly massaging license code to something worthwhile
+- 2024-05-08: Troubleshooting for license finder
+- 2024-05-08: More license experiments
+- 2024-05-08: Added better license detection
+- 2024-05-08: Expanded license find test
+- 2024-05-08: Added test for detecting licenses
+- 2024-05-08: Added explicit non-package modules
+- 2024-05-08: Removed weird ls import
+- 2024-05-08: Added test for collection mode
+- 2024-05-08: Removed test data from build
+- 2024-05-08: Added WIP script to collect licenses during build
+- 2024-05-08: Added excludes for tkinter and qt5
+- 2024-05-08: Exluded PyQt
+- 2024-05-08: More experiments with excludes
+- 2024-05-08: Set matplotlib backend to Agg
+- 2024-05-08: Added PYTHONOPTIMISE to CentOS7.9 too
+- 2024-05-08: Moved PYTHONOPTIMISE code out of spec file (because python has already started; it is too late here
+- 2024-05-08: Experimenting with excludes
+- 2024-05-07: Updated hidden imports for CentOS7.9
+- 2024-05-07: Added PYTHONOPTIMIZE to build script
+- 2024-05-07: Removed inspect from hidden imports (it's not hidden
+- 2024-05-07: Added missing hidden import 'inspect'
+- 2024-05-07: Fixed missing comma in hiden imports
+- 2024-05-07: Updated some more outdated hidden imports
+- 2024-05-07: Fixed some old hidden imports not updated to digichem
+- 2024-05-07: Changed digichem data collection
+- 2024-05-07: Added missing digichem data files
+- 2024-05-07: Added missing spec for 8.5
+- 2024-05-07: Removed .spec from gitignore
+- 2024-05-07: Added build scripts for 8.5
+- 2024-05-07: Fixed using old silico.version
+- 2024-05-07: Added license template
+- 2024-05-07: Added license checker code
+- 2024-05-07: Testing build server
+- 2024-05-07: Set pre-release flag
+- 2024-05-07: Added ability to specify oprattle location when freezing
+- 2024-05-07: WIP updates to result --auto
+- 2024-05-07: Added code to freeze script to insert license stuff
+- 2024-05-07: Removed old demo license code
+- 2024-05-07: Testing build server
+- 2024-05-07: Set pre-release flag
+- 2024-05-07: Added ability to specify oprattle location when freezing
+- 2024-04-30: Added workaround for missing whitespace in page counter
+- 2024-04-15: Fixed weird whitespace in method library loader
+- 2024-04-11: A computational engine's child processes are now correctly murdered
+- 2024-04-03: Fixed saving config options to the wrong location
+- 2024-04-02: Fixed silico using weird config locations
+- 2024-04-01: Moved functions in program.base to match their order of execution
+- 2024-03-21: Fixed default option for gen3D all over the place
+- 2024-03-14: Fixed a long-standing bug with SLURM submission not using the SLURM_ID for scratch dirs #92
+- 2024-03-13: Removed debug line
+- 2024-05-06: Updates to documentation
+- 2024-04-26: Updated old 'silico' branding to 'digichem' in calc report
+- 2024-04-01: Fixed resume program not using file locking correctly
+- 2024-03-21: Fixed wrong import of Gaussian_input_parser
+- 2024-03-21: Fixed using wrong config location for master library files
+- 2024-03-20: Fixed float -> int conversion bug
+- 2024-03-20: Fixed a string conversion error in Orca
+- 2024-03-20: Added support for setting maxdim and scspar in orca calcs
+- 2024-03-17: Bumped version
+- 2024-03-17: Added support for PBS job arrays
+- 2024-03-15: Fixed slurm arrays not submitting when not packed
+- 2024-03-15: Removed extra directory in slurm array output paths
+- 2024-03-15: Fixed symlinks for SLURM arrays being immediately deleted
+- 2024-03-15: Fixed a bug setting stdout location when submitting a job array of size 1
+- 2024-03-15: Fixed bug in slurm array
+- 2024-03-15: The symdir is now shared between all packed methods
+- 2024-03-15: Added support for array log files in slurm templates
+- 2024-03-15: Added comment
+- 2024-03-15: SLURM arrays now setup symlinks for log files
+- 2024-03-15: Added cleanup function for SLURM array
+- 2024-03-14: Added cleanup() function for destinations
+- 2024-03-14: Added initial support for SLURM job arrays
+- 2024-03-14: Added new submission tests
+- 2024-03-14: Parallel local destination objects now store the popen object
+- 2024-03-14: Added new Manager class for running calculations
+- 2024-03-14: Added default destination and program configs
+- 2024-03-14: Fixed accidentally overwriting global environmental variables in blender render
+- 2024-03-13: Added setters for location attributes of Gaussian, Orca and Turbomole
+- 2024-03-13: Orca and Turbomole now support expand_path()
+- 2024-03-13: Updated location of expand_path()
+- 2024-03-11: Fixed typo
+- 2024-03-11: Fixed wrong imports in result program
+- 2024-03-11: Fixed wrong import in convert program
+- 2024-03-11: Added some missing imports to silico.log
+- 2024-03-11: Configurables with 'path' as their type now use a better setedit class
+- 2024-03-11: Fixed default of lock_file option not being a path
+- 2024-03-08: Added missing digichem_options fixture
+- 2024-03-08: Updated old references to silico.result
+- 2024-03-08: Replaced tabs with whitespace
+- 2024-03-08: Added get_config() function to silico.config
+- 2024-03-08: Updated incorrect references to either digichem or silico
+- 2024-03-08: Removed tests that have moved to digichem; updated necessary imports to digichem
+- 2024-03-07: Upated NTO and cube to reference digichem
+- 2024-03-07: Removed image makers, file makers, and other code that has been migrated to digichem. Other migration updates
+- 2024-03-05: Migrated config/ to config.py
+- 2024-03-02: Moved file.gaussian module to digichem
+- 2024-03-02: Moved exceptions package to digichem-core
+- 2024-03-02: Moved misc package to digichem-core
+- 2024-03-02: Fixed weird import
+- 2024-03-01: Removed Dynamic_parent, defres and other misc code which no belongs in the configurables library
+- 2024-03-01: Errors raised during config reading are now shown with full stack trace
+- 2024-02-28: Updated imports to new configurables library
+- 2024-02-28: Moved configurables to own library
+
+v6.0.0
+________________________________
+
+
+Miscellaneous
+============================
+
+- 2024-02-27: Bumped to v6
+- 2024-02-13: Fixed title underline too short
+- 2024-02-12: Updates to doc
+- 2024-02-11: Updates to result program documentation
+- 2024-02-11: Remove some unused obabel formats
+- 2024-02-10: Added --writable --readable and --json options to convert program
+- 2024-02-09: Tweaked reference to obabel in report
+- 2024-02-09: Updated to API documentation
+- 2024-02-09: Removed GPL pybel and openbabel library calls
+- 2024-02-08: Updates to submit program help
+- 2024-02-06: Updated to digichem submit command
+- 2024-02-06: Fixed missing formatting on errors and warnings in interactive interface
+- 2024-02-05: Updated to doc
+- 2024-02-05: Updated dependencies
+- 2024-02-05: Added option to include message time in logged messages
+- 2024-02-05: Silico resume now uses file locking
+- 2024-02-02: Fixed typo in server response
+- 2024-02-02: Server now saves its silico version to port file
+- 2024-02-02: Remove whitespace
+- 2024-02-02: Fixed server start command not actually dumping JSON
+- 2024-02-01: Fixed server startup problems
+- 2024-02-01: Adde better error handling for early server crashes
+- 2024-02-01: Added restart option to server start
+- 2024-02-01: Added PAM auth to server
+- 2024-02-01: Added server info program
+- 2024-02-01: Moved some imports, explained how the sever lock files work
+- 2024-02-01: Added functional -p option to server start to control port
+- 2024-02-01: Refactored server code, fixed a minor race condition in server startup, added server stop command
+- 2024-01-31: Split server program into subprograms, fixed race condition in server startup code
+- 2024-01-31: Added intial code for server
+- 2024-01-31: Added option to write silico logs to log file
+- 2024-01-31: Added log and lock file locations to server config

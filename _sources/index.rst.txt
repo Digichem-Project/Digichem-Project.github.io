@@ -72,6 +72,18 @@ These guides are broken down by interface type.
    guides/index
 
 
+Changelog
+---------
+
+View the update history of the program.
+
+.. toctree::
+   :maxdepth: 2
+   :includehidden:
+
+   changelog/index
+
+
 Bibliography
 ------------
 
