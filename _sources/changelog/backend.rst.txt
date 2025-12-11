@@ -7,6 +7,29 @@ vtest-tag
 ________________________________
 
 
+v7.2.2
+________________________________
+
+
+New features
+============================
+
+- 2025-12-05: switched from old utcnow() to now(datetime.timezone.utc)
+
+Bugfixes
+============================
+
+- 2025-12-11: added fix for machines that have slightly slow clocks
+- 2025-12-05: fixed passing wrong keyword arg to parse_calculation
+
+Miscellaneous
+============================
+
+- 2025-12-11: update last modified
+- 2025-12-10: update last modified
+- 2025-12-10: bumped to 7.2.2
+- 2025-12-05: expanded depends
+
 v7.2.1
 ________________________________
 
