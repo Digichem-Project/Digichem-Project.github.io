@@ -3,9 +3,49 @@ Digichem
 --------
 
 
-vtest-tag
+v7.3.0
 ________________________________
 
+
+New features
+============================
+
+- 2025-12-18: NMR table is now sorted by groups
+- 2025-12-12: added number of atoms to NMR coupling table
+- 2025-12-12: added distance threshold for NMR coupling (Orca and PySCF only)
+- 2025-12-11: added NMR bond distance to NMR table
+- 2025-11-28: added NMR table to report
+- 2025-11-21: added Turbomole NMR configs
+- 2025-11-21: added NMR validation function to check that atoms have been selected
+- 2025-11-21: added support for Turbomole NMR
+- 2025-11-21: added support for Gaussian NMR
+- 2025-11-21: added NMR support for PySCF
+
+Bugfixes
+============================
+
+- 2025-12-10: fixed formatting issues in NMR table
+- 2025-12-09: fixed NMR table overflowing sometimes
+- 2025-12-09: fixed crash when generating PySCF reports from saved results
+- 2025-12-04: fixed always adding coupling with PySCF NMR
+- 2025-11-21: fixed not strignying
+- 2025-11-21: fixed active_nmr_indices returning nothing
+- 2025-11-21: changed q for white space in nmr.mako to possibly solve missing ncoup section
+- 2025-11-21: fixed typo in nmr.mako
+- 2025-11-21: fixed active_nmr_indices referring to calculation
+
+Testing updates
+============================
+
+- 2025-12-08: added NMR test for PySCF
+
+Miscellaneous
+============================
+
+- 2025-12-18: update last modified
+- 2025-12-10: fixed typo
+- 2025-11-28: cleaned up debugging code
+- 2025-12-03: bumped to 7.3.0
 
 v7.2.2
 ________________________________
@@ -120,12 +160,6 @@ Miscellaneous
 ============================
 
 - 2025-11-04: update last modified
-- 2025-05-25: Bumped version to 6.8.1; first release of blender versions
-- 2025-05-25: bumped to 6.8.1-pre.3 for build testing
-- 2025-05-25: bumped to 6.8.0-pre.2 for build testing
-- 2025-05-25: bumped version to 6.8.1-pre.1 for updated build testing
-- 2025-05-21: prebuild 2 for upcoming blender versions
-- 2025-05-21: bumped version to 6.8.0-pre.1 to test new blender build system
 
 v7.0.2
 ________________________________
@@ -567,25 +601,318 @@ v6.9.2
 ________________________________
 
 
+New features
+============================
+
+- 2025-07-09: added end point to run separate discovery of queues and progs
+- 2025-07-09: added code to allow a running server process to interact with itself
+- 2025-07-08: enabled find in Discover by default
+- 2025-07-08: added support for running server setup from web server
+- 2025-06-26: removed http plain auth entirely
+- 2025-06-26: disabled plain http auth as unnecessary now client auth is active
+- 2025-06-26: server start now returns a fresh client cert at each invocation
+- 2025-06-26: added ability for server to issue temp client certs
+- 2025-06-26: added better messages when a downgrade is available
+- 2025-06-26: added support for both build and build-testing branches on buildboy
+- 2024-09-11: the program can now automatically check for new versions
+- 2024-09-11: the build target is now stored internally at build time
+- 2025-06-18: added dummy code for enabling client cert stuff
+- 2025-05-09: added support for jobId in calc results
+- 2025-05-09: added miniId index to job DB
+- 2025-05-09: jobs now use a fullsize uuid, but also support queries based on the first 8 chars (miniID)
+- 2025-05-05: switched to a different method of including spectroscopy results in database sync results without recomputing
+- 2025-05-05: database sync now includes spectroscopy results
+- 2025-05-02: result sets inserted into a DB now include spectroscopy results
+- 2025-04-30: added an --all switch to the result program
+- 2025-04-30: result filters now support an 'all' argument to pass to dump(); added get_default_filters() as a better version of default_filters()
+- 2025-04-29: added first version of post_properties() method
+- 2025-04-29: switched to new calculate() method instead of generate_for_dump()
+- 2025-04-01: the client can now specify a limit for DB sync
+- 2025-04-01: added 100 document limit to dbSync endpoint
+- 2025-03-24: added new parse/si endpoint to convert SI files
+- 2025-03-24: added ability to conver files to arb types
+- 2025-03-21: calc date is now set from the current datetime if it is not available (useful for ORCA)
+- 2025-03-07: added db indices for job DB
+- 2025-03-07: Added new metadata.insert_date property to better keep track of database syncing
+- 2025-03-06: database sync endpoint now uses proper mongita search indexes
+- 2025-03-06: result database records now have a date assigned even if missing one; extra records (HOMO/LUMO energies etc) are now inserted into the DB directly (for easier queries)
+- 2025-03-06: database_sync now returns more fields (HOMO/LUMO etc.)
+- 2025-03-03: database sync now streams results
+- 2025-03-03: added database sync end point
+- 2024-11-19: jobs now return their report paths directly
+- 2024-11-19: the stat endpoint now also returns the associated molecule and calculation folder names
+- 2024-11-13: added file download endpoints to server
+- 2024-11-08: added error handling for method end point
+- 2024-09-11: switched to safer lockf locks
+- 2024-09-09: decreased JobDB default size to 1000
+- 2024-09-09: added better logging when cleaning up an over-large JobDB
+- 2024-09-09: added code to switch to lockf (but not turned on yet)
+- 2024-08-27: job queue program now offers filters to only show certain jobs
+- 2024-08-19: added new method_class end point
+- 2024-08-16: improved error messages for hold/release
+- 2024-08-16: added release and hold commands
+- 2024-08-16: Added ability to delete jobs and/or update status in server
+- 2024-08-16: SLURM can now detect HELD jobs
+- 2024-08-16: added hold() and release() methods for jobs
+- 2024-08-15: changed format of directory and queue endpoints to lists not dicts
+- 2024-08-15: added new forget function to remove jobs from the DB without deleting files
+- 2024-08-15: added better job deletion logic that also removes directories
+- 2024-08-15: added new digichem metadata file to each calc dir to better identify them
+- 2024-08-14: added delete method to jobs
+- 2024-08-14: added job delete program to clear our the job database
+- 2024-07-24: removed server slow-downg
+- 2024-07-23: added artificial delay to stream for testing
+- 2024-07-23: experiment with streaming JSON responses
+- 2024-07-23: added SANs to server certs
+- 2024-07-23: added TLS support for web-server
+- 2024-07-23: the server will not automatically shutdown after a period of inactivity
+- 2024-07-09: get_method() endpoint now accepts a path-like query variable
+- 2024-07-09: the get_method() endpoint now returns indices
+- 2024-07-08: updates to library endpoint
+- 2024-07-08: updates to library endpoint
+- 2024-07-06: added top-level method fetch end-point
+- 2024-07-06: added option to skip NumForce grad check
+- 2024-07-06: added support for calculating excited state freqs with Turbomole
+- 2024-07-05: added initial endpoint for method library
+- 2024-07-04: added initial endpoint for submitting new calcs
+- 2024-07-04: added status property to submit Manager objects
+- 2024-07-04: switched to using element_dic instead of formula string
+- 2024-07-03: added support for retrieving a method from ID
+- 2024-07-03: reversed ordering of jobs table
+- 2024-07-02: added initial end-point for method parsing
+- 2024-07-02: split parse_method_from_file() into two functions (one taking data from memory)
+- 2024-05-28: Added new HELD status
+- 2024-05-18: split old status endpoint into directories and queues
+- 2024-05-18: changed performance settings for double-hybrid
+- 2024-05-18: Added wPBEPP86 to Orca auto
+
 Bugfixes
 ============================
 
 - 2025-07-10: fixed a typo in parsing CCSD(T) calcs with PySCF
 - 2025-07-10: fixed unnecessary warning messages in cubegen_parallel
 - 2025-07-10: greatly simplified fork_and_monitor() code so the main process runs the program, and the subprocess is used for monitoring. This also fixes a bug in PySCF resulting in deadlocks when running multiple calcs back-to-back
+- 2025-07-09: fixed called server.stop() in the background
+- 2025-07-09: fixed leftover debug code
+- 2025-07-09: fixed duplicate end-point names
+- 2025-07-09: fixed problems with trying to halt server
+- 2025-07-09: fixed server program trying to dump info on both sides of the fork
+- 2025-07-08: fixed catching wrong error in server stop code
+- 2025-07-08: same again, but better
+- 2025-07-08: fixed server crashing noisely when running server stop
+- 2025-07-08: fixed Discover.__init__ not accepting unspecified output
+- 2025-06-30: fixed passing wrong arguments to Pyscf parse
+- 2025-06-30: _fork_and_monitor() no longer uses an internal function (which cannot be picked easily)
+- 2025-06-30: set default multiprocessing spawn mode to fork
+- 2025-06-26: fixed CA not being marked as a CA
+- 2025-06-26: added missing hidden imports to build script
+- 2025-05-05: database sync no longer regenerates each result; spectroscopy is now correctly included
+- 2025-05-05: fixed spectroscopy results not being included in DB dump
+- 2025-05-05: updated server program to new parser structure
+- 2025-05-05: fixed new post_properties() function
+- 2025-05-02: fixed not passing options to Json_parser constructor
+- 2025-04-30: fixed calling calculate on nmr rather than the spectrum object
+- 2025-04-01: still fighting with mongita sort
+- 2025-04-01: fixed mongita sort nomenclature
+- 2025-03-24: fixed pydantic typing errors
+- 2025-03-24: fixed using async on non endpoint func in server app
+- 2025-03-21: fixed not using current date in individual programs where necessary
+- 2025-03-21: fixe get_method_part_generic() accidentally set a async
+- 2025-03-21: fixed using unsupported multithreading in server program
+- 2025-03-07: job inserts should also now use a naive datetime
+- 2025-03-07: wip fix with naive vs aware job datetimes
+- 2025-03-07: db sync will no longer choke on faulty records
+- 2025-03-06: fixed database endpoint returning lists
+- 2024-11-26: fixed missing typing import
+- 2024-11-26: and now fixed for Python < 3.10
+- 2024-11-26: fixed overly strict molecule type definition
+- 2024-11-26: fixed trying to print exception as warning in job delete code
+- 2024-11-21: replaced Path.is_relative_to() with custom implementation (not supported until 3.9)
+- 2024-11-19: added missing commit for job.dump()
+- 2024-11-19: fixed missing path attribute in job dump()
+- 2024-11-13: added missing content-type for download end-point
+- 2024-11-13: fixed incorrect locking open method for resume
+- 2024-11-13: fixed missing parsing of coords following dodgy rebase
+- 2024-11-05: fixed startup bugs in server program, greatly improved startup process
+- 2024-10-29: fixed bug in job database submit()
+- 2024-10-23: fixed merge problem after rebase in SLURM
+- 2024-10-23: fixed manager progam using both done and self.status (just status is fine)
+- 2024-09-09: increased default timeout for JobDB to 5 mins
+- 2024-08-22: fixed a bug with SLURM returning too many reasons
+- 2024-08-16: fixed incorect type comparisons for new job status
+- 2024-08-16: made file not found error more specific
+- 2024-08-16: fixed storing relative paths in job db
+- 2024-08-16: added better detection for HELD status
+- 2024-08-16: removed incorrectly assigned async defs
+- 2024-08-15: fixed typo in defining flags folder
+- 2024-08-14: fixed wrong comparison to enum
+- 2024-08-14: added delete progam to available job programs
+- 2024-07-23: fixed weird encoding errors with cert SANs
+- 2024-07-09: fixed endpoint name collision between method and library
+- 2024-07-09: fixed get_method endpoint
+- 2024-07-08: fixed missing index
+- 2024-07-08: added WIP fix for indexes sometimes being wrong
+- 2024-07-08: fixed using loader directly instead of loader path
+- 2024-07-08: moved method library end point logic to separate function to share between both endpoint types, fixed inconsistencies between them
+- 2024-07-06: fixed hidden -> show_hidden
+- 2024-07-06: fixed typo
+- 2024-07-06: fixed wrap_unsafe_module no supporting working_directory
+- 2024-07-06: fixed typo in turbomole
+- 2024-07-06: fixed numforce -ex option
+- 2024-07-06: Fixed library endpoint not accepting identifiers correctly
+- 2024-07-04: reduced daemon umask to 077
+- 2024-07-04: dir permissions on server run dir
+- 2024-07-04: fixed accidentally including file extension in mol name
+- 2024-07-04: Fixed not expanding server run path
+- 2024-07-04: fixed not creating server submit dir
+- 2024-07-04: fixed not yet supported formula
+- 2024-07-04: fixed using pydantic objects directly in submit endpoint
+- 2024-07-04: fixed using molecules as methods
+- 2024-07-04: fixed not parsing data from client when trying to submit
+- 2024-07-04: replaced list with correct List type
+- 2024-07-04: fixed parse/molecule end-point not returning formula or setting file name
+- 2024-07-04: fixed not triming dot from babel data type
+- 2024-07-04: parse/molecule no longer expects a dict
+- 2024-07-03: fixed accidentally using huge objects as keys in endpoint
+- 2024-07-03: fixed tring to json encode entire method objects instead of dumped version
+- 2024-07-03: fixed missing method_library param in server endpoint
+- 2024-07-03: wrong order of args in parse_method() func
+- 2024-07-01: job status also assuming a queue object is available
+- 2024-07-01: wrong type conversion for DB ID for arrays
+- 2024-07-01: Array destinations using wrong DB update func
+- 2024-07-01: Array destinations not working because missing args/kwargs in init
+- 2024-06-08: fixed install script not using v7 locations
+- 2024-05-23: Updates to ORCA memory allocation to try and address over assignment
+- 2024-10-23: re-added missing server files lost in rebase
 
 Testing updates
 ============================
 
+- 2025-07-10: fixed using yaml.load instead of yaml.safe_load in tests
 - 2025-07-10: expanded tests for PySCF
 - 2025-07-10: added opt tests for PySCF
+- 2025-05-09: fixed test_insert_and_fetch trying to compare insert_date
+- 2025-05-02: added test for inserting spectroscopy result into the DB
+- 2025-04-30: added tests for the all option
 
 Miscellaneous
 ============================
 
+- 2025-07-10: added semver to environment.yml
+- 2025-07-10: updated github tests to use v7.x of digichem-core
 - 2025-07-10: update last modified
 - 2025-07-10: updated github tests to use git version of cclib in both push and pull tests
 - 2025-07-10: bumped version to 6.9.2
+- 2025-07-09: bumped version to 7.0.0-pre.12
+- 2025-07-09: automated tests are now also run against build branches
+- 2025-07-09: refactored server code into separate server class
+- 2025-06-30: bumped prerelease to 9
+- 2025-06-30: bumped pre-release to 8
+- 2025-06-30: bumped pre-release to 7
+- 2025-06-26: bumped pre-release to 6
+- 2025-06-26: removed double space
+- 2025-06-26: set version to 7.0.0-pre.5
+- 2025-06-26: automatic update checking is disabled by default for now
+- 2025-06-26: added minor comment in update.py
+- 2025-06-26: fixed indentation
+- 2024-09-11: added semver as dependency
+- 2025-02-25: Removed uuid from server run jobs
+- 2024-11-05: updated dependencies for server
+- 2024-09-09: bumped pre-release to 4
+- 2024-08-19: rearranged server imports
+- 2024-08-14: added future todo
+- 2024-07-08: added debugging code for library endpoint
+- 2024-07-03: Molecule parse endpoint can now guess file type based on file name
+- 2024-07-03: Added initial endpoint for loading molecules
+- 2024-07-01: bumped pre-release
+- 2024-05-18: renames /queue -> /jobs and /status -> /queues
+- 2024-05-16: Fixed trailing slash in queue endpoint
+- 2024-05-16: Removed path style variables from queue endpoint
+- 2024-05-06: Added todo:
+- 2024-04-22: Removed debugging pass statement
+- 2024-04-22: Used file space is now reported as part of server status info
+- 2024-04-22: Added run_dir config option for servers
+- 2024-04-22: Fixed incorrectly reusing pam auth object
+- 2024-04-18: Fixed missing return command in status_data
+- 2024-04-18: Fixed missing return command in status_data
+- 2024-04-18: Fixed missing comma in sinfo command
+- 2024-04-18: Fixed missing comma in sinfo command
+- 2024-04-18: Changed queue_id endpoint to job_id
+- 2024-04-18: Added timeline to job objects
+- 2024-04-18: Changed default for server queue endpoint from active to all
+- 2024-04-18: Added new status rest endpoint
+- 2024-04-18: Added new status rest endpoint
+- 2024-04-18: Added new get_sinfo() classmethod to SLURM for buffered access to sinfo
+- 2024-04-18: Added new get_sinfo() classmethod to SLURM for buffered access to sinfo
+- 2024-04-15: Added server endpoints for checking jobs
+- 2024-04-15: Added server endpoints for checking jobs
+- 2024-04-15: Minor updates to server program for digichem split
+- 2024-04-15: Fixed accidentally parsing newline from sbatch command
+- 2024-04-15: Fixed using wrong ID in SLURM squeue
+- 2024-04-15: Fixed not decoding output from squeue
+- 2024-04-15: Fixed wrong use of variable expansion in SLURM queue
+- 2024-04-15: Fixed incorrect reference to slurm_executable
+- 2024-04-15: Fixed not using tz aware datetime in SLURM
+- 2024-04-15: Added a validate_now option to method_from_dump()
+- 2024-04-15: Switched to faster formula_string in job queue program
+- 2024-04-15: Added support for unlimited job db size
+- 2024-04-15: Expanded help for db max_size
+- 2024-04-15: Added support for job database size limit
+- 2024-04-15: Performance Opt for parsing job records
+- 2024-04-11: Added job cancel command
+- 2024-04-11: Added cancel() method to local queue objects, and check for hostname
+- 2024-04-11: Minor refactor
+- 2024-04-11: Added a cancel() method to Jobs
+- 2024-04-11: Made queue_date a required arg for from_method()
+- 2024-04-11: Added smarter status detection for job records
+- 2024-04-11: Reduced verbosity on DB messages
+- 2024-04-11: Minor updates to job program
+- 2024-04-11: Added better support for monitoring job progress for SLURM and local methods
+- 2024-04-11: Updates to job program to better control printing of job queue
+- 2024-04-11: Added config options for id_length an max_size
+- 2024-04-10: Job records now use a mini UUID with configurable length
+- 2024-04-10: Database insert() functions can now pass kwargs
+- 2024-04-03: Added result ID to job program
+- 2024-04-03: safe_insert() now returns the ID of any inserted doc
+- 2024-04-03: The result ID is not inserted into the job DB
+- 2024-04-03: Added option to control whether a job is inserted into the DB
+- 2024-04-02: Added support for setting job status during calculation
+- 2024-04-02: Added support for setting job status during calculation
+- 2024-04-02: Fixed timezone issues in job records
+- 2024-04-01: Various fixes to job db mechansim
+- 2024-04-01: Fixed typos in setting job status
+- 2024-04-01: The job command now only returns the short status name
+- 2024-04-01: Fixed various problems with updating jobs based in ID
+- 2024-04-01: Added program.set_status() function
+- 2024-04-01: Job ID is now saved to each calculation object
+- 2024-04-01: Tweaks to job program
+- 2024-04-01: Fixed method_from_dump() not returning anything
+- 2024-04-01: Fixed dumping of input file in job db
+- 2024-04-01: Fixed molecule name being lost when inserted into job db
+- 2024-04-01: Fixed typo in Job.from_dump()
+- 2024-04-01: Changed 'id' to '_id' in Job constructor
+- 2024-03-29: Initial implementation of inserting job records with calc submission
+- 2024-03-29: Initial implementation of inserting job records with calc submission
+- 2024-03-27: WIP interface to squeue and friends
+- 2024-03-26: WIP job records
+- 2024-04-15: Added server endpoints for checking jobs
+- 2024-04-02: Added support for setting job status during calculation
+- 2024-03-26: WIP job records
+- 2024-03-21: Removed debug line
+- 2024-03-21: Added support for native mongo datetime
+- 2024-03-21: Fixed mongita not being able to create parents if its folder doesn't exist yet
+- 2024-03-21: Fixed inconsitent support for expand_path in databases
+- 2024-03-21: Added WIP job db submit
+- 2024-03-21: Fixed version not set to 7
+- 2024-03-21: Fixed version not set to 7
+- 2024-03-21: More WIP job db bits
+- 2024-03-19: WIP implementation of job DB
+- 2024-03-19: Move code for safe_insert() to relevant class
+- 2024-03-19: Added a default to the job DB
+- 2024-03-19: Reordered database to distinguish between result and job DBs
+- 2024-03-14: Added some help text to explain result and job DBs
+- 2024-03-14: Work on an initial spec for job DB records
+- 2024-03-14: Added some initial config files for working with job DBs
 
 v6.9.1
 ________________________________
@@ -606,6 +933,12 @@ Miscellaneous
 
 - 2025-07-08: bumped pre-release to 6.9.1
 - 2025-07-08: moved locate and find code to separate functions
+- 2025-05-25: Bumped version to 6.8.1; first release of blender versions
+- 2025-05-25: bumped to 6.8.1-pre.3 for build testing
+- 2025-05-25: bumped to 6.8.0-pre.2 for build testing
+- 2025-05-25: bumped version to 6.8.1-pre.1 for updated build testing
+- 2025-05-21: prebuild 2 for upcoming blender versions
+- 2025-05-21: bumped version to 6.8.0-pre.1 to test new blender build system
 
 v6.9.0
 ________________________________
@@ -781,6 +1114,8 @@ Miscellaneous
 - 2025-05-25: bumped to 6.8.1-pre.3 for build testing
 - 2025-05-25: bumped to 6.8.0-pre.2 for build testing
 - 2025-05-25: bumped version to 6.8.1-pre.1 for updated build testing
+- 2025-05-21: prebuild 2 for upcoming blender versions
+- 2025-05-21: bumped version to 6.8.0-pre.1 to test new blender build system
 
 v6.8.0
 ________________________________
@@ -803,8 +1138,6 @@ Miscellaneous
 - 2025-05-23: bumped version to 6.8.0
 - 2025-05-23: bumped min digichem-core version to 6.10.0
 - 2025-05-23: update last modified
-- 2025-05-21: prebuild 2 for upcoming blender versions
-- 2025-05-21: bumped version to 6.8.0-pre.1 to test new blender build system
 
 v6.7.1
 ________________________________
@@ -1078,6 +1411,8 @@ Miscellaneous
 - 2024-10-16: removed old code in db search command
 - 2024-10-14: removed unused test data dir
 - 2024-10-10: bumped version to 6.6.0
+- 2024-10-10: removed old explicit build target check with general check
+- 2024-10-10: added Rocky-Linux-9 as build target
 
 v6.5.1
 ________________________________
@@ -1093,8 +1428,6 @@ Miscellaneous
 ============================
 
 - 2024-10-13: update last modified
-- 2024-10-10: removed old explicit build target check with general check
-- 2024-10-10: added Rocky-Linux-9 as build target
 
 v6.5.0
 ________________________________
