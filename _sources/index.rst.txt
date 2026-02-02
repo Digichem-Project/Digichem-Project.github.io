@@ -34,29 +34,29 @@ For more complex installation types, and for troubleshooting installation proble
    installation/index
 
 
-Core concepts
--------------
+..   Core concepts
+   -------------
 
-Explanations and guides to core concepts, both within the Digichem framework and more generally in relation to quantum chemistry.
+   Explanations and guides to core concepts, both within the Digichem framework and more generally in relation to quantum chemistry.
 
-.. toctree::
-   :maxdepth: 2
-   :includehidden:
+   .. toctree::
+      :maxdepth: 2
+      :includehidden:
 
-   core_concepts/digichem/index
-   core_concepts/chemistry/index
+      core_concepts/digichem/index
+      core_concepts/chemistry/index
 
 
-How to interact with the program
---------------------------------
+   How to interact with the program
+   --------------------------------
 
-An overview of the different interfaces that Digichem supports.
+   An overview of the different interfaces that Digichem supports.
 
-.. toctree::
-   :maxdepth: 2
-   :includehidden:
+   .. toctree::
+      :maxdepth: 2
+      :includehidden:
 
-   interface/index
+      interface/index
 
 
 User guides

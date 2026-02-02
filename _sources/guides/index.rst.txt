@@ -5,6 +5,7 @@ User guides
    :maxdepth: 2
    :includehidden:
 
-   gui/index
-   terminal/index
    cli/index
+
+..   gui/index
+   terminal/index
