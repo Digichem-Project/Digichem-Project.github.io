@@ -25,6 +25,8 @@ Documentation changes
 Miscellaneous
 ============================
 
+- 2026-02-11: added missing apt-get update
+- 2026-02-11: updated lingering copyright references to 2025
 - 2026-02-11: added missing apt-get update from workflows
 - 2026-02-03: bumped version to 7.4.3
 - 2026-02-03: bumped to 7.4.2
