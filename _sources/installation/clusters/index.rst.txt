@@ -1,15 +1,17 @@
-.. _gui_installation:
-
-Installing the GUI
--------------------
+Clusters
+--------
 
 For general instructions on how to install the GUI, please refer to the :ref:`getting started guide <get_started_install>`.
 
 We provide specific installation instructions for some computational cluster providers. These guides will help you connect
 to your cluster using common configuration options. Please see the available guides below:
 
+.. note::
+    Would you like to have instructions for your cluster made available here? Please let us know `here <https://github.com/Digichem-Project/build-boy/issues>`_.
+
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :includehidden:
 
-   clusters/index
+   compute_canada
+   justus_2

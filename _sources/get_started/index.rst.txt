@@ -12,6 +12,10 @@ recommend for new users.
 The guides have been designed with the intention that you progress through them in order, but of course feel free to refer back to a particular section 
 for future reference if you need.
 
+
+Installing
+==========
+
 .. toctree::
    :maxdepth: 2
    :includehidden:
@@ -19,16 +23,26 @@ for future reference if you need.
    download
    install
    connect
+
+
+Your first calculation
+======================
+
+.. toctree::
+   :maxdepth: 2
+   :includehidden:
+
    submit
    manage
    view
    data
 
 
+Installing for specific clusters
+----------------------------------
 
+.. toctree::
+   :maxdepth: 2
+   :includehidden:
 
-
-
-
-
-
+   /installation/clusters/index

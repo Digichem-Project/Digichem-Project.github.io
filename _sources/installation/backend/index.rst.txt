@@ -1,6 +1,6 @@
 .. _backend_installation:
 
-Installing the backend
+Installing the backend separately
 ==================================
 
 This section of the documentation covers how to install the Digichem backend.

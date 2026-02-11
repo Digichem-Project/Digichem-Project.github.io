@@ -1,9 +1,0 @@
-Advanced installation instructions
-----------------------------------
-
-.. toctree::
-   :maxdepth: 2
-   :includehidden:
-
-   gui/index
-   backend/index

@@ -7,5 +7,12 @@ User guides
 
    cli/index
 
-..   gui/index
-   terminal/index
+Advanced installation instructions
+----------------------------------
+
+.. toctree::
+   :maxdepth: 2
+   :includehidden:
+
+   /installation/backend/index
+

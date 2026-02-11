@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Installing the backend &#8212; Digichem 7.4.3 documentation</title>
+    <title>Installing the backend separately &#8212; Digichem 7.4.3 documentation</title>
   
   
   
@@ -49,7 +49,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Before you install" href="before.html" />
-    <link rel="prev" title="Compute Canada (DRAC)" href="../gui/clusters/compute_canada.html" />
+    <link rel="prev" title="Digichem Submit" href="../../guides/cli/submit.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="7.4.3" />
@@ -144,13 +144,6 @@
 
 
 <li class="nav-item current active">
-  <a class="nav-link nav-internal" href="../index.html">
-    Advanced installation instructions
-  </a>
-</li>
-
-
-<li class="nav-item ">
   <a class="nav-link nav-internal" href="../../guides/index.html">
     User guides
   </a>
@@ -244,13 +237,6 @@
 
 
 <li class="nav-item current active">
-  <a class="nav-link nav-internal" href="../index.html">
-    Advanced installation instructions
-  </a>
-</li>
-
-
-<li class="nav-item ">
   <a class="nav-link nav-internal" href="../../guides/index.html">
     User guides
   </a>
@@ -290,15 +276,20 @@
 <nav class="bd-docs-nav bd-links"
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
-  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../gui/index.html">Installing the GUI</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../gui/clusters/index.html">Clusters</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="../gui/clusters/compute_canada.html">Compute Canada (DRAC)</a></li>
+  <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../guides/cli/index.html">The command-line interface</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/cli/convert.html">Digichem Convert</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/cli/database.html">Digichem Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/cli/image.html">Digichem Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/cli/report.html">Digichem Report</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/cli/result.html">Digichem Result</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/cli/status.html">Digichem Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/cli/submit.html">Digichem Submit</a></li>
 </ul>
 </details></li>
 </ul>
-</details></li>
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Installing the backend</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Installing the backend separately</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="before.html">Before you install</a></li>
 <li class="toctree-l2"><a class="reference internal" href="requirements.html">Requirements and Supported Backends</a></li>
 <li class="toctree-l2"><a class="reference internal" href="download.html">Download</a></li>
@@ -346,9 +337,9 @@
       </a>
     </li>
     
-    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Advanced installation instructions</a></li>
+    <li class="breadcrumb-item"><a href="../../guides/index.html" class="nav-link">User guides</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Installing the backend</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Installing the backend separately</span></li>
   </ul>
 </nav>
 </div>
@@ -365,8 +356,8 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="installing-the-backend">
-<span id="backend-installation"></span><h1>Installing the backend<a class="headerlink" href="#installing-the-backend" title="Link to this heading">#</a></h1>
+  <section id="installing-the-backend-separately">
+<span id="backend-installation"></span><h1>Installing the backend separately<a class="headerlink" href="#installing-the-backend-separately" title="Link to this heading">#</a></h1>
 <p>This section of the documentation covers how to install the Digichem backend.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
@@ -432,12 +423,12 @@ If you would like to generate these types of images, you should make sure Visual
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../gui/clusters/compute_canada.html"
+       href="../../guides/cli/submit.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Compute Canada (DRAC)</p>
+        <p class="prev-next-title">Digichem Submit</p>
       </div>
     </a>
     <a class="right-next"

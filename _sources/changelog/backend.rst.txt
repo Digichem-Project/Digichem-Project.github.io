@@ -16,9 +16,16 @@ Bugfixes
 - 2026-02-03: fixed missing lib from rdkit
 - 2026-02-03: fixed not being able to describe Method_target_options that have a default set
 
+Documentation changes
+============================
+
+- 2026-02-11: reordered docs for easier readability
+- 2026-02-11: added documentation for Justus 2
+
 Miscellaneous
 ============================
 
+- 2026-02-11: added missing apt-get update from workflows
 - 2026-02-03: bumped version to 7.4.3
 - 2026-02-03: bumped to 7.4.2
 - 2026-02-03: Bumped to 7.4.1

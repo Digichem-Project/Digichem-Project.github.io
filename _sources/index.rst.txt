@@ -22,16 +22,16 @@ Simple how-to guides designed for new users.
    get_started/index
 
 
-Installation guides
--------------------
+..   Installation guides
+   -------------------
 
-For more complex installation types, and for troubleshooting installation problems.
+   For more complex installation types, and for troubleshooting installation problems.
 
-.. toctree::
-   :maxdepth: 2
-   :includehidden:
+   .. toctree::
+      :maxdepth: 2
+      :includehidden:
 
-   installation/index
+      installation/index
 
 
 ..   Core concepts
