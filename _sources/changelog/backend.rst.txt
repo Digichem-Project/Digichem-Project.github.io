@@ -3,6 +3,24 @@ Digichem
 --------
 
 
+v7.4.4
+________________________________
+
+
+Bugfixes
+============================
+
+- 2026-02-16: fixed failing to parse Orca Censo calculations with solvents
+- 2026-02-06: builds for CentOS-7.9 no longer have batoms (which is unavailable) set as the default rendering engine
+- 2026-02-12: added missing stderr redirect for PBS
+
+Miscellaneous
+============================
+
+- 2026-02-16: update last modified
+- 2026-02-16: fixed using wrong digichem-core version in workflows
+- 2026-02-16: bumped version to 7.4.4
+
 v7.4.3
 ________________________________
 
