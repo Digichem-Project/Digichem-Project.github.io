@@ -39,6 +39,7 @@ The AppImage doesn't need to be installed to be run. However, you will need to s
 You can do this on the command line:
 
 .. code:: bash
+    
     chmod +x Digichem-*.AppImage
 
 Or by right-clicking the file and selecting `Properties`:

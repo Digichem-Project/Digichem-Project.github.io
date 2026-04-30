@@ -6,6 +6,7 @@ User guides
    :includehidden:
 
    cli/index
+   terminal/index
 
 Advanced installation instructions
 ----------------------------------
